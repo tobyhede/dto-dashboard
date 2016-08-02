@@ -17,9 +17,7 @@ RSpec.describe Dashboard, type: :model do
 
     dataset = widget.datasets.create!(
       :name => 'numbers',
-      :agency => agency,
-      :row => 0,
-      :pos => 0)
+      :agency => agency)
 
     datapoint = dataset.datapoints.create!(:ts => Time.now, :value => 99)
 
