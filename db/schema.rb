@@ -24,11 +24,13 @@ ActiveRecord::Schema.define(version: 20160728011053) do
   end
 
   create_table "dashboards", force: :cascade do |t|
-    t.integer  "agency_id",  null: false
-    t.text     "name",       null: false
+    t.integer  "agency_id",                   null: false
+    t.text     "name",                        null: false
     t.text     "notes"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.boolean  "display_hero", default: true
+    t.boolean  "display_kpis", default: true
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
     t.index ["agency_id"], name: "index_dashboards_on_agency_id", using: :btree
   end
 
@@ -63,10 +65,10 @@ ActiveRecord::Schema.define(version: 20160728011053) do
     t.integer  "row",          limit: 2, null: false
     t.integer  "pos",          limit: 2, null: false
     t.text     "name",                   null: false
-    t.text     "description",            null: false
     t.text     "type",                   null: false
     t.text     "size",                   null: false
     t.text     "units",                  null: false
+    t.text     "description"
     t.jsonb    "options"
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false

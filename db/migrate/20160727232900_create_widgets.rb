@@ -5,10 +5,10 @@ class CreateWidgets < ActiveRecord::Migration[5.0]
       t.integer    :row, :null => false, :limit => 2
       t.integer    :pos, :null => false, :limit => 2
       t.text       :name, :null => false
-      t.text       :description, :null => false
       t.text       :type, :null => false
       t.text       :size, :null => false
       t.text       :units, :null => false
+      t.text       :description, :null => true
       t.jsonb      :options, :null => true
       t.timestamps
     end
