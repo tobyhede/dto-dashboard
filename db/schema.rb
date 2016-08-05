@@ -15,29 +15,22 @@ ActiveRecord::Schema.define(version: 20160728011053) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "agencies", force: :cascade do |t|
-    t.text     "name",        null: false
-    t.text     "url",         null: false
-    t.text     "description"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-  end
-
   create_table "dashboards", force: :cascade do |t|
-    t.integer  "agency_id",                   null: false
-    t.text     "name",                        null: false
+    t.integer  "organisation_id",                null: false
+    t.text     "name",                           null: false
     t.text     "notes"
-    t.boolean  "display_hero", default: true
-    t.boolean  "display_kpis", default: true
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
-    t.index ["agency_id"], name: "index_dashboards_on_agency_id", using: :btree
+    t.boolean  "display_hero",    default: true, null: false
+    t.boolean  "display_kpis",    default: true, null: false
+    t.datetime "published_at"
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.index ["organisation_id"], name: "index_dashboards_on_organisation_id", using: :btree
   end
 
   create_table "datapoints", force: :cascade do |t|
     t.integer  "dataset_id", null: false
     t.datetime "ts",         null: false
-    t.decimal  "value",      null: false
+    t.decimal  "value"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["dataset_id"], name: "index_datapoints_on_dataset_id", using: :btree
@@ -53,11 +46,19 @@ ActiveRecord::Schema.define(version: 20160728011053) do
   end
 
   create_table "datasets", force: :cascade do |t|
-    t.integer  "agency_id",  null: false
-    t.text     "name",       null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["agency_id"], name: "index_datasets_on_agency_id", using: :btree
+    t.integer  "organisation_id", null: false
+    t.text     "name",            null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.index ["organisation_id"], name: "index_datasets_on_organisation_id", using: :btree
+  end
+
+  create_table "organisations", force: :cascade do |t|
+    t.text     "name",        null: false
+    t.text     "url",         null: false
+    t.text     "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "widgets", force: :cascade do |t|
