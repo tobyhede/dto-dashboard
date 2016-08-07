@@ -1,0 +1,218 @@
+{
+  "version":      "1",
+  "updated_at":   "2016-07-01T01:01:01.111Z",
+  "name":         "Hobby or Business Determination Tool",
+  "url":          "https://start.business.gov.au/",
+  "agency":       "DIIS",
+  "service":      "dto.gov.au",
+  "description":  "Hobby or Business Tool Performance Dashboard",
+  "notes":        "",
+  "datasets": [
+    {
+        "id":           "user-satisfaction",
+        "recorded_at":  "2016-06-30T01:01:01.111Z",
+        "units":        "",
+        "name":         "User satisfaction",
+        "note":         "This data is currently unavailable due to....",
+        "data":         null
+    },
+    {
+        "id":           "cost-per-transaction",
+        "recorded_at":  "2016-06-30T01:01:01.111Z",
+        "units":        "",
+        "name":         "Cost per transaction",
+        "note":         "This data is currently unavailable due to....",
+        "data":         null
+    },
+    {
+        "id":           "completion-rate",
+        "recorded_at":  "2016-06-30T01:01:01.111Z",
+        "units":        "",
+        "name":         "Completion rate",
+        "note":         "The percentage of visitors to the business.gov.au 'A business or a hobby?' page who go on to use the tool.",
+        "data": [
+          { "label": "2016-06", "value": 58}
+      ]
+    },
+    {
+        "id":           "digital-take-up",
+        "recorded_at":  "2016-06-30T01:01:01.111Z",
+        "units":        "",
+        "name":         "Digital take-up",
+        "note":         "The percentage of users who successfully generate a result after starting the tool. This is calculated by dividing the total number of successfully completed transactions by the total number of started transactions.",
+        "data": [
+          { "label": "2016-06", "value": 42}
+      ]
+    },
+    {
+        "id":           "click-through-ablis",
+        "recorded_at":  "2016-06-30T01:01:01.111Z",
+        "units":        "",
+        "name":         "ABLIS",
+        "note":         "",
+        "data": [
+          { "label": "2016-06", "value": 8.0}
+      ]
+    },
+    {
+        "id":           "click-through-ato",
+        "recorded_at":  "2016-06-30T01:01:01.111Z",
+        "units":        "",
+        "name":         "ATO",
+        "note":         "",
+        "data": [
+          { "label": "2016-06", "value": 46.0}
+      ]
+    },
+    {
+        "id":           "click-through-bus.gov",
+        "recorded_at":  "2016-06-30T01:01:01.111Z",
+        "units":        "",
+        "name":         "business.gov.au",
+        "note":         "",
+        "data": [
+          { "label": "2016-06", "value": 28.0}
+      ]
+    },
+    {
+        "id":           "click-through-ip",
+        "recorded_at":  "2016-06-30T01:01:01.111Z",
+        "units":        "",
+        "name":         "IP Australia",
+        "note":         "",
+        "data": [
+          { "label": "2016-06", "value": 6.0}
+      ]
+    },
+    {
+        "id":           "click-through-other",
+        "recorded_at":  "2016-06-30T01:01:01.111Z",
+        "units":        "",
+        "name":         "Other",
+        "note":         "",
+        "data": [
+          { "label": "2016-06", "value": 11.0}
+      ]
+    },
+    {
+        "id":           "external-referrals-ext",
+        "recorded_at":  "2016-06-30T01:01:01.111Z",
+        "units":        "",
+        "name":         "External sites",
+        "note":         "",
+        "data": [
+          { "label": "2016-06", "value": 66.0}
+      ]
+    },
+    {
+        "id":           "external-referrals-direct",
+        "recorded_at":  "2016-06-30T01:01:01.111Z",
+        "units":        "",
+        "name":         "Direct",
+        "note":         "",
+        "data": [
+          { "label": "2016-06", "value": 34.0}
+      ]
+    },
+    {
+        "id":           "help-sought-none",
+        "recorded_at":  "2016-06-30T01:01:01.111Z",
+        "units":        "",
+        "name":         "No help",
+        "note":         "",
+        "data": [
+          { "label": "2016-06", "value": 98}
+      ]
+    },
+    {
+        "id":           "help-sought-contact",
+        "recorded_at":  "2016-06-30T01:01:01.111Z",
+        "units":        "",
+        "name":         "Help",
+        "note":         "",
+        "data": [
+          { "label": "2016-06", "value": 2}
+      ]
+    },
+    {
+        "id":           "device-usage-desktop",
+        "recorded_at":  "2016-06-30T01:01:01.111Z",
+        "units":        "",
+        "name":         "Desktop",
+        "note":         "",
+        "data": [
+          { "label": "2016-06", "value": 66}
+      ]
+    },
+    {
+        "id":           "device-usage-mobile",
+        "recorded_at":  "2016-06-30T01:01:01.111Z",
+        "units":        "",
+        "name":         "Mobile",
+        "note":         "",
+        "data": [
+          { "label": "2016-06", "value": 27}
+      ]
+    },
+    {
+        "id":           "device-usage-tablet",
+        "recorded_at":  "2016-06-30T01:01:01.111Z",
+        "units":        "",
+        "name":         "Tablet",
+        "note":         "",
+        "data": [
+          { "label": "2016-06", "value": 7}
+      ]
+    },
+    {
+        "id":           "browser-usage-chrome",
+        "recorded_at":  "2016-06-30T01:01:01.111Z",
+        "units":        "",
+        "name":         "Chrome",
+        "note":         "",
+        "data": [
+          { "label": "2016-06", "value": 43}
+      ]
+    },
+    {
+        "id":           "browser-usage-safari",
+        "recorded_at":  "2016-06-30T01:01:01.111Z",
+        "units":        "",
+        "name":         "Safari",
+        "note":         "",
+        "data": [
+          { "label": "2016-06", "value": 24}
+      ]
+    },
+    {
+        "id":           "browser-usage-ie",
+        "recorded_at":  "2016-06-30T01:01:01.111Z",
+        "units":        "",
+        "name":         "IE",
+        "note":         "",
+        "data": [
+          { "label": "2016-06", "value": 15}
+      ]
+    },
+    {
+        "id":           "browser-usage-firefox",
+        "recorded_at":  "2016-06-30T01:01:01.111Z",
+        "units":        "",
+        "name":         "Firefox",
+        "note":         "",
+        "data": [
+          { "label": "2016-06", "value": 13}
+      ]
+    },
+    {
+        "id":           "browser-usage-other",
+        "recorded_at":  "2016-06-30T01:01:01.111Z",
+        "units":        "",
+        "name":         "Other",
+        "note":         "",
+        "data": [
+          { "label": "2016-06", "value": 6}
+      ]
+    }
+  ]
+}

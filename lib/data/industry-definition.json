@@ -1,0 +1,135 @@
+{
+  "name":     "Hobby or Business Tool Dashboard",
+  "url":      "https://start.business.gov.au/",
+  "agency":   "DIIS",
+  "notes": "<dl> <dt> What is the Hobby or Business Help Me Work It Out Tool? <dd> This public beta release of the tool is for people who are getting money or intend to get money from creative works, and are unsure if they are a hobby or a business. The tool guides them on their government obligations. <dt> Who is the user group of the Hobby or Business Help Me Work It Out Tool? <dd> The first release applies to artists, creatives and makers. Future enhancements to the tool, building on the public beta, will add new user groups, and over time, the digital take-up figure will reflect the increasing number of users who are able to use it. <dt> User Satisfaction <dd> User satisfaction figures will be reported from August 2016. <dt> Cost per Transaction <dd> We do not have this data at the moment because we are currently in the process of determining the best way to measure cost per transaction for information services. <dt> Digital Take-up <dd> Digital take-up measures the percentage of visitors to the page on business.gov.au, where the tool can be found, who go on to use it. The percentage is calculated by comparing the total number of users who access the public beta tool to the total number of unique visits to the page on business.gov.au. We are working on a more precise measure of take-up, comparing use of the tool to users accessing this information through our contact centre. We will update the Dashboard in the near future with this data. <dt> Completion Rate <dd> Completion rate measures the percentage of users who successfully generate a result by using the public beta release of the tool. This percentage is calculated by dividing the total number of successfully completed interactions by the total number of started interactions. </dl>",
+  "widgets":  [
+    {
+      "id":   "kpis",
+      "updated_at": "2016-06-30T01:01:01.111Z",
+      "name": "Kpis",
+      "type": "full",
+      "size": "extra-large",
+      "units": "n",
+      "datasets": ["user-satisfaction", "cost-per-transaction", "digital-take-up", "completion-rate"]
+    },
+    {
+      "id":   "user-satisfaction",
+      "updated_at": "2016-06-30T01:01:01.111Z",
+      "name": "User Satisfaction",
+      "type": "kpi-sparkline",
+      "size": "extra-small",
+      "units": "%",
+      "definition": "Overall satisfaction score includes all ratings weighted from 100% for very satisfied to 0% for very dissatisfied",
+      "datasets": ["user-satisfaction"]
+    },
+    {
+      "id":   "cost-per-transaction",
+      "updated_at": "2016-06-30T01:01:01.111Z",
+      "name": "Cost Per Transaction",
+      "type": "kpi-sparkline",
+      "size": "extra-small",
+      "units": "$",
+      "datasets": ["cost-per-transaction"]
+    },
+    {
+      "id":   "digital-take-up",
+      "updated_at": "2016-06-30T01:01:01.111Z",
+      "name": "Digital Take-up",
+      "type": "kpi-sparkline",
+      "size": "extra-small",
+      "units": "%",
+      "datasets": ["digital-take-up"]
+    },
+    {
+      "id":   "completion-rate",
+      "updated_at": "2016-06-30T01:01:01.111Z",
+      "name": "Completion Rate",
+      "type": "kpi-sparkline",
+      "size": "extra-small",
+      "units": "%",
+      "definition": "Percentage of transactions made using the digital service.",
+      "datasets": ["completion-rate"]
+    },
+    {
+      "id":   "click-through",
+      "updated_at": "2016-06-30T01:01:01.111Z",
+      "name": "Users who navigated to another site",
+      "type": "pie",
+      "size": "medium",
+      "units": "%",
+      "displayRoundedData" : true,
+      "definition": "This shows the percentage of users who click through to an external website from the Hobby or Business tool. Please note that these figures represent aggregated clicks to external government sites.",
+      "datasets": ["click-through-ato", "click-through-ablis", "click-through-bus.gov", "click-through-ip", "click-through-other"]
+    },
+    {
+      "id":   "external-referrals",
+      "updated_at": "2016-06-30T01:01:01.111Z",
+      "name": "How users are finding the hobby or business tool",
+      "type": "pie",
+      "size": "medium",
+      "units": "%",
+      "displayRoundedData" : true,
+      "definition": "This shows the percentage of visits to the tool that came directly from business.gov.au or other external sites ie government, private sector or social media.",
+      "datasets": ["external-referrals-ext", "external-referrals-direct"]
+    },
+    {
+      "id":   "help-sought",
+      "updated_at": "2016-06-30T01:01:01.111Z",
+      "name": "Users seeking help from contact centre",
+      "type": "pie",
+      "size": "medium",
+      "units": "%",
+      "displayRoundedData" : true,
+      "definition": "This shows the percentage of users who sought help from the business.gov.au contact centre via phone, web chat or email.",
+      "datasets": ["help-sought-contact", "help-sought-none"]
+    },
+    {
+      "id":   "device",
+      "updated_at": "2016-06-30T01:01:01.111Z",
+      "name": "Devices used by users",
+      "type": "pie",
+      "size": "small",
+      "units": "%",
+      "displayRoundedData" : true,
+      "definition": "This shows the types of devices used by users to access the Hobby or Business tool.",
+      "datasets": ["device-usage-desktop", "device-usage-mobile", "device-usage-tablet"]
+    },
+    {
+      "id":   "browser",
+      "updated_at": "2016-06-30T01:01:01.111Z",
+      "name": "Browsers used by users",
+      "type": "pie",
+      "size": "small",
+      "units": "%",
+      "displayRoundedData" : true,
+      "definition": "This shows the types of browsers used by users to access the Hobby or Business tool.",
+      "datasets": ["browser-usage-chrome", "browser-usage-safari", "browser-usage-ie", "browser-usage-firefox", "browser-usage-other"]
+    },
+    {
+      "id":   "fact-2",
+      "updated_at": "2016-06-30T01:01:01.111Z",
+      "name": "Fact",
+      "type": "fact",
+      "size": "medium",
+      "units": "s",
+      "description": "79% of people who sought help from the Contact Centre were seeking general information about the tool, 21% needed assistance interpreting their results."
+    },
+    {
+      "id":   "fact-1",
+      "updated_at": "2016-06-30T01:01:01.111Z",
+      "name": "Fact",
+      "type": "fact",
+      "size": "small",
+      "units": "s",
+      "description": "In June, 71% of contacts to the Contact Centre were by phone, 17% by web chat and 12% by email."
+    }
+  ],
+  "layout":   [
+    ["kpis"],
+    ["user-satisfaction", "cost-per-transaction", "digital-take-up", "completion-rate"],
+    ["click-through", "external-referrals"],
+    ["fact-2", "help-sought"],
+    ["device", "browser", "fact-1"]
+  ]
+}
