@@ -52,6 +52,7 @@ rails server
 
 The site can now be viewed at `http://localhost:3000/`
 
+Administration is available at `http://localhost:3000/admin`
 
 ## Tests
 
