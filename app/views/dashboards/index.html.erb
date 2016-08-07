@@ -1,6 +1,8 @@
 
 <ul>
   <% @dashboards.each do |dashboard| %>
-    <li><%= dashboard.name %></li>
+    <li>
+      <%= render :partial => 'widget', :locals => {:dashboard => dashboard} %>
+    </li>
   <% end %>
 </ul>
