@@ -26,16 +26,21 @@ DB_USER_NAME = 'dashboard'
 DB_PWD = 'password'
 ```
 
-Create a database
-
+To create the database and load the schema
 ```
-rake db:create
+rake db:setup
 ```
 
 Migrate the database
 
 ```
 rake db:migrate
+```
+
+Import the dashboard data
+
+```
+rake import:data
 ```
 
 ### Run the App
