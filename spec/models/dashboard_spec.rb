@@ -2,11 +2,11 @@ require 'rails_helper'
 
 RSpec.describe Dashboard, type: :model do
 
-  let(:agency) { Agency.create!(:name => 'Dept of Vtha', :url => 'vtha.gov.au')  }
+  let(:organisation) { Organisation.create!(:name => 'Dept of Vtha', :url => 'vtha.gov.au')  }
 
   it 'is not a good test' do
 
-    dashboard = Dashboard.create!(:name => 'Dashboard', :agency => agency)
+    dashboard = Dashboard.create!(:name => 'Dashboard', :organisation => organisation)
 
     widget = Widget.create!(
       :dashboard    => dashboard,
@@ -20,14 +20,12 @@ RSpec.describe Dashboard, type: :model do
 
     dataset = widget.datasets.create!(
       :name => 'numbers',
-      :agency => agency)
+      :organisation => organisation)
 
     datapoint = dataset.datapoints.create!(:ts => Time.now, :value => 99)
 
-    puts widget.inspect
-    puts dataset.inspect
-    puts dashboard.widgets.inspect
-
-
+    # puts widget.inspect
+    # puts dataset.inspect
+    # puts dashboard.widgets.inspect
   end
 end
