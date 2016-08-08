@@ -1,5 +1,7 @@
 # Dashboard
 
+![CircleCI](https://circleci.com/gh/ausdto/dto-dashboard.png?circle-token=:circle-token)
+
 Version 3.0 of the Performance Dashboard.
 
 Currently WIP.
