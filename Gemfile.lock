@@ -114,6 +114,7 @@ GEM
       request_store (~> 1.0)
     erubis (2.7.0)
     execjs (2.7.0)
+    fabrication (2.15.2)
     ffi (1.9.14)
     formatador (0.2.5)
     formtastic (3.1.4)
@@ -286,6 +287,7 @@ DEPENDENCIES
   byebug
   dotenv-rails
   draper (> 3.x)
+  fabrication
   guard-rspec
   inherited_resources!
   jbuilder (~> 2.5)

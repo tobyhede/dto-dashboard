@@ -43,6 +43,7 @@ group :development do
 end
 
 group :test do
+  gem 'fabrication'
   gem 'guard-rspec', require: false
   gem 'shoulda-matchers', '~> 3.1'
   gem 'rspec-rails'
