@@ -1,6 +1,8 @@
 class Organisation < ApplicationRecord
+  include Nameable
+  
   has_many :dashboards
   has_many :datasets
 
-  validates :name, :url, :presence => true
+  validates :url, :presence => true
 end

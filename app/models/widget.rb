@@ -1,4 +1,6 @@
 class Widget < ApplicationRecord
+  include Nameable
+
   self.inheritance_column = :_type_disabled
 
   belongs_to :dashboard
@@ -6,7 +8,7 @@ class Widget < ApplicationRecord
   has_many :dataset_widgets
   has_many :datasets, :through => :dataset_widgets
 
-  validates :name, :size, :type, :units, :presence => true
+  validates :size, :type, :units, :presence => true
 
   validates :size, inclusion: { in: %w(extra-small small medium large extra-large),
       message: "%{value} is not a valid size" }
