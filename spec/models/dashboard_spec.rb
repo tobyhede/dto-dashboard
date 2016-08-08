@@ -21,5 +21,4 @@ RSpec.describe Dashboard, type: :model do
     it      { is_expected.to have(1).dashboard }
   end
 
-
 end
