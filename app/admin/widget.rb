@@ -4,6 +4,8 @@ ActiveAdmin.register Widget do
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
 # permit_params :list, :of, :attributes, :on, :model
+  permit_params :dashboard_id, :row, :pos, :name, :type, :size, :units, :description, :options
+
 #
 # or
 #
@@ -12,6 +14,4 @@ ActiveAdmin.register Widget do
 #   permitted << :other if params[:action] == 'create' && current_user.admin?
 #   permitted
 # end
-
-
 end

@@ -70,7 +70,7 @@ ActiveRecord::Schema.define(version: 20160728011053) do
     t.text     "size",                   null: false
     t.text     "units",                  null: false
     t.text     "description"
-    t.jsonb    "options"
+    t.text     "options"
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
     t.index ["dashboard_id"], name: "index_widgets_on_dashboard_id", using: :btree
