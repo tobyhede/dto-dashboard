@@ -1,6 +1,6 @@
 # Dashboard
 
-![CircleCI](https://circleci.com/gh/ausdto/dto-dashboard.png?circle-token=:circle-token)
+[![CircleCI](https://circleci.com/gh/AusDTO/dto-dashboard/tree/master.svg?style=svg)](https://circleci.com/gh/AusDTO/dto-dashboard/tree/master)
 
 Version 3.0 of the Performance Dashboard.
 
