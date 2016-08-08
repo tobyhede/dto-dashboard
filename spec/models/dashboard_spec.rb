@@ -2,6 +2,12 @@ require 'rails_helper'
 
 RSpec.describe Dashboard, type: :model do
 
+  it { is_expected.to belong_to :organisation }
+  it { is_expected.to have_many :widgets }
+
+  it { is_expected.to validate_presence_of :name }
+
+
   let(:organisation) { Organisation.create!(:name => 'Dept of Vtha', :url => 'vtha.gov.au')  }
 
   it 'is not a good test' do

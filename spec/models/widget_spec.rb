@@ -6,6 +6,12 @@ RSpec.describe Widget, type: :model do
   let(:type)   { %w(bar fact full kpi-sparkline line pie sparkline) }
   let(:units)  { %w(% $ n) }
 
+  it { is_expected.to belong_to :dashboard }
+  it { is_expected.to have_many :datasets }
+  it { is_expected.to have_many :dataset_widgets }
+
+  it { is_expected.to validate_presence_of :name }
+
   it { should validate_presence_of(:size) }
   it { should validate_presence_of(:type) }
   it { should validate_presence_of(:units) }
