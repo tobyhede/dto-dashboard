@@ -9,7 +9,7 @@ class CreateWidgets < ActiveRecord::Migration[5.0]
       t.text       :size, :null => false
       t.text       :units, :null => false
       t.text       :description, :null => true
-      t.jsonb      :options, :null => true
+      t.text       :options, :null => true
       t.timestamps
     end
   end
