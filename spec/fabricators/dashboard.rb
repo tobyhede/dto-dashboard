@@ -1,4 +1,4 @@
 Fabricator(:dashboard) do
   organisation
-  name { sequence(:name) { |i| "d-#{i}" } }
+  name { sequence(:name) { |i| "dashboard-#{i}" } }
 end
