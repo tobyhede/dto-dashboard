@@ -60,6 +60,12 @@ Administration is available at `http://localhost:3000/admin`
 rspec
 ```
 
+You can also use guard to run specs automatically on save with
+
+```
+bundle exec guard
+```
+
 
 
 ## High-level Development Process
