@@ -47,6 +47,7 @@ group :test do
   gem 'guard-rspec', require: false
   gem 'shoulda-matchers', '~> 3.1'
   gem 'rspec-rails'
+  gem 'rspec-collection_matchers'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
