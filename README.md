@@ -1,5 +1,7 @@
 # Dashboard
 
+![CircleCI](https://circleci.com/gh/ausdto/dto-dashboard.png?circle-token=:circle-token)
+
 Version 3.0 of the Performance Dashboard.
 
 Currently WIP.
@@ -58,6 +60,12 @@ Administration is available at `http://localhost:3000/admin`
 
 ```
 rspec
+```
+
+You can also use guard to run specs automatically on save with
+
+```
+bundle exec guard
 ```
 
 
