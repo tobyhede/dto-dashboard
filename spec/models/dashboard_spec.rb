@@ -8,7 +8,7 @@ RSpec.describe Dashboard, type: :model do
   it { is_expected.to validate_presence_of :name }
 
   let(:published_at)  { nil }
-  let!(:dashboard)    { create(:dashboard, :published_at => published_at) }
+  let!(:dashboard)    { FactoryGirl.create(:dashboard, :published_at => published_at) }
 
   context 'unpublished' do
     subject { Dashboard.published.all }

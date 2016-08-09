@@ -21,5 +21,12 @@ class Widget < ApplicationRecord
 
   validates :row, :pos, :presence => true, :numericality => { :only_integer => true }
 
-  
+  def data
+    as_json(:include => {
+      :datasets => {
+        :include => :datapoints
+      }
+    })
+  end
+
 end

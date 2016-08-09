@@ -20,4 +20,14 @@ RSpec.describe Widget, type: :model do
   it { is_expected.to validate_inclusion_of(:type).in_array(type) }
   it { is_expected.to validate_inclusion_of(:units).in_array(units) }
 
+  # http://api.rubyonrails.org/classes/ActiveModel/Serializers/JSON.html
+  describe 'json' do
+    let(:widget) { FactoryGirl.create(:widget_with_datasets) }
+
+    it '.data' do
+      expect(widget.data).to include("datasets")
+      expect(widget.data["datasets"].first).to include("datapoints")
+    end
+  end
+
 end
