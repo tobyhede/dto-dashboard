@@ -21,4 +21,5 @@ class Widget < ApplicationRecord
 
   validates :row, :pos, :presence => true, :numericality => { :only_integer => true }
 
+  
 end

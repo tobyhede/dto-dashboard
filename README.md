@@ -68,6 +68,7 @@ You can also use guard to run specs automatically on save with
 bundle exec guard
 ```
 
+For advice for writing specs check [betterspecs](http://betterspecs.org/).
 
 
 ## High-level Development Process
