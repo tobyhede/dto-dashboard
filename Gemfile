@@ -43,7 +43,7 @@ group :development do
 end
 
 group :test do
-  gem 'fabrication'
+  gem 'factory_girl_rails', '~> 4.0'
   gem 'guard-rspec', require: false
   gem 'shoulda-matchers', '~> 3.1'
   gem 'rspec-rails'
