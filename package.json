@@ -1,7 +1,7 @@
 
-  "name": "dto-dashboard-productotype",
-  "version": "1.0.0-alpha",
-  "description": "dto dashboard alpha front end",
+  "name": "dto-dashboard",
+  "version": "1.0.0-beta",
+  "description": "dto dashboard beta front end",
   "repository": {
     "type": "git",
     "url": ""
@@ -9,9 +9,9 @@
   "author": "",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/AusDTO/dto-dashboard-alpha/issues"
+    "url": "https://github.com/AusDTO/dto-dashboard/issues"
   },
-  "homepage": "https://github.com/AusDTO/dto-dashboard-alpha#readme",
+  "homepage": "https://github.com/AusDTO/dto-dashboard#readme",
   "dependencies": {
     "autotrack": "^1.0.0",
     "babel-plugin-transform-es2015-destructuring": "^6.9.0",
