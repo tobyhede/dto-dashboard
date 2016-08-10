@@ -1,0 +1,32 @@
+/**
+* Site header
+*/
+.logo-primary {
+  background: #232d35;
+  padding: $gutter 0;
+
+  .container {
+    @include display(flex);
+    align-items: flex-end;
+  }
+
+  .site-title {
+    @include flex(1);
+  }
+
+  img {
+    height: 30px;
+    width: auto;
+    display: block;
+    max-width: 90%;
+    height: auto;
+  }
+
+  @include media($screen-sm) {
+    padding: $spacing-unit/2 0;
+
+    img {
+      height: 40px;
+    }
+  }
+}
