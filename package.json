@@ -79,17 +79,11 @@
     "watchify": "^3.7.0"
   },
   "scripts": {
-    "predev": "npm run resetdb && gulp build",
-    "dev": "nodemon ./bin/www",
-    "dev-client": "gulp watch",
-    "prestart": "npm run resetdb && gulp build",
-    "start": "node ./bin/www",
-    "pretest": "gulp test",
-    "test": "dotenv ava 'test/**/*.test.js'",
+    "dev": "gulp watch",
+    "test": "gulp test",
     "lint": "eslint ./lib/javascripts/",
     "postinstall": "echo 'Installation with NPM successful. What to do next:\\n  npm start       # Starts the server on port 3000\\n  gulp watch      # Builds app and dependencies, and rebuilds if files change.'",
-    "resetdb": "rm -f migrations/.migrate && npm run migrate",
-    "migrate": "node node_modules/migrate/bin/migrate up"
+
   },
   "engines": {
     "node": "6.0.0"
