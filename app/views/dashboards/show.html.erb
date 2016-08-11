@@ -1,0 +1,909 @@
+<div aria-hidden="true" class="patterns">
+  <svg height="10" width="10" xmlns="http://www.w3.org/2000/svg" version="1.1">
+    <defs>
+      <pattern id="diagonal-stripe-1" patternUnits="userSpaceOnUse" width="10" height="10">
+        <image xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPScxMCcgaGVpZ2h0PScxMCc+CiAgPHJlY3Qgd2lkdGg9JzEwJyBoZWlnaHQ9JzEwJyBmaWxsPSd3aGl0ZScvPgogIDxwYXRoIGQ9J00tMSwxIGwyLC0yCiAgICAgICAgICAgTTAsMTAgbDEwLC0xMAogICAgICAgICAgIE05LDExIGwyLC0yJyBzdHJva2U9J2JsYWNrJyBzdHJva2Utd2lkdGg9JzEnLz4KPC9zdmc+Cg=="
+               x="0" y="0" width="10" height="10"> </image>
+      </pattern>
+    </defs>
+  </svg>
+</div>
+<div id="<%= @dashboard.id %>>" class="item--hobby-or-business-tool-dashboard">
+  <div class="hero-region">
+    <div class="container">
+      <div class="row dashboard__top"><a href="/" aria-hidden="true" class="back-link">Back to overview</a>
+        <div class="dashboard__header">
+          <h1><%= @dashboard.name.chomp('Dashboard') %> </h1>
+          <div class="badge__holder">
+            <span class="badge-default">
+              <!--if (dashboard.displayKPIs() && dashboard.hasHero()) -->
+              <!--<div class='hero-widget hero' data-data=JSON.stringify(@dashboard.hero.datasets)></div>-->
+              <% if @dashboard.display_hero && @dashboard.display_kpis %>
+              <% end %>
+            </span>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid metric-breakdown-view">
+    <div class="clearfix dashboard__kpis">
+      <div class="container">
+        <div class="row">
+          <div class="aus-width-one-fourth">
+            <div class="widget user-satisfaction has-data-false kpi-sparkline single">
+              <div id="user-satisfaction" class="widget__title">
+                <svg height="14" width="14">
+                  <line x1="0" x2="14" y1="7" y2="7" stroke="#f2b038" stroke-width="3" stroke-dasharray="12, 5"></line>
+                </svg>
+                <h4>User Satisfaction</h4>
+                <a href="#dashboard-notes" title="View KPI User Satisfaction definition" ga-on="click" ga-event-category="Dashboard Show"
+                   ga-event-action="Clicked Hero Widget legend info" ga-event-label="User Satisfaction" class="fa fa-question-circle info"></a>
+                <div class="meta-group"></div><span class="widget__last-updated">Last updated 30 Jun 2016</span>
+                <div class="meta-group">
+                  <div class="widget__definition"><span aria-describedby="tooltip--user-satisfaction" class="widget__definition--title">What is this?</span>
+                    <div role="tooltip" id="tooltip--user-satisfaction" class="widget__definition--content" style="left: 35px;">
+                      <div class="widget__definition--content__inner">Overall satisfaction score includes all ratings weighted from 100% for very satisfied
+                        to 0% for very dissatisfied</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div data-data="{&quot;suffix&quot;:&quot;%&quot;,&quot;latest&quot;:{&quot;value&quot;:null},&quot;change&quot;:0,&quot;summary&quot;:&quot;&quot;,&quot;id&quot;:&quot;user-satisfaction&quot;,&quot;name&quot;:&quot;User Satisfaction&quot;,&quot;size&quot;:&quot;extra-small&quot;,&quot;type&quot;:&quot;kpi-sparkline&quot;,&quot;units&quot;:&quot;%&quot;,&quot;datasets&quot;:[{&quot;id&quot;:&quot;user-satisfaction&quot;,&quot;data&quot;:null,&quot;name&quot;:&quot;User satisfaction&quot;,&quot;note&quot;:&quot;This data is currently unavailable due to....&quot;,&quot;units&quot;:&quot;&quot;,&quot;recorded_at&quot;:&quot;2016-06-30T01:01:01.111Z&quot;}],&quot;definition&quot;:&quot;Overall satisfaction score includes all ratings weighted from 100% for very satisfied to 0% for very dissatisfied&quot;,&quot;updated_at&quot;:&quot;2016-06-30T01:01:01.111Z&quot;}"
+                   aria-hidden="true" class="widget__inner kpi-sparkline single">
+                <div class="sparkline__inner">
+                  <div class="metric-data">
+                    <div class="value">No data</div>
+                  </div>
+                </div>
+              </div>
+              <div class="widget__data">
+                <table class="data-table table">
+                  <caption>User satisfaction</caption>
+                  <tbody>
+                  <tr>
+                    <th scope="col">Date</th>
+                    <th scope="col">Value</th>
+                  </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div class="aus-width-one-fourth">
+            <div class="widget cost-per-transaction has-data-false kpi-sparkline single">
+              <div id="cost-per-transaction" class="widget__title">
+                <svg height="14" width="14">
+                  <line x1="0" x2="14" y1="7" y2="7" stroke="#75a370" stroke-width="3" stroke-dasharray="10, 5"></line>
+                </svg>
+                <h4>Cost Per Transaction</h4>
+                <a href="#dashboard-notes" title="View KPI Cost Per Transaction definition" ga-on="click" ga-event-category="Dashboard Show"
+                   ga-event-action="Clicked Hero Widget legend info" ga-event-label="Cost Per Transaction" class="fa fa-question-circle info"></a>
+                <div class="meta-group"></div><span class="widget__last-updated">Last updated 30 Jun 2016</span>
+                <div class="meta-group"></div>
+              </div>
+              <div data-data="{&quot;prefix&quot;:&quot;$&quot;,&quot;latest&quot;:{&quot;value&quot;:null},&quot;change&quot;:0,&quot;summary&quot;:&quot;&quot;,&quot;id&quot;:&quot;cost-per-transaction&quot;,&quot;name&quot;:&quot;Cost Per Transaction&quot;,&quot;size&quot;:&quot;extra-small&quot;,&quot;type&quot;:&quot;kpi-sparkline&quot;,&quot;units&quot;:&quot;$&quot;,&quot;datasets&quot;:[{&quot;id&quot;:&quot;cost-per-transaction&quot;,&quot;data&quot;:null,&quot;name&quot;:&quot;Cost per transaction&quot;,&quot;note&quot;:&quot;This data is currently unavailable due to....&quot;,&quot;units&quot;:&quot;&quot;,&quot;recorded_at&quot;:&quot;2016-06-30T01:01:01.111Z&quot;}],&quot;updated_at&quot;:&quot;2016-06-30T01:01:01.111Z&quot;}"
+                   aria-hidden="true" class="widget__inner kpi-sparkline single">
+                <div class="sparkline__inner">
+                  <div class="metric-data">
+                    <div class="value">No data</div>
+                  </div>
+                </div>
+              </div>
+              <div class="widget__data">
+                <table class="data-table table">
+                  <caption>Cost per transaction</caption>
+                  <tbody>
+                  <tr>
+                    <th scope="col">Date</th>
+                    <th scope="col">Value</th>
+                  </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div class="aus-width-one-fourth">
+            <div class="widget digital-take-up has-data-true kpi-sparkline single">
+              <div id="digital-take-up" class="widget__title">
+                <svg height="14" width="14">
+                  <line x1="0" x2="14" y1="7" y2="7" stroke="#4892c0" stroke-width="3" stroke-dasharray="3, 3"></line>
+                </svg>
+                <h4>Digital Take-up</h4>
+                <a href="#dashboard-notes" title="View KPI Digital Take-up definition" ga-on="click" ga-event-category="Dashboard Show" ga-event-action="Clicked Hero Widget legend info"
+                   ga-event-label="Digital Take-up" class="fa fa-question-circle info"></a>
+                <div class="meta-group"></div><span class="widget__last-updated">Last updated 30 Jun 2016</span>
+                <div class="meta-group"></div>
+              </div>
+              <div data-data="{&quot;suffix&quot;:&quot;%&quot;,&quot;latest&quot;:{&quot;label&quot;:&quot;2016-06&quot;,&quot;value&quot;:42},&quot;change&quot;:0,&quot;summary&quot;:&quot;Unchanged since 2016-06&quot;,&quot;id&quot;:&quot;digital-take-up&quot;,&quot;name&quot;:&quot;Digital Take-up&quot;,&quot;size&quot;:&quot;extra-small&quot;,&quot;type&quot;:&quot;kpi-sparkline&quot;,&quot;units&quot;:&quot;%&quot;,&quot;datasets&quot;:[{&quot;id&quot;:&quot;digital-take-up&quot;,&quot;data&quot;:[{&quot;label&quot;:&quot;2016-06&quot;,&quot;value&quot;:42}],&quot;name&quot;:&quot;Digital take-up&quot;,&quot;note&quot;:&quot;The percentage of users who successfully generate a result after starting the tool. This is calculated by dividing the total number of successfully completed transactions by the total number of started transactions.&quot;,&quot;units&quot;:&quot;&quot;,&quot;recorded_at&quot;:&quot;2016-06-30T01:01:01.111Z&quot;}],&quot;updated_at&quot;:&quot;2016-06-30T01:01:01.111Z&quot;}"
+                   aria-hidden="true" class="widget__inner kpi-sparkline single">
+                <div class="sparkline__inner">
+                  <div class="metric-data">
+                    <div class="value">42</div>
+                    <div class="decorator">
+                      <div class="metric-trend"></div>
+                      <div class="metric-unit">%</div>
+                    </div>
+                  </div>
+                  <div class="sparkline"></div>
+                </div>
+              </div>
+              <div class="widget__data">
+                <table class="data-table table">
+                  <caption>Digital take-up</caption>
+                  <tbody>
+                  <tr>
+                    <th scope="col">Date</th>
+                    <th scope="col">Value</th>
+                  </tr>
+                  <tr>
+                    <td scope="row">2016-06</td>
+                    <td scope="row"> 42 %</td>
+                  </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div class="aus-width-one-fourth">
+            <div class="widget completion-rate has-data-true kpi-sparkline single">
+              <div id="completion-rate" class="widget__title">
+                <svg height="14" width="14">
+                  <line x1="0" x2="14" y1="7" y2="7" stroke="#7066a5" stroke-width="3" stroke-dasharray="5, 10"></line>
+                </svg>
+                <h4>Completion Rate</h4>
+                <a href="#dashboard-notes" title="View KPI Completion Rate definition" ga-on="click" ga-event-category="Dashboard Show" ga-event-action="Clicked Hero Widget legend info"
+                   ga-event-label="Completion Rate" class="fa fa-question-circle info"></a>
+                <div class="meta-group"></div><span class="widget__last-updated">Last updated 30 Jun 2016</span>
+                <div class="meta-group">
+                  <div class="widget__definition"><span aria-describedby="tooltip--completion-rate" class="widget__definition--title">What is this?</span>
+                    <div role="tooltip" id="tooltip--completion-rate" class="widget__definition--content" style="left: 35px;">
+                      <div class="widget__definition--content__inner">Percentage of transactions made using the digital service.</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div data-data="{&quot;suffix&quot;:&quot;%&quot;,&quot;latest&quot;:{&quot;label&quot;:&quot;2016-06&quot;,&quot;value&quot;:58},&quot;change&quot;:0,&quot;summary&quot;:&quot;Unchanged since 2016-06&quot;,&quot;id&quot;:&quot;completion-rate&quot;,&quot;name&quot;:&quot;Completion Rate&quot;,&quot;size&quot;:&quot;extra-small&quot;,&quot;type&quot;:&quot;kpi-sparkline&quot;,&quot;units&quot;:&quot;%&quot;,&quot;datasets&quot;:[{&quot;id&quot;:&quot;completion-rate&quot;,&quot;data&quot;:[{&quot;label&quot;:&quot;2016-06&quot;,&quot;value&quot;:58}],&quot;name&quot;:&quot;Completion rate&quot;,&quot;note&quot;:&quot;The percentage of visitors to the business.gov.au 'A business or a hobby?' page who go on to use the tool. This is calculated by dividing the total number of ..... by the total number of .......&quot;,&quot;units&quot;:&quot;&quot;,&quot;recorded_at&quot;:&quot;2016-06-30T01:01:01.111Z&quot;}],&quot;definition&quot;:&quot;Percentage of transactions made using the digital service.&quot;,&quot;updated_at&quot;:&quot;2016-06-30T01:01:01.111Z&quot;}"
+                   aria-hidden="true" class="widget__inner kpi-sparkline single">
+                <div class="sparkline__inner">
+                  <div class="metric-data">
+                    <div class="value">58</div>
+                    <div class="decorator">
+                      <div class="metric-trend"></div>
+                      <div class="metric-unit">%</div>
+                    </div>
+                  </div>
+                  <div class="sparkline"></div>
+                </div>
+              </div>
+              <div class="widget__data">
+                <table class="data-table table">
+                  <caption>Completion rate</caption>
+                  <tbody>
+                  <tr>
+                    <th scope="col">Date</th>
+                    <th scope="col">Value</th>
+                  </tr>
+                  <tr>
+                    <td scope="row">2016-06</td>
+                    <td scope="row"> 58 %</td>
+                  </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container dashboard__secondary">
+      <div class="row">
+        <div class="aus-width-one-half">
+          <div class="widget click-through has-data-true pie multiple">
+            <div id="click-through" class="widget__title">
+              <h4>Users who navigated to another site</h4>
+              <a href="#dashboard-notes" title="View KPI Users who navigated to another site definition" ga-on="click" ga-event-category="Dashboard Show"
+                 ga-event-action="Clicked Hero Widget legend info" ga-event-label="Users who navigated to another site"
+                 class="fa fa-question-circle info"></a>
+              <div class="meta-group"></div><span class="widget__last-updated">Last updated 30 Jun 2016</span>
+              <div class="meta-group">
+                <div class="widget__definition"><span aria-describedby="tooltip--click-through" class="widget__definition--title">What is this?</span>
+                  <div role="tooltip" id="tooltip--click-through" class="widget__definition--content" style="left: 0px;">
+                    <div class="widget__definition--content__inner">This shows the percentage of users who click through to an external website from
+                      the Hobby or Business tool. Please note that these figures represent aggregated
+                      clicks to external government sites.</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div data-data="{&quot;suffix&quot;:&quot;%&quot;,&quot;latest&quot;:{&quot;label&quot;:&quot;2016-06&quot;,&quot;value&quot;:8},&quot;change&quot;:0,&quot;summary&quot;:&quot;Unchanged since 2016-06&quot;,&quot;id&quot;:&quot;click-through&quot;,&quot;name&quot;:&quot;Users who navigated to another site&quot;,&quot;size&quot;:&quot;medium&quot;,&quot;type&quot;:&quot;pie&quot;,&quot;units&quot;:&quot;%&quot;,&quot;datasets&quot;:[{&quot;id&quot;:&quot;click-through-ablis&quot;,&quot;data&quot;:[{&quot;label&quot;:&quot;2016-06&quot;,&quot;value&quot;:8}],&quot;name&quot;:&quot;ABLIS&quot;,&quot;note&quot;:&quot;&quot;,&quot;units&quot;:&quot;&quot;,&quot;recorded_at&quot;:&quot;2016-06-30T01:01:01.111Z&quot;},{&quot;id&quot;:&quot;click-through-ato&quot;,&quot;data&quot;:[{&quot;label&quot;:&quot;2016-06&quot;,&quot;value&quot;:46}],&quot;name&quot;:&quot;ATO&quot;,&quot;note&quot;:&quot;&quot;,&quot;units&quot;:&quot;&quot;,&quot;recorded_at&quot;:&quot;2016-06-30T01:01:01.111Z&quot;},{&quot;id&quot;:&quot;click-through-bus.gov&quot;,&quot;data&quot;:[{&quot;label&quot;:&quot;2016-06&quot;,&quot;value&quot;:28}],&quot;name&quot;:&quot;business.gov.au&quot;,&quot;note&quot;:&quot;&quot;,&quot;units&quot;:&quot;&quot;,&quot;recorded_at&quot;:&quot;2016-06-30T01:01:01.111Z&quot;},{&quot;id&quot;:&quot;click-through-ip&quot;,&quot;data&quot;:[{&quot;label&quot;:&quot;2016-06&quot;,&quot;value&quot;:6}],&quot;name&quot;:&quot;IP Australia&quot;,&quot;note&quot;:&quot;&quot;,&quot;units&quot;:&quot;&quot;,&quot;recorded_at&quot;:&quot;2016-06-30T01:01:01.111Z&quot;},{&quot;id&quot;:&quot;click-through-other&quot;,&quot;data&quot;:[{&quot;label&quot;:&quot;2016-06&quot;,&quot;value&quot;:11}],&quot;name&quot;:&quot;Other&quot;,&quot;note&quot;:&quot;&quot;,&quot;units&quot;:&quot;&quot;,&quot;recorded_at&quot;:&quot;2016-06-30T01:01:01.111Z&quot;}],&quot;definition&quot;:&quot;This shows the percentage of users who click through to an external website from the Hobby or Business tool. Please note that these figures represent aggregated clicks to external government sites.&quot;,&quot;updated_at&quot;:&quot;2016-06-30T01:01:01.111Z&quot;,&quot;displayRoundedData&quot;:true}"
+                 aria-hidden="true" class="widget__inner pie multiple">
+              <div class="legend">
+                <div class="date"></div>
+                <table>
+                  <tr>
+                    <th>
+                      <svg width="12" height="12">
+                        <g class="legend--icon">
+                          <rect x="0" y="0" width="12" height="12" fill="#4892c0" visibility="visible" rx="6" ry="6"></rect>
+                          <line x1="0" x2="12" y1="6" y2="6" stroke-linecap="butt" stroke="#4892c0" stroke-dasharray="0" visibility="hidden"></line>
+                        </g>
+                      </svg><span class="legend--data-name">ABLIS</span></th>
+                    <td>8%</td>
+                  </tr>
+                  <tr>
+                    <th>
+                      <svg width="12" height="12">
+                        <g class="legend--icon">
+                          <rect x="0" y="0" width="12" height="12" fill="#75a370" visibility="visible" rx="6" ry="6"></rect>
+                          <line x1="0" x2="12" y1="6" y2="6" stroke-linecap="butt" stroke="#75a370" stroke-dasharray="0" visibility="hidden"></line>
+                        </g>
+                      </svg><span class="legend--data-name">ATO</span></th>
+                    <td>46%</td>
+                  </tr>
+                  <tr>
+                    <th>
+                      <svg width="12" height="12">
+                        <g class="legend--icon">
+                          <rect x="0" y="0" width="12" height="12" fill="#f2b038" visibility="visible" rx="6" ry="6"></rect>
+                          <line x1="0" x2="12" y1="6" y2="6" stroke-linecap="butt" stroke="#f2b038" stroke-dasharray="0" visibility="hidden"></line>
+                        </g>
+                      </svg><span class="legend--data-name">business.gov.au</span></th>
+                    <td>28%</td>
+                  </tr>
+                  <tr>
+                    <th>
+                      <svg width="12" height="12">
+                        <g class="legend--icon">
+                          <rect x="0" y="0" width="12" height="12" fill="#47bcac" visibility="visible" rx="6" ry="6"></rect>
+                          <line x1="0" x2="12" y1="6" y2="6" stroke-linecap="butt" stroke="#47bcac" stroke-dasharray="0" visibility="hidden"></line>
+                        </g>
+                      </svg><span class="legend--data-name">IP Australia</span></th>
+                    <td>6%</td>
+                  </tr>
+                  <tr>
+                    <th>
+                      <svg width="12" height="12">
+                        <g class="legend--icon">
+                          <rect x="0" y="0" width="12" height="12" fill="#7066a5" visibility="visible" rx="6" ry="6"></rect>
+                          <line x1="0" x2="12" y1="6" y2="6" stroke-linecap="butt" stroke="#7066a5" stroke-dasharray="0" visibility="hidden"></line>
+                        </g>
+                      </svg><span class="legend--data-name">Other</span></th>
+                    <td>11%</td>
+                  </tr>
+                </table>
+              </div>
+              <div class="chart">
+                <svg width="611" height="150" style="fill: rgb(255, 255, 255);">
+                  <g class="chart__wrapper" transform="translate(305.5, 75)">
+                    <g class="arc-group">
+                      <path class="arc" fill="#4892c0" d="M3.980102097228898e-15,-65A65,65 0 0,1 31.60278784653047,-56.80020950953601L18.23237760376758,-32.76935164011693A37.5,37.5 0 0,0 2.296212748401287e-15,-37.5Z"></path>
+                    </g>
+                    <g class="arc-group">
+                      <path class="arc" fill="#75a370" d="M31.60278784653047,-56.80020950953601A65,65 0 0,1 -18.31261619469297,62.36704328494232L-10.564970881553638,35.980986510543644A37.5,37.5 0 0,0 18.23237760376758,-32.76935164011693Z"></path>
+                    </g>
+                    <g class="arc-group">
+                      <path class="arc" fill="#f2b038" d="M-18.31261619469297,62.36704328494232A65,65 0 0,1 -57.29446862409282,-30.69761986022439L-33.05450112928432,-17.71016530397561A37.5,37.5 0 0,0 -10.564970881553638,35.980986510543644Z"></path>
+                    </g>
+                    <g class="arc-group">
+                      <path class="arc" fill="#47bcac" d="M-57.29446862409282,-30.69761986022439A65,65 0 0,1 -41.78119462962502,-49.79288880273359L-24.104535363245205,-28.726666616961687A37.5,37.5 0 0,0 -33.05450112928432,-17.71016530397561Z"></path>
+                    </g>
+                    <g class="arc-group">
+                      <path class="arc" fill="#7066a5" d="M-41.78119462962502,-49.79288880273359A65,65 0 0,1 4.5791290988821444e-14,-65L2.641805249355083e-14,-37.5A37.5,37.5 0 0,0 -24.104535363245205,-28.726666616961687Z"></path>
+                    </g>
+                  </g>
+                </svg>
+              </div>
+            </div>
+            <div class="widget__data">
+              <table class="data-table table">
+                <caption>ABLIS</caption>
+                <tbody>
+                <tr>
+                  <th scope="col">Date</th>
+                  <th scope="col">Value</th>
+                </tr>
+                <tr>
+                  <td scope="row">2016-06</td>
+                  <td scope="row"> 8 %</td>
+                </tr>
+                </tbody>
+              </table>
+              <table class="data-table table">
+                <caption>ATO</caption>
+                <tbody>
+                <tr>
+                  <th scope="col">Date</th>
+                  <th scope="col">Value</th>
+                </tr>
+                <tr>
+                  <td scope="row">2016-06</td>
+                  <td scope="row"> 46 %</td>
+                </tr>
+                </tbody>
+              </table>
+              <table class="data-table table">
+                <caption>business.gov.au</caption>
+                <tbody>
+                <tr>
+                  <th scope="col">Date</th>
+                  <th scope="col">Value</th>
+                </tr>
+                <tr>
+                  <td scope="row">2016-06</td>
+                  <td scope="row"> 28 %</td>
+                </tr>
+                </tbody>
+              </table>
+              <table class="data-table table">
+                <caption>IP Australia</caption>
+                <tbody>
+                <tr>
+                  <th scope="col">Date</th>
+                  <th scope="col">Value</th>
+                </tr>
+                <tr>
+                  <td scope="row">2016-06</td>
+                  <td scope="row"> 6 %</td>
+                </tr>
+                </tbody>
+              </table>
+              <table class="data-table table">
+                <caption>Other</caption>
+                <tbody>
+                <tr>
+                  <th scope="col">Date</th>
+                  <th scope="col">Value</th>
+                </tr>
+                <tr>
+                  <td scope="row">2016-06</td>
+                  <td scope="row"> 11 %</td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="aus-width-one-half">
+          <div class="widget external-referrals has-data-true pie multiple">
+            <div id="external-referrals" class="widget__title">
+              <h4>How users are finding the hobby or business tool</h4>
+              <a href="#dashboard-notes" title="View KPI How users are finding the hobby or business tool definition" ga-on="click" ga-event-category="Dashboard Show"
+                 ga-event-action="Clicked Hero Widget legend info" ga-event-label="How users are finding the hobby or business tool"
+                 class="fa fa-question-circle info"></a>
+              <div class="meta-group"></div><span class="widget__last-updated">Last updated 30 Jun 2016</span>
+              <div class="meta-group">
+                <div class="widget__definition"><span aria-describedby="tooltip--external-referrals" class="widget__definition--title">What is this?</span>
+                  <div role="tooltip" id="tooltip--external-referrals" class="widget__definition--content" style="left: 0px;">
+                    <div class="widget__definition--content__inner">This shows the percentage of visits to the tool that came directly from business.gov.au
+                      or other external sites ie government, private sector or social media.</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div data-data="{&quot;suffix&quot;:&quot;%&quot;,&quot;latest&quot;:{&quot;label&quot;:&quot;2016-06&quot;,&quot;value&quot;:66},&quot;change&quot;:0,&quot;summary&quot;:&quot;Unchanged since 2016-06&quot;,&quot;id&quot;:&quot;external-referrals&quot;,&quot;name&quot;:&quot;How users are finding the hobby or business tool&quot;,&quot;size&quot;:&quot;medium&quot;,&quot;type&quot;:&quot;pie&quot;,&quot;units&quot;:&quot;%&quot;,&quot;datasets&quot;:[{&quot;id&quot;:&quot;external-referrals-ext&quot;,&quot;data&quot;:[{&quot;label&quot;:&quot;2016-06&quot;,&quot;value&quot;:66}],&quot;name&quot;:&quot;External sites&quot;,&quot;note&quot;:&quot;&quot;,&quot;units&quot;:&quot;&quot;,&quot;recorded_at&quot;:&quot;2016-06-30T01:01:01.111Z&quot;},{&quot;id&quot;:&quot;external-referrals-direct&quot;,&quot;data&quot;:[{&quot;label&quot;:&quot;2016-06&quot;,&quot;value&quot;:34}],&quot;name&quot;:&quot;Direct&quot;,&quot;note&quot;:&quot;&quot;,&quot;units&quot;:&quot;&quot;,&quot;recorded_at&quot;:&quot;2016-06-30T01:01:01.111Z&quot;}],&quot;definition&quot;:&quot;This shows the percentage of visits to the tool that came directly from business.gov.au or other external sites ie government, private sector or social media.&quot;,&quot;updated_at&quot;:&quot;2016-06-30T01:01:01.111Z&quot;,&quot;displayRoundedData&quot;:true}"
+                 aria-hidden="true" class="widget__inner pie multiple">
+              <div class="legend">
+                <div class="date"></div>
+                <table>
+                  <tr>
+                    <th>
+                      <svg width="12" height="12">
+                        <g class="legend--icon">
+                          <rect x="0" y="0" width="12" height="12" fill="#4892c0" visibility="visible" rx="6" ry="6"></rect>
+                          <line x1="0" x2="12" y1="6" y2="6" stroke-linecap="butt" stroke="#4892c0" stroke-dasharray="0" visibility="hidden"></line>
+                        </g>
+                      </svg><span class="legend--data-name">External sites</span></th>
+                    <td>66%</td>
+                  </tr>
+                  <tr>
+                    <th>
+                      <svg width="12" height="12">
+                        <g class="legend--icon">
+                          <rect x="0" y="0" width="12" height="12" fill="#75a370" visibility="visible" rx="6" ry="6"></rect>
+                          <line x1="0" x2="12" y1="6" y2="6" stroke-linecap="butt" stroke="#75a370" stroke-dasharray="0" visibility="hidden"></line>
+                        </g>
+                      </svg><span class="legend--data-name">Direct</span></th>
+                    <td>34%</td>
+                  </tr>
+                </table>
+              </div>
+              <div class="chart">
+                <svg width="611" height="150" style="fill: rgb(255, 255, 255);">
+                  <g class="chart__wrapper" transform="translate(305.5, 75)">
+                    <g class="arc-group">
+                      <path class="arc" fill="#4892c0" d="M3.980102097228898e-15,-65A65,65 0 1,1 -54.88131515763099,34.82874167363475L-31.662297206325572,20.093504811712357A37.5,37.5 0 1,0 2.296212748401287e-15,-37.5Z"></path>
+                    </g>
+                    <g class="arc-group">
+                      <path class="arc" fill="#75a370" d="M-54.88131515763099,34.82874167363475A65,65 0 0,1 4.5791290988821444e-14,-65L2.641805249355083e-14,-37.5A37.5,37.5 0 0,0 -31.662297206325572,20.093504811712357Z"></path>
+                    </g>
+                  </g>
+                </svg>
+              </div>
+            </div>
+            <div class="widget__data">
+              <table class="data-table table">
+                <caption>External sites</caption>
+                <tbody>
+                <tr>
+                  <th scope="col">Date</th>
+                  <th scope="col">Value</th>
+                </tr>
+                <tr>
+                  <td scope="row">2016-06</td>
+                  <td scope="row"> 66 %</td>
+                </tr>
+                </tbody>
+              </table>
+              <table class="data-table table">
+                <caption>Direct</caption>
+                <tbody>
+                <tr>
+                  <th scope="col">Date</th>
+                  <th scope="col">Value</th>
+                </tr>
+                <tr>
+                  <td scope="row">2016-06</td>
+                  <td scope="row"> 34 %</td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="aus-width-one-half">
+          <div class="widget fact-2 has-data-false fact single">
+            <div id="fact-2" class="widget__title">
+              <h4>Fact</h4>
+              <a href="#dashboard-notes" title="View KPI Fact definition" ga-on="click" ga-event-category="Dashboard Show" ga-event-action="Clicked Hero Widget legend info"
+                 ga-event-label="Fact" class="fa fa-question-circle info"></a>
+              <div class="meta-group"></div><span class="widget__last-updated">Last updated 10 Aug 2016</span>
+              <div class="meta-group"></div>
+            </div>
+            <div data-data="{&quot;suffix&quot;:&quot;n&quot;,&quot;latest&quot;:{&quot;value&quot;:null},&quot;change&quot;:0,&quot;summary&quot;:&quot;&quot;,&quot;id&quot;:&quot;fact-2&quot;,&quot;name&quot;:&quot;Fact&quot;,&quot;size&quot;:&quot;medium&quot;,&quot;type&quot;:&quot;fact&quot;,&quot;units&quot;:&quot;n&quot;,&quot;updated_at&quot;:&quot;2016-08-10T01:03:46.045Z&quot;,&quot;description&quot;:&quot;79% of people who sought help from the Contact Centre were seeking general information about the tool, 21% needed assistance interpreting their results.&quot;,&quot;datasets&quot;:[]}"
+                 aria-hidden="true" class="widget__inner fact single">
+              <div class="fact__inner">
+                <p>79% of people who sought help from the Contact Centre were seeking general information about
+                  the tool, 21% needed assistance interpreting their results.</p>
+              </div>
+            </div>
+            <div class="widget__data">
+              <p>79% of people who sought help from the Contact Centre were seeking general information about
+                the tool, 21% needed assistance interpreting their results.</p>
+            </div>
+          </div>
+        </div>
+        <div class="aus-width-one-half">
+          <div class="widget help-sought has-data-true pie multiple">
+            <div id="help-sought" class="widget__title">
+              <h4>Users seeking help from contact centre</h4>
+              <a href="#dashboard-notes" title="View KPI Users seeking help from contact centre definition" ga-on="click" ga-event-category="Dashboard Show"
+                 ga-event-action="Clicked Hero Widget legend info" ga-event-label="Users seeking help from contact centre"
+                 class="fa fa-question-circle info"></a>
+              <div class="meta-group"></div><span class="widget__last-updated">Last updated 30 Jun 2016</span>
+              <div class="meta-group">
+                <div class="widget__definition"><span aria-describedby="tooltip--help-sought" class="widget__definition--title">What is this?</span>
+                  <div role="tooltip" id="tooltip--help-sought" class="widget__definition--content" style="left: 0px;">
+                    <div class="widget__definition--content__inner">This shows the percentage of users who sought help from the business.gov.au contact
+                      centre via phone, web chat or email.</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div data-data="{&quot;suffix&quot;:&quot;%&quot;,&quot;latest&quot;:{&quot;label&quot;:&quot;2016-06&quot;,&quot;value&quot;:98},&quot;change&quot;:0,&quot;summary&quot;:&quot;Unchanged since 2016-06&quot;,&quot;id&quot;:&quot;help-sought&quot;,&quot;name&quot;:&quot;Users seeking help from contact centre&quot;,&quot;size&quot;:&quot;medium&quot;,&quot;type&quot;:&quot;pie&quot;,&quot;units&quot;:&quot;%&quot;,&quot;datasets&quot;:[{&quot;id&quot;:&quot;help-sought-none&quot;,&quot;data&quot;:[{&quot;label&quot;:&quot;2016-06&quot;,&quot;value&quot;:98}],&quot;name&quot;:&quot;No help&quot;,&quot;note&quot;:&quot;&quot;,&quot;units&quot;:&quot;&quot;,&quot;recorded_at&quot;:&quot;2016-06-30T01:01:01.111Z&quot;},{&quot;id&quot;:&quot;help-sought-contact&quot;,&quot;data&quot;:[{&quot;label&quot;:&quot;2016-06&quot;,&quot;value&quot;:2}],&quot;name&quot;:&quot;Help&quot;,&quot;note&quot;:&quot;&quot;,&quot;units&quot;:&quot;&quot;,&quot;recorded_at&quot;:&quot;2016-06-30T01:01:01.111Z&quot;}],&quot;definition&quot;:&quot;This shows the percentage of users who sought help from the business.gov.au contact centre via phone, web chat or email.&quot;,&quot;updated_at&quot;:&quot;2016-06-30T01:01:01.111Z&quot;,&quot;displayRoundedData&quot;:true}"
+                 aria-hidden="true" class="widget__inner pie multiple">
+              <div class="legend">
+                <div class="date"></div>
+                <table>
+                  <tr>
+                    <th>
+                      <svg width="12" height="12">
+                        <g class="legend--icon">
+                          <rect x="0" y="0" width="12" height="12" fill="#4892c0" visibility="visible" rx="6" ry="6"></rect>
+                          <line x1="0" x2="12" y1="6" y2="6" stroke-linecap="butt" stroke="#4892c0" stroke-dasharray="0" visibility="hidden"></line>
+                        </g>
+                      </svg><span class="legend--data-name">No help</span></th>
+                    <td>98%</td>
+                  </tr>
+                  <tr>
+                    <th>
+                      <svg width="12" height="12">
+                        <g class="legend--icon">
+                          <rect x="0" y="0" width="12" height="12" fill="#75a370" visibility="visible" rx="6" ry="6"></rect>
+                          <line x1="0" x2="12" y1="6" y2="6" stroke-linecap="butt" stroke="#75a370" stroke-dasharray="0" visibility="hidden"></line>
+                        </g>
+                      </svg><span class="legend--data-name">Help</span></th>
+                    <td>2%</td>
+                  </tr>
+                </table>
+              </div>
+              <div class="chart">
+                <svg width="611" height="150" style="fill: rgb(255, 255, 255);">
+                  <g class="chart__wrapper" transform="translate(305.5, 75)">
+                    <g class="arc-group">
+                      <path class="arc" fill="#4892c0" d="M3.980102097228898e-15,-65A65,65 0 1,1 -8.146660181679742,-64.48745558544107L-4.69999625866139,-37.20430129929292A37.5,37.5 0 1,0 2.296212748401287e-15,-37.5Z"></path>
+                    </g>
+                    <g class="arc-group">
+                      <path class="arc" fill="#75a370" d="M-8.146660181679742,-64.48745558544107A65,65 0 0,1 4.5791290988821444e-14,-65L2.641805249355083e-14,-37.5A37.5,37.5 0 0,0 -4.69999625866139,-37.20430129929292Z"></path>
+                    </g>
+                  </g>
+                </svg>
+              </div>
+            </div>
+            <div class="widget__data">
+              <table class="data-table table">
+                <caption>No help</caption>
+                <tbody>
+                <tr>
+                  <th scope="col">Date</th>
+                  <th scope="col">Value</th>
+                </tr>
+                <tr>
+                  <td scope="row">2016-06</td>
+                  <td scope="row"> 98 %</td>
+                </tr>
+                </tbody>
+              </table>
+              <table class="data-table table">
+                <caption>Help</caption>
+                <tbody>
+                <tr>
+                  <th scope="col">Date</th>
+                  <th scope="col">Value</th>
+                </tr>
+                <tr>
+                  <td scope="row">2016-06</td>
+                  <td scope="row"> 2 %</td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="aus-width-one-third">
+          <div class="widget device has-data-true pie multiple">
+            <div id="device" class="widget__title">
+              <h4>Devices used by users</h4>
+              <a href="#dashboard-notes" title="View KPI Devices used by users definition" ga-on="click" ga-event-category="Dashboard Show"
+                 ga-event-action="Clicked Hero Widget legend info" ga-event-label="Devices used by users" class="fa fa-question-circle info"></a>
+              <div class="meta-group"></div><span class="widget__last-updated">Last updated 30 Jun 2016</span>
+              <div class="meta-group">
+                <div class="widget__definition"><span aria-describedby="tooltip--device" class="widget__definition--title">What is this?</span>
+                  <div role="tooltip" id="tooltip--device" class="widget__definition--content" style="left: 0px;">
+                    <div class="widget__definition--content__inner">This shows the types of devices used by users to access the Hobby or Business tool.</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div data-data="{&quot;suffix&quot;:&quot;%&quot;,&quot;latest&quot;:{&quot;label&quot;:&quot;2016-06&quot;,&quot;value&quot;:66},&quot;change&quot;:0,&quot;summary&quot;:&quot;Unchanged since 2016-06&quot;,&quot;id&quot;:&quot;device&quot;,&quot;name&quot;:&quot;Devices used by users&quot;,&quot;size&quot;:&quot;small&quot;,&quot;type&quot;:&quot;pie&quot;,&quot;units&quot;:&quot;%&quot;,&quot;datasets&quot;:[{&quot;id&quot;:&quot;device-usage-desktop&quot;,&quot;data&quot;:[{&quot;label&quot;:&quot;2016-06&quot;,&quot;value&quot;:66}],&quot;name&quot;:&quot;Desktop&quot;,&quot;note&quot;:&quot;&quot;,&quot;units&quot;:&quot;&quot;,&quot;recorded_at&quot;:&quot;2016-06-30T01:01:01.111Z&quot;},{&quot;id&quot;:&quot;device-usage-mobile&quot;,&quot;data&quot;:[{&quot;label&quot;:&quot;2016-06&quot;,&quot;value&quot;:27}],&quot;name&quot;:&quot;Mobile&quot;,&quot;note&quot;:&quot;&quot;,&quot;units&quot;:&quot;&quot;,&quot;recorded_at&quot;:&quot;2016-06-30T01:01:01.111Z&quot;},{&quot;id&quot;:&quot;device-usage-tablet&quot;,&quot;data&quot;:[{&quot;label&quot;:&quot;2016-06&quot;,&quot;value&quot;:7}],&quot;name&quot;:&quot;Tablet&quot;,&quot;note&quot;:&quot;&quot;,&quot;units&quot;:&quot;&quot;,&quot;recorded_at&quot;:&quot;2016-06-30T01:01:01.111Z&quot;}],&quot;definition&quot;:&quot;This shows the types of devices used by users to access the Hobby or Business tool.&quot;,&quot;updated_at&quot;:&quot;2016-06-30T01:01:01.111Z&quot;,&quot;displayRoundedData&quot;:true}"
+                 aria-hidden="true" class="widget__inner pie multiple">
+              <div class="legend">
+                <div class="date"></div>
+                <table>
+                  <tr>
+                    <th>
+                      <svg width="12" height="12">
+                        <g class="legend--icon">
+                          <rect x="0" y="0" width="12" height="12" fill="#4892c0" visibility="visible" rx="6" ry="6"></rect>
+                          <line x1="0" x2="12" y1="6" y2="6" stroke-linecap="butt" stroke="#4892c0" stroke-dasharray="0" visibility="hidden"></line>
+                        </g>
+                      </svg><span class="legend--data-name">Desktop</span></th>
+                    <td>66%</td>
+                  </tr>
+                  <tr>
+                    <th>
+                      <svg width="12" height="12">
+                        <g class="legend--icon">
+                          <rect x="0" y="0" width="12" height="12" fill="#75a370" visibility="visible" rx="6" ry="6"></rect>
+                          <line x1="0" x2="12" y1="6" y2="6" stroke-linecap="butt" stroke="#75a370" stroke-dasharray="0" visibility="hidden"></line>
+                        </g>
+                      </svg><span class="legend--data-name">Mobile</span></th>
+                    <td>27%</td>
+                  </tr>
+                  <tr>
+                    <th>
+                      <svg width="12" height="12">
+                        <g class="legend--icon">
+                          <rect x="0" y="0" width="12" height="12" fill="#f2b038" visibility="visible" rx="6" ry="6"></rect>
+                          <line x1="0" x2="12" y1="6" y2="6" stroke-linecap="butt" stroke="#f2b038" stroke-dasharray="0" visibility="hidden"></line>
+                        </g>
+                      </svg><span class="legend--data-name">Tablet</span></th>
+                    <td>7%</td>
+                  </tr>
+                </table>
+              </div>
+              <div class="chart">
+                <svg width="611" height="150" style="fill: rgb(255, 255, 255);">
+                  <g class="chart__wrapper" transform="translate(305.5, 75)">
+                    <g class="arc-group">
+                      <path class="arc" fill="#4892c0" d="M3.980102097228898e-15,-65A65,65 0 1,1 -54.88131515763099,34.82874167363475L-31.662297206325572,20.093504811712357A37.5,37.5 0 1,0 2.296212748401287e-15,-37.5Z"></path>
+                    </g>
+                    <g class="arc-group">
+                      <path class="arc" fill="#75a370" d="M-54.88131515763099,34.82874167363475A65,65 0 0,1 -27.67565395172969,-58.813758410291285L-15.966723433690206,-33.93101446747574A37.5,37.5 0 0,0 -31.662297206325572,20.093504811712357Z"></path>
+                    </g>
+                    <g class="arc-group">
+                      <path class="arc" fill="#f2b038" d="M-27.67565395172969,-58.813758410291285A65,65 0 0,1 4.5791290988821444e-14,-65L2.641805249355083e-14,-37.5A37.5,37.5 0 0,0 -15.966723433690206,-33.93101446747574Z"></path>
+                    </g>
+                  </g>
+                </svg>
+              </div>
+            </div>
+            <div class="widget__data">
+              <table class="data-table table">
+                <caption>Desktop</caption>
+                <tbody>
+                <tr>
+                  <th scope="col">Date</th>
+                  <th scope="col">Value</th>
+                </tr>
+                <tr>
+                  <td scope="row">2016-06</td>
+                  <td scope="row"> 66 %</td>
+                </tr>
+                </tbody>
+              </table>
+              <table class="data-table table">
+                <caption>Mobile</caption>
+                <tbody>
+                <tr>
+                  <th scope="col">Date</th>
+                  <th scope="col">Value</th>
+                </tr>
+                <tr>
+                  <td scope="row">2016-06</td>
+                  <td scope="row"> 27 %</td>
+                </tr>
+                </tbody>
+              </table>
+              <table class="data-table table">
+                <caption>Tablet</caption>
+                <tbody>
+                <tr>
+                  <th scope="col">Date</th>
+                  <th scope="col">Value</th>
+                </tr>
+                <tr>
+                  <td scope="row">2016-06</td>
+                  <td scope="row"> 7 %</td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="aus-width-one-third">
+          <div class="widget browser has-data-true pie multiple">
+            <div id="browser" class="widget__title">
+              <h4>Browsers used by users</h4>
+              <a href="#dashboard-notes" title="View KPI Browsers used by users definition" ga-on="click" ga-event-category="Dashboard Show"
+                 ga-event-action="Clicked Hero Widget legend info" ga-event-label="Browsers used by users" class="fa fa-question-circle info"></a>
+              <div class="meta-group"></div><span class="widget__last-updated">Last updated 30 Jun 2016</span>
+              <div class="meta-group">
+                <div class="widget__definition"><span aria-describedby="tooltip--browser" class="widget__definition--title">What is this?</span>
+                  <div role="tooltip" id="tooltip--browser" class="widget__definition--content" style="left: 0px;">
+                    <div class="widget__definition--content__inner">This shows the types of browsers used by users to access the Hobby or Business tool.</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div data-data="{&quot;suffix&quot;:&quot;%&quot;,&quot;latest&quot;:{&quot;label&quot;:&quot;2016-06&quot;,&quot;value&quot;:43},&quot;change&quot;:0,&quot;summary&quot;:&quot;Unchanged since 2016-06&quot;,&quot;id&quot;:&quot;browser&quot;,&quot;name&quot;:&quot;Browsers used by users&quot;,&quot;size&quot;:&quot;small&quot;,&quot;type&quot;:&quot;pie&quot;,&quot;units&quot;:&quot;%&quot;,&quot;datasets&quot;:[{&quot;id&quot;:&quot;browser-usage-chrome&quot;,&quot;data&quot;:[{&quot;label&quot;:&quot;2016-06&quot;,&quot;value&quot;:43}],&quot;name&quot;:&quot;Chrome&quot;,&quot;note&quot;:&quot;&quot;,&quot;units&quot;:&quot;&quot;,&quot;recorded_at&quot;:&quot;2016-06-30T01:01:01.111Z&quot;},{&quot;id&quot;:&quot;browser-usage-safari&quot;,&quot;data&quot;:[{&quot;label&quot;:&quot;2016-06&quot;,&quot;value&quot;:24}],&quot;name&quot;:&quot;Safari&quot;,&quot;note&quot;:&quot;&quot;,&quot;units&quot;:&quot;&quot;,&quot;recorded_at&quot;:&quot;2016-06-30T01:01:01.111Z&quot;},{&quot;id&quot;:&quot;browser-usage-ie&quot;,&quot;data&quot;:[{&quot;label&quot;:&quot;2016-06&quot;,&quot;value&quot;:15}],&quot;name&quot;:&quot;IE&quot;,&quot;note&quot;:&quot;&quot;,&quot;units&quot;:&quot;&quot;,&quot;recorded_at&quot;:&quot;2016-06-30T01:01:01.111Z&quot;},{&quot;id&quot;:&quot;browser-usage-firefox&quot;,&quot;data&quot;:[{&quot;label&quot;:&quot;2016-06&quot;,&quot;value&quot;:13}],&quot;name&quot;:&quot;Firefox&quot;,&quot;note&quot;:&quot;&quot;,&quot;units&quot;:&quot;&quot;,&quot;recorded_at&quot;:&quot;2016-06-30T01:01:01.111Z&quot;},{&quot;id&quot;:&quot;browser-usage-other&quot;,&quot;data&quot;:[{&quot;label&quot;:&quot;2016-06&quot;,&quot;value&quot;:6}],&quot;name&quot;:&quot;Other&quot;,&quot;note&quot;:&quot;&quot;,&quot;units&quot;:&quot;&quot;,&quot;recorded_at&quot;:&quot;2016-06-30T01:01:01.111Z&quot;}],&quot;definition&quot;:&quot;This shows the types of browsers used by users to access the Hobby or Business tool.&quot;,&quot;updated_at&quot;:&quot;2016-06-30T01:01:01.111Z&quot;,&quot;displayRoundedData&quot;:true}"
+                 aria-hidden="true" class="widget__inner pie multiple">
+              <div class="legend">
+                <div class="date"></div>
+                <table>
+                  <tr>
+                    <th>
+                      <svg width="12" height="12">
+                        <g class="legend--icon">
+                          <rect x="0" y="0" width="12" height="12" fill="#4892c0" visibility="visible" rx="6" ry="6"></rect>
+                          <line x1="0" x2="12" y1="6" y2="6" stroke-linecap="butt" stroke="#4892c0" stroke-dasharray="0" visibility="hidden"></line>
+                        </g>
+                      </svg><span class="legend--data-name">Chrome</span></th>
+                    <td>42%</td>
+                  </tr>
+                  <tr>
+                    <th>
+                      <svg width="12" height="12">
+                        <g class="legend--icon">
+                          <rect x="0" y="0" width="12" height="12" fill="#75a370" visibility="visible" rx="6" ry="6"></rect>
+                          <line x1="0" x2="12" y1="6" y2="6" stroke-linecap="butt" stroke="#75a370" stroke-dasharray="0" visibility="hidden"></line>
+                        </g>
+                      </svg><span class="legend--data-name">Safari</span></th>
+                    <td>23%</td>
+                  </tr>
+                  <tr>
+                    <th>
+                      <svg width="12" height="12">
+                        <g class="legend--icon">
+                          <rect x="0" y="0" width="12" height="12" fill="#f2b038" visibility="visible" rx="6" ry="6"></rect>
+                          <line x1="0" x2="12" y1="6" y2="6" stroke-linecap="butt" stroke="#f2b038" stroke-dasharray="0" visibility="hidden"></line>
+                        </g>
+                      </svg><span class="legend--data-name">IE</span></th>
+                    <td>14%</td>
+                  </tr>
+                  <tr>
+                    <th>
+                      <svg width="12" height="12">
+                        <g class="legend--icon">
+                          <rect x="0" y="0" width="12" height="12" fill="#47bcac" visibility="visible" rx="6" ry="6"></rect>
+                          <line x1="0" x2="12" y1="6" y2="6" stroke-linecap="butt" stroke="#47bcac" stroke-dasharray="0" visibility="hidden"></line>
+                        </g>
+                      </svg><span class="legend--data-name">Firefox</span></th>
+                    <td>12%</td>
+                  </tr>
+                  <tr>
+                    <th>
+                      <svg width="12" height="12">
+                        <g class="legend--icon">
+                          <rect x="0" y="0" width="12" height="12" fill="#7066a5" visibility="visible" rx="6" ry="6"></rect>
+                          <line x1="0" x2="12" y1="6" y2="6" stroke-linecap="butt" stroke="#7066a5" stroke-dasharray="0" visibility="hidden"></line>
+                        </g>
+                      </svg><span class="legend--data-name">Other</span></th>
+                    <td>5%</td>
+                  </tr>
+                </table>
+              </div>
+              <div class="chart">
+                <svg width="611" height="150" style="fill: rgb(255, 255, 255);">
+                  <g class="chart__wrapper" transform="translate(305.5, 75)">
+                    <g class="arc-group">
+                      <path class="arc" fill="#4892c0" d="M3.980102097228898e-15,-65A65,65 0 0,1 29.238844440496365,58.05247605214144L16.868564100286363,33.491813107004674A37.5,37.5 0 0,0 2.296212748401287e-15,-37.5Z"></path>
+                    </g>
+                    <g class="arc-group">
+                      <path class="arc" fill="#75a370" d="M29.238844440496365,58.05247605214144A65,65 0 0,1 -55.60565808727562,33.66022561839121L-32.080187358043624,19.419360933687237A37.5,37.5 0 0,0 16.868564100286363,33.491813107004674Z"></path>
+                    </g>
+                    <g class="arc-group">
+                      <path class="arc" fill="#f2b038" d="M-55.60565808727562,33.66022561839121A65,65 0 0,1 -60.14842994012072,-24.640746249624605L-34.70101727314657,-14.215815144014195A37.5,37.5 0 0,0 -32.080187358043624,19.419360933687237Z"></path>
+                    </g>
+                    <g class="arc-group">
+                      <path class="arc" fill="#47bcac" d="M-60.14842994012072,-24.640746249624605A65,65 0 0,1 -23.702349208372656,-60.52436403634784L-13.674432235599609,-34.917902328662215A37.5,37.5 0 0,0 -34.70101727314657,-14.215815144014195Z"></path>
+                    </g>
+                    <g class="arc-group">
+                      <path class="arc" fill="#7066a5" d="M-23.702349208372656,-60.52436403634784A65,65 0 0,1 -6.967190357219483e-14,-65L-4.0195328983958555e-14,-37.5A37.5,37.5 0 0,0 -13.674432235599609,-34.917902328662215Z"></path>
+                    </g>
+                  </g>
+                </svg>
+              </div>
+            </div>
+            <div class="widget__data">
+              <table class="data-table table">
+                <caption>Chrome</caption>
+                <tbody>
+                <tr>
+                  <th scope="col">Date</th>
+                  <th scope="col">Value</th>
+                </tr>
+                <tr>
+                  <td scope="row">2016-06</td>
+                  <td scope="row"> 43 %</td>
+                </tr>
+                </tbody>
+              </table>
+              <table class="data-table table">
+                <caption>Safari</caption>
+                <tbody>
+                <tr>
+                  <th scope="col">Date</th>
+                  <th scope="col">Value</th>
+                </tr>
+                <tr>
+                  <td scope="row">2016-06</td>
+                  <td scope="row"> 24 %</td>
+                </tr>
+                </tbody>
+              </table>
+              <table class="data-table table">
+                <caption>IE</caption>
+                <tbody>
+                <tr>
+                  <th scope="col">Date</th>
+                  <th scope="col">Value</th>
+                </tr>
+                <tr>
+                  <td scope="row">2016-06</td>
+                  <td scope="row"> 15 %</td>
+                </tr>
+                </tbody>
+              </table>
+              <table class="data-table table">
+                <caption>Firefox</caption>
+                <tbody>
+                <tr>
+                  <th scope="col">Date</th>
+                  <th scope="col">Value</th>
+                </tr>
+                <tr>
+                  <td scope="row">2016-06</td>
+                  <td scope="row"> 13 %</td>
+                </tr>
+                </tbody>
+              </table>
+              <table class="data-table table">
+                <caption>Other</caption>
+                <tbody>
+                <tr>
+                  <th scope="col">Date</th>
+                  <th scope="col">Value</th>
+                </tr>
+                <tr>
+                  <td scope="row">2016-06</td>
+                  <td scope="row"> 6 %</td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="aus-width-one-third">
+          <div class="widget fact-1 has-data-false fact single">
+            <div id="fact-1" class="widget__title">
+              <h4>Fact</h4>
+              <a href="#dashboard-notes" title="View KPI Fact definition" ga-on="click" ga-event-category="Dashboard Show" ga-event-action="Clicked Hero Widget legend info"
+                 ga-event-label="Fact" class="fa fa-question-circle info"></a>
+              <div class="meta-group"></div><span class="widget__last-updated">Last updated 10 Aug 2016</span>
+              <div class="meta-group"></div>
+            </div>
+            <div data-data="{&quot;suffix&quot;:&quot;n&quot;,&quot;latest&quot;:{&quot;value&quot;:null},&quot;change&quot;:0,&quot;summary&quot;:&quot;&quot;,&quot;id&quot;:&quot;fact-1&quot;,&quot;name&quot;:&quot;Fact&quot;,&quot;size&quot;:&quot;small&quot;,&quot;type&quot;:&quot;fact&quot;,&quot;units&quot;:&quot;n&quot;,&quot;updated_at&quot;:&quot;2016-08-10T01:03:46.045Z&quot;,&quot;description&quot;:&quot;In June, 71% of contacts to the Contact Centre were by phone, 17% by web chat and 12% by email.&quot;,&quot;datasets&quot;:[]}"
+                 aria-hidden="true" class="widget__inner fact single">
+              <div class="fact__inner">
+                <p>In June, 71% of contacts to the Contact Centre were by phone, 17% by web chat and 12% by
+                  email.</p>
+              </div>
+            </div>
+            <div class="widget__data">
+              <p>In June, 71% of contacts to the Contact Centre were by phone, 17% by web chat and 12% by email.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="container">
+        <div class="widget widget-text clearfix">
+          <div class="widget-text__inner aus-width-seven-twelfths">
+            <div class="widget__title">
+              <h4>Dashboard Information</h4>
+            </div>
+            <div id="dashboard-notes" class="widget__body">
+              <dl>
+                <dt> What is the Hobby or Business Help Me Work It Out Tool?</dt>
+                <dd> This public beta release of the tool is for people who are getting money or intend to get
+                  money from creative works, and are unsure if they are a hobby or a business. The tool
+                  guides them on their government obligations.</dd>
+                <dt> Who is the user group of the Hobby or Business Help Me Work It Out Tool?</dt>
+                <dd> The first release applies to artists, creatives and makers. Future enhancements to the tool,
+                  building on the public beta, will add new user groups, and over time, the digital take-up
+                  figure will reflect the increasing number of users who are able to use it.</dd>
+                <dt> User Satisfaction</dt>
+                <dd> User satisfaction figures will be reported from August 2016.</dd>
+                <dt> Cost per Transaction</dt>
+                <dd> We do not have this data at the moment because we are currently in the process of determining
+                  the best way to measure cost per transaction for information services.</dd>
+                <dt> Digital Take-up</dt>
+                <dd> Digital take-up measures the percentage of visitors to the page on business.gov.au, where
+                  the tool can be found, who go on to use it. The percentage is calculated by comparing
+                  the total number of users who access the public beta tool to the total number of unique
+                  visits to the page on business.gov.au. We are working on a more precise measure of take-up,
+                  comparing use of the tool to users accessing this information through our contact centre.
+                  We will update the Dashboard in the near future with this data.</dd>
+                <dt> Completion Rate</dt>
+                <dd> Completion rate measures the percentage of users who successfully generate a result by using
+                  the public beta release of the tool. This percentage is calculated by dividing the total
+                  number of successfully completed interactions by the total number of started interactions.</dd>
+              </dl>
+            </div>
+          </div>
+          <div class="widget-text__footer aus-width-five-twelfths">
+            <p>Visit<a href="https://start.business.gov.au/" target="_blank">https://start.business.gov.au/<i class="fa fa-external-link"></i></a></p>
+            <p><a href="/api/1/dashboards/3-hobby-or-business-tool-dashboard" ga-on="click" ga-event-category="Dashboard Show"
+                  ga-event-action="Clicked Download Raw Dashboard Data" ga-event-label="Hobby or Business Tool Dashboard">View Raw Dashboard Data</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
