@@ -19,3 +19,26 @@
 
 # Ignore Byebug command history file.
 .byebug_history
+
+# Frontend
+
+# Logs
+logs
+*.log
+
+# Dev
+.sass-cache/
+node_modules/
+docs/
+doc/
+.idea/
+# build/
+
+*.dump
+config/development.js
+.env
+migrations/.migrate
+
+public/assets/css
+public/assets/javascripts
+spec/build
