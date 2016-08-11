@@ -1,3 +1,16 @@
-<div>
-  <%= dashboard.name %>
+<!-- Please delete the following debugging stuffs when it is in a production -->
+<!--<h2><%= widget.id %> -  <%= widget.dashboard_id %> - <%= dashboard.name %> - <%= widget.name %></h2>-->
+
+<div class=<%= DashboardHelper.sizeToStyle(widget.size) %>>
+  <div class="widget <%= widget.name.downcase %> has-data-<%= !widget.blank? %> kpi-sparkline single">
+    <div id="<%= widget.name.downcase %>" class="widget__title">
+      <svg height="14" width="14">
+        <line x1="0" x2="14" y1="7" y2="7" stroke="#f2b038" stroke-width="3" stroke-dasharray="12, 5"></line>
+      </svg>
+      <h4><%= widget.name %></h4>
+    </div>
+    <div data-data="{&quot;suffix&quot;:&quot;%&quot;,&quot;latest&quot;:{&quot;label&quot;:&quot;2016-06&quot;,&quot;value&quot;:97},&quot;change&quot;:7,&quot;summary&quot;:&quot;Up by undefined7.0% since 2016-05&quot;,&quot;id&quot;:&quot;user-satisfaction&quot;,&quot;name&quot;:&quot;User Satisfaction&quot;,&quot;size&quot;:&quot;extra-small&quot;,&quot;type&quot;:&quot;kpi-sparkline&quot;,&quot;units&quot;:&quot;%&quot;,&quot;datasets&quot;:[{&quot;id&quot;:&quot;user-satisfaction&quot;,&quot;data&quot;:[{&quot;label&quot;:&quot;2016-03&quot;,&quot;value&quot;:99},{&quot;label&quot;:&quot;2016-04&quot;,&quot;value&quot;:95},{&quot;label&quot;:&quot;2016-05&quot;,&quot;value&quot;:90},{&quot;label&quot;:&quot;2016-06&quot;,&quot;value&quot;:97}],&quot;name&quot;:&quot;User satisfaction&quot;,&quot;note&quot;:&quot;&quot;,&quot;color&quot;:&quot;#f0f0f0&quot;,&quot;units&quot;:&quot;&quot;,&quot;recorded_at&quot;:&quot;2016-06-30T01:01:01.111Z&quot;}],&quot;updated_at&quot;:&quot;2016-06-30T01:01:01.111Z&quot;,&quot;description&quot;:&quot;Overall satisfaction score includes all ratings weighted from 100% for very satisfied to 0% for very dissatisfied&quot;}"
+         aria-hidden="true" class="widget__inner <%= widget.type %> single">
+    </div>
+  </div>
 </div>

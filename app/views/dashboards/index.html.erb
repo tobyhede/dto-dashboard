@@ -1,8 +1,48 @@
+<div class="container">
+  <section>
+    <div class="dashboards-intro">
+      <h1 class="sr-only">Dashboards</h1>
+      <p>The Performance Dashboard makes data open and accessible by measuring the performance of Australian government
+        services
+        against the Digital Service Standard.</p>
+      <p>This promotes government transparency and helps drive the ongoing improvement of government services – for all
+        Australians.
+      </p>
+    </div>
+  </section>
 
-<ul>
-  <% @dashboards.each do |dashboard| %>
-    <li>
-      <%= render :partial => 'widget', :locals => {:dashboard => dashboard} %>
-    </li>
-  <% end %>
-</ul>
+  <ul class="list-unstyled clearfix">
+    <% @dashboards.each do |dashboard| %>
+    <% widgets = Widget.where(dashboard_id: dashboard.id) %>
+        <li class="item--australian-citizenship-appointment-booking-service-dashboard card row">
+          <div class="card__left">
+            <div>
+              <h2 class="card-title">
+                <%= dashboard.name %>
+              </h2>
+              <div class="updated-at">
+                <p>Updated at <%= dashboard.published_at.strftime("%d %b %Y %H:%M:%S") %></p>
+              </div>
+            </div>
+
+            <!--Create a link here to show the dashboard link with dashboard name from the database table-->
+            <%= link_to dashboard.name, dashboard_path(dashboard), :class => "card__link__visible" %>
+          </div>
+
+          <div class="card__right dashboard__kpis clearfix">
+
+            <!--get the dashboard display KPIs then iterate the widget of dashboard kpis-->
+            <% if dashboard.display_kpis then %>
+                <!-- iterate the widgets and show them here - for (let widget of dashboard.kpis)-->
+                <% widgets.each do |widget| %>
+                  <!--<h2><%= widget.id %> -  <%= widget.dashboard_id %> </h2>-->
+                  <%= render :partial => 'widget', :locals => { :dashboard => dashboard, :widget => widget } %>
+                <% end %>
+            <% end %>
+
+          </div>
+        </li>
+    <% end %>
+  </ul>
+
+</div>

@@ -1,6 +1,6 @@
 class DashboardsController < ApplicationController
 
-  attr_reader :dashboards, :dashboard
+  attr_reader :dashboards, :dashboard, :widgets
   helper_method :dashboards, :dashboard
 
   def index
@@ -10,6 +10,7 @@ class DashboardsController < ApplicationController
 
   def show
     @dashboard = Dashboard.find(params[:id])
+    @widgets = Widget.where(dashboard_id: @dashboard.id)
     render :show
   end
 end
