@@ -28,6 +28,17 @@ DB_USER_NAME = 'dashboard'
 DB_PWD = 'password'
 ```
 
+If you don't have Bundler installed
+```
+gem install bundler
+```
+
+Install project gems, run
+```
+bundle install
+```
+
+
 To create the database and load the schema
 ```
 rake db:setup
