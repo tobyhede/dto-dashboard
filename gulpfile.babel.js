@@ -13,6 +13,8 @@ import sourcemaps from 'gulp-sourcemaps';
 import jsdoc from 'gulp-jsdoc3';
 import eslintify from 'eslintify';
 import sassLint from 'gulp-sass-lint';
+import changed from 'gulp-changed';
+import print from 'gulp-print';
 
 
 export const ENV = process.env.NODE_ENV || 'development';
@@ -86,6 +88,14 @@ gulp.task('sass:watch', function () {
 gulp.task('test:watch', function watchTest() {
     return watch(jsSource.test, false);
 });
+
+gulp.task('images', () => {
+   return gulp.src(`${DIR_SRC}/images/**/*.{jpg,png,gif,svg}`)
+       .pipe( changed(`${DIR_DIST}/images`) )  // ignore unchanged
+       .pipe( print(function(file) {return 'Processing IMAGE: ' + file; }) )
+       .pipe( gulp.dest(`${DIR_DIST}/images/`) );
+});
+
 
 gulp.task('watch', ['scripts:watch', 'test:watch', 'sass:watch']);
 
