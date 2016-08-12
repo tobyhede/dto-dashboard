@@ -16,11 +16,11 @@ import sassLint from 'gulp-sass-lint';
 
 
 export const ENV = process.env.NODE_ENV || 'development';
-export const DIR_ROOT = ''; //path.resolve('./');
-export const DIR_SRC = path.join(DIR_ROOT, '/lib/assets/src');
-export const DIR_DIST = path.join(DIR_ROOT, '/public/assets');
-export const DIR_NPM = path.join(DIR_ROOT, '/node_modules');
-export const DIR_TEST = path.join(DIR_ROOT, '/lib/assets/tests');
+export const DIR_ROOT = path.resolve('./');
+export const DIR_SRC = path.join(DIR_ROOT, 'lib/assets/src');
+export const DIR_DIST = path.join(DIR_ROOT, 'public/assets');
+export const DIR_NPM = path.join(DIR_ROOT, 'node_modules');
+export const DIR_TEST = path.join(DIR_ROOT, 'lib/assets/tests');
 export const DIR_TESTDIST = path.join(DIR_ROOT, '.tmp');
 
 const jsSource = {
