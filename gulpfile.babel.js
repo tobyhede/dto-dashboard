@@ -123,8 +123,7 @@ function build(env) {
             entries: env.entry,
             debug: true,
             paths: [
-                `${DIR_SRC}/scripts/`,
-                `${DIR_NPM}/d3-charts-dto/lib/javascripts/`
+                `${DIR_SRC}/scripts/`
             ]
         })
         .transform({continuous: true}, eslintify)
@@ -142,8 +141,7 @@ function watch(env, minify) {
                 cache: {},
                 packageCache: {},
                 paths: [
-                    `${DIR_SRC}/scripts/`,
-                    `${DIR_NPM}/d3-charts-dto/lib/javascripts/`
+                    `${DIR_SRC}/scripts/`
                 ]
             })
             .transform({continuous: true}, eslintify)
