@@ -1,4 +1,4 @@
-FactoryGirl.require 'rails_helper'
+require 'rails_helper'
 
 RSpec.describe Datapoint, type: :model do
 
