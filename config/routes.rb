@@ -3,5 +3,7 @@ Rails.application.routes.draw do
 
   resources :dashboards, :only => [:index, :show]
 
+  get 'feedback', to: 'feedback#index'
+
   get root 'dashboards#index'
 end
