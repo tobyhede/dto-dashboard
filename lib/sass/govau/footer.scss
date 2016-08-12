@@ -1,0 +1,60 @@
+footer {
+  font-size: 14px;
+  background: $primary-text-colour;
+  padding-top: $default-padding;
+  padding-bottom: $default-padding;
+
+  img {
+    @media screen and (max-width: $screen-sm){
+      display: block;
+      margin: 0 auto;
+    }
+  }
+
+  section {
+    @extend .container;
+
+    &:after {
+      clear: both;
+    }
+  }
+
+  ul li {
+    padding-left: 0;
+
+    a {
+      text-decoration: none;
+      color: white;
+    }
+  }
+
+  a {
+    text-decoration: none;
+    color: white;
+
+    &:hover, &:focus, &:active {
+      color: white;
+      text-decoration: underline;
+    }
+
+    &:visited {
+      color: white;
+      background-color: $primary-text-colour;
+    }
+  }
+}
+
+footer section ul {
+  float: right;
+  margin: 0;
+  padding: 0;
+
+   @media screen and (max-width: $screen-sm){
+    float: none;
+    padding: 40px 0 0 0;
+  }
+}
+
+footer li {
+  line-height: $line-height-base;
+}

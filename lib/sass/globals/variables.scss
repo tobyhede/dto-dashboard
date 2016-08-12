@@ -1,0 +1,47 @@
+// Media queries breakpoints
+$screen-min:                        320px;
+$screen-sm:                         768px;
+$screen-md:                         992px;
+$screen-lg:                         1200px;
+
+// colours
+$brand-colour:                      #0074c4;
+$charcoal-grey:                     #2e343b;
+$cerulean:                          #0579c7;
+$pale-grey:                         #ebf4fa;
+$white:                             #ffffff;
+$light-grey:                        #f0f3f5;
+$primary-text-colour:               $charcoal-grey;
+$prototype-colour:                  #c72572;
+$secondary-text-colour:             #6c7783;
+$brand-primary-colour:              #025a96;
+$link-colour:                       $brand-primary-colour;
+$link-hover-colour:                 darken($link-colour, 15%);
+
+// Units
+$widget-height:                     300px;
+$widget-height-tablet:              425px;
+$note-width:                        150px;
+$default-padding:                   40px;
+$spacing-unit:                      30px;
+$gutter:                            10px;
+
+// Typography:
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700,300,600');
+$font-family-sans-serif:            'Open Sans', sans-serif !default;
+$open-sans:                         'Open Sans', sans-serif !default;
+$fallback:                          16px;
+$biggie:                            4.7rem;
+$biggie-fallback:                   4.7 * $fallback;
+$base-font-family:                  $open-sans;
+$base-font-size:                    1rem;
+$base-line-height:                  1.5;
+$line-height-base:                  1.428571429; // 20/14
+$small-font-size:                   0.75em;
+
+$metrics: (
+  user-satisfaction: #f2b038,
+  cost-per-transaction: #75a370,
+  digital-take-up: #4892c0,
+  completion-rate: #7066a5
+);

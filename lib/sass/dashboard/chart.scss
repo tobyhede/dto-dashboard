@@ -1,0 +1,148 @@
+svg:not(:root) {
+  display: block;
+  overflow: visible;
+}
+
+.patterns {
+  position: absolute;
+  left: -1000px;
+}
+
+.line-group {
+  fill: none;
+}
+
+.layer--bottom {
+  rect {
+    fill: none;
+  }
+
+  rect.empty {
+    fill: url(#diagonal-stripe-1);
+    fill-opacity: 0.3;
+  }
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #c7ccd2;
+  stroke-width: 1px;
+}
+
+.line {
+  fill: none;
+  stroke-width: 4px;
+  stroke-linecap: round;
+  stroke-linejoin: bevel;
+}
+
+.sparkline {
+  .line {
+    stroke-width: 4px;
+  }
+}
+
+.tick text {
+  font-size: 12px;
+  fill: $secondary-text-colour;
+}
+
+.y.axis {
+  .domain {
+    display: none;
+  }
+}
+
+.hero .line-group {
+  path,
+  line {
+    stroke-opacity: 0.7;
+    shape-rendering: inherit;
+    stroke-linecap: round;
+  }
+}
+
+.tick {
+  line {
+    display: none;
+  }
+}
+
+.legend {
+  ul {
+    @extend .list-unstyled;
+    padding: $gutter;
+
+    span {
+      display: inline-block;
+      padding-left: 10px;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+  }
+}
+
+.hero-widget {
+  path {
+    fill-opacity: 1;
+    stroke-width: 6px;
+  }
+
+  .line-group circle {
+    fill-opacity: 1;
+  }
+}
+
+.ruler-wrapper {
+  text {
+    display: none;
+  }
+
+  &.is-hover {
+    .ruler {
+      stroke-width: 1px;
+    }
+
+    text {
+      display: block;
+      fill: #5c6976;
+    }
+  }
+}
+
+.line-group {
+  circle {
+    fill-opacity: 0 !important;
+    stroke-width: 0;
+  }
+
+  circle.is-hover {
+    fill: #fff;
+    stroke-width: 1px;
+    fill-opacity: 1 !important;
+  }
+
+  circle.is-null {
+    stroke-width: 0;
+  }
+}
+
+.sparkline {
+  .ruler-wrapper {
+    display: none;
+  }
+
+  circle.is-hover {
+    stroke-width: 2px;
+
+    &.is-null {
+      stroke-width: 0;
+    }
+  }
+}
+
+.legend svg {
+  display: inline-block;
+  margin-right: 3px;
+}
