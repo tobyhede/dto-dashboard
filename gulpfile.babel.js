@@ -123,7 +123,7 @@ function build(env) {
             entries: env.entry,
             debug: true,
             paths: [
-                `${DIR_SRC}/scripts/`
+                `${DIR_SRC}/scripts/`,
                 `${DIR_NPM}/d3-charts-dto/lib/javascripts/`
             ]
         })
