@@ -1,6 +1,3 @@
-<!-- Please delete the following debugging stuffs when it is in a production -->
-<!--<h2><%= widget.id %> -  <%= widget.dashboard_id %> - <%= dashboard.name %> - <%= widget.name %></h2>-->
-
 <div class=<%= DashboardHelper.sizeToStyle(widget.size) %>>
   <div class="widget <%= widget.name.downcase %> has-data-<%= !widget.blank? %> kpi-sparkline single">
     <div id="<%= widget.name.downcase %>" class="widget__title">
