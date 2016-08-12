@@ -16,7 +16,7 @@ import sassLint from 'gulp-sass-lint';
 
 
 export const ENV = process.env.NODE_ENV || 'development';
-export const DIR_ROOT = ''; //path.resolve('./');
+export const DIR_ROOT = ENV === 'development' ? path.resolve('./') : '';
 export const DIR_SRC = path.join(DIR_ROOT, 'lib/assets/src');
 export const DIR_DIST = path.join(DIR_ROOT, 'public/assets');
 export const DIR_NPM = path.join(DIR_ROOT, 'node_modules');
@@ -122,7 +122,10 @@ function build(env) {
     return bundle(env, browserify({
             entries: env.entry,
             debug: true,
-            paths: [`${DIR_SRC}/scripts/`]
+            paths: [
+                `${DIR_SRC}/scripts/`
+                `${DIR_NPM}/d3-charts-dto/lib/javascripts/`
+            ]
         })
         .transform({continuous: true}, eslintify)
         .transform(babelify),
@@ -138,7 +141,10 @@ function watch(env, minify) {
                 debug: true,
                 cache: {},
                 packageCache: {},
-                paths: [`${DIR_SRC}/scripts/`]
+                paths: [
+                    `${DIR_SRC}/scripts/`,
+                    `${DIR_NPM}/d3-charts-dto/lib/javascripts/`
+                ]
             })
             .transform({continuous: true}, eslintify)
             .transform(babelify),
