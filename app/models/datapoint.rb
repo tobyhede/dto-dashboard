@@ -3,7 +3,7 @@ class Datapoint < ApplicationRecord
 
   validates :ts, :presence => true
 
-  validates :value, :numericality => true
+  validates :value, :numericality => true, :allow_nil => true
 
   scope :by_time, -> { order(:ts => 'DESC') }
 
