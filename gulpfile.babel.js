@@ -20,7 +20,7 @@ import print from 'gulp-print';
 export const ENV = process.env.NODE_ENV || 'development';
 export const DIR_ROOT = ENV === 'development' ? path.resolve('./') : '';
 export const DIR_SRC = path.join(DIR_ROOT, 'lib/assets/src');
-export const DIR_DIST = path.join(DIR_ROOT, 'public/');
+export const DIR_DIST = path.join(DIR_ROOT, 'public');
 export const DIR_NPM = path.join(DIR_ROOT, 'node_modules');
 export const DIR_TEST = path.join(DIR_ROOT, 'lib/assets/tests');
 export const DIR_TESTDIST = path.join(DIR_ROOT, '.tmp');
@@ -88,7 +88,7 @@ gulp.task('sass:watch', function () {
 gulp.task('test:watch', function watchTest() {
     return watch(jsSource.test, false);
 });
-
+z
 gulp.task('images', () => {
    return gulp.src(`${DIR_SRC}/images/**/*.{jpg,png,gif,svg}`)
        .pipe( changed(`${DIR_DIST}/images`) )  // ignore unchanged
