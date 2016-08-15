@@ -6,4 +6,5 @@ Rails.application.routes.draw do
   get 'feedback', to: 'feedback#index'
 
   get root 'dashboards#index'
+  get '/copyright', to: 'about#index'
 end
