@@ -10,7 +10,6 @@ import transform from 'vinyl-transform';
 import watchify from 'watchify';
 
 import sourcemaps from 'gulp-sourcemaps';
-import jsdoc from 'gulp-jsdoc3';
 import eslintify from 'eslintify';
 import changed from 'gulp-changed';
 import print from 'gulp-print';
@@ -54,69 +53,6 @@ function handleErrors() {
     this.emit('end'); // Keep gulp from hanging on this task
 }
 
-gulp.task('sass', function () {
-    return gulp.src(`${DIR_SRC}/styles/**/*.scss`)
-        .pipe(sassLint({
-            configFile: './.sass-lint.yml'
-        }))
-        .pipe(sassLint.format())
-        .pipe(sourcemaps.init())
-        .pipe(sass({
-            includePaths: [
-                DIR_NPM,
-                bourbon.includePaths,   // todo - these aren't _really_ necessary
-                bourbonNeat.includePaths
-            ]
-        }).on('error', sass.logError))
-        .pipe(autoprefixer())
-        .pipe(sourcemaps.write('./'))
-        .pipe(gulp.dest(`${DIR_DIST}/stylesheets`));
-});
-
-gulp.task('default',function(){
-    gulp.start('sass');
-});
-
-gulp.task('scripts', function dev() {
-    return build(jsSource.dev, false);
-});
-
-gulp.task('test', function test() {
-    return build(jsSource.test, false);
-});
-
-gulp.task('scripts:watch', function() {
-    return watch(jsSource.dev, false);
-});
-
-gulp.task('sass:watch', function () {
-    gulp.watch(`${DIR_SRC}/styles/**/*.scss`, ['sass']);
-});
-
-gulp.task('test:watch', function watchTest() {
-    return watch(jsSource.test, false);
-});
-
-gulp.task('images', () => {
-   return gulp.src(`${DIR_SRC}/images/**/*.{jpg,png,gif,svg}`)
-       .pipe( changed(`${DIR_DIST}/images`) )  // ignore unchanged
-       .pipe( print(function(file) {return 'Processing IMAGE: ' + file; }) )
-       .pipe( gulp.dest(`${DIR_DIST}/images`) );
-});
-
-
-gulp.task('watch', ['build', 'scripts:watch', 'test:watch', 'sass:watch']);
-
-gulp.task('build', ['scripts', 'test', 'sass']);
-
-gulp.task('default', ['build']);
-
-// todo - ?
-gulp.task('doc', function (cb) {
-    gulp.src(['README.md', 'node_modules/d3-charts-dto/lib/javascripts/**/*.js'], {read: false})
-        .pipe(jsdoc(cb));
-});
-
 function bundle(env, bundler, minify, catchErrors) {
     let result = bundler.bundle();
     if (catchErrors) {
@@ -128,7 +64,7 @@ function bundle(env, bundler, minify, catchErrors) {
         .pipe(buffer());
 
     result = result
-        // Extract the embedded source map to a separate file.
+    // Extract the embedded source map to a separate file.
         .pipe(transform(function() { return exorcist(env.dest + '/' + env.build + '.map'); }))
         // Write the finished product.
         .pipe(gulp.dest(env.dest));
@@ -144,8 +80,8 @@ function build(env) {
                 `${DIR_SRC}/scripts/`
             ]
         })
-        .transform({continuous: true}, eslintify)
-        .transform(babelify),
+            .transform({continuous: true}, eslintify)
+            .transform(babelify),
         true,
         false
     );
@@ -154,17 +90,17 @@ function build(env) {
 function watch(env, minify) {
     const bundler = watchify(
         browserify({
-                entries: env.entry,
-                debug: true,
-                cache: {},
-                packageCache: {},
-                paths: [
-                    `${DIR_SRC}/scripts/`
-                ]
-            })
+            entries: env.entry,
+            debug: true,
+            cache: {},
+            packageCache: {},
+            paths: [
+                `${DIR_SRC}/scripts/`
+            ]
+        })
             .transform({continuous: true}, eslintify)
             .transform(babelify),
-            {poll: 1000}
+        {poll: 1000}
     );
 
     function rebundle(ids) {
@@ -183,3 +119,70 @@ function watch(env, minify) {
     bundler.on('update', rebundle);
     return rebundle();
 }
+
+
+/**
+ * Tasks
+ */
+
+gulp.task('sass', function () {
+	return gulp.src(`${DIR_SRC}/styles/**/*.scss`)
+		.pipe(sassLint({
+			configFile: './.sass-lint.yml'
+		}))
+		.pipe(sassLint.format())
+		.pipe(sourcemaps.init())
+		.pipe(sass({
+			includePaths: [
+				DIR_NPM,
+				bourbon.includePaths,   // todo - these aren't _really_ necessary
+				bourbonNeat.includePaths
+			]
+		}).on('error', sass.logError))
+		.pipe(autoprefixer())
+		.pipe(sourcemaps.write('./'))
+		.pipe(gulp.dest(`${DIR_DIST}/stylesheets`));
+});
+
+gulp.task('sass:watch', function () {
+    gulp.watch(`${DIR_SRC}/styles/**/*.scss`, ['sass']);
+});
+
+
+gulp.task('scripts', function dev() {
+    return build(jsSource.dev, false);
+});
+
+gulp.task('scripts:watch', function() {
+    return watch(jsSource.dev, false);
+});
+
+
+gulp.task('test', function test() {
+    return build(jsSource.test, false);
+});
+
+gulp.task('test:watch', function watchTest() {
+    return watch(jsSource.test, false);
+});
+
+
+gulp.task('images', () => {
+	return gulp.src(`${DIR_SRC}/images/**/*.{jpg,png,gif,svg}`)
+		.pipe( changed(`${DIR_DIST}/images`) )  // ignore unchanged
+		.pipe( print(function(file) {return 'Processing IMAGE: ' + file; }) )
+		.pipe( gulp.dest(`${DIR_DIST}/images`) );
+});
+
+gulp.task('images:watch', ['images']);
+
+
+/**
+ * Workflows
+ */
+
+gulp.task('default', ['build']);
+
+gulp.task('build', ['scripts', 'sass', 'images', 'test']);
+
+gulp.task('watch', ['build', 'scripts:watch', 'sass:watch', 'images:watch', 'test:watch']);
