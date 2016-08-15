@@ -8,22 +8,26 @@ import notify from 'gulp-notify';
 import source from 'vinyl-source-stream';
 import transform from 'vinyl-transform';
 import watchify from 'watchify';
-import sass from 'gulp-sass';
+
 import sourcemaps from 'gulp-sourcemaps';
 import jsdoc from 'gulp-jsdoc3';
 import eslintify from 'eslintify';
-import sassLint from 'gulp-sass-lint';
 import changed from 'gulp-changed';
 import print from 'gulp-print';
 
+import sass from 'gulp-sass';
+import sassLint from 'gulp-sass-lint';
+import autoprefixer from 'gulp-autoprefixer';
+import bourbon from 'bourbon';
+import bourbonNeat from 'bourbon-neat';
+
 
 export const ENV = process.env.NODE_ENV || 'development';
-export const DIR_ROOT = ENV === 'development' ? path.resolve('./') : '';
-export const DIR_SRC = path.join(DIR_ROOT, 'lib/assets/src');
-export const DIR_DIST = path.join(DIR_ROOT, 'public');
-export const DIR_NPM = path.join(DIR_ROOT, 'node_modules');
-export const DIR_TEST = path.join(DIR_ROOT, 'lib/assets/tests');
-export const DIR_TESTDIST = path.join(DIR_ROOT, '.tmp');
+export const DIR_SRC = path.join(__dirname, 'lib/assets/src');
+export const DIR_DIST = path.join(__dirname, 'public');
+export const DIR_NPM = path.join(__dirname, 'node_modules');
+export const DIR_TEST = path.join(__dirname, 'lib/assets/tests');
+export const DIR_TESTDIST = path.join(__dirname, '.tmp');
 
 const jsSource = {
     dev: {
@@ -40,6 +44,7 @@ const jsSource = {
     }
 };
 
+
 function handleErrors() {
     const args = Array.prototype.slice.call(arguments);
     notify.onError({
@@ -49,8 +54,6 @@ function handleErrors() {
     this.emit('end'); // Keep gulp from hanging on this task
 }
 
-var neat = require('node-neat').includePaths;
-
 gulp.task('sass', function () {
     return gulp.src(`${DIR_SRC}/styles/**/*.scss`)
         .pipe(sassLint({
@@ -59,8 +62,13 @@ gulp.task('sass', function () {
         .pipe(sassLint.format())
         .pipe(sourcemaps.init())
         .pipe(sass({
-            includePaths: ['sass'].concat(neat)
+            includePaths: [
+                DIR_NPM,
+                bourbon.includePaths,   // todo - these aren't _really_ necessary
+                bourbonNeat.includePaths
+            ]
         }).on('error', sass.logError))
+        .pipe(autoprefixer())
         .pipe(sourcemaps.write('./'))
         .pipe(gulp.dest(`${DIR_DIST}/stylesheets`));
 });
@@ -97,7 +105,7 @@ gulp.task('images', () => {
 });
 
 
-gulp.task('watch', ['scripts:watch', 'test:watch', 'sass:watch']);
+gulp.task('watch', ['build', 'scripts:watch', 'test:watch', 'sass:watch']);
 
 gulp.task('build', ['scripts', 'test', 'sass']);
 
