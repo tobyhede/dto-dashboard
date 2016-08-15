@@ -23,12 +23,11 @@ import bourbonNeat from 'bourbon-neat';
 
 
 export const ENV = process.env.NODE_ENV || 'development';
-export const DIR_ROOT = ENV === 'development' ? path.resolve('./') : '';
-export const DIR_SRC = path.join(DIR_ROOT, 'lib/assets/src');
-export const DIR_DIST = path.join(DIR_ROOT, 'public');
-export const DIR_NPM = path.join(DIR_ROOT, 'node_modules');
-export const DIR_TEST = path.join(DIR_ROOT, 'lib/assets/tests');
-export const DIR_TESTDIST = path.join(DIR_ROOT, '.tmp');
+export const DIR_SRC = path.join(__dirname, 'lib/assets/src');
+export const DIR_DIST = path.join(__dirname, 'public');
+export const DIR_NPM = path.join(__dirname, 'node_modules');
+export const DIR_TEST = path.join(__dirname, 'lib/assets/tests');
+export const DIR_TESTDIST = path.join(__dirname, '.tmp');
 
 const jsSource = {
     dev: {
@@ -44,6 +43,7 @@ const jsSource = {
         dest: DIR_TESTDIST
     }
 };
+
 
 function handleErrors() {
     const args = Array.prototype.slice.call(arguments);
@@ -63,9 +63,8 @@ gulp.task('sass', function () {
         .pipe(sourcemaps.init())
         .pipe(sass({
             includePaths: [
-                `${DIR_SRC}/styles`,
                 DIR_NPM,
-                bourbon.includePaths,
+                bourbon.includePaths,   // todo - these aren't _really_ necessary
                 bourbonNeat.includePaths
             ]
         }).on('error', sass.logError))
@@ -106,7 +105,7 @@ gulp.task('images', () => {
 });
 
 
-gulp.task('watch', ['scripts:watch', 'test:watch', 'sass:watch']);
+gulp.task('watch', ['build', 'scripts:watch', 'test:watch', 'sass:watch']);
 
 gulp.task('build', ['scripts', 'test', 'sass']);
 
