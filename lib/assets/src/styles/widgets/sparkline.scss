@@ -25,11 +25,11 @@
 }
 
 .metric-data {
-  @include display(flex);
+  display: flex;
   justify-content: center;
 
   .decorator {
-    @include display(flex);
+    display: flex;
     flex-direction: column;
     justify-content: space-around;
     font-size: 1.2rem;
@@ -147,7 +147,7 @@
       @media screen and (min-width: $screen-sm) {
         height: 300px;
 
-        @include display(flex);
+        display: flex;
         flex-direction: column;
         justify-content: space-around;
       }

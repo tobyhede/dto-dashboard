@@ -183,7 +183,6 @@ body {
   border-bottom: 1px solid white;
   border-bottom-right-radius: 8px;
   background: transparent;
-  -webkit-transition: top 1s ease-out, background 1s linear;
   transition: top 1s ease-out, background 1s linear;
   z-index: 100;
 }
@@ -194,7 +193,6 @@ body {
   top: 0;
   background: #bf1722;
   outline: 0;
-  -webkit-transition: top .1s ease-in, background .5s linear;
   transition: top .1s ease-in, background .5s linear;
 }
 

@@ -153,11 +153,11 @@ header {
 }
 
 .dashboard__header {
-  @include display(flex);
+  display: flex;
   margin: 10px auto 30px auto;
 
   h1 {
-    @include flex(1);
+    flex: 1;
     margin: 0;
     line-height: 1;
     color: $primary-text-colour;
@@ -179,8 +179,6 @@ header {
     display: block;
     overflow: hidden;
     cursor: pointer;
-    -moz-border-radius: 20px;
-    -webkit-border-radius: 20px;
     border-radius: 20px;
     margin: 0;
   }
@@ -198,8 +196,6 @@ header {
       font-size: 80%;
       color: #ffffff;
       font-weight: normal;
-      -moz-box-sizing: border-box;
-      -webkit-box-sizing: border-box;
       box-sizing: border-box;
     }
 
@@ -225,8 +221,6 @@ header {
     margin: 0;
     background: #ffffff;
     box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
-    -moz-border-radius: 50%;
-    -webkit-border-radius: 50%;
     border-radius: 50%;
     position: absolute;
     top: 2px;

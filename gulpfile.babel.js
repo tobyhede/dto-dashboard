@@ -8,13 +8,16 @@ import notify from 'gulp-notify';
 import source from 'vinyl-source-stream';
 import transform from 'vinyl-transform';
 import watchify from 'watchify';
-import sass from 'gulp-sass';
+
 import sourcemaps from 'gulp-sourcemaps';
 import jsdoc from 'gulp-jsdoc3';
 import eslintify from 'eslintify';
-import sassLint from 'gulp-sass-lint';
 import changed from 'gulp-changed';
 import print from 'gulp-print';
+
+import sass from 'gulp-sass';
+import sassLint from 'gulp-sass-lint';
+import autoprefixer from 'gulp-autoprefixer';
 
 
 export const ENV = process.env.NODE_ENV || 'development';
@@ -59,8 +62,11 @@ gulp.task('sass', function () {
         .pipe(sassLint.format())
         .pipe(sourcemaps.init())
         .pipe(sass({
-            includePaths: ['sass'].concat(neat)
+            includePaths: [
+                `${DIR_SRC}/styles`
+            ].concat(neat)
         }).on('error', sass.logError))
+        .pipe(autoprefixer())
         .pipe(sourcemaps.write('./'))
         .pipe(gulp.dest(`${DIR_DIST}`));
 });

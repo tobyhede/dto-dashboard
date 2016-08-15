@@ -241,15 +241,12 @@
     position: absolute;
     padding: $gutter/5 $gutter;
     background: #fff;
-    -webkit-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.3);  //TODO create box shadow mixin
-    -moz-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.3);
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.3);
     width: $note-width;
     right: 0;
 
     &:before {
-      @include transform(rotate(45deg));
-
+      transform: rotate(45deg);
       content: '';
       width: 14px;
       height: 14px;
@@ -267,7 +264,7 @@
       right: 0;
 
       &:before {
-        @include transform(rotate(45deg));
+        transform: rotate(45deg);
         left: -8px;
         top: 5px;
       }
@@ -286,7 +283,7 @@
       right: 0;
 
       &:before {
-        @include transform(rotate(45deg));
+        transform: rotate(45deg);
 
         left: $note-width - 15;
         top: -8px;
@@ -307,7 +304,6 @@
     .widget__note__content {
       visibility: hidden;
       opacity: 0;
-      -webkit-transition: all 0.25s ease-in; /* Safari */
       transition: all 0.25s ease-in;
     }
   }
@@ -389,7 +385,7 @@
 }
 
 .legend {
-  @include display(flex);
+  display: flex;
   justify-content: space-between;
   flex-direction: column;
   padding-bottom: 5px;
@@ -449,12 +445,12 @@
     .chart {
       height: 200px;
 
-      @include display(flex);
+      display: flex;
       align-items: flex-end;
     }
 
     @media screen and (min-width: $screen-md) {
-      @include display(flex);
+      display: flex;
       flex-direction: row-reverse;
 
       .legend {
@@ -475,7 +471,7 @@
 
       tr {
         @media screen and (min-width: $screen-md) {
-          @include display(flex);
+          display: flex;
           flex-direction: column-reverse;
         }
       }

@@ -6,12 +6,12 @@
   padding: $gutter 0;
 
   .container {
-    @include display(flex);
+    display: flex;
     align-items: flex-end;
   }
 
   .site-title {
-    @include flex(1);
+    flex: 1;
   }
 
   img {
