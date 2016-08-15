@@ -1,22 +1,18 @@
 <!DOCTYPE html>
 <html class="no-js" lang="en">
   <head>
-
-    <%= stylesheet_link_tag "https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css" %>
-    <%= stylesheet_link_tag 'application', 'index', media: 'all', 'data-turbolinks-track': 'reload' %>
-
-    <%= javascript_include_tag "https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js" %>
     <title><%= content_for(:title) || "Australian Government Performance Dashboards" %></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content=""> <!--< TODO this shoudld be dynamical generated using Ruby-->
+    <meta name="description" content=""><!-- TODO this should be dynamically generated -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <%= stylesheet_link_tag "https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css" %>
 
-    <!-- Google Analytics -->
-    <script>dataLayer = [
-      {}
-    ]</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="<%= stylesheet_path('index.css') %>" />
+
+    <%  # Google Analytics %>
+    <script>dataLayer = []</script><!-- TODO this should be dynamically generated -->
     <script>window.ga = window.ga || function () {
           (ga.q = ga.q || []).push(arguments)
         };
@@ -27,15 +23,16 @@
     ga('require', 'outboundLinkTracker');
 
     ga('send', 'pageview');</script>
-    <%= javascript_include_tag "https://www.google-analytics.com/analytics.js" %>
-    <!-- End Google Analytics -->
+    <script src="https://www.google-analytics.com/analytics.js"></script>
+    <% # End Google Analytics %>
   </head>
 
-  <body class="#{bodyClass}">
+  <body class="#{bodyClass}"><!-- TODO this should be dynamically generated -->
     <!--[if IE 8]>
     <p>You are using an outdated browser. Please upgrade your browser to improve your
       experience.</p>
     <![endif]-->
+
     <header>
       <div class="skiptocontent"><a href="#main">Skip to main content</a></div>
       <div class="prototype-warning">
@@ -46,7 +43,7 @@
       <div class="logo-primary">
         <div class="container">
           <a class="site-title block" href="/">
-            <%= image_tag "gov-performance.svg", alt: "gov.au"%>
+            <img src="<%= image_path('gov-performance.svg') %>" alt="Logo of GOV.AU" />
           </a>
           <div class="toggle-group">
             <span class="hidden-on-small">High contrast mode</span><input id="switch-mode" type="checkbox" name="switch-mode"
@@ -67,7 +64,7 @@
 
     <footer>
       <section>
-        <%= image_tag "coatofarms.svg", style: "height: 76px", alt: "Commonwealth Coat of Arms" %>
+        <img src="<%= image_path('coatofarms.svg') %>" height="76" alt="Logo of Commonwealth Coat of Arms" />
         <ul>
           <li><a href="https://www.dto.gov.au/standard/">Digital Service Standard</a></li>
           <li><a href="https://www.dto.gov.au/standard/11-measure-performance/">About Performance Measurement</a></li>
@@ -79,5 +76,7 @@
       </section>
     </footer>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.js"></script>
+  <script src="<%= javascript_path('index.js') %>"></script>
   </body>
 </html>

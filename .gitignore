@@ -39,4 +39,7 @@ config/development.js
 .env
 migrations/.migrate
 
+public/images/*
+public/stylesheets/*
+public/javascripts/*
 .tmp
