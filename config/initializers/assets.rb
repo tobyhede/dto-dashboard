@@ -13,5 +13,3 @@ Rails.application.config.assets.precompile += %w( modernizr.min.js )
 Rails.application.config.assets.precompile += %w( selectivizr.js )
 Rails.application.config.assets.precompile += %w( index.js )
 Rails.application.config.assets.precompile += %w( index.css )
-Rails.application.config.assets.precompile += %w( ie8.css )
-

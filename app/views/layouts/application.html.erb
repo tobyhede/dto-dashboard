@@ -1,108 +1,83 @@
 <!DOCTYPE html>
 <html class="no-js" lang="en">
-<head>
-  <!-- RoR code -->
-  <!--  <title>DashboardCool</title>
-  <%= csrf_meta_tags %>-->
+  <head>
 
-  <%= stylesheet_link_tag "https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css" %>
-  <%= stylesheet_link_tag 'application', 'index', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag "https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css" %>
+    <%= stylesheet_link_tag 'application', 'index', media: 'all', 'data-turbolinks-track': 'reload' %>
 
-  <%= javascript_include_tag 'application', 'modernizr.min', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag "https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js" %>
+    <title><%= content_for(:title) || "Australian Government Performance Dashboards" %></title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content=""> <!--< TODO this shoudld be dynamical generated using Ruby-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <%= stylesheet_link_tag "https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css" %>
 
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>undefined</title>
-  <meta name="description" content="">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">-->
-  <!--<link rel="stylesheet" href="vendor/assets/css/index.css">-->
-  <!--<script src="/third-party/modernizr.min.js"></script>-->
-  <!--[if IE 8]>
-  <!--<script src="https://code.jquery.com/jquery-1.4.min.js"></script>-->
-  <%= javascript_include_tag "https://code.jquery.com/jquery-1.4.min.js" %>
-  <!--<link rel="stylesheet" href="/assets/css/ie8.css">-->
-  <%= stylesheet_link_tag 'ie8', media: 'all', 'data-turbolinks-track': 'reload' %>
-  <!--<script src="/third-party/selectivizr.js"></script>-->
-  <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.js"></script>-->
-  <%= javascript_include_tag 'selectivizr', "https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.js" %>
-  <![endif]-->
+    <!-- Google Analytics -->
+    <script>dataLayer = [
+      {}
+    ]</script>
+    <script>window.ga = window.ga || function () {
+          (ga.q = ga.q || []).push(arguments)
+        };
+    ga.l = +new Date;
+    ga('create', 'UA-61222473-3', 'auto');
+    // Autotrack plugins
+    ga('require', 'eventTracker');
+    ga('require', 'outboundLinkTracker');
 
-  <!-- Google Analytics -->
-  <script>dataLayer = [
-    {}
-  ]</script>
-  <script>window.ga = window.ga || function () {
-        (ga.q = ga.q || []).push(arguments)
-      };
-  ga.l = +new Date;
-  ga('create', 'UA-61222473-3', 'auto');
-  // Autotrack plugins
-  ga('require', 'eventTracker');
-  ga('require', 'outboundLinkTracker');
+    ga('send', 'pageview');</script>
+    <%= javascript_include_tag "https://www.google-analytics.com/analytics.js" %>
+    <!-- End Google Analytics -->
+  </head>
 
-  ga('send', 'pageview');</script>
-  <!--<script async src="https://www.google-analytics.com/analytics.js"></script>-->
-  <%= javascript_include_tag "https://www.google-analytics.com/analytics.js" %>
-  <!-- End Google Analytics -->
-</head>
-
-<body class="#{bodyClass}">
-<!--[if IE 8]>
-<p>You are using an outdated browser. Please upgrade your browser to improve your
-  experience.</p>
-<![endif]-->
-<header>
-  <div class="skiptocontent"><a href="#main">Skip to main content</a></div>
-  <div class="prototype-warning">
-    <div class="prototype-warning-text">This is a working alpha and has limited functionality. Service data shown is
-      accurate as at the time it was published.
-    </div>
-  </div>
-  <div class="logo-primary">
-    <div class="container">
-      <a class="site-title block" href="/">
-        <!--<img class="no-ie8" src="/assets/gov-performance.svg" alt="gov.au">-->
-        <%= image_tag "gov-performance.svg", class: "no-ie8", alt: "gov.au"%>
-        <!--[if IE 8]><!--<img src="/assets/gov-performance.png" alt="gov.au" height="40">--><%= image_tag "gov-performance.svg", alt: "gov.au", height: "40" %><![endif]-->
-      </a>
-      <div class="toggle-group">
-        <span class="hidden-on-small">High contrast mode</span><input id="switch-mode" type="checkbox" name="switch-mode"
-                                                                      tabindex="0"><label for="switch-mode"><span class="aural"></span></label>
-        <div class="onoffswitch pull-right" aria-hidden="true">
-          <div class="onoffswitch-label">
-            <div class="onoffswitch-inner"></div>
-            <div class="onoffswitch-switch"></div>
+  <body class="#{bodyClass}">
+    <!--[if IE 8]>
+    <p>You are using an outdated browser. Please upgrade your browser to improve your
+      experience.</p>
+    <![endif]-->
+    <header>
+      <div class="skiptocontent"><a href="#main">Skip to main content</a></div>
+      <div class="prototype-warning">
+        <div class="prototype-warning-text">This is a working alpha and has limited functionality. Service data shown is
+          accurate as at the time it was published.
+        </div>
+      </div>
+      <div class="logo-primary">
+        <div class="container">
+          <a class="site-title block" href="/">
+            <%= image_tag "gov-performance.svg", alt: "gov.au"%>
+          </a>
+          <div class="toggle-group">
+            <span class="hidden-on-small">High contrast mode</span><input id="switch-mode" type="checkbox" name="switch-mode"
+                                                                          tabindex="0"><label for="switch-mode"><span class="aural"></span></label>
+            <div class="onoffswitch pull-right" aria-hidden="true">
+              <div class="onoffswitch-label">
+                <div class="onoffswitch-inner"></div>
+                <div class="onoffswitch-switch"></div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
+    </header>
+    <div id="main">
+      <%= yield %>
     </div>
-  </div>
-</header>
-<div id="main">
-  <%= yield %>
-</div>
 
-<footer>
-  <section>
-    <!--<img class="no-ie8" style="height: 76px" src="/assets/coatofarms.svg" alt="Commonwealth Coat of Arms">-->
-    <%= image_tag "coatofarms.svg", class: "no-ie8", style: "height: 76px", alt: "Commonwealth Coat of Arms" %>
-    <!--[if IE 8]><!--<img style="height: 76px" src="/assets/coatofarms.png" alt="Commonwealth Coat of Arms">--><%= image_tag "coatofarms.svg", style: "height: 76px", alt: "Commonwealth Coat of Arms" %><![endif]-->
-    <ul>
-      <li><a href="https://www.dto.gov.au/standard/">Digital Service Standard</a></li>
-      <li><a href="https://www.dto.gov.au/standard/11-measure-performance/">About Performance Measurement</a></li>
-      <li><a href="/copyright">Copyright</a></li>
-      <li><a href="https://www.dto.gov.au/blog/">DTO Blog</a></li>
-      <li><a href="https://github.com/AusDTO/d3-charts-dto">Our Code</a></li>
-      <li><a href="/feedback">Please give feedback</a></li>
-    </ul>
-  </section>
-</footer>
-<!--[if !IE 8]><!-->
-<!--<script src="/assets/javascripts/index.js"></script>-->
-<%= javascript_include_tag 'index' %>
-<![endif]-->
-
-</body>
+    <footer>
+      <section>
+        <%= image_tag "coatofarms.svg", style: "height: 76px", alt: "Commonwealth Coat of Arms" %>
+        <ul>
+          <li><a href="https://www.dto.gov.au/standard/">Digital Service Standard</a></li>
+          <li><a href="https://www.dto.gov.au/standard/11-measure-performance/">About Performance Measurement</a></li>
+          <li><a href="/copyright">Copyright</a></li>
+          <li><a href="https://www.dto.gov.au/blog/">DTO Blog</a></li>
+          <li><a href="https://github.com/AusDTO/d3-charts-dto">Our Code</a></li>
+          <li><a href="/feedback">Please give feedback</a></li>
+        </ul>
+      </section>
+    </footer>
+    <%= javascript_include_tag 'index' %>
+  </body>
 </html>
-
