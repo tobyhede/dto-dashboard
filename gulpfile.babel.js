@@ -18,6 +18,8 @@ import print from 'gulp-print';
 import sass from 'gulp-sass';
 import sassLint from 'gulp-sass-lint';
 import autoprefixer from 'gulp-autoprefixer';
+import bourbon from 'bourbon';
+import bourbonNeat from 'bourbon-neat';
 
 
 export const ENV = process.env.NODE_ENV || 'development';
@@ -52,8 +54,6 @@ function handleErrors() {
     this.emit('end'); // Keep gulp from hanging on this task
 }
 
-var neat = require('node-neat').includePaths;
-
 gulp.task('sass', function () {
     return gulp.src(`${DIR_SRC}/styles/**/*.scss`)
         .pipe(sassLint({
@@ -63,8 +63,11 @@ gulp.task('sass', function () {
         .pipe(sourcemaps.init())
         .pipe(sass({
             includePaths: [
-                `${DIR_SRC}/styles`
-            ].concat(neat)
+                `${DIR_SRC}/styles`,
+                DIR_NPM,
+                bourbon.includePaths,
+                bourbonNeat.includePaths
+            ]
         }).on('error', sass.logError))
         .pipe(autoprefixer())
         .pipe(sourcemaps.write('./'))
