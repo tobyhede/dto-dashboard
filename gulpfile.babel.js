@@ -54,6 +54,78 @@ function handleErrors() {
     this.emit('end'); // Keep gulp from hanging on this task
 }
 
+function bundle(env, bundler, minify, catchErrors) {
+    let result = bundler.bundle();
+    if (catchErrors) {
+        // Display errors to the user, and don't let them propagate.
+        result = result.on('error', handleErrors);
+    }
+    result = result
+        .pipe(source(env.build))
+        .pipe(buffer());
+
+    result = result
+    // Extract the embedded source map to a separate file.
+        .pipe(transform(function() { return exorcist(env.dest + '/' + env.build + '.map'); }))
+        // Write the finished product.
+        .pipe(gulp.dest(env.dest));
+
+    return result;
+}
+
+function build(env) {
+    return bundle(env, browserify({
+            entries: env.entry,
+            debug: true,
+            paths: [
+                `${DIR_SRC}/scripts/`
+            ]
+        })
+            .transform({continuous: true}, eslintify)
+            .transform(babelify),
+        true,
+        false
+    );
+}
+
+function watch(env, minify) {
+    const bundler = watchify(
+        browserify({
+            entries: env.entry,
+            debug: true,
+            cache: {},
+            packageCache: {},
+            paths: [
+                `${DIR_SRC}/scripts/`
+            ]
+        })
+            .transform({continuous: true}, eslintify)
+            .transform(babelify),
+        {poll: 1000}
+    );
+
+    function rebundle(ids) {
+        // Don't rebundle if only the version changed.
+        if (ids && ids.length === 1 && (/\/version\.js$/).test(ids[0])) {
+            return false;
+        }
+        const start = new Date();
+        const result = bundle(env, bundler, minify, true);
+        result.on('end', function() {
+            console.log('Rebuilt ' + env.build + ' in ' + (new Date() - start) + ' milliseconds.');
+        });
+        return result;
+    }
+
+    bundler.on('update', rebundle);
+    return rebundle();
+}
+
+
+/**
+ * Tasks
+ */
+
 gulp.task('sass', function () {
     return gulp.src(`${DIR_SRC}/styles/**/*.scss`)
         .pipe(sassLint({
@@ -74,29 +146,28 @@ gulp.task('sass', function () {
         .pipe(gulp.dest(`${DIR_DIST}`));
 });
 
-gulp.task('default',function(){
-    gulp.start('sass');
+gulp.task('sass:watch', function () {
+    gulp.watch(`${DIR_SRC}/styles/**/*.scss`, ['sass']);
 });
+
 
 gulp.task('scripts', function dev() {
     return build(jsSource.dev, false);
-});
-
-gulp.task('test', function test() {
-    return build(jsSource.test, false);
 });
 
 gulp.task('scripts:watch', function() {
     return watch(jsSource.dev, false);
 });
 
-gulp.task('sass:watch', function () {
-    gulp.watch(`${DIR_SRC}/styles/**/*.scss`, ['sass']);
+
+gulp.task('test', function test() {
+    return build(jsSource.test, false);
 });
 
 gulp.task('test:watch', function watchTest() {
     return watch(jsSource.test, false);
 });
+
 
 gulp.task('images', () => {
    return gulp.src(`${DIR_SRC}/images/**/*.{jpg,png,gif,svg}`)
@@ -105,82 +176,16 @@ gulp.task('images', () => {
        .pipe( gulp.dest(`${DIR_DIST}/images/`) );
 });
 
+gulp.task('images:watch', ['images']);
 
-gulp.task('watch', ['scripts:watch', 'test:watch', 'sass:watch']);
 
-gulp.task('build', ['scripts', 'test', 'sass']);
+/**
+ * Workflows
+ */
 
 gulp.task('default', ['build']);
 
-// todo - ?
-gulp.task('doc', function (cb) {
-    gulp.src(['README.md', 'node_modules/d3-charts-dto/lib/javascripts/**/*.js'], {read: false})
-        .pipe(jsdoc(cb));
-});
+gulp.task('build', ['scripts', 'sass', 'images', 'test']);
 
-function bundle(env, bundler, minify, catchErrors) {
-    let result = bundler.bundle();
-    if (catchErrors) {
-        // Display errors to the user, and don't let them propagate.
-        result = result.on('error', handleErrors);
-    }
-    result = result
-        .pipe(source(env.build))
-        .pipe(buffer());
+gulp.task('watch', ['scripts:watch', 'sass:watch', 'images:watch', 'test:watch']);
 
-    result = result
-        // Extract the embedded source map to a separate file.
-        .pipe(transform(function() { return exorcist(env.dest + '/' + env.build + '.map'); }))
-        // Write the finished product.
-        .pipe(gulp.dest(env.dest));
-
-    return result;
-}
-
-function build(env) {
-    return bundle(env, browserify({
-            entries: env.entry,
-            debug: true,
-            paths: [
-                `${DIR_SRC}/scripts/`
-            ]
-        })
-        .transform({continuous: true}, eslintify)
-        .transform(babelify),
-        true,
-        false
-    );
-}
-
-function watch(env, minify) {
-    const bundler = watchify(
-        browserify({
-                entries: env.entry,
-                debug: true,
-                cache: {},
-                packageCache: {},
-                paths: [
-                    `${DIR_SRC}/scripts/`
-                ]
-            })
-            .transform({continuous: true}, eslintify)
-            .transform(babelify),
-            {poll: 1000}
-    );
-
-    function rebundle(ids) {
-        // Don't rebundle if only the version changed.
-        if (ids && ids.length === 1 && (/\/version\.js$/).test(ids[0])) {
-            return false;
-        }
-        const start = new Date();
-        const result = bundle(env, bundler, minify, true);
-        result.on('end', function() {
-            console.log('Rebuilt ' + env.build + ' in ' + (new Date() - start) + ' milliseconds.');
-        });
-        return result;
-    }
-
-    bundler.on('update', rebundle);
-    return rebundle();
-}
