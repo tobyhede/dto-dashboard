@@ -88,7 +88,7 @@ gulp.task('sass:watch', function () {
 gulp.task('test:watch', function watchTest() {
     return watch(jsSource.test, false);
 });
-z
+
 gulp.task('images', () => {
    return gulp.src(`${DIR_SRC}/images/**/*.{jpg,png,gif,svg}`)
        .pipe( changed(`${DIR_DIST}/images`) )  // ignore unchanged
