@@ -18,10 +18,6 @@ module DashboardHelper
     return cls
   end
 
-  def DashboardHelper.truncateDashboardName(name)
-
-  end
-
   class Helper
     def initialize(name, artist, duration)
       @name = name

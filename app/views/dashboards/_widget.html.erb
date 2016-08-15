@@ -9,7 +9,7 @@
         ga-on="click" ga-event-category="Dashboard Show" ga-event-action="Clicked Hero Widget legend info" 
         ga-event-label="<%= widget.name %>"></a>
       <div class="meta-group"></div>
-      <span class="widget__last-updated">Last updated 30 Jun 2016</span>
+      <span class="widget__last-updated"><%= dashboard.updated_at.strftime("%d %b %Y %H:%M:%S") %></span>
     </div>
     <div data-data="" aria-hidden="true" class="widget__inner <%= widget.type %> single">
     </div>
