@@ -10,7 +10,6 @@ import transform from 'vinyl-transform';
 import watchify from 'watchify';
 
 import sourcemaps from 'gulp-sourcemaps';
-import jsdoc from 'gulp-jsdoc3';
 import eslintify from 'eslintify';
 import changed from 'gulp-changed';
 import print from 'gulp-print';
