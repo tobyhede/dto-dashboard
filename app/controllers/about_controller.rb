@@ -1,7 +1,6 @@
 class AboutController < ApplicationController
-  def copyright
+  def index
+    render :copyright
   end
 
-  def about
-  end
 end
