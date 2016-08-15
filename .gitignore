@@ -39,5 +39,4 @@ config/development.js
 .env
 migrations/.migrate
 
-public/assets/*
 .tmp
