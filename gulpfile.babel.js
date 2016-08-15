@@ -20,7 +20,7 @@ import print from 'gulp-print';
 export const ENV = process.env.NODE_ENV || 'development';
 export const DIR_ROOT = ENV === 'development' ? path.resolve('./') : '';
 export const DIR_SRC = path.join(DIR_ROOT, 'lib/assets/src');
-export const DIR_DIST = path.join(DIR_ROOT, 'public/assets');
+export const DIR_DIST = path.join(DIR_ROOT, 'public');
 export const DIR_NPM = path.join(DIR_ROOT, 'node_modules');
 export const DIR_TEST = path.join(DIR_ROOT, 'lib/assets/tests');
 export const DIR_TESTDIST = path.join(DIR_ROOT, '.tmp');
@@ -29,7 +29,7 @@ const jsSource = {
     dev: {
         name: 'dev',
         entry: `${DIR_SRC}/scripts`,
-        build: 'index.js',
+        build: 'javascripts/index.js',
         dest: DIR_DIST
     },
     test: {
@@ -62,7 +62,7 @@ gulp.task('sass', function () {
             includePaths: ['sass'].concat(neat)
         }).on('error', sass.logError))
         .pipe(sourcemaps.write('./'))
-        .pipe(gulp.dest(`${DIR_DIST}`));
+        .pipe(gulp.dest(`${DIR_DIST}/stylesheets`));
 });
 
 gulp.task('default',function(){
@@ -93,7 +93,7 @@ gulp.task('images', () => {
    return gulp.src(`${DIR_SRC}/images/**/*.{jpg,png,gif,svg}`)
        .pipe( changed(`${DIR_DIST}/images`) )  // ignore unchanged
        .pipe( print(function(file) {return 'Processing IMAGE: ' + file; }) )
-       .pipe( gulp.dest(`${DIR_DIST}/images/`) );
+       .pipe( gulp.dest(`${DIR_DIST}/images`) );
 });
 
 
