@@ -31,7 +31,6 @@
     "babel-core": "^6.5.2",
     "babel-eslint": "^6.0.2",
     "babel-plugin-transform-es2015-classes": "^6.8.0",
-    "babel-plugin-transform-object-rest-spread": "^6.8.0",
     "babel-plugin-transform-proto-to-assign": "^6.8.0",
     "babel-preset-es2015": "^6.5.0",
     "babel-preset-stage-2": "^6.11.0",
