@@ -1,5 +1,6 @@
 class Widget < ApplicationRecord
   include Nameable
+  include Measurable
 
   self.inheritance_column = :_type_disabled
 
@@ -7,8 +8,9 @@ class Widget < ApplicationRecord
 
   has_many :dataset_widgets
   has_many :datasets, :through => :dataset_widgets
+  has_many :datapoints, :through => :datasets
 
-  validates :size, :type, :units, :presence => true
+  validates :size, :type, :presence => true
 
   validates :size, inclusion: { in: %w(extra-small small medium large extra-large),
       message: "%{value} is not a valid size" }
@@ -16,10 +18,15 @@ class Widget < ApplicationRecord
   validates :type, inclusion: { in: %w(bar fact full kpi-sparkline line pie sparkline),
       message: "%{value} is not a valid chart type" }
 
-  validates :units, inclusion: { in: %w(% $ n s i f),
-      message: "%{value} is not a valid unit" }
-
   validates :row, :pos, :presence => true, :numericality => { :only_integer => true }
+
+  def has_data?
+    datapoints.any?
+  end
+
+  def dataset
+    datasets.first
+  end
 
   def data
     as_json(:include => {
