@@ -63,8 +63,9 @@
     "build": "NODE_ENV=production gulp build",
     "dev": "gulp watch",
     "test": "gulp test",
+    "start": "gulp serve",
     "lint": "eslint ./lib/assets/src/scripts",
-    "postinstall": "echo 'Installation with NPM successful. What to do next:\\n  npm start       # Starts the server on port 3000\\n  gulp watch      # Builds app and dependencies, and rebuilds if files change.'"
+    "postinstall": "echo 'Installation with NPM successful. What to do next:\\n  npm run to see options"
   },
   "engines": {
     "node": "6.0.0"

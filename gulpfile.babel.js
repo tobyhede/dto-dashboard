@@ -24,6 +24,8 @@ import autoprefixer from 'gulp-autoprefixer';
 import bourbon from 'bourbon';
 import bourbonNeat from 'bourbon-neat';
 
+var browserSync = require('browser-sync').create();
+
 
 export const ENV = process.env.NODE_ENV || 'development';
 export const DIR_SRC = path.join(__dirname, 'lib/assets/src');
@@ -54,6 +56,17 @@ const jsSource = {
     }
 };
 
+const browserSyncConf = {
+	proxy: 'http://localhost:3000',  // local node app address
+	port: 3001,  // use *different* port than above to 'detach' client side
+	notify: true,
+	open: true
+};
+
+
+function reload() {
+	browserSync.reload();
+}
 
 function handleErrors() {
     const args = Array.prototype.slice.call(arguments);
@@ -144,6 +157,7 @@ gulp.task('clean', (done) => {
 	], done);
 });
 
+
 gulp.task('sass', () => {
 	return gulp.src(`${DIR_SRC_STYLES}/**/*.scss`)
 		.pipe(sassLint({
@@ -164,19 +178,15 @@ gulp.task('sass', () => {
 		.pipe(gulp.dest(DIR_DIST_STYLES));
 });
 
-gulp.task('sass:watch', () => {
-    gulp.watch(`${DIR_SRC_STYLES}/**/*.scss`, gulp.parallel('sass'));
-});
-
 
 gulp.task('scripts', () => build(jsSource.dev, false));
 
-gulp.task('scripts:watch', () => watch(jsSource.dev, false));
+gulp.task('scripts_watch', () => watch(jsSource.dev, false));
 
 
 gulp.task('test', () => build(jsSource.test, false));
 
-gulp.task('test:watch', () => watch(jsSource.test, false));
+gulp.task('tests_watch', () => watch(jsSource.test, false));
 
 
 gulp.task('images', () => {
@@ -186,10 +196,6 @@ gulp.task('images', () => {
 		.pipe( gulp.dest(`${DIR_DIST_IMAGES}/`) );
 });
 
-gulp.task('images:watch', () => {
-	gulp.watch(`${DIR_SRC_IMAGES}/**/*.{jpg,png,gif,svg}`, gulp.parallel('images'));
-});
-
 
 /**
  * Workflows
@@ -197,4 +203,11 @@ gulp.task('images:watch', () => {
 
 gulp.task('build', gulp.series('clean', gulp.parallel('scripts', 'sass', 'images', 'test')));
 
-gulp.task('watch', gulp.series('build', gulp.parallel('scripts:watch', 'sass:watch', 'images:watch', 'test:watch')));
+
+gulp.task('serve', () => {
+	browserSync.init(browserSyncConf);
+	gulp.watch(`${DIR_SRC_STYLES}/**/*.scss`).on('change', gulp.series('sass', reload));
+	gulp.watch(`${DIR_SRC_SCRIPTS}/**/*.js`).on('change', gulp.series('scripts_watch', reload));
+	gulp.watch(`${DIR_SRC_IMAGES}/**/*.{jpg,png,gif,svg}`).on('change', gulp.series('images', reload));
+	gulp.watch(`${DIR_TEST}/**/*.js`).on('change', gulp.series('tests_watch', reload));
+});
