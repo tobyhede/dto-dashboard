@@ -32,6 +32,7 @@ node_modules/
 docs/
 doc/
 .idea/
+
 # build/
 
 *.dump
@@ -47,11 +48,7 @@ public/javascripts/*
 
 
 
-
-
 # Created by https://www.gitignore.io/api/os,osx,node,ruby,rubymine,windows
-
-#!! ERROR: os is undefined. Use list command to see defined gitignore types !!#
 
 ### OSX ###
 *.DS_Store
