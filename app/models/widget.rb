@@ -10,6 +10,10 @@ class Widget < ApplicationRecord
   has_many :datasets, :through => :dataset_widgets
   has_many :datapoints, :through => :datasets
 
+  KPIS = ['User Satisfaction', 'Cost per Transaction', 'Digital Take Up', 'Completion Rate']
+
+  scope :kpis, -> { where(:name => KPIS) }
+
   validates :size, :type, :presence => true
 
   validates :size, inclusion: { in: %w(extra-small small medium large extra-large),
@@ -26,14 +30,6 @@ class Widget < ApplicationRecord
 
   def dataset
     datasets.first
-  end
-
-  def data
-    as_json(:include => {
-      :datasets => {
-        :include => :datapoints
-      }
-    })
   end
 
 end

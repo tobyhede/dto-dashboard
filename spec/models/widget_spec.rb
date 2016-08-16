@@ -25,17 +25,13 @@ RSpec.describe Widget, type: :model do
     it { is_expected.to_not have_data }
   end
 
-  # http://api.rubyonrails.org/classes/ActiveModel/Serializers/JSON.html
-  describe 'json' do
+  describe 'kpis' do
+    before {
+      Widget::KPIS.each{ |n| FactoryGirl.create(:widget, :name => n) }
+    }
 
-    let(:widget) { FactoryGirl.create(:widget_with_datasets) }
-
-    it '.data' do
-      expect(widget.data).to include("datasets")
-      expect(widget.data["datasets"].first).to include("datapoints")
-    end
+    subject { Widget.kpis }
+    it { is_expected.to have(4).widgets }
   end
-
-
 
 end

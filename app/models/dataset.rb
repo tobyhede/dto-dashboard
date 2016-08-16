@@ -16,27 +16,23 @@ class Dataset < ApplicationRecord
   end
 
   def up?
-    change > 0
+    difference > 0
   end
 
   def down?
     !up?
   end
 
-  def changed?
-    change != 0
+  def trending?
+    difference != 0
   end
 
-  def unchanged?
-    change == 0
-  end
-
-  def change
+  def difference
     latest.value - previous.value
   end
 
   def trend
-    return 'unchanged' if unchanged?
+    return 'unchanged' if !trending?
     up? ? 'up' : 'down'
   end
 

@@ -6,8 +6,8 @@ class WidgetDecorator < Draper::Decorator
 
     date = dataset.previous.ts.to_formatted_s(:month_and_year)
 
-    if dataset.changed?
-      "#{dataset.trend.capitalize} by #{format(dataset.change)} since #{date}"
+    if dataset.trending?
+      "#{dataset.trend.capitalize} by #{format(dataset.difference)} since #{date}"
     else
       "#{dataset.trend.capitalize} since #{date}"
     end
@@ -27,6 +27,17 @@ class WidgetDecorator < Draper::Decorator
   end
 
   def to_chart
-    
+    data = as_json(:include => {
+      :datasets => {
+        :include => :datapoints
+      }
+    })
+
+    data.merge(
+      "summary" => summary,
+      "suffix" => dataset.suffix,
+      "latest" => dataset.latest
+    )
+
   end
 end

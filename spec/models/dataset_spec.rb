@@ -40,37 +40,36 @@ RSpec.describe Dataset, type: :model do
       let(:latest_value)    { 100 }
       let(:previous_value)  { 50 }
 
-      it { is_expected.to be_changed }
+      it { is_expected.to be_trending }
       it { is_expected.to be_up }
       it { is_expected.to_not be_down }
 
-      its(:change)  { is_expected.to eq 50 }
-      its(:trend)   { is_expected.to eq 'up' }
+      its(:difference)  { is_expected.to eq 50 }
+      its(:trend)       { is_expected.to eq 'up' }
     end
 
     context 'down' do
       let(:latest_value)    { 42 }
       let(:previous_value)  { 99 }
 
-      it { is_expected.to be_changed }
+      it { is_expected.to be_trending }
       it { is_expected.to be_down }
       it { is_expected.to_not be_up }
 
-      its(:change)  { is_expected.to eq -57 }
-      its(:trend)   { is_expected.to eq 'down' }
+      its(:difference)  { is_expected.to eq -57 }
+      its(:trend)       { is_expected.to eq 'down' }
     end
 
     context 'unchanged' do
       let(:latest_value)    { 42 }
       let(:previous_value)  { 42 }
 
-      it { is_expected.to be_unchanged }
-      it { is_expected.to_not be_changed }
+      it { is_expected.to_not be_trending }
       it { is_expected.to be_down }
       it { is_expected.to_not be_up }
 
-      its(:change)  { is_expected.to eq 0 }
-      its(:trend)   { is_expected.to eq 'unchanged' }
+      its(:difference)  { is_expected.to eq 0 }
+      its(:trend)       { is_expected.to eq 'unchanged' }
     end
 
 
