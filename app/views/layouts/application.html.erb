@@ -14,16 +14,13 @@
     <% # Google Analytics %>
     <script>dataLayer = []</script><!-- TODO this should be dynamically generated -->
     <script>
-      window.ga = window.ga || function () {
-              (ga.q = ga.q || []).push(arguments)
-          };
-      ga.l = +new Date;
-      ga('create', 'UA-61222473-3', 'auto'); // TODO this should be dynamically generated
-      // Autotrack plugins
-      ga('require', 'eventTracker');
-      ga('require', 'outboundLinkTracker');
+        window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+        ga('create', 'UA-61222473-3', 'auto'); // TODO this should be dynamically generated
+        // Autotrack plugins
+        ga('require', 'eventTracker');
+        ga('require', 'outboundLinkTracker');
 
-      ga('send', 'pageview');</script>
+        ga('send', 'pageview');</script>
     <script async src="https://www.google-analytics.com/analytics.js"></script>
     <% # End Google Analytics %>
 </head>
