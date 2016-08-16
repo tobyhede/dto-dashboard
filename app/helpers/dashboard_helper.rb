@@ -3,17 +3,17 @@ module DashboardHelper
   def DashboardHelper.sizeToStyle(size)
     cls = case size
             when 'extra-small' then
-              'aus-width-one-fourth'
+              'extra-small'
             when 'small' then
-              'aus-width-one-third'
+              'small'
             when 'medium' then
-              'aus-width-one-half'
+              'medium'
             when 'large' then
-              'aus-width-two-thirds'
+              'large'
             when 'full' then
-              'aus-width-one-whole'
+              'full'
             else
-              'aus-width-one-half'
+              'medium'
           end
     return cls
   end
