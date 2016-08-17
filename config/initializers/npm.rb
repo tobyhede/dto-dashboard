@@ -1,1 +1,1 @@
-system 'npm install && npm run build'
+system 'npm install'
