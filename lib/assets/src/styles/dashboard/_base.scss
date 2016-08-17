@@ -26,13 +26,13 @@
   }
 }
 
-.aus-width-one-whole {
+.full {
   @include span-columns(12);
   padding-left: 15px;
   padding-right: 15px;
 }
 
-.aus-width-one-half {
+.medium {
   @include span-columns(6);
 
   @media (max-width: 768px) {
@@ -40,7 +40,7 @@
   }
 }
 
-.aus-width-one-third {
+.small {
   @include span-columns(12);
 
   @include media($screen-sm) {
@@ -58,7 +58,7 @@
   }
 }
 
-.aus-width-two-thirds {
+.large {
   @include span-columns(12);
 
   @include media($screen-sm) {
@@ -70,7 +70,7 @@
   }
 }
 
-.aus-width-one-fourth {
+.extra-small {
   @include span-columns(3);
 
   @media (max-width: 768px) {
