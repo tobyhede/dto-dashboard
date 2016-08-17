@@ -4,6 +4,8 @@ class Dashboard < ApplicationRecord
   belongs_to :organisation
   has_many :widgets
 
-  scope :published, -> { where('published_at <= NOW()') }
+  def self.published
+    where('published_at <= NOW()')
+  end
 
 end
