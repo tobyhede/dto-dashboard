@@ -28,7 +28,7 @@
     <% # End Google Analytics %>
 </head>
 
-<body class="#{bodyClass}"><!-- TODO this should be dynamically generated -->
+<body class="<%= body_class(yield(:body_class_names)) %>">
     <!--[if IE 8]>
     <p>You are using an outdated browser. Please upgrade your browser to improve your experience.</p>
     <![endif]-->
