@@ -2,9 +2,11 @@
 <html class="no-js" lang="en">
 <head>
     <meta charset="utf-8">
-    <title><%= content_for(:title) || "Australian Government Performance Dashboards" %></title>
+
+  <title><%= content_for?(:title) ? yield(:title) : "Performance Dashboards" %></title>
+  <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Australian Government Performance Dashboards" %>">
+
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content=""><!-- TODO: this should be dynamically generated -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js"></script>
@@ -16,6 +18,7 @@
     <script>
         window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
         ga('create', 'UA-61222473-3', 'auto'); // TODO this should be dynamically generated
+
         // Autotrack plugins
         ga('require', 'eventTracker');
         ga('require', 'outboundLinkTracker');

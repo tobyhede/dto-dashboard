@@ -1,6 +1,6 @@
 module DashboardHelper
 
-  def sizeToStyle(size)
+  def size_to_style(size)
     return case size
              when 'extra-small' then
                'aus-width-one-fourth'
