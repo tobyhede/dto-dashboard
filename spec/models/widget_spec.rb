@@ -29,7 +29,6 @@ RSpec.describe Widget, type: :model do
     before {
       Widget::KPIS.each{ |n| FactoryGirl.create(:widget, :name => n) }
     }
-
     subject { Widget.kpis }
     it { is_expected.to have(4).widgets }
   end
