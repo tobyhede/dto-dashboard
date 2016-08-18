@@ -17,4 +17,7 @@ class DashboardDecorator < Draper::Decorator
     url.present?
   end
 
+  def css_class
+    name.parameterize
+  end
 end

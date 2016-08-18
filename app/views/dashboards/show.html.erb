@@ -10,7 +10,7 @@
     </defs>
   </svg>
 </div>
-<div id="<%= @dashboard.id %>>" class="<%= dashboard.name %>">
+<div id="dashboard-<%= dashboard.id %>" class="<%= dashboard.css_class %>">
   <div class="hero-region">
     <div class="container">
       <div class="row dashboard__top">
@@ -18,12 +18,13 @@
         <div class="dashboard__header">
           <h1><%= dashboard.name %> </h1>
           <div class="badge__holder">
-            <span class="badge-default">
-              <% if dashboard.show_hero? %>
-                <h1>HERO</h1>
-              <% end %>
-            </span>
+            <span class="badge-default"><%= dashboard.organisation.name %></span>
           </div>
+          <% if dashboard.show_hero? %>
+            <div class="classfix">
+              <div class="hero-widget hero" data-data=""></div>
+            </div>
+          <% end %>
         </div>
       </div>
     </div>
