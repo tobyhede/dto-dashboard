@@ -1,10 +1,8 @@
 class DashboardsController < ApplicationController
 
-  # include DashboardHelper
-
-
   attr_reader :dashboards, :dashboard, :widgets
   helper_method :dashboards, :dashboard
+
 
   def index
     @dashboards = Dashboard.published.by_name.all
