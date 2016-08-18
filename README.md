@@ -26,6 +26,7 @@ Otherwise, create a `.env` file in the Rails directory and populate with the rel
 DB_HOST = '127.0.0.1'
 DB_USER_NAME = 'dashboard'
 DB_PWD = 'password'
+GA_UA_CODE = 'UA-61222473-3'
 ```
 
 If you don't have Bundler installed
