@@ -17,7 +17,7 @@
     <script>dataLayer = []</script><!-- TODO this should be dynamically generated -->
     <script>
         window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-        ga('create', 'UA-61222473-3', 'auto'); // TODO this should be dynamically generated
+        ga('create', '<%= ENV['GA_UA_CODE'] %>', 'auto'); // TODO this should be dynamically generated
 
         // Autotrack plugins
         ga('require', 'eventTracker');
