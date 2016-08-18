@@ -23,6 +23,14 @@ class Widget < ApplicationRecord
 
   validates :row, :pos, :presence => true, :numericality => { :only_integer => true }
 
+  def element_id
+    "widget-#{name.parameterize }"
+  end
+
+  def multiple?
+    datasets.many?
+  end
+
   def self.hero
     where(:name => HERO)
   end
