@@ -17,7 +17,10 @@ FactoryGirl.define do
         widget.datasets << create_list(:dataset_with_datapoints, evaluator.datasets_count)
         widget.save!
       end
-    end
 
+      factory :widget_hero do
+        name Widget::HERO
+      end
+    end
   end
 end

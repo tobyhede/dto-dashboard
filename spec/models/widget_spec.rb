@@ -33,4 +33,11 @@ RSpec.describe Widget, type: :model do
     it { is_expected.to have(4).widgets }
   end
 
+  describe 'hero' do
+    before {
+      FactoryGirl.create(:widget, :name => Widget::HERO)
+    }
+    subject { Widget.hero }
+    it { is_expected.to have(1).widget }
+  end
 end
