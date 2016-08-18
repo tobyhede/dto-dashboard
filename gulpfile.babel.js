@@ -197,17 +197,24 @@ gulp.task('images', () => {
 });
 
 
+function watch() {
+	gulp.watch(`${DIR_SRC_STYLES}/**/*.scss`).on('change', gulp.series('sass', reload));
+	gulp.watch(`${DIR_SRC_SCRIPTS}/**/*.js`).on('change', gulp.series('scripts_watch', reload));
+	gulp.watch(`${DIR_SRC_IMAGES}/**/*.{jpg,png,gif,svg}`).on('change', gulp.series('images', reload));
+	gulp.watch(`${DIR_TEST}/**/*.js`).on('change', gulp.series('tests_watch', reload));
+}
+
+gulp.task('connect', () => {
+	browserSync.init(browserSyncConf);
+});
+
+
 /**
  * Workflows
  */
 
 gulp.task('build', gulp.series('clean', gulp.parallel('scripts', 'sass', 'images', 'test')));
 
+gulp.task('watch', gulp.series('build', watch));
 
-gulp.task('serve', () => {
-	browserSync.init(browserSyncConf);
-	gulp.watch(`${DIR_SRC_STYLES}/**/*.scss`).on('change', gulp.series('sass', reload));
-	gulp.watch(`${DIR_SRC_SCRIPTS}/**/*.js`).on('change', gulp.series('scripts_watch', reload));
-	gulp.watch(`${DIR_SRC_IMAGES}/**/*.{jpg,png,gif,svg}`).on('change', gulp.series('images', reload));
-	gulp.watch(`${DIR_TEST}/**/*.js`).on('change', gulp.series('tests_watch', reload));
-});
+gulp.task('serve', gulp.series('build', 'connect', watch));
