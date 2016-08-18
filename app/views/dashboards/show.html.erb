@@ -16,12 +16,11 @@
       <div class="row dashboard__top">
         <a href="/" aria-hidden="true" class="back-link">Back to overview</a>
         <div class="dashboard__header">
-          <h1><%= @dashboard.name.chomp('Dashboard') %> </h1>
+          <h1><%= dashboard.name %> </h1>
           <div class="badge__holder">
             <span class="badge-default">
-              <%-# if (dashboard.displayKPIs() && dashboard.hasHero()) -%>
-              <%-# <div class='hero-widget hero' data-data=JSON.stringify(@dashboard.hero.datasets)></div> -%>
-              <% if @dashboard.display_hero && @dashboard.display_kpis then %>
+              <% if dashboard.show_hero? %>
+                <h1>HERO</h1>
               <% end %>
             </span>
           </div>
@@ -32,31 +31,26 @@
 </div>
 
 <div class="container-fluid metric-breakdown-view">
-  <% if dashboard.display_kpis then %>
-      <div class="clearfix dashboard__kpis">
-        <div class="container">
-          <div class="row">
-            <%-# we need render a set of KPIs here but where is the data? - for (let widget of dashboard.kpis) -%>
-            <% @widgets.each do |widget| %>
-                <%= render :partial => 'widget', :locals => {:dashboard => dashboard, :widget => widget} %>
-            <% end %>
-          </div>
+  <% if dashboard.show_kpis? %>
+    <div class="clearfix dashboard__kpis">
+      <div class="container">
+        <div class="row">
+          <% dashboard.widgets.kpis.each do |widget| %>
+              <%= render :partial => 'widget', :locals => {:dashboard => dashboard, :widget => widget} %>
+          <% end %>
         </div>
       </div>
+    </div>
   <% end %>
 </div>
 
 <div class="container dashboard__secondary">
-  <%-# we need render the dashboard row here, but where are the dashboard rows, are they dataset? -%>
-  <%-# the code logic could be the following commented lines. TO-DO: please implement the following logic -%>
-  <% if false %>
-    <% dashboard.rows.each do |row| %>
+  <% dashboard.rows.each do |widgets| %>
     <div class="row">
-      <% row.each do |widget| %>
+      <% widgets.each do |widget| %>
         <%= render :partial => 'widget', :locals => {:dashboard => dashboard, :widget => widget} %>
-        <% end %> // end of widget loop
-     </div>
-     <% end %> // end of the dashboard row loop
+      <% end %>
+    </div>
   <% end %>
 </div>
 
@@ -68,26 +62,15 @@
           <h4>Dashboard Information</h4>
         </div>
         <div id="dashboard-notes" class="widget__body">
-            <%-# render the dashboard notes here. TO-DO: please implement the following logic -%>
-            <% if false %>
-              if have dashboard notes
-                <p>dashboard notes</p>
-                else
-                <p>dashboard notes</p>
-            <% end %>
+          <% if dashboard.show_notes? %>
+            <%= raw dashboard.notes %>
+          <% end %>
         </div>
       </div>
       <div class="widget-text__footer aus-width-five-twelfths">
-           <%-# render the dashboard definition json link here. TO-DO: please implement the following logic -%>
-            <% if false %>
-              if dashboard exists tnen render the json link
-               <p>Visit<a href="https://start.business.gov.au/" target="_blank">https://start.business.gov.au/
-               <i class="fa fa-external-link"></i></a></p>
-                <p><a href="/api/1/dashboards/3-hobby-or-business-tool-dashboard"
-                ga-on="click" ga-event-category="Dashboard Show"
-                ga-event-action="Clicked Download Raw Dashboard Data"
-                ga-event-label="<%= dashboard.name %>">View Raw Dashboard Data</a></p>
-            <% end %>
+        <p>
+          Visit <a href="<%= dashboard.url %>" target="_blank"><%= dashboard.url %><i class="fa fa-external-link"></i></a>
+        </p>
       </div>
     </div>
   </div>
