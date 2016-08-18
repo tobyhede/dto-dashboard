@@ -9,7 +9,7 @@ class Dashboard < ApplicationRecord
   end
 
   def rows
-    widgets.by_row.by_pos.inject([]){ | a, w|
+    widgets.other.by_row.by_pos.inject([]){ | a, w|
       a[w.row] = [] unless a[w.row]
       a[w.row] << w
       a

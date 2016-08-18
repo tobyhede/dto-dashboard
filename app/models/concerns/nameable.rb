@@ -3,10 +3,7 @@ module Nameable
 
   included do
     validates :name, :presence => true
-  end
-
-  def self.by_name
-    order(:name => 'ASC')
+    scope :by_name, -> { order(:name => 'ASC') }
   end
 
   def to_s

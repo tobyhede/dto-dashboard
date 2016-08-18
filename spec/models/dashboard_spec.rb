@@ -7,8 +7,7 @@ RSpec.describe Dashboard, type: :model do
 
   it { is_expected.to validate_presence_of :name }
 
-  let(:published_at)  { nil }
-  let!(:dashboard)    { FactoryGirl.create(:dashboard, :published_at => published_at) }
+  let!(:dashboard)    { FactoryGirl.create(:dashboard) }
 
   context 'unpublished' do
     subject { Dashboard.published.all }
@@ -16,7 +15,7 @@ RSpec.describe Dashboard, type: :model do
   end
 
   context 'published' do
-    let(:published_at) { 4.days.ago }
+    let!(:dashboard) { FactoryGirl.create(:dashboard_published) }
     subject { Dashboard.published.all }
     it      { is_expected.to have(1).dashboard }
   end
@@ -39,12 +38,9 @@ RSpec.describe Dashboard, type: :model do
     let!(:widget_0_0) { FactoryGirl.create(:widget, :dashboard => dashboard, :row => 0, :pos => 0) }
     let!(:widget_1_1) { FactoryGirl.create(:widget, :dashboard => dashboard, :row => 1, :pos => 1) }
     let!(:widget_0_1) { FactoryGirl.create(:widget, :dashboard => dashboard, :row => 0, :pos => 1) }
+    let!(:widget_2_0) { FactoryGirl.create(:widget, :dashboard => dashboard, :row => 2, :pos => 0) }
 
     subject { dashboard.rows }
-    # it {
-    #   puts dashboard.rows
-    # }
-    it { is_expected.to eq [[widget_0_0, widget_0_1], [widget_1_0, widget_1_1]] }
-
+    it { is_expected.to eq [[widget_0_0, widget_0_1], [widget_1_0, widget_1_1], [widget_2_0]] }
   end
 end
