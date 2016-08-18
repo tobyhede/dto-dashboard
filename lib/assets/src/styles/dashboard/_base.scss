@@ -25,13 +25,13 @@
   }
 }
 
-.full {
+.aus-width-one-whole {
   @include span-columns(12);
   padding-left: 15px;
   padding-right: 15px;
 }
 
-.medium {
+.aus-width-one-half  {
   @include span-columns(6);
 
   @media (max-width: 768px) {
@@ -39,7 +39,7 @@
   }
 }
 
-.small {
+.aus-width-one-third {
   @include span-columns(12);
 
   @include media($screen-sm) {
@@ -57,7 +57,7 @@
   }
 }
 
-.large {
+.aus-width-two-thirds {
   @include span-columns(12);
 
   @include media($screen-sm) {
@@ -69,7 +69,7 @@
   }
 }
 
-.extra-small {
+.aus-width-one-fourth {
   @include span-columns(3);
 
   @media (max-width: 768px) {
