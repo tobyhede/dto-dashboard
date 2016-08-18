@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20160728011053) do
     t.integer  "organisation_id",                null: false
     t.text     "name",                           null: false
     t.text     "notes"
+    t.text     "url"
     t.boolean  "display_hero",    default: true, null: false
     t.boolean  "display_kpis",    default: true, null: false
     t.datetime "published_at"
