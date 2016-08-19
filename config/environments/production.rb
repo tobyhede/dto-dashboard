@@ -85,7 +85,7 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   # Build front end
-  config.after_initialize do
-    system 'npm run build'
-  end
+  # config.after_initialize do
+  #   system 'npm run build'
+  # end
 end
