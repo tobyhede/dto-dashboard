@@ -36,7 +36,7 @@
     <div class="clearfix dashboard__kpis">
       <div class="container">
         <div class="row">
-          <% dashboard.widgets.kpis.each do |widget| %>
+          <% dashboard.first_row.each do |widget| %>
               <%= render :partial => 'widget', :locals => {:widget => widget.decorate} %>
           <% end %>
         </div>
@@ -46,7 +46,7 @@
 </div>
 
 <div class="container dashboard__secondary">
-  <% dashboard.rows.each do |widgets| %>
+  <% dashboard.remaining_rows.each do |widgets| %>
     <div class="row">
       <% widgets.each do |widget| %>
         <%= render :partial => 'widget', :locals => {:widget => widget.decorate} %>

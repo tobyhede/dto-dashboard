@@ -1,6 +1,10 @@
 class WidgetDecorator < Draper::Decorator
   delegate_all
 
+  def element_id
+    "widget-#{name.parameterize }"
+  end
+
   def style
     arity = multiple? ? 'multiple' : 'single'
     "#{type} #{arity}"

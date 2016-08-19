@@ -10,7 +10,6 @@ class Widget < ApplicationRecord
   has_many :datasets, :through => :dataset_widgets
   has_many :datapoints, :through => :datasets
 
-  HERO = 'Hero'
   KPIS = ['User Satisfaction', 'Cost per Transaction', 'Digital Take Up', 'Completion Rate']
 
   validates :size, :type, :presence => true
@@ -23,24 +22,24 @@ class Widget < ApplicationRecord
 
   validates :row, :pos, :presence => true, :numericality => { :only_integer => true }
 
-  def element_id
-    "widget-#{name.parameterize }"
-  end
-
-  def multiple?
-    datasets.many?
+  def self.with_datasets
+    includes(:datasets => :datapoints)
   end
 
   def self.hero
-    where(:name => HERO)
+    where(:is_hero => true)
   end
 
   def self.kpis
     where(:name => KPIS)
   end
 
+  def self.without_hero
+    where.not(:is_hero => true)
+  end
+
   def self.other
-    where.not(:name => KPIS).where.not(:name => HERO)
+    where.not(:name => KPIS).where.not(:is_hero => true)
   end
 
   def self.by_row
@@ -49,6 +48,10 @@ class Widget < ApplicationRecord
 
   def self.by_pos
     order(:pos => 'ASC')
+  end
+
+  def multiple?
+    datasets.many?
   end
 
   def has_data?

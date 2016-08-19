@@ -7,7 +7,8 @@ FactoryGirl.define do
     units     'n'
     row       0
     pos       0
-
+    is_hero   false
+    
     factory :widget_with_datasets do
       transient do
         datasets_count 1
@@ -19,7 +20,7 @@ FactoryGirl.define do
       end
 
       factory :widget_hero do
-        name Widget::HERO
+        is_hero true
       end
     end
   end

@@ -35,7 +35,7 @@ RSpec.describe Widget, type: :model do
 
   describe 'hero' do
     before {
-      FactoryGirl.create(:widget, :name => Widget::HERO)
+      FactoryGirl.create(:widget, :is_hero => true)
     }
     subject { Widget.hero }
     it { is_expected.to have(1).widget }

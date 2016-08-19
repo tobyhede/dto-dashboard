@@ -32,7 +32,6 @@ RSpec.describe Dashboard, type: :model do
     it { is_expected.to have(1).widget }
   end
 
-
   describe 'rows' do
     let!(:widget_1_0) { FactoryGirl.create(:widget, :dashboard => dashboard, :row => 1, :pos => 0) }
     let!(:widget_0_0) { FactoryGirl.create(:widget, :dashboard => dashboard, :row => 0, :pos => 0) }
@@ -40,7 +39,10 @@ RSpec.describe Dashboard, type: :model do
     let!(:widget_0_1) { FactoryGirl.create(:widget, :dashboard => dashboard, :row => 0, :pos => 1) }
     let!(:widget_2_0) { FactoryGirl.create(:widget, :dashboard => dashboard, :row => 2, :pos => 0) }
 
-    subject { dashboard.rows }
-    it { is_expected.to eq [[widget_0_0, widget_0_1], [widget_1_0, widget_1_1], [widget_2_0]] }
+    # subject { dashboard.rows }
+    it { expect(dashboard.rows).to eq [[widget_0_0, widget_0_1], [widget_1_0, widget_1_1], [widget_2_0]] }
+    it { expect(dashboard.first_row).to eq [widget_0_0, widget_0_1] }
+    it { expect(dashboard.remaining_rows).to eq [[widget_1_0, widget_1_1], [widget_2_0]] }
   end
+
 end
