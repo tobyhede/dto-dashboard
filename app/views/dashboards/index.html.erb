@@ -1,4 +1,4 @@
-<div class="container">
+@cath, @elise If we can’t get a resolution on the IE issue, will need<div class="container">
   <section>
     <div class="dashboards-intro">
       <h1 class="sr-only">Dashboards</h1>
@@ -17,7 +17,7 @@
               <p>Updated at <%= dashboard.published_at.strftime("%d %b %Y %H:%M:%S") %></p>
             </div>
           </div>
-          <a href="<% dashboard_path(dashboard) %>" class="card__link__visible">View <% dashboard.name %></a>
+          <%= link_to "View #{dashboard.name}", dashboard_path(dashboard), :class => "card__link__visible" %>
         </div>
         <div class="card__right dashboard__kpis clearfix">
           <% if dashboard.display_kpis? %>
