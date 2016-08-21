@@ -1,4 +1,4 @@
-<div class=<%= DashboardHelper.sizeToStyle(widget.size) %>>
+<div class=<%= size_to_style(widget.size) %>>
   <div class="widget <%= widget.name.downcase %> has-data-<%= !widget.has_data? %> kpi-sparkline single">
     <div id="<%= widget.name.downcase %>" class="widget__title">
       <h4><%= widget.name %></h4>

@@ -1,3 +1,5 @@
+<% content_for :body_class_names do %>high-contrast<% end %>
+
 <div aria-hidden="true" class="patterns">
   <svg height="10" width="10" xmlns="http://www.w3.org/2000/svg" version="1.1">
     <defs>
@@ -54,7 +56,7 @@
         <%= render :partial => 'widget', :locals => {:dashboard => dashboard, :widget => widget} %>
         <% end %> // end of widget loop
      </div>
-     <% end %> // end of the dashboard row loop  
+     <% end %> // end of the dashboard row loop
   <% end %>
 </div>
 
@@ -78,12 +80,12 @@
       <div class="widget-text__footer aus-width-five-twelfths">
            <%-# render the dashboard definition json link here. TO-DO: please implement the following logic -%>
             <% if false %>
-              if dashboard exists tnen render the json link 
+              if dashboard exists tnen render the json link
                <p>Visit<a href="https://start.business.gov.au/" target="_blank">https://start.business.gov.au/
                <i class="fa fa-external-link"></i></a></p>
-                <p><a href="/api/1/dashboards/3-hobby-or-business-tool-dashboard" 
+                <p><a href="/api/1/dashboards/3-hobby-or-business-tool-dashboard"
                 ga-on="click" ga-event-category="Dashboard Show"
-                ga-event-action="Clicked Download Raw Dashboard Data" 
+                ga-event-action="Clicked Download Raw Dashboard Data"
                 ga-event-label="<%= dashboard.name %>">View Raw Dashboard Data</a></p>
             <% end %>
       </div>
