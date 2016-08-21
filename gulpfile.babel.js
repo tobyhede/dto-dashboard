@@ -32,12 +32,10 @@ export const DIR_SRC = path.join(__dirname, 'lib/assets/src');
 export const DIR_DIST = path.join(__dirname, 'public');
 export const DIR_NPM = path.join(__dirname, 'node_modules');
 
-export const DIR_UNIT_TEST = path.join(__dirname, 'lib/assets/tests/unit');
-export const DIR_UNIT_TESTDIST = path.join(__dirname, 'lib/assets/tests/unit/.tmp');
-// TODO - deprecate Jasmine Tests
-export const DIR_LEGACY_TEST = path.join(__dirname, 'spec/javascripts');
-export const DIR_LEGACY_TESTDIST = path.join(__dirname, './spec/build');
-
+export const DIR_TESTS = path.join(__dirname, 'lib/assets/tests/');
+export const DIR_TESTS_LEGACY = path.join(__dirname, 'spec/javascripts'); // TODO - deprecate
+export const DIR_DIST_TESTS = path.join(__dirname, 'lib/assets/tests/.tmp');
+export const DIR_DIST_TESTS_LEGACY = path.join(__dirname, './spec/build');   // TODO - deprecate
 
 export const DIR_SRC_STYLES = path.join(DIR_SRC, 'styles');
 export const DIR_SRC_SCRIPTS = path.join(DIR_SRC, 'scripts');
@@ -55,9 +53,9 @@ const jsSource = {
     },
     test: {
         name: 'test',
-        entry: DIR_LEGACY_TEST,
+        entry: DIR_TESTS_LEGACY,
         build: 'index.js',
-        dest: DIR_LEGACY_TESTDIST
+        dest: DIR_DIST_TESTS_LEGACY
     }
 };
 
@@ -166,19 +164,17 @@ gulp.task('clean', (done) => {
 	], done);
 });
 
-gulp.task('clean_tests', (done) => {
-	return clean([
-    DIR_LEGACY_TESTDIST
-	], done);
+gulp.task('clean:tests', (done) => {
+  return clean([
+    DIR_DIST_TESTS
+  ], done);
 });
 
-gulp.task('clean:unit_test', (done) => {
+gulp.task('clean:tests:legacy', (done) => {
 	return clean([
-    DIR_UNIT_TESTDIST
+    DIR_DIST_TESTS_LEGACY
 	], done);
 });
-
-
 
 
 gulp.task('sass', () => {
@@ -207,10 +203,9 @@ gulp.task('scripts', () => build(jsSource.dev, false));
 gulp.task('scripts_watch', () => watch(jsSource.dev, false));
 
 
-// TODO - deprecate Jasmine Tests
-gulp.task('test:legacy', () => build(jsSource.test, false));
-// TODO - deprecate Jasmine Tests
-gulp.task('test_watch:legacy', () => watch(jsSource.test, false));
+gulp.task('test:legacy', () => build(jsSource.test, false));  // TODO - deprecate
+
+gulp.task('test_watch:legacy', () => watch(jsSource.test, false));  // TODO - deprecate
 
 
 gulp.task('images', () => {
@@ -236,7 +231,7 @@ gulp.task('connect', () => {
  * Workflows
  */
 
-gulp.task('test', gulp.series('clean_tests', 'test:legacy'));
+gulp.task('test', gulp.series('clean:tests:legacy', 'test:legacy'));
 
 gulp.task('build', gulp.series('clean', gulp.parallel('scripts', 'sass', 'images')));
 

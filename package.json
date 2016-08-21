@@ -67,11 +67,13 @@
     "build": "NODE_ENV=production gulp build",
     "dev": "gulp watch",
     "start": "gulp serve",
-    "pretest": "gulp clean:unit_test",
-    "test": "dotenv ava 'lib/assets/tests/unit/**/*.test.js' --require=babel-register --tap | tap-spec",
-    "test:watch": "DEBUG=ava:watcher npm run test -- --watch --verbose ",
-    "test:coverage": "nyc ava",
+    "test": "npm run test:unit && npm run test:legacy",
     "test:legacy": "gulp test",
+    "pretest:unit": "gulp clean:tests",
+    "test:unit": "dotenv ava 'lib/assets/tests/**/*.test.js' --require=babel-register --tap | tap-spec",
+    "test:watch": "DEBUG=ava:watcher npm run test -- --watch --verbose",
+    "test:coverage": "nyc ava",
+
     "lint": "eslint ./lib/assets/src/scripts",
     "postinstall": "echo 'Installation with NPM successful. What to do next:\\n  npm run to see options'"
   },
