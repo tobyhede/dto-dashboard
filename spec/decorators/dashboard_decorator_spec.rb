@@ -32,4 +32,53 @@ RSpec.describe DashboardDecorator, type: :decorator do
     it { is_expected.to_not be_show_hero }
     it { is_expected.to_not be_show_kpis }
   end
+
+  describe '.notes' do
+
+    it 'to HTML' do
+      # Markdown note data
+      testData = "This is a simple example of a Markdown document.
+
+Use a blank link between paragraphs.
+You can use a bit of **bold** or _italics_. Use backticks to indicate
+`code` that will be rendered in monospace.
+
+Here's a list:
+
+                             - an item in the list
+      - another item
+      - yet another item
+
+      You can include blocks of code using three backticks:
+
+                                                   ```
+x <- rnorm(100)
+y <- 2*x + rnorm(100)
+```
+
+      Or you could indent four spaces:
+
+                                 mean(x)
+      sd(x)
+
+      It'll figure out numbered lists, too:
+
+1. First item
+2. Second item
+
+And it's easy to create links, like to
+      the [Markdown](http://daringfireball.net/projects/markdown/)
+      page."
+
+      decorator = DashboardDecorator.new()
+      html = decorator.to_html(testData)
+
+      puts "<========= Test Data ======>"
+      puts "#{testData}"
+      puts "<========= Test Data with HTML Format ======>"
+      puts "#{html}"
+    end
+
+  end
+
 end
