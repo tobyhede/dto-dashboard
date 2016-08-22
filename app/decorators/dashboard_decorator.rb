@@ -21,9 +21,13 @@ class DashboardDecorator < Draper::Decorator
     name.parameterize
   end
 
-  @markdown
+  @markdown = nil
+  def initialize(object, options = {})
+    super(object, options) # call the parent initialize function
+    initialize_markdown # initialize this object
+  end
 
-  def initialize
+  private def initialize_markdown
     render_options = {
       # will remove from the output HTML tags inputted by user
       filter_html: true,
@@ -68,8 +72,8 @@ class DashboardDecorator < Draper::Decorator
     @markdown = Redcarpet::Markdown.new(renderer, extensions)
   end
 
-  def to_html(data)
-    html = @markdown.render(data).html_safe
+  public def to_html(data)
+   html = @markdown.render(data).html_safe
     return html
   end
 

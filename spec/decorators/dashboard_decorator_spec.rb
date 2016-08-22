@@ -70,7 +70,7 @@ And it's easy to create links, like to
       the [Markdown](http://daringfireball.net/projects/markdown/)
       page."
 
-      decorator = DashboardDecorator.new()
+      decorator = DashboardDecorator.new(Dashboard.first)
       html = decorator.to_html(testData)
 
       puts "<========= Test Data ======>"
