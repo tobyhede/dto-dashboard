@@ -35,10 +35,12 @@ RSpec.describe DashboardDecorator, type: :decorator do
 
   describe '.notes' do
 
-    it 'to HTML' do
+    let(:dboard) { create(:dashboard) }
+    let(:decorator) { DashboardDecorator.new(dboard) }
+
+    it 'convert notes to HTML' do
       # Markdown note data
-      dashboard = create(:dashboard)
-      dashboard.notes = "This is a simple example of a Markdown document.
+      dboard.notes = "This is a simple example of a Markdown document.
 
 Use a blank link between paragraphs.
 You can use a bit of **bold** or _italics_. Use backticks to indicate
@@ -71,13 +73,12 @@ And it's easy to create links, like to
       the [Markdown](http://daringfireball.net/projects/markdown/)
       page."
 
-      decorator = DashboardDecorator.new(dashboard)
-      html = decorator.to_html
+      html = decorator.notes_to_html
 
-      puts "<========= Test Data ======>"
-      puts "#{dashboard.notes}"
-      puts "<========= Test Data with HTML Format ======>"
-      puts "#{html}"
+      # puts "<========= Test Data ======>"
+      # puts "#{dboard.notes}"
+      # puts "<========= Test Data with HTML Format ======>"
+      # puts "#{html}"
     end
 
   end

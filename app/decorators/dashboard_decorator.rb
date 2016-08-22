@@ -22,9 +22,14 @@ class DashboardDecorator < Draper::Decorator
   end
 
   @markdown = nil
+
   def initialize(object, options = {})
     super(object, options) # call the parent initialize function
     initialize_markdown # initialize this object
+  end
+
+  private def markdown_initialized?
+    @markdown!=nil
   end
 
   private def initialize_markdown
@@ -72,8 +77,11 @@ class DashboardDecorator < Draper::Decorator
     @markdown = Redcarpet::Markdown.new(renderer, extensions)
   end
 
-  public def to_html
-    @markdown.render(notes).html_safe
-  end
+  public def notes_to_html
+    if !markdown_initialized? then
+      initialize_markdown
+    end
+      @markdown.render(notes).html_safe
+    end
 
-end
+  end
