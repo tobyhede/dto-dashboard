@@ -160,4 +160,4 @@ For advice for writing specs check [betterspecs](http://betterspecs.org/).
 
 ### Coding Standard/s
 
-[https://github.com/bbatsov/ruby-style-guide](Ruby Style Guide)
+[Ruby Style Guide](https://github.com/bbatsov/ruby-style-guide)
