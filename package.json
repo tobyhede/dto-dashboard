@@ -40,6 +40,7 @@
     "browser-sync": "^2.14.0",
     "browserify": "^13.0.0",
     "del": "^2.2.2",
+    "dotenv-cli": "^1.1.1",
     "eslint-plugin-import": "^1.11.1",
     "eslintify": "^2.1.0",
     "exorcist": "^0.4.0",
