@@ -64,6 +64,10 @@ To run on the default port (3000)
 rails server
 ```
 
+```
+bin/start.sh
+```
+
 The site can now be viewed at `http://localhost:3000/`
 
 Administration is available at `http://localhost:3000/admin`
@@ -153,3 +157,7 @@ For advice for writing specs check [betterspecs](http://betterspecs.org/).
  - A review should ideally involve actually checking out and running the code, and sanity checking it before merge.
 
  - Close any related issues​ in Jira
+
+### Coding Standard/s
+
+[https://github.com/bbatsov/ruby-style-guide](Ruby Style Guide)
