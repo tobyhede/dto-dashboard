@@ -31,8 +31,11 @@ export const ENV = process.env.NODE_ENV || 'development';
 export const DIR_SRC = path.join(__dirname, 'lib/assets/src');
 export const DIR_DIST = path.join(__dirname, 'public');
 export const DIR_NPM = path.join(__dirname, 'node_modules');
-export const DIR_TEST = path.join(__dirname, 'lib/assets/tests');
-export const DIR_TESTDIST = path.join(__dirname, '.tmp');
+
+export const DIR_TESTS = path.join(__dirname, 'lib/assets/tests/');
+export const DIR_TESTS_LEGACY = path.join(__dirname, 'spec/javascripts'); // TODO - deprecate
+export const DIR_DIST_TESTS = path.join(__dirname, 'lib/assets/tests/.tmp');
+export const DIR_DIST_TESTS_LEGACY = path.join(__dirname, './spec/build');   // TODO - deprecate
 
 export const DIR_SRC_STYLES = path.join(DIR_SRC, 'styles');
 export const DIR_SRC_SCRIPTS = path.join(DIR_SRC, 'scripts');
@@ -50,9 +53,9 @@ const jsSource = {
     },
     test: {
         name: 'test',
-        entry: `${DIR_TEST}/scripts`,
+        entry: DIR_TESTS_LEGACY,
         build: 'index.js',
-        dest: DIR_TESTDIST
+        dest: DIR_DIST_TESTS_LEGACY
     }
 };
 
@@ -144,16 +147,32 @@ function watch(env, minify) {
     return rebundle();
 }
 
+function clean(files, done) {
+  return del(files, done);
+}
+
 
 /**
  * Tasks
  */
 
 gulp.task('clean', (done) => {
-	return del([
+	return clean([
 		DIR_DIST_STYLES + '/**/*',  // don't remove the folder
 		DIR_DIST_SCRIPTS + '/**/*',
 		DIR_DIST_IMAGES + '/**/*',
+	], done);
+});
+
+gulp.task('clean:tests', (done) => {
+  return clean([
+    DIR_DIST_TESTS
+  ], done);
+});
+
+gulp.task('clean:tests:legacy', (done) => {
+	return clean([
+    DIR_DIST_TESTS_LEGACY
 	], done);
 });
 
@@ -184,9 +203,9 @@ gulp.task('scripts', () => build(jsSource.dev, false));
 gulp.task('scripts_watch', () => watch(jsSource.dev, false));
 
 
-gulp.task('test', () => build(jsSource.test, false));
+gulp.task('test:legacy', () => build(jsSource.test, false));  // TODO - deprecate
 
-gulp.task('tests_watch', () => watch(jsSource.test, false));
+gulp.task('test_watch:legacy', () => watch(jsSource.test, false));  // TODO - deprecate
 
 
 gulp.task('images', () => {
@@ -201,7 +220,6 @@ function watch() {
 	gulp.watch(`${DIR_SRC_STYLES}/**/*.scss`).on('change', gulp.series('sass', reload));
 	gulp.watch(`${DIR_SRC_SCRIPTS}/**/*.js`).on('change', gulp.series('scripts_watch', reload));
 	gulp.watch(`${DIR_SRC_IMAGES}/**/*.{jpg,png,gif,svg}`).on('change', gulp.series('images', reload));
-	gulp.watch(`${DIR_TEST}/**/*.js`).on('change', gulp.series('tests_watch', reload));
 }
 
 gulp.task('connect', () => {
@@ -213,7 +231,9 @@ gulp.task('connect', () => {
  * Workflows
  */
 
-gulp.task('build', gulp.series('clean', gulp.parallel('scripts', 'sass', 'images', 'test')));
+gulp.task('test', gulp.series('clean:tests:legacy', 'test:legacy'));
+
+gulp.task('build', gulp.series('clean', gulp.parallel('scripts', 'sass', 'images')));
 
 gulp.task('watch', gulp.series('build', watch));
 
