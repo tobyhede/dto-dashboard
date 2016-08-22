@@ -12,12 +12,24 @@ RSpec.describe Dataset, type: :model do
   context 'with no data' do
     subject(:dataset) { FactoryGirl.create(:dataset) }
 
-    it              { is_expected.to_not have_data }
+    it                { is_expected.to_not have_data }
   end
 
   context 'with data' do
     subject(:dataset) { FactoryGirl.create(:dataset_with_datapoints) }
     it { is_expected.to have_data }
+
+    describe 'json' do
+
+      subject(:data) { dataset.as_json }
+
+      it { should include('data') }
+      it { should_not include('datapoints') }
+
+      it {
+        puts data.to_json
+      }
+    end
   end
 
   describe 'calculations' do

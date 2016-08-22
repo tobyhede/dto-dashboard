@@ -1,5 +1,6 @@
 class WidgetDecorator < Draper::Decorator
   delegate_all
+  # decorates_association :datasets
 
   def element_id
     "widget-#{name.parameterize }"
@@ -15,7 +16,9 @@ class WidgetDecorator < Draper::Decorator
   end
 
   def summary
-    return '' if (!has_data? || dataset.string?)
+    if (!has_data? || dataset.string? || dataset.previous.blank?)
+      return ''
+    end
 
     date = dataset.previous.ts.to_formatted_s(:month_and_year)
 
@@ -24,6 +27,10 @@ class WidgetDecorator < Draper::Decorator
     else
       "#{dataset.trend.capitalize} since #{date}"
     end
+  end
+
+  def last_updated
+    "Last updated #{updated_at.to_formatted_s(:month_and_year)}"
   end
 
   def format(change)
@@ -40,17 +47,18 @@ class WidgetDecorator < Draper::Decorator
   end
 
   def to_chart
-    data = as_json(:include => {
-      :datasets => {
-        :include => :datapoints
-      }
-    })
+    serializer = WidgetSerializer.new(widget, :include => 'datasets.datapoints')
+    serializer.to_json
 
-    data.merge(
-      "summary" => summary,
-      "suffix" => dataset.suffix,
-      "latest" => dataset.latest
-    )
+    # data[:datasets].each do |dataset|
+    #   dataset[:data] = dataset.delete(:datapoints)
+    # end
 
+    # data.merge(
+    #   'summary' => summary
+    #   # 'suffix'  => dataset.suffix,
+    #   # 'latest'  => dataset.latest
+    # )
   end
+
 end

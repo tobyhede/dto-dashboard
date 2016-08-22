@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe WidgetDecorator, type: :decorator do
- 
+
   let(:latest_value)    { 99 }
   let(:latest_ts)       { Date.parse('2020-02-01') }
 
@@ -10,7 +10,7 @@ RSpec.describe WidgetDecorator, type: :decorator do
 
   let(:unit)            { 's' }
 
-  let(:widget)      { FactoryGirl.create(:widget) }
+  let(:widget)      { FactoryGirl.create(:widget, :updated_at => '2020-01-01') }
   let(:dataset)     { FactoryGirl.create(:dataset, :units => unit) }
 
   let!(:latest)     { FactoryGirl.create(:datapoint, :dataset => dataset, :ts => latest_ts, :value => latest_value) }
@@ -23,18 +23,42 @@ RSpec.describe WidgetDecorator, type: :decorator do
 
   subject { widget.decorate }
 
-  its(:summary) { is_expected.to eq '' }
+  its(:summary)      { is_expected.to eq '' }
+  its(:last_updated) { is_expected.to eq 'Last updated Jan 2020'}
 
   describe 'rendering data for charts' do
 
     let(:widget)  { FactoryGirl.create(:widget_with_datasets) }
 
-    subject(:chart)   { widget.decorate.to_chart }
+    let(:chart)     { widget.decorate.to_chart }
+    subject(:data)  { JSON.parse(chart) }
 
-    it { should include("summary") }
-    it { should include("id") }
-    it { should include("latest") }
-    it { should include("suffix") }
+    it { is_expected.to include('id') }
+    it { is_expected.to include('name') }
+    it { is_expected.to include('units') }
+    it { is_expected.to include('datasets') }
+
+    # it { is_expected.to include('summary') }
+    # it { should include('latest') }
+    # it { should include('suffix') }
+    #
+    # it {
+    #   puts chart
+    # }
+
+    describe 'dataset' do
+
+      subject(:chart_dataset) { data['datasets'].first }
+
+      it { is_expected.to include('id') }
+      it { is_expected.to include('data') }
+
+      describe 'datapoint' do
+        subject(:datapoint) { chart_dataset['data'].first }
+        it { is_expected.to include('label') }
+        it { is_expected.to include('value') }
+      end
+    end
 
     {
     	"suffix": "%",
@@ -154,7 +178,6 @@ RSpec.describe WidgetDecorator, type: :decorator do
     end
   end
 
-
   describe 'unchanged' do
 
     let(:latest_value)    { 100 }
@@ -175,4 +198,6 @@ RSpec.describe WidgetDecorator, type: :decorator do
       its(:summary) { is_expected.to eq 'Unchanged since Jan 2020' }
     end
   end
+
+
 end

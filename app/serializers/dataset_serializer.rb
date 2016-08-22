@@ -1,14 +1,12 @@
 class DatasetSerializer < ActiveModel::Serializer
-  attributes :id, :name, :units, :data
+  attributes :id, :name, :units, :datapoints, :data
 
-  # belongs_to :widget
-  # has_many :datapoints
+  has_many :datapoints
+  has_many :widgets
 
   def data
-    object.datapoints.collect do | datapoint |
-      puts datapoint
-      # serializer = DatapointSerializer.new(datapoint)
-      # ActiveModelSerializers::Adapter::Json.new(serializer).as_json
+    object.datapoints.collect do |datapoint|
+      DatapointSerializer.new(datapoint)
     end
   end
 end
