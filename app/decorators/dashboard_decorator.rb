@@ -72,9 +72,8 @@ class DashboardDecorator < Draper::Decorator
     @markdown = Redcarpet::Markdown.new(renderer, extensions)
   end
 
-  public def to_html(data)
-   html = @markdown.render(data).html_safe
-    return html
+  public def to_html
+    @markdown.render(notes).html_safe
   end
 
 end
