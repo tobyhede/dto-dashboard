@@ -25,6 +25,16 @@ class DashboardDecorator < Draper::Decorator
     markdown.render(notes).html_safe
   end
 
+  def filter_dashboard_name title
+    idx = title.index "Dashboard"
+    if idx then return title.chomp("Dashboard").strip end
+
+    idx = title.index "dashboard"
+    if idx then return title.chomp("dashboard").strip end
+
+    return title
+  end
+
   private
 
   def markdown
