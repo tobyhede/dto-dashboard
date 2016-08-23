@@ -59,6 +59,7 @@
     "karma-browserify": "^5.1.0",
     "karma-jasmine": "^1.0.2",
     "karma-jasmine-jquery": "^0.1.1",
+    "karma-nyan-reporter": "^0.2.4",
     "node-bourbon": "^4.2.8",
     "node-sass": "^3.4.2",
     "nyc": "^8.1.0",
@@ -72,17 +73,12 @@
     "build": "NODE_ENV=production gulp build",
     "dev": "gulp watch",
     "start": "gulp serve",
-
-    "test": "NODE_ENV=test npm run test:unit && npm run test-browser",
-
-    "pretest:unit": "gulp clean:tests",
-    "test:unit": "ava 'lib/assets/tests/**/*.test.js' --require=babel-register --tap | tap-spec",
-
-    "test:unit:watch": "DEBUG=ava:watcher npm run test -- --watch --verbose",
-    "test:coverage": "nyc ava",
-
-    "test-browser": "karma start",
-
+    "test": "NODE_ENV=test npm run test-browser && npm run test-browser:legacy",
+    "pretest-browser": "gulp clean:tests",
+    "test-browser": "ava 'lib/assets/tests/**/*.test.js' --require=babel-register --tap | tap-spec",
+    "test-browser:watch": "DEBUG=ava:watcher npm run test-browser -- --watch --verbose",
+    "test-browser:coverage": "nyc ava",
+    "test-browser:legacy": "karma start",
     "lint": "eslint ./lib/assets/src/scripts",
     "postinstall": "echo 'Installation with NPM successful. What to do next:\\n  npm run to see options'"
   },
