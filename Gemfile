@@ -37,6 +37,8 @@ group :development, :test do
 end
 
 group :development do
+  gem "binding_of_caller"
+  gem "better_errors"
   gem 'dotenv-rails'
   gem 'listen', '~> 3.0.5'
   gem 'spring'
