@@ -35,51 +35,12 @@ RSpec.describe DashboardDecorator, type: :decorator do
 
   describe '.notes' do
 
-    let(:dboard) { create(:dashboard) }
-    let(:decorator) { DashboardDecorator.new(dboard) }
+    let(:dashboard) { FactoryGirl.create(:dashboard, :notes => '# Heading') }
+    let(:decorator) { DashboardDecorator.new(dashboard) }
 
-    it 'convert notes to HTML' do
-      # Markdown note data
-      dboard.notes = "This is a simple example of a Markdown document.
+    subject { decorator.notes_to_html }
 
-Use a blank link between paragraphs.
-You can use a bit of **bold** or _italics_. Use backticks to indicate
-`code` that will be rendered in monospace.
-
-Here's a list:
-
-                             - an item in the list
-      - another item
-      - yet another item
-
-      You can include blocks of code using three backticks:
-
-                                                   ```
-x <- rnorm(100)
-y <- 2*x + rnorm(100)
-```
-
-      Or you could indent four spaces:
-
-                                 mean(x)
-      sd(x)
-
-      It'll figure out numbered lists, too:
-
-1. First item
-2. Second item
-
-And it's easy to create links, like to
-      the [Markdown](http://daringfireball.net/projects/markdown/)
-      page."
-
-      html = decorator.notes_to_html
-
-      # puts "<========= Test Data ======>"
-      # puts "#{dboard.notes}"
-      # puts "<========= Test Data with HTML Format ======>"
-      # puts "#{html}"
-    end
+    it { is_expected.to eq "<h1>Heading</h1>\n" }
 
   end
 

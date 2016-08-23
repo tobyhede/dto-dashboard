@@ -21,18 +21,13 @@ class DashboardDecorator < Draper::Decorator
     name.parameterize
   end
 
-  @markdown = nil
-
-  def initialize(object, options = {})
-    super(object, options) # call the parent initialize function
-    initialize_markdown # initialize this object
+  def notes_to_html
+    markdown.render(notes).html_safe
   end
 
-  private def markdown_initialized?
-    @markdown!=nil
-  end
+  private
 
-  private def initialize_markdown
+  def markdown
     render_options = {
       # will remove from the output HTML tags inputted by user
       filter_html: true,
@@ -74,14 +69,7 @@ class DashboardDecorator < Draper::Decorator
       # will require a space after # in defining headers
       # space_after_headers: true
     }
-    @markdown = Redcarpet::Markdown.new(renderer, extensions)
+    @markdown ||= Redcarpet::Markdown.new(renderer, extensions)
   end
 
-  public def notes_to_html
-    if !markdown_initialized? then
-      initialize_markdown
-    end
-      @markdown.render(notes).html_safe
-    end
-
-  end
+end
