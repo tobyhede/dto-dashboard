@@ -1,7 +1,7 @@
 var path = require('path');
 
 // Karma configuration
-// Generated on Tue Aug 23 2016 06:36:13 GMT+1000 (AEST)
+// Generated on Tue Aug 23 2016
 
 module.exports = function(config) {
   config.set({
@@ -36,7 +36,7 @@ module.exports = function(config) {
     browserify: {
       debug: true,
       paths: [
-        path.join(__dirname, 'lib/assets/src/scripts')
+        path.join(__dirname, 'lib/assets/src/scripts')  // make "Helpers/" paths accessible
       ],
       transform: [
         ['babelify'],

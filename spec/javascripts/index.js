@@ -11,15 +11,16 @@ import addStackBarChartSpec from 'd3-charts-dto/spec/javascripts/Charts/StackBar
 import addStackBarChartNegativeSpec from 'd3-charts-dto/spec/javascripts/Charts/StackBarChartNegativeSpec.js';
 import addPieChartSpec from 'd3-charts-dto/spec/javascripts/Charts/PieChartSpec.js';
 
-// import addAxisSpec from 'd3-charts-dto/spec/javascripts/Charts/AxisSpec.js';
-// // // import addXAxisSpec from 'd3-charts-dto/spec/javascripts/Charts/XAxisSpec.js';
-// import addLayerSpec from 'd3-charts-dto/spec/javascripts/Charts/LayerSpec.js';
-// import addOverlayLayerSpec from 'd3-charts-dto/spec/javascripts/Charts/OverlayLayerSpec.js';
-//
-// import addConvertDataForHeroSpec from './helpers/convertDataForHeroSpec.js';
-// import addSparklineWidgetSpec from './Widgets/SparklineWidgetSpec.js';
-// import addHeroWidgetSpec from './Widgets/HeroWidgetSpec.js';
-// import addConvertDataSepc from './helpers/convertDataSpec';
+import addAxisSpec from 'd3-charts-dto/spec/javascripts/Charts/AxisSpec.js';
+// import addXAxisSpec from 'd3-charts-dto/spec/javascripts/Charts/XAxisSpec.js';
+import addLayerSpec from 'd3-charts-dto/spec/javascripts/Charts/LayerSpec.js';
+import addOverlayLayerSpec from 'd3-charts-dto/spec/javascripts/Charts/OverlayLayerSpec.js';
+
+import addConvertDataForHeroSpec from './helpers/convertDataForHeroSpec.js';
+import addSparklineWidgetSpec from './Widgets/SparklineWidgetSpec.js';
+import addHeroWidgetSpec from './Widgets/HeroWidgetSpec.js';
+import addConvertDataSepc from './helpers/convertDataSpec';
+
 
 
 describe('A suite', function() {
@@ -28,27 +29,38 @@ describe('A suite', function() {
   });
 });
 
-
-window.testChartWidth = 200;
-
-
 addHasNegativeValueSpec();
 addCropDataSpec();
 addNormalizeSpec();
 addGetDateSpec();
 addFormatSecondsSpec();
 
-// addChartSpec();
-// addLineChartSpec();
-// addBarChartSpec();
-// addStackBarChartSpec();
-// addStackBarChartNegativeSpec();
-// addAxisSpec();
-// addLayerSpec();
-// addOverlayLayerSpec();
-// addPieChartSpec();
-//
-// addConvertDataForHeroSpec();
-// addSparklineWidgetSpec();
-// addHeroWidgetSpec();
-// addConvertDataSepc();
+
+
+describe('Chart DOM test suite', () => {
+
+  beforeAll(function() {
+    window.testChartWidth = 200;
+    $j('body').append('<div id="chart" style="width:200px"></div>');
+  });
+  afterAll(()=>{
+    $j('#chart').remove();
+  });
+
+  addChartSpec();
+  addLineChartSpec();
+  addBarChartSpec();
+  addStackBarChartSpec();
+  addStackBarChartNegativeSpec();
+  addPieChartSpec();
+
+  addAxisSpec();
+  addLayerSpec();
+  addOverlayLayerSpec();
+
+  addConvertDataForHeroSpec();
+  addSparklineWidgetSpec();
+  addHeroWidgetSpec();
+  addConvertDataSepc();
+
+});
