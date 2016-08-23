@@ -33,9 +33,7 @@ export const DIR_DIST = path.join(__dirname, 'public');
 export const DIR_NPM = path.join(__dirname, 'node_modules');
 
 export const DIR_TESTS = path.join(__dirname, 'lib/assets/tests/');
-export const DIR_TESTS_LEGACY = path.join(__dirname, 'spec/javascripts'); // TODO - deprecate
 export const DIR_DIST_TESTS = path.join(__dirname, 'lib/assets/tests/.tmp');
-export const DIR_DIST_TESTS_LEGACY = path.join(__dirname, './spec/build');   // TODO - deprecate
 
 export const DIR_SRC_STYLES = path.join(DIR_SRC, 'styles');
 export const DIR_SRC_SCRIPTS = path.join(DIR_SRC, 'scripts');
@@ -51,12 +49,6 @@ const jsSource = {
         build: 'javascripts/index.js',
         dest: DIR_DIST
     },
-    test: {
-        name: 'test',
-        entry: DIR_TESTS_LEGACY,
-        build: 'index.js',
-        dest: DIR_DIST_TESTS_LEGACY
-    }
 };
 
 const browserSyncConf = {
@@ -170,12 +162,6 @@ gulp.task('clean:tests', (done) => {
   ], done);
 });
 
-gulp.task('clean:tests:legacy', (done) => {
-	return clean([
-    DIR_DIST_TESTS_LEGACY
-	], done);
-});
-
 
 gulp.task('sass', () => {
 	return gulp.src(`${DIR_SRC_STYLES}/**/*.scss`)
@@ -203,11 +189,6 @@ gulp.task('scripts', () => build(jsSource.dev, false));
 gulp.task('scripts_watch', () => watch(jsSource.dev, false));
 
 
-gulp.task('test:legacy', () => build(jsSource.test, false));  // TODO - deprecate
-
-gulp.task('test_watch:legacy', () => watch(jsSource.test, false));  // TODO - deprecate
-
-
 gulp.task('images', () => {
 	return gulp.src(`${DIR_SRC_IMAGES}/**/*.{jpg,png,gif,svg}`)
 		.pipe( changed(DIR_DIST_IMAGES) )                       // ignore unchanged
@@ -230,8 +211,6 @@ gulp.task('connect', () => {
 /**
  * Workflows
  */
-
-gulp.task('test', gulp.series('clean:tests:legacy', 'test:legacy'));
 
 gulp.task('build', gulp.series('clean', gulp.parallel('scripts', 'sass', 'images')));
 
