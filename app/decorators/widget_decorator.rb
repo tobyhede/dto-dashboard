@@ -2,6 +2,16 @@ class WidgetDecorator < Draper::Decorator
   delegate_all
   # decorates_association :datasets
 
+  def units_to_s
+    if money? || percentage?
+      units
+    elsif string?
+      'String'
+    else
+      'Numeric'
+    end
+  end
+
   def element_id
     "widget-#{name.parameterize }"
   end
