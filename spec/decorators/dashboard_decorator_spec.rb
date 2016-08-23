@@ -32,4 +32,16 @@ RSpec.describe DashboardDecorator, type: :decorator do
     it { is_expected.to_not be_show_hero }
     it { is_expected.to_not be_show_kpis }
   end
+
+  describe '.notes' do
+
+    let(:dashboard) { FactoryGirl.create(:dashboard, :notes => '# Heading') }
+    let(:decorator) { DashboardDecorator.new(dashboard) }
+
+    subject { decorator.notes_to_html }
+
+    it { is_expected.to eq "<h1>Heading</h1>\n" }
+
+  end
+
 end

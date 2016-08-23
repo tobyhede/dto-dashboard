@@ -64,7 +64,7 @@
         </div>
         <div id="dashboard-notes" class="widget__body">
           <% if dashboard.show_notes? %>
-            <%= raw dashboard.notes %>
+            <%= raw dashboard.notes_to_html %>
           <% end %>
         </div>
       </div>
