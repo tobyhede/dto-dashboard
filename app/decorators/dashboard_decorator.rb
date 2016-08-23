@@ -25,6 +25,11 @@ class DashboardDecorator < Draper::Decorator
     markdown.render(notes).html_safe
   end
 
+  def filter_dashboard_from_name
+    name.gsub(/dashboard/i, '').strip
+
+  end
+
   private
 
   def markdown

@@ -33,8 +33,8 @@ RSpec.describe DashboardDecorator, type: :decorator do
     it { is_expected.to_not be_show_kpis }
   end
 
-  describe '.notes' do
 
+  describe 'convert notes to html' do
     let(:dashboard) { FactoryGirl.create(:dashboard, :notes => '# Heading') }
     let(:decorator) { DashboardDecorator.new(dashboard) }
 
@@ -43,5 +43,35 @@ RSpec.describe DashboardDecorator, type: :decorator do
     it { is_expected.to eq "<h1>Heading</h1>\n" }
 
   end
+
+  describe "filter dashboard name test" do
+    let(:dashboard) { FactoryGirl.create(:dashboard, :name => "Australian Citizenship Appointment Booking Service Dashboard") }
+    let(:decorator) { DashboardDecorator.new(dashboard) }
+
+    subject { decorator.filter_dashboard_from_name }
+
+    it { is_expected.to eq "Australian Citizenship Appointment Booking Service" }
+  end
+
+  describe "filter dashboard name test 2" do
+    let(:dashboard) { FactoryGirl.create(:dashboard, :name => "Australian citizenship appointment booking service dashboard") }
+    let(:decorator) { DashboardDecorator.new(dashboard) }
+
+    subject { decorator.filter_dashboard_from_name }
+
+    it { is_expected.to eq "Australian citizenship appointment booking service"}
+
+  end
+
+  describe "filter dashboard name test 3" do
+    let(:dashboard) { FactoryGirl.create(:dashboard, :name => "Hobby or Business Tool") }
+    let(:decorator) { DashboardDecorator.new(dashboard) }
+
+    subject { decorator.filter_dashboard_from_name }
+
+    it { is_expected.to eq "Hobby or Business Tool"}
+
+  end
+
 
 end
