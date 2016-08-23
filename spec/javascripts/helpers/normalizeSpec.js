@@ -1,5 +1,6 @@
-import normalize from 'Helpers/normalize';
 import d3 from 'd3';
+import normalize from 'Helpers/normalize';
+
 
 module.exports = function() {
   describe('Normalize a series to be between 0, 100', () => {

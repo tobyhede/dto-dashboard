@@ -1,9 +1,8 @@
 import addHasNegativeValueSpec from 'd3-charts-dto/spec/javascripts/Helpers/hasNegativeValueSpec.js';
-import addCropDataSpec from './Helpers/cropDataSpec.js';
-import addNormalizeSpec from './Helpers/normalizeSpec.js';
+import addCropDataSpec from './helpers/cropDataSpec.js';
+import addNormalizeSpec from './helpers/normalizeSpec.js';
 import addGetDateSpec from 'd3-charts-dto/spec/javascripts/Helpers/getDateSpec.js';
 import addFormatSecondsSpec from 'd3-charts-dto/spec/javascripts/Helpers/formatSecondsSpec.js';
-
 
 import addChartSpec from 'd3-charts-dto/spec/javascripts/Charts/ChartSpec.js';
 import addLineChartSpec from 'd3-charts-dto/spec/javascripts/Charts/LineChartSpec.js';
@@ -17,13 +16,12 @@ import addAxisSpec from 'd3-charts-dto/spec/javascripts/Charts/AxisSpec.js';
 import addLayerSpec from 'd3-charts-dto/spec/javascripts/Charts/LayerSpec.js';
 import addOverlayLayerSpec from 'd3-charts-dto/spec/javascripts/Charts/OverlayLayerSpec.js';
 
-import addConvertDataForHeroSpec from './Helpers/convertDataForHeroSpec.js';
+import addConvertDataForHeroSpec from './helpers/convertDataForHeroSpec.js';
 import addSparklineWidgetSpec from './Widgets/SparklineWidgetSpec.js';
 import addHeroWidgetSpec from './Widgets/HeroWidgetSpec.js';
-import addConvertDataSepc from './Helpers/convertDataSpec';
+import addConvertDataSepc from './helpers/convertDataSpec';
 
 
-window.testChartWidth = 200;
 
 describe('A suite', function() {
   it('contains spec with an expectation', function() {
@@ -33,22 +31,36 @@ describe('A suite', function() {
 
 addHasNegativeValueSpec();
 addCropDataSpec();
-addGetDateSpec();
 addNormalizeSpec();
+addGetDateSpec();
 addFormatSecondsSpec();
 
 
-addChartSpec();
-addLineChartSpec();
-addBarChartSpec();
-addStackBarChartSpec();
-addStackBarChartNegativeSpec();
-addAxisSpec();
-addLayerSpec();
-addOverlayLayerSpec();
-addPieChartSpec();
 
-addConvertDataForHeroSpec();
-addSparklineWidgetSpec();
-addHeroWidgetSpec();
-addConvertDataSepc();
+describe('Chart DOM test suite', () => {
+
+  beforeAll(function() {
+    window.testChartWidth = 200;
+    $j('body').append('<div id="chart" style="width:200px"></div>');
+  });
+  afterAll(()=>{
+    $j('#chart').remove();
+  });
+
+  addChartSpec();
+  addLineChartSpec();
+  addBarChartSpec();
+  addStackBarChartSpec();
+  addStackBarChartNegativeSpec();
+  addPieChartSpec();
+
+  addAxisSpec();
+  addLayerSpec();
+  addOverlayLayerSpec();
+
+  addConvertDataForHeroSpec();
+  addSparklineWidgetSpec();
+  addHeroWidgetSpec();
+  addConvertDataSepc();
+
+});

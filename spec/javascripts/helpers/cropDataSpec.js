@@ -1,4 +1,5 @@
-import cropData from 'Helpers/cropData';
+import cropData from 'Helpers/cropData.js';
+
 module.exports = function() {
   describe('Crop array', () => {
     it('should get latest 3 month out of 5 month', () => {
