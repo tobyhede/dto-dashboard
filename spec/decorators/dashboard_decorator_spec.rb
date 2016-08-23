@@ -33,10 +33,11 @@ RSpec.describe DashboardDecorator, type: :decorator do
     it { is_expected.to_not be_show_kpis }
   end
 
-  let(:dashboard) { FactoryGirl.create(:dashboard, :notes => '# Heading') }
-  let(:decorator) { DashboardDecorator.new(dashboard) }
 
   describe 'convert notes to html' do
+    let(:dashboard) { FactoryGirl.create(:dashboard, :notes => '# Heading') }
+    let(:decorator) { DashboardDecorator.new(dashboard) }
+
     subject { decorator.notes_to_html }
 
     it { is_expected.to eq "<h1>Heading</h1>\n" }
@@ -44,23 +45,29 @@ RSpec.describe DashboardDecorator, type: :decorator do
   end
 
   describe "filter dashboard name test" do
-    title = "Australian Citizenship Appointment Booking Service Dashboard"
-    subject { decorator.filter_dashboard_name title }
+    let(:dashboard) { FactoryGirl.create(:dashboard, :name => "Australian Citizenship Appointment Booking Service Dashboard") }
+    let(:decorator) { DashboardDecorator.new(dashboard) }
+
+    subject { decorator.filter_dashboard_from_name }
 
     it { is_expected.to eq "Australian Citizenship Appointment Booking Service" }
   end
 
   describe "filter dashboard name test 2" do
-    title = "Australian citizenship appointment booking service dashboard"
-    subject { decorator.filter_dashboard_name title }
+    let(:dashboard) { FactoryGirl.create(:dashboard, :name => "Australian citizenship appointment booking service dashboard") }
+    let(:decorator) { DashboardDecorator.new(dashboard) }
+
+    subject { decorator.filter_dashboard_from_name }
 
     it { is_expected.to eq "Australian citizenship appointment booking service"}
 
   end
 
   describe "filter dashboard name test 3" do
-    title = "Hobby or Business Tool"
-    subject { decorator.filter_dashboard_name title }
+    let(:dashboard) { FactoryGirl.create(:dashboard, :name => "Hobby or Business Tool") }
+    let(:decorator) { DashboardDecorator.new(dashboard) }
+
+    subject { decorator.filter_dashboard_from_name }
 
     it { is_expected.to eq "Hobby or Business Tool"}
 
