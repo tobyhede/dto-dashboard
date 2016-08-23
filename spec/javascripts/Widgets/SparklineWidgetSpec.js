@@ -1,7 +1,7 @@
-import $ from 'jquery';
+import d3 from 'd3';
 import SparklineWidget from 'Widgets/SparklineWidget';
 
-import d3 from 'd3';
+
 module.exports = function() {
   describe('sparkline widget creation', () => {
     let widget;
@@ -11,9 +11,6 @@ module.exports = function() {
 
 
     beforeAll(function() {
-
-      $('body').append('<div id="chart" style="width:200px"></div>');
-
       widget = new SparklineWidget({
             element: d3.select('#chart'),
             data: null,
@@ -66,7 +63,6 @@ module.exports = function() {
 
     afterAll(()=>{
       widget.destroy();
-      $('#chart').remove();
     });
   });
 }
