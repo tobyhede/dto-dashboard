@@ -1,6 +1,19 @@
 class WidgetDecorator < Draper::Decorator
   delegate_all
 
+  def element_id
+    "widget-#{name.parameterize }"
+  end
+
+  def style
+    arity = multiple? ? 'multiple' : 'single'
+    "#{type} #{arity}"
+  end
+
+  def show_description?
+    description.present?
+  end
+
   def summary
     return '' if (!has_data? || dataset.string?)
 
