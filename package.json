@@ -55,6 +55,8 @@
     "gulp-uglify": "^1.5.3",
     "jasmine": "^2.4.1",
     "jasmine-core": "^2.4.1",
+    "karma-browserify": "^5.1.0",
+    "karma-jasmine": "^1.0.2",
     "node-bourbon": "^4.2.8",
     "node-sass": "^3.4.2",
     "nyc": "^8.1.0",
