@@ -30,18 +30,18 @@
     </div>
     <div class="widget__data">
       <table class="data-table table">
-        <%  widget.datasets.each do |dataset| %>
-          <caption>"<%= widget.name %>"</caption>
+        <% widget.datasets.each do |dataset| %>
+          <caption><%= widget.name %> (<%= widget.units_to_s %>)</caption>
           <tbody>
             <tr>
                 <th scope="col">Date</th>
                 <th scope="col">Value</th>
             </tr>
-            <% if dataset.datapoints != nil then %>
+            <% if dataset.datapoints.any? %>
               <% dataset.datapoints.each do |datapoint| %>
               <tr>
-                  <td scope="row"><%= datapoint.label() %></td>
-                  <td scope="row"><%= datapoint.value.round.to_s + " %"  %></td>
+                <td scope="row"><%= datapoint.label %></td>
+                <td scope="row"><%= datapoint.value %></td>
               </tr>
               <% end %>
             <%end %>

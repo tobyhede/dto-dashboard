@@ -12,17 +12,23 @@ RSpec.describe WidgetSerializer, type: :serializer do
   it { is_expected.to include('size') }
   it { is_expected.to include('type') }
   it { is_expected.to include('units') }
+  it { is_expected.to include('latest') }
   it { is_expected.to include('description') }
   it { is_expected.to include('updated_at') }
   it { is_expected.to include('datasets') }
 
+  describe '#latest' do
+    subject(:latest) { data['latest'] }
+    it { is_expected.to include('label') }
+    it { is_expected.to include('value') }
+  end
 
   describe 'dataset' do
     subject(:dataset) { data['datasets'].first }
 
-    it {
-      puts dataset
-    }
+    # it {
+    #   puts dataset
+    # }
 
     it { should include('id') }
     it { should include('datapoints') }
