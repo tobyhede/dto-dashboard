@@ -12,6 +12,7 @@ RSpec.describe DashboardsController, :type => :controller do
 
   end
 
+  # Please uncomment the following test when the test data is imported to the test database
   # describe "GET show page with a valid dashboard id" do
   #   it "responds successfully with an HTTP 200 status code" do
   #     get :show, params: {id: 1}
