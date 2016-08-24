@@ -12,7 +12,7 @@ let webpackConfig = {
 	devtool: 'eval',        // better sourcemaps -> cheap-module-eval-source-map
 	context: CONFIG.DIR_SRC,
   entry: {
-    ['dto-dashboard']: [`./dashboard-dto`],
+    ['dashboard']: [`./dashboard`],
   },
 	output: {
 		path: CONFIG.DIR_DIST,

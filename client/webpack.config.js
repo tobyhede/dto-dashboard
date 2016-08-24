@@ -19,7 +19,7 @@ let webpackConfig = {
 	target: 'web',
 	context: CONFIG.DIR_SRC,
 	entry: {
-    ['dto-dashboard']: [`./dashboard-dto`],
+    ['dashboard']: [`./dashboard`],
   },
 	output: {
 		filename: 'javascripts/[name].js',
