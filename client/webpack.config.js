@@ -14,6 +14,7 @@ let ExtractSass = new ExtractTextPlugin("stylesheets/[name].css", {
 
 let webpackConfig = {
 	name: projectName,
+    bail: true,
 	debug: true,
 	devtool: 'source-map',
 	target: 'web',

@@ -8,6 +8,7 @@ const projectName = require('./../package').name;
 
 let webpackConfig = {
 	name: projectName,
+	bail: true,
 	debug: true,
 	devtool: 'eval',        // better sourcemaps -> cheap-module-eval-source-map
 	context: CONFIG.DIR_SRC,

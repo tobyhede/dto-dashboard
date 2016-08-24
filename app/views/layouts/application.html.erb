@@ -11,7 +11,14 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css"/>
+
   <link rel="stylesheet" href="<%= stylesheet_path('index.css') %>"/>
+
+  <% if Rails.env.development? && ENV['DEV_SERVER'] %>
+      <link rel="stylesheet" href="http://localhost:8080/stylesheets/dashboard.css"/>
+<% else %>
+      <link rel="stylesheet" href="/stylesheets/dashboard.css"/>
+  <% end %>
   <%= render 'layouts/analytics' %>
 </head>
 
@@ -66,12 +73,14 @@
     </section>
   </footer>
 
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.js"></script>
-
-
-  <script src="http://localhost:8080/javascripts/dashboard.js"></script>
-  <link rel="stylesheet" href="http://localhost:8080/stylesheets/dashboard.css" />
-
   <script src="<%= javascript_path('index.js') %>"></script>
+
+  <% if Rails.env.development? && ENV['DEV_SERVER'] %>
+    <script src="http://localhost:8080/javascripts/dashboard.js"></script>
+  <% else %>
+      <script src="<%= javascript_path('dashboard.js') %>"></script>
+  <% end %>
 </body>
 </html>
