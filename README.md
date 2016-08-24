@@ -2,6 +2,12 @@
 
 [![CircleCI](https://circleci.com/gh/AusDTO/dto-dashboard/tree/master.svg?style=svg)](https://circleci.com/gh/AusDTO/dto-dashboard/tree/master)
 
+[![Code Climate](https://codeclimate.com/github/AusDTO/dto-dashboard/badges/gpa.svg)](https://codeclimate.com/github/AusDTO/dto-dashboard)
+
+[![Issue Count](https://codeclimate.com/github/AusDTO/dto-dashboard/badges/issue_count.svg)](https://codeclimate.com/github/AusDTO/dto-dashboard)
+
+[![Test Coverage](https://codeclimate.com/github/AusDTO/dto-dashboard/badges/coverage.svg)](https://codeclimate.com/github/AusDTO/dto-dashboard/coverage)
+
 Version 3.0 of the Performance Dashboard.
 
 Currently WIP.
