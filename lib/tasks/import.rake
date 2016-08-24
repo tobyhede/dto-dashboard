@@ -53,6 +53,11 @@ namespace :import do
         # puts widget['id']
         description = widget['definition'].present? ? widget['definition'] : widget['description']
         is_hero = widget['is_hero'].present? ? widget['is_hero'] : false
+
+        options = {}
+        options['displayRoundedData'] = widget['displayRoundedData'] if widget['displayRoundedData'].present?
+        options['stacking'] = widget['stacking'] if widget['stacking'].present?
+
         widget_model = Widget.create!(
           :dashboard => dashboard,
           :name => widget['name'],
@@ -61,6 +66,7 @@ namespace :import do
           :size => widget['size'],
           :units => widget['units'],
           :is_hero => is_hero,
+          :options => options,
           :row => res.first,
           :pos => res.last
         )

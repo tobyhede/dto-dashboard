@@ -1,8 +1,8 @@
 class WidgetSerializer < ActiveModel::Serializer
   attributes :id, :name, :type, :size, :latest, :units,
-              :description, :updated_at, :change,
-              :prefix, :suffix, :stacking, :displayRoundedData,
-              :definition
+              :definition, :description, :updated_at, :change,
+              :stacking, :displayRoundedData
+
 
   has_many :datasets, :include => :datapoints
 
@@ -11,11 +11,11 @@ class WidgetSerializer < ActiveModel::Serializer
   end
 
   def displayRoundedData
-    true
+    object.options['displayRoundedData'] if object.options
   end
 
   def stacking
-    'percentage'
+    object.options['stacking'] if object.options
   end
 
   def prefix

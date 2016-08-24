@@ -7,7 +7,7 @@ class DatasetSerializer < ActiveModel::Serializer
   def color
     "#5261c9"
   end
-  
+
   def data
     object.datapoints.collect do |datapoint|
       DatapointSerializer.new(datapoint)
