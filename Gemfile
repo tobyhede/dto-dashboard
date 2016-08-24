@@ -55,11 +55,8 @@ group :test do
   gem 'rspec-rails'
   gem 'rspec-collection_matchers'
   gem 'rspec-its'
-<<<<<<< HEAD
   gem 'rails-controller-testing'
-=======
   gem 'rspec_junit_formatter'
->>>>>>> master
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
