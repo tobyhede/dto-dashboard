@@ -165,15 +165,15 @@ gulp.task('clean:tests', (done) => {
 
 gulp.task('sass', () => {
 	return gulp.src(`${DIR_SRC_STYLES}/**/*.scss`)
-		.pipe(sassLint({
-			configFile: './.sass-lint.yml'
-		}))
-		.pipe(sassLint.format())
-		.pipe(sourcemaps.init())
+		// .pipe(sassLint({ // todo - sass lint
+		// 	configFile: './.sass-lint.yml'
+		// }))
+		// .pipe(sassLint.format())
+		// .pipe(sourcemaps.init())
 		.pipe(sass({
 			includePaths: [
 				DIR_NPM,
-				bourbon.includePaths,   // todo - these aren't _really_ necessary
+				bourbon.includePaths,   // todo - deprecate
 				bourbonNeat.includePaths
 			]
 		}).on('error', sass.logError))
