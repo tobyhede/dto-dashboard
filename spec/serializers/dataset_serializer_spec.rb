@@ -11,11 +11,12 @@ RSpec.describe DatasetSerializer, type: :serializer do
   it { should include('id') }
   it { should include('name') }
   it { should include('units') }
+  it { should include('notes') }
   it { should include('datapoints') }
 
   # it {
   #   puts serializer.to_json
-  # }  
+  # }
 
   describe 'data' do
     subject { data['datapoints'].first }

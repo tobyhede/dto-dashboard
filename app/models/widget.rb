@@ -10,7 +10,7 @@ class Widget < ApplicationRecord
   has_many :datasets, :through => :dataset_widgets
   has_many :datapoints, :through => :datasets
 
-  KPIS = ['User Satisfaction', 'Cost per Transaction', 'Digital Take Up', 'Completion Rate']
+  KPIS = ['User Satisfaction', 'Cost Per Transaction', 'Digital Take-up', 'Completion Rate']
 
   validates :size, :type, :presence => true
 

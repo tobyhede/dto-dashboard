@@ -4,6 +4,7 @@ class CreateDatasets < ActiveRecord::Migration[5.0]
       t.references :organisation, :null => false
       t.text       :name, :null => false
       t.text       :units, :null => false
+      t.text       :notes, :null => true
       t.timestamps
     end
   end
