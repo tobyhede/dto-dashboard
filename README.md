@@ -57,6 +57,12 @@ Import the dashboard data
 rake import:data
 ```
 
+(Optional) If you need to hard reset the database
+
+```
+rake db:drop db:create db:migrate import:data
+```
+
 ### Run the App
 
 To run on the default port (3000)
