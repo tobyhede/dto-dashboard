@@ -43,10 +43,10 @@ RSpec.describe WidgetDecorator, type: :decorator do
     # it { is_expected.to include('summary') }
     # it { should include('latest') }
     # it { should include('suffix') }
-    #
-    it {
-      puts chart
-    }
+
+    # it {
+    #   puts chart
+    # }
 
     describe 'dataset' do
 
