@@ -8,6 +8,10 @@ class Dashboard < ApplicationRecord
     where('published_at <= NOW()')
   end
 
+  def hero
+    widgets.hero.first
+  end
+
   def rows
     @rows ||= widgets.without_hero.by_row.by_pos.inject([]){ | a, w|
       a[w.row] = [] unless a[w.row]

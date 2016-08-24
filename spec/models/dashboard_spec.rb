@@ -32,7 +32,7 @@ RSpec.describe Dashboard, type: :model do
     it { is_expected.to have(1).widget }
   end
 
-  describe 'rows' do
+  describe '#rows' do
     let!(:widget_1_0) { FactoryGirl.create(:widget, :dashboard => dashboard, :row => 1, :pos => 0) }
     let!(:widget_0_0) { FactoryGirl.create(:widget, :dashboard => dashboard, :row => 0, :pos => 0) }
     let!(:widget_1_1) { FactoryGirl.create(:widget, :dashboard => dashboard, :row => 1, :pos => 1) }

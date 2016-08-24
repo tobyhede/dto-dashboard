@@ -26,7 +26,11 @@ namespace :import do
 
       data['datasets'].each do |dataset|
         units = dataset["units"] || 'n'
-        dataset_model = Dataset.create!(:name => dataset['name'], :organisation => organisation, :units => units)
+        dataset_model = Dataset.create!(
+          :name => dataset['name'],
+          :notes => dataset['note'],
+          :organisation => organisation,
+          :units => units)
 
         datasets[dataset['id']] = dataset_model
 
@@ -48,6 +52,12 @@ namespace :import do
 
         # puts widget['id']
         description = widget['definition'].present? ? widget['definition'] : widget['description']
+        is_hero = widget['is_hero'].present? ? widget['is_hero'] : false
+
+        options = {}
+        options['displayRoundedData'] = widget['displayRoundedData'] if widget['displayRoundedData'].present?
+        options['stacking'] = widget['stacking'] if widget['stacking'].present?
+
         widget_model = Widget.create!(
           :dashboard => dashboard,
           :name => widget['name'],
@@ -55,6 +65,8 @@ namespace :import do
           :type => widget['type'],
           :size => widget['size'],
           :units => widget['units'],
+          :is_hero => is_hero,
+          :options => options,
           :row => res.first,
           :pos => res.last
         )

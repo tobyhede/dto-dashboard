@@ -4,13 +4,15 @@ class Widget < ApplicationRecord
 
   self.inheritance_column = :_type_disabled
 
+  serialize :options, JSON
+
   belongs_to :dashboard
 
   has_many :dataset_widgets
   has_many :datasets, :through => :dataset_widgets
   has_many :datapoints, :through => :datasets
 
-  KPIS = ['User Satisfaction', 'Cost per Transaction', 'Digital Take Up', 'Completion Rate']
+  KPIS = ['User Satisfaction', 'Cost Per Transaction', 'Digital Take-up', 'Completion Rate']
 
   validates :size, :type, :presence => true
 
@@ -21,6 +23,12 @@ class Widget < ApplicationRecord
       message: "%{value} is not a valid chart type" }
 
   validates :row, :pos, :presence => true, :numericality => { :only_integer => true }
+
+  after_initialize :set_defaults
+
+  def set_defaults
+    options = {} unless options
+  end
 
   def self.with_datasets
     includes(:datasets => :datapoints)
