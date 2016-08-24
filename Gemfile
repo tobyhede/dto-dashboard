@@ -2,7 +2,7 @@
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.0.0'
+gem 'rails', '~> 5.0.0.1'
 # Use sqlite3 as the database for Active Record
 gem 'pg'
 
@@ -40,7 +40,6 @@ end
 group :development do
   gem "binding_of_caller"
   gem "better_errors"
-  gem 'dotenv-rails'
   gem 'listen', '~> 3.0.5'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
@@ -48,12 +47,14 @@ group :development do
 end
 
 group :test do
+  gem "codeclimate-test-reporter", require: false
   gem 'factory_girl_rails', '~> 4.0'
   gem 'guard-rspec', require: false
   gem 'shoulda-matchers', '~> 3.1'
   gem 'rspec-rails'
   gem 'rspec-collection_matchers'
   gem 'rspec-its'
+  gem 'rspec_junit_formatter'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
