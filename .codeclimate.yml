@@ -43,5 +43,7 @@ exclude_paths:
 - .idea/
 - client/
 - gulpfile.babel.js
+- webpack.config.js
+- devServer.js
 - karma.conf.js
 - lib/assets/
