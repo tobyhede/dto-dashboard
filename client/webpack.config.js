@@ -46,7 +46,10 @@ let webpackConfig = {
 			{
 				test: /\.(js|json)$/,
 				loaders: ['babel'],
-				exclude: /node_modules/
+        exclude: [
+          CONFIG.DIR_NPM,
+          CONFIG.DIR_TEST
+        ],
 			},
 			{
 				test: /\.(scss|css)$/,
