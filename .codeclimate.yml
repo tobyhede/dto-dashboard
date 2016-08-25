@@ -41,3 +41,7 @@ exclude_paths:
 - coverage/
 - tmp/
 - .idea/
+- client/
+- gulpfile.babel.js
+- karma.conf.js
+- lib/assets/
