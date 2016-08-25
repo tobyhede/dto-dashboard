@@ -20,13 +20,13 @@
           <div class="badge__holder">
             <span class="badge-default"><%= dashboard.organisation.name %></span>
           </div>
-          <% if dashboard.show_hero? %>
-            <div class="classfix">
-              <div class="hero-widget hero" data-data="<%= dashboard.hero.decorate.to_chart %>"></div>
-            </div>
-          <% end %>
         </div>
       </div>
+      <% if dashboard.show_hero? %>
+        <div class="classfix">
+          <div class="hero-widget hero" data-data="<%= dashboard.hero.decorate.datasets_to_chart %>"></div>
+        </div>
+      <% end %> 
     </div>
   </div>
 </div>

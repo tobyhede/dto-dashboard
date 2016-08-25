@@ -40,14 +40,6 @@ RSpec.describe WidgetDecorator, type: :decorator do
     it { is_expected.to include('latest') }
     it { is_expected.to include('datasets') }
 
-    # it { is_expected.to include('summary') }
-    # it { should include('latest') }
-    # it { should include('suffix') }
-
-    # it {
-    #   puts chart
-    # }
-
     describe 'dataset' do
 
       subject(:chart_dataset) { data['datasets'].first }
@@ -61,6 +53,15 @@ RSpec.describe WidgetDecorator, type: :decorator do
         it { is_expected.to include('value') }
       end
     end
+
+    describe 'dataset_to_chart' do
+
+      subject(:datasets) { widget.decorate.datasets_to_chart }
+      subject(:data)  { JSON.parse(datasets) }
+
+      it { is_expected.to have(2).datasets }
+    end
+
 
   end
 
