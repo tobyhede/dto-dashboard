@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(version: 20160728011053) do
     t.integer  "organisation_id", null: false
     t.text     "name",            null: false
     t.text     "units",           null: false
+    t.text     "notes"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.index ["organisation_id"], name: "index_datasets_on_organisation_id", using: :btree

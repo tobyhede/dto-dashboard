@@ -25,6 +25,13 @@ RSpec.describe Widget, type: :model do
     it { is_expected.to_not have_data }
   end
 
+  describe 'options' do
+    subject(:widget) { FactoryGirl.create(:widget, :options => {'stacking' => 'percentage'}) }
+
+    its(:options) { is_expected.to include('stacking') }
+    it            { expect(widget.options['stacking']).to eq 'percentage' }
+  end
+
   describe 'kpis' do
     before {
       Widget::KPIS.each{ |n| FactoryGirl.create(:widget, :name => n) }

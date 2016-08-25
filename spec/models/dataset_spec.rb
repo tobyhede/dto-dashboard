@@ -12,7 +12,7 @@ RSpec.describe Dataset, type: :model do
   context 'with no data' do
     subject(:dataset) { FactoryGirl.create(:dataset) }
 
-    it              { is_expected.to_not have_data }
+    it                { is_expected.to_not have_data }
   end
 
   context 'with data' do

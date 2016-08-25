@@ -32,8 +32,8 @@ export const DIR_SRC = path.join(__dirname, 'lib/assets/src');
 export const DIR_DIST = path.join(__dirname, 'public');
 export const DIR_NPM = path.join(__dirname, 'node_modules');
 
-export const DIR_TESTS = path.join(__dirname, 'lib/assets/tests/');
-export const DIR_DIST_TESTS = path.join(__dirname, 'lib/assets/tests/.tmp');
+export const DIR_TEST = path.join(__dirname, 'client/test_legacy');
+export const DIR_DIST_TEST = path.join(DIR_TEST, '.tmp');
 
 export const DIR_SRC_STYLES = path.join(DIR_SRC, 'styles');
 export const DIR_SRC_SCRIPTS = path.join(DIR_SRC, 'scripts');
@@ -106,7 +106,7 @@ function build(env) {
     );
 }
 
-function watch(env, minify) {
+function watch(env) {
     const bundler = watchify(
         browserify({
             entries: env.entry,
@@ -128,11 +128,16 @@ function watch(env, minify) {
             return false;
         }
         const start = new Date();
-        const result = bundle(env, bundler, minify, true);
+        const result = bundle(env, bundler, false, true);
         result.on('end', function() {
             console.log('Rebuilt ' + env.build + ' in ' + (new Date() - start) + ' milliseconds.');
         });
-        return result;
+
+      if (browserSync) {
+        browserSync.stream();
+      }
+
+      return result;
     }
 
     bundler.on('update', rebundle);
@@ -158,22 +163,22 @@ gulp.task('clean', (done) => {
 
 gulp.task('clean:tests', (done) => {
   return clean([
-    DIR_DIST_TESTS
+    DIR_DIST_TEST
   ], done);
 });
 
 
 gulp.task('sass', () => {
 	return gulp.src(`${DIR_SRC_STYLES}/**/*.scss`)
-		.pipe(sassLint({
-			configFile: './.sass-lint.yml'
-		}))
-		.pipe(sassLint.format())
-		.pipe(sourcemaps.init())
+		// .pipe(sassLint({ // todo - sass lint
+		// 	configFile: './.sass-lint.yml'
+		// }))
+		// .pipe(sassLint.format())
+		// .pipe(sourcemaps.init())
 		.pipe(sass({
 			includePaths: [
 				DIR_NPM,
-				bourbon.includePaths,   // todo - these aren't _really_ necessary
+				bourbon.includePaths,   // todo - deprecate
 				bourbonNeat.includePaths
 			]
 		}).on('error', sass.logError))
@@ -186,7 +191,7 @@ gulp.task('sass', () => {
 
 gulp.task('scripts', () => build(jsSource.dev, false));
 
-gulp.task('scripts_watch', () => watch(jsSource.dev, false));
+gulp.task('scripts_watch', () => watch(jsSource.dev, reload));
 
 
 gulp.task('images', () => {
@@ -198,9 +203,8 @@ gulp.task('images', () => {
 
 
 function watch() {
-	gulp.watch(`${DIR_SRC_STYLES}/**/*.scss`).on('change', gulp.series('sass', reload));
-	gulp.watch(`${DIR_SRC_SCRIPTS}/**/*.js`).on('change', gulp.series('scripts_watch', reload));
-	gulp.watch(`${DIR_SRC_IMAGES}/**/*.{jpg,png,gif,svg}`).on('change', gulp.series('images', reload));
+  gulp.watch(`${DIR_SRC_STYLES}/**/*.scss`).on('change', gulp.series('sass', reload));
+  gulp.watch(`${DIR_SRC_IMAGES}/**/*.{jpg,png,gif,svg}`).on('change', gulp.series('images', reload));
 }
 
 gulp.task('connect', () => {
@@ -214,6 +218,6 @@ gulp.task('connect', () => {
 
 gulp.task('build', gulp.series('clean', gulp.parallel('scripts', 'sass', 'images')));
 
-gulp.task('watch', gulp.series('build', watch));
+gulp.task('watch', gulp.series('build', watch, 'scripts_watch'));
 
 gulp.task('serve', gulp.series('build', 'connect', watch));
