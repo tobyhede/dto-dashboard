@@ -87,7 +87,7 @@
     "build": "NODE_ENV=production gulp build",
     "dev": "gulp watch",
     "start": "gulp serve",
-    "test": "NODE_ENV=test npm run lint && npm run test-browser && npm run test-browser:legacy",
+    "test": "NODE_ENV=test npm run test-browser && npm run test-browser:legacy",
     "pretest-browser": "gulp clean:tests",
     "test-browser": "ava 'client/test/**/*.test.js' --require=babel-register --tap | tap-spec",
     "test-browser:watch": "DEBUG=ava:watcher npm run test-browser -- --watch --verbose",
