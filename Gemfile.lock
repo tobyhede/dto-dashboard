@@ -333,8 +333,8 @@ DEPENDENCIES
   listen (~> 3.0.5)
   pg
   puma (~> 3.0)
-  rails (~> 5.0.0)
   rails-controller-testing
+  rails (~> 5.0.0.1)
   ransack!
   redcarpet (~> 3.3)
   rspec-collection_matchers
