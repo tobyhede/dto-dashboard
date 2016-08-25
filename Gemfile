@@ -44,6 +44,7 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'web-console'
+  gem 'rails-controller-testing'
 end
 
 group :test do
@@ -54,6 +55,7 @@ group :test do
   gem 'rspec-rails'
   gem 'rspec-collection_matchers'
   gem 'rspec-its'
+  gem 'rails-controller-testing'
   gem 'rspec_junit_formatter'
 end
 
