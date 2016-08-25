@@ -71,4 +71,8 @@ class WidgetDecorator < Draper::Decorator
     # )
   end
 
+  def name_slug
+    return name.downcase.parameterize('-')
+  end
+
 end
