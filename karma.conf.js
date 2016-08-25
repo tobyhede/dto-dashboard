@@ -17,7 +17,7 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-      'spec/javascripts/index.js'
+      'client/test_legacy/index.js'
     ],
 
 
@@ -30,7 +30,7 @@ module.exports = function(config) {
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
       'node_modules/d3-charts-dto/**/*.js': [ 'browserify' ],
-      'spec/javascripts/index.js': [ 'browserify' ]
+      'client/test_legacy/index.js': [ 'browserify' ]
     },
 
     browserify: {

@@ -75,7 +75,7 @@
     "start": "gulp serve",
     "test": "NODE_ENV=test npm run test-browser && npm run test-browser:legacy",
     "pretest-browser": "gulp clean:tests",
-    "test-browser": "ava 'lib/assets/tests/**/*.test.js' --require=babel-register --tap | tap-spec",
+    "test-browser": "ava 'client/test/**/*.test.js' --require=babel-register --tap | tap-spec",
     "test-browser:watch": "DEBUG=ava:watcher npm run test-browser -- --watch --verbose",
     "test-browser:coverage": "nyc ava",
     "test-browser:legacy": "karma start",
