@@ -14,7 +14,13 @@ RSpec.describe DatasetSerializer, type: :serializer do
   it { should include('notes') }
   it { should include('datapoints') }
 
-  describe 'data' do
+  describe 'id' do
+    subject { data['id'] }
+    it { is_expected.to_not eq dataset.id }
+    it { is_expected.to eq dataset.name.parameterize }
+  end
+
+  describe 'datapoints' do
     subject { data['datapoints'].first }
 
     it { should include('label') }

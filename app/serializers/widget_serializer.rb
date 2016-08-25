@@ -1,6 +1,6 @@
 class WidgetSerializer < ActiveModel::Serializer
   attributes :id, :name, :type, :size, :latest, :units,
-              :definition, :description, :updated_at, :change,
+              :definition, :description, :updated_at,
               :stacking, :displayRoundedData
 
 
@@ -16,18 +16,6 @@ class WidgetSerializer < ActiveModel::Serializer
 
   def stacking
     object.options['stacking'] if object.options
-  end
-
-  def prefix
-    ''
-  end
-
-  def suffix
-    ''
-  end
-
-  def change
-    99
   end
 
   def latest
