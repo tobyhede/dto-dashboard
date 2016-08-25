@@ -106,7 +106,7 @@ function build(env) {
     );
 }
 
-function watch(env, minify) {
+function watch(env) {
     const bundler = watchify(
         browserify({
             entries: env.entry,
@@ -128,11 +128,16 @@ function watch(env, minify) {
             return false;
         }
         const start = new Date();
-        const result = bundle(env, bundler, minify, true);
+        const result = bundle(env, bundler, false, true);
         result.on('end', function() {
             console.log('Rebuilt ' + env.build + ' in ' + (new Date() - start) + ' milliseconds.');
         });
-        return result;
+
+      if (browserSync) {
+        browserSync.stream();
+      }
+
+      return result;
     }
 
     bundler.on('update', rebundle);
@@ -186,7 +191,7 @@ gulp.task('sass', () => {
 
 gulp.task('scripts', () => build(jsSource.dev, false));
 
-gulp.task('scripts_watch', () => watch(jsSource.dev, false));
+gulp.task('scripts_watch', () => watch(jsSource.dev, reload));
 
 
 gulp.task('images', () => {
@@ -198,9 +203,8 @@ gulp.task('images', () => {
 
 
 function watch() {
-	gulp.watch(`${DIR_SRC_STYLES}/**/*.scss`).on('change', gulp.series('sass', reload));
-	gulp.watch(`${DIR_SRC_SCRIPTS}/**/*.js`).on('change', gulp.series('scripts_watch', reload));
-	gulp.watch(`${DIR_SRC_IMAGES}/**/*.{jpg,png,gif,svg}`).on('change', gulp.series('images', reload));
+  gulp.watch(`${DIR_SRC_STYLES}/**/*.scss`).on('change', gulp.series('sass', reload));
+  gulp.watch(`${DIR_SRC_IMAGES}/**/*.{jpg,png,gif,svg}`).on('change', gulp.series('images', reload));
 }
 
 gulp.task('connect', () => {
@@ -214,6 +218,6 @@ gulp.task('connect', () => {
 
 gulp.task('build', gulp.series('clean', gulp.parallel('scripts', 'sass', 'images')));
 
-gulp.task('watch', gulp.series('build', watch));
+gulp.task('watch', gulp.series('build', watch, 'scripts_watch'));
 
 gulp.task('serve', gulp.series('build', 'connect', watch));
