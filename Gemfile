@@ -25,9 +25,6 @@ gem 'turbolinks', '~> 5'
 
 gem 'active_model_serializers', '~> 0.10.0'
 
-gem 'activeadmin', github: 'activeadmin'
-gem 'inherited_resources', github: 'activeadmin/inherited_resources'
-gem 'ransack',             github: 'activerecord-hackery/ransack'
 gem 'draper',              '> 3.x'
 gem 'redcarpet', '~>3.3'
 
