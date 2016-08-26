@@ -17,8 +17,8 @@ module DashboardHelper
            end
   end
 
-  def humanised_value(value, suffix, prefix)
-    value.present ? 'no data' : `#{prefix} #{value} #{suffix}`
+  def humanised_value(value, prefix, suffix)
+    value.nil? ? 'no data' : `#{prefix} #{value} #{suffix}`
   end
 
 end
