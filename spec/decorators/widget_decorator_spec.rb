@@ -24,7 +24,7 @@ RSpec.describe WidgetDecorator, type: :decorator do
   subject { widget.decorate }
 
   its(:summary)       { is_expected.to eq '' }
-  its(:humanised_last_updated)  { is_expected.to eq 'Last updated Jan 2020'}
+  its(:humanised_last_updated)  { is_expected.to eq 'Jan 2020'}
   its(:units_to_s)    { is_expected.to eq 'String'}
 
   describe 'rendering data for charts' do
@@ -463,7 +463,6 @@ RSpec.describe WidgetDecorator, type: :decorator do
   end
 
   describe 'unchanged' do
-
     let(:latest_value)    { 100 }
     let(:previous_value)  { 100 }
 

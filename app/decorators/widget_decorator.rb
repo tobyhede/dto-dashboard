@@ -36,7 +36,7 @@ class WidgetDecorator < Draper::Decorator
   end
 
   def humanised_last_updated
-    "#{updated_at.to_formatted_s(:month_and_year)}"
+    updated_at.to_formatted_s(:month_and_year)
   end
 
   def format(change)
