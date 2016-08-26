@@ -19,13 +19,12 @@
         <% end %>
       </div>
     </div>
-    <div data-data="<%= widget.to_chart %>" aria-hidden="true" class="widget__inner <%= widget.type %> single">
+    <div data-data="<%= widget.to_chart %>" aria-hidden="true" class="widget__inner <%= widget.type %>">
     </div>
     <div class="widget__data">
       <table class="data-table table">
         <% widget.datasets.each do |dataset| %>
           <caption><%= widget.name || widget.id %> (<%= widget.units_to_s %>)</caption>
-          <tbody>
             <tr>
               <th scope="col">Date</th>
               <th scope="col">Value</th>
@@ -38,7 +37,6 @@
               </tr>
               <% end %>
             <%end %>
-          </tbody>
         <% end %>
       </table>
     </div>
