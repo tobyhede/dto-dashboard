@@ -1,11 +1,11 @@
 class DatasetSerializer < ActiveModel::Serializer
-  attributes :id, :name, :units, :notes, :data, :color
+  attributes :id, :name, :units, :notes, :data
 
   has_many :datapoints
   has_many :widgets
 
-  def color
-    "#5261c9"
+  def id
+    object.name.parameterize
   end
 
   def data
