@@ -44,34 +44,13 @@ RSpec.describe DashboardDecorator, type: :decorator do
 
   end
 
-  describe "filter dashboard name test" do
+  describe 'verify "dashboard" strips from title' do
     let(:dashboard) { FactoryGirl.create(:dashboard, :name => "Australian Citizenship Appointment Booking Service Dashboard") }
     let(:decorator) { DashboardDecorator.new(dashboard) }
 
-    subject { decorator.filter_dashboard_from_name }
+    subject { decorator.title }
 
     it { is_expected.to eq "Australian Citizenship Appointment Booking Service" }
   end
-
-  describe "filter dashboard name test 2" do
-    let(:dashboard) { FactoryGirl.create(:dashboard, :name => "Australian citizenship appointment booking service dashboard") }
-    let(:decorator) { DashboardDecorator.new(dashboard) }
-
-    subject { decorator.filter_dashboard_from_name }
-
-    it { is_expected.to eq "Australian citizenship appointment booking service"}
-
-  end
-
-  describe "filter dashboard name test 3" do
-    let(:dashboard) { FactoryGirl.create(:dashboard, :name => "Hobby or Business Tool") }
-    let(:decorator) { DashboardDecorator.new(dashboard) }
-
-    subject { decorator.filter_dashboard_from_name }
-
-    it { is_expected.to eq "Hobby or Business Tool"}
-
-  end
-
 
 end
