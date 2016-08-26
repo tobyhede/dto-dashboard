@@ -27,7 +27,6 @@ class DashboardDecorator < Draper::Decorator
 
   def filter_dashboard_from_name
     name.gsub(/dashboard/i, '').strip
-
   end
 
   private

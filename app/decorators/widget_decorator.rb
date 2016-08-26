@@ -12,10 +12,6 @@ class WidgetDecorator < Draper::Decorator
     end
   end
 
-  def element_id
-    "widget-#{name.parameterize }"
-  end
-
   def style
     arity = multiple? ? 'multiple' : 'single'
     "#{type} #{arity}"
@@ -72,7 +68,7 @@ class WidgetDecorator < Draper::Decorator
   end
 
   def name_slug
-    return name.downcase.parameterize('-')
+    name.downcase.parameterize('-')
   end
 
 end
