@@ -2,9 +2,7 @@
   <div class="widget <%= widget.name_slug %> has-data-<%= widget.has_data? %> <%= widget.style %>">
     <div id="<%= widget.name_slug %>" class="widget__title">
       <h4><%= widget.name %></h4>
-      <!--ga-event-category="#{track.CATEGORY_DASHBOARD_SHOW}", -->
-      <!--ga-event-action="#{track.ACTION_CLICK_HERO_WIDGET_LEGEND_INFO}", ga-event-label="#{widget.name}"-->
-      <a href="#dashboard-notes" title="View KPI <%= widget.name %> definition" class="fa fa-question-circle info" ga-on="click" ga-event-category="Dashboard Show" ga-event-action="Clicked Hero Widget legend info" ga-event-label="<%= widget.name %>"></a>
+      <a href="#dashboard-notes" title="View KPI <%= widget.name %> definition" class="fa fa-question-circle info" ga-on="click" ga-event-category="<%= GA::CATEGORY_SEEK_MORE_INFO %>" ga-event-action="<%= GA::ACTION_CLICK %>" ga-event-label="Hero title - <%= widget.name %>"></a>
       <div class="meta-group">
         <span class="widget__last-updated"><%= widget.last_updated %></span>
       </div>
