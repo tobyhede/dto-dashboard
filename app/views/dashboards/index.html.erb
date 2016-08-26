@@ -13,11 +13,7 @@
         <div class="card__left">
           <div>
             <h2 class="card-title">
-                <%= if !dashboard.name.downcase.index('dashboard') then
-                        dashboard.name += ' Dashboard'
-                     else
-                        dashboard.name
-                      end %>
+                <%= title_end_with_dashboard(dashboard.name) %>
             </h2>
             <div class="updated-at">
               <p>Updated at <%= dashboard.published_at.strftime("%b %Y") %></p>

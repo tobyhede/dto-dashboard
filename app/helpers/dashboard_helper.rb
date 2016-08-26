@@ -17,4 +17,11 @@ module DashboardHelper
            end
   end
 
+  def title_end_with_dashboard name
+    if !name.downcase.index('dashboard') then
+      name += ' Dashboard'
+    end
+    return name
+  end
+
 end
