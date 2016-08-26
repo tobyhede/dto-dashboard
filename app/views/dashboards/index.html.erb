@@ -12,9 +12,15 @@
       <li class="card row"> <!--TODO add helper to generate class based on dashboard service name-->
         <div class="card__left">
           <div>
-            <h2 class="card-title"><%= dashboard.name %></h2> <!--TODO add helper to ensure dashboard is on the end of the name-->
+            <h2 class="card-title">
+                <%= if !dashboard.name.downcase.index('dashboard') then
+                        dashboard.name += ' Dashboard'
+                     else
+                        dashboard.name
+                      end %>
+            </h2>
             <div class="updated-at">
-              <p>Updated at <%= dashboard.published_at.strftime("%d %b %Y %H:%M:%S") %></p>
+              <p>Updated at <%= dashboard.published_at.strftime("%b %Y") %></p>
             </div>
           </div>
           <%= link_to "View #{dashboard.name}", dashboard_path(dashboard), :class => "card__link__visible" %>
