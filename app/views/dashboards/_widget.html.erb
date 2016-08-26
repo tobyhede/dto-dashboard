@@ -2,18 +2,14 @@
   <div class="widget <%= widget.name_slug %> has-data-<%= widget.has_data? %> <%= widget.style %>">
     <div id="<%= widget.name_slug %>" class="widget__title">
       <h4><%= widget.name %></h4>
-      <!--ga-event-category="#{track.CATEGORY_DASHBOARD_SHOW}", -->
-      <!--ga-event-action="#{track.ACTION_CLICK_HERO_WIDGET_LEGEND_INFO}", ga-event-label="#{widget.name}"-->
-      <a href="#dashboard-notes" title="View KPI <%= widget.name %> definition" class="fa fa-question-circle info" ga-on="click" ga-event-category="Dashboard Show" ga-event-action="Clicked Hero Widget legend info" ga-event-label="<%= widget.name %>"></a>
+      <a href="#dashboard-notes" title="View KPI <%= widget.name %> definition" class="fa fa-question-circle info" ga-on="click" ga-event-category="<%= GA::CATEGORY_SEEK_MORE_INFO %>" ga-event-action="<%= GA::ACTION_CLICK %>" ga-event-label="Hero title - <%= widget.name %>"></a>
       <div class="meta-group">
-        <span class="widget__last-updated"><%= widget.last_updated %></span>
+        <span class="widget__last-updated">Last updated <%= widget.humanised_last_updated %></span>
       </div>
       <div class="meta-group">
         <% if widget.show_description? %>
-        <div class="widget__definition">
-            <span class="widget__definition--title" aria-describedby="tooltip--<%= widget.name_slug %>">
-              What is this?
-            </span>
+          <div class="widget__definition">
+            <span class="widget__definition--title" aria-describedby="tooltip--<%= widget.name_slug %>">What is this?</span>
             <div class="widget__definition--content" role="tooltip" id="tooltip--<%= widget.name_slug %>">
               <div class="widget__definition--content__inner">
                 <%= widget.description %>
@@ -23,26 +19,24 @@
         <% end %>
       </div>
     </div>
-    <div data-data="<%= widget.to_chart %>" aria-hidden="true" class="widget__inner <%= widget.type %> single">
+    <div data-data="<%= widget.to_chart %>" aria-hidden="true" class="widget__inner <%= widget.type %>">
     </div>
     <div class="widget__data">
       <table class="data-table table">
         <% widget.datasets.each do |dataset| %>
           <caption><%= widget.name || widget.id %> (<%= widget.units_to_s %>)</caption>
-          <tbody>
             <tr>
-                <th scope="col">Date</th>
-                <th scope="col">Value</th>
+              <th scope="col">Date</th>
+              <th scope="col">Value</th>
             </tr>
             <% if dataset.datapoints.any? %>
               <% dataset.datapoints.each do |datapoint| %>
               <tr>
                 <td scope="row"><%= datapoint.label %></td>
-                <td scope="row"><%= datapoint.value %></td>
+                <td scope="row"><%= humanised_value(datapoint.value, widget.prefix, widget.suffix) %></td>
               </tr>
               <% end %>
             <%end %>
-          </tbody>
         <% end %>
       </table>
     </div>
