@@ -17,15 +17,15 @@ class DashboardDecorator < Draper::Decorator
     url.present?
   end
 
-  def css_class
-    name.parameterize
+  def name_slug
+    name.downcase.parameterize('-')
   end
 
   def notes_to_html
     markdown.render(notes).html_safe
   end
 
-  def filter_dashboard_from_name
+  def title
     name.gsub(/dashboard/i, '').strip
   end
 
