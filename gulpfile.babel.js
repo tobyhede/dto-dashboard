@@ -32,8 +32,8 @@ export const DIR_SRC = path.join(__dirname, 'lib/assets/src');
 export const DIR_DIST = path.join(__dirname, 'public');
 export const DIR_NPM = path.join(__dirname, 'node_modules');
 
-export const DIR_TESTS = path.join(__dirname, 'lib/assets/tests/');
-export const DIR_DIST_TESTS = path.join(__dirname, 'lib/assets/tests/.tmp');
+export const DIR_TEST = path.join(__dirname, 'client/test_legacy');
+export const DIR_DIST_TEST = path.join(DIR_TEST, '.tmp');
 
 export const DIR_SRC_STYLES = path.join(DIR_SRC, 'styles');
 export const DIR_SRC_SCRIPTS = path.join(DIR_SRC, 'scripts');
@@ -163,7 +163,7 @@ gulp.task('clean', (done) => {
 
 gulp.task('clean:tests', (done) => {
   return clean([
-    DIR_DIST_TESTS
+    DIR_DIST_TEST
   ], done);
 });
 

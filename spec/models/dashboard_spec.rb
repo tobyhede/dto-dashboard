@@ -7,7 +7,9 @@ RSpec.describe Dashboard, type: :model do
 
   it { is_expected.to validate_presence_of :name }
 
-  let!(:dashboard)    { FactoryGirl.create(:dashboard) }
+  subject!(:dashboard)    { FactoryGirl.create(:dashboard) }
+
+  its(:to_param) { is_expected.to include(dashboard.name.parameterize) }
 
   context 'unpublished' do
     subject { Dashboard.published.all }

@@ -28,4 +28,9 @@ class Dashboard < ApplicationRecord
     rows.drop(1)
   end
 
+
+  def to_param
+    @slug ||= "#{id}-#{name.parameterize}"
+  end
+
 end

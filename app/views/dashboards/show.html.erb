@@ -20,9 +20,9 @@
             <span class="badge-default"><%= dashboard.organisation.name %></span>
           </div>
           <% if dashboard.show_hero? %>
-            <div class="clearfix">
-              <div class="hero-widget hero" data-data="<%= dashboard.hero.decorate.to_chart %>"></div>
-            </div>
+              <div class="clearfix">
+                <div class="hero-widget hero" data-data="<%= dashboard.hero.decorate.datasets_to_chart %>"></div>
+              </div>
           <% end %>
         </div>
       </div>
@@ -31,15 +31,15 @@
 
   <div class="container-fluid metric-breakdown-view">
     <% if dashboard.show_kpis? %>
-      <div class="clearfix dashboard__kpis">
-        <div class="container">
-          <div class="row">
-            <% dashboard.first_row.each do |widget| %>
-                <%= render :partial => 'widget', :locals => {:widget => widget.decorate} %>
-            <% end %>
+        <div class="clearfix dashboard__kpis">
+          <div class="container">
+            <div class="row">
+              <% dashboard.first_row.each do |widget| %>
+                  <%= render :partial => 'widget', :locals => {:widget => widget.decorate} %>
+              <% end %>
+            </div>
           </div>
         </div>
-      </div>
     <% end %>
 
     <div class="container dashboard__secondary">
@@ -67,8 +67,8 @@
           </div>
           <div class="widget-text__footer aus-width-five-twelfths">
             <% if dashboard.show_url? %>
-            <p>Visit <a href="<%= dashboard.url %>" target="_blank"><%= dashboard.url %><i class="fa fa-external-link"></i></a>
-            </p>
+                <p>Visit <a href="<%= dashboard.url %>" target="_blank"><%= dashboard.url %><i class="fa fa-external-link"></i></a>
+                </p>
             <% end %>
           </div>
         </div>
