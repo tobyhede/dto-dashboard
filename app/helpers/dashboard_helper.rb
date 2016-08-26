@@ -21,4 +21,11 @@ module DashboardHelper
     value.nil? ? 'no data' : "#{prefix} #{value} #{suffix}"
   end
 
+  def title_end_with_dashboard(name)
+    if !name.downcase.index('dashboard') then
+      name += ' Dashboard'
+    end
+    return name
+  end
+
 end
