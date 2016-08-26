@@ -4,14 +4,12 @@
       <h4><%= widget.name %></h4>
       <a href="#dashboard-notes" title="View KPI <%= widget.name %> definition" class="fa fa-question-circle info" ga-on="click" ga-event-category="<%= GA::CATEGORY_SEEK_MORE_INFO %>" ga-event-action="<%= GA::ACTION_CLICK %>" ga-event-label="Hero title - <%= widget.name %>"></a>
       <div class="meta-group">
-        <span class="widget__last-updated"><%= widget.last_updated %></span>
+        <span class="widget__last-updated">Last updated <%= widget.humanised_last_updated %></span>
       </div>
       <div class="meta-group">
         <% if widget.show_description? %>
-        <div class="widget__definition">
-            <span class="widget__definition--title" aria-describedby="tooltip--<%= widget.name_slug %>">
-              What is this?
-            </span>
+          <div class="widget__definition">
+            <span class="widget__definition--title" aria-describedby="tooltip--<%= widget.name_slug %>">What is this?</span>
             <div class="widget__definition--content" role="tooltip" id="tooltip--<%= widget.name_slug %>">
               <div class="widget__definition--content__inner">
                 <%= widget.description %>
@@ -29,14 +27,14 @@
           <caption><%= widget.name || widget.id %> (<%= widget.units_to_s %>)</caption>
           <tbody>
             <tr>
-                <th scope="col">Date</th>
-                <th scope="col">Value</th>
+              <th scope="col">Date</th>
+              <th scope="col">Value</th>
             </tr>
             <% if dataset.datapoints.any? %>
               <% dataset.datapoints.each do |datapoint| %>
               <tr>
                 <td scope="row"><%= datapoint.label %></td>
-                <td scope="row"><%= datapoint.value %></td>
+                <td scope="row"><%= humanised_value(datapoint.value, widget.prefix, widget.suffix) %></td>
               </tr>
               <% end %>
             <%end %>
