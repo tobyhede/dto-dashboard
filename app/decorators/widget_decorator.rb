@@ -55,16 +55,10 @@ class WidgetDecorator < Draper::Decorator
   def to_chart
     serializer = WidgetSerializer.new(widget, :include => 'datasets.datapoints')
     serializer.to_json
+  end
 
-    # data[:datasets].each do |dataset|
-    #   dataset[:data] = dataset.delete(:datapoints)
-    # end
-
-    # data.merge(
-    #   'summary' => summary
-    #   # 'suffix'  => dataset.suffix,
-    #   # 'latest'  => dataset.latest
-    # )
+  def datasets_to_chart
+    object.datasets.collect{ |d| DatasetSerializer.new(d) }.to_json
   end
 
   def name_slug
