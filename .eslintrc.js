@@ -21,7 +21,7 @@ module.exports = {
 
     // Stylistic
     // specify whether double or single quotes should be used
-    "quotes": [2, "single"],
+    "quotes": [1, "single"],
     // require or disallow use of semicolons instead of ASI
     "semi": 1
   }
