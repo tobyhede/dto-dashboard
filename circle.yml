@@ -1,6 +1,4 @@
 machine:
-  node:
-    version: 6.0.0
   services:
     - docker
   post:
@@ -14,14 +12,7 @@ machine:
     - sudo curl -o /usr/local/bin/ecs-cli https://s3.amazonaws.com/amazon-ecs-cli/ecs-cli-linux-amd64-latest
     - sudo chmod +x /usr/local/bin/ecs-cli
     - /usr/local/bin/ecs-cli --version
-database:
-  pre:
-    # - npm run resetdb
-dependencies:
-  pre:
-    # - sudo curl --output /usr/local/bin/phantomjs https://s3.amazonaws.com/circle-downloads/phantomjs-2.1.1
-    # - sudo chmod a+x /usr/local/bin/phantomjs
-    
+
 deployment:
   development:
     branch: master
