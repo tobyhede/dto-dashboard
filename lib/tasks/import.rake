@@ -4,7 +4,7 @@ namespace :import do
   desc 'Imports Data'
   task data: :environment do
 
-    orgs = %w(dibp industry imports mygov)
+    orgs = %w(mygov dibp industry imports )
 
     orgs.each do |name|
 
