@@ -5,7 +5,7 @@
   "widgets":  [
     {
       "id":   "new-accounts",
-      "updated_at": "2016-08-25T01:01:01.111Z",
+      "recorded_at":  "2016-08-25T01:01:01.111Z",
       "name": "New Accounts",
       "type": "bar",
       "size": "large",
