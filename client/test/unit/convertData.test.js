@@ -65,6 +65,18 @@ test.beforeEach(t => {
 });
 
 
+test('convertData - data is an array with length 1', t => {
+  let data = t.context.data.data;
+  t.true(_.isArray(data) && data.length === 1);
+});
+
+test('convertData - data should have same number of datums as data length', t => {
+  let data = t.context.data.data;
+  let inputDataLen = inputData.datasets[0].data.length;
+  let outputDataLen = data[0].length;
+  t.true(inputDataLen === outputDataLen);
+});
+
 test('convertData - has datum', t => {
   t.true(!!t.context.data.datum);
 });

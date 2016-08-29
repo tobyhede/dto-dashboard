@@ -19,7 +19,6 @@ import addOverlayLayerSpec from 'd3-charts-dto/spec/javascripts/Charts/OverlayLa
 import addConvertDataForHeroSpec from './helpers/convertDataForHeroSpec.js';
 import addSparklineWidgetSpec from './Widgets/SparklineWidgetSpec.js';
 import addHeroWidgetSpec from './Widgets/HeroWidgetSpec.js';
-import addConvertDataSepc from './helpers/convertDataSpec';
 
 
 
@@ -61,6 +60,5 @@ describe('Chart DOM test suite', () => {
   addConvertDataForHeroSpec();
   addSparklineWidgetSpec();
   addHeroWidgetSpec();
-  addConvertDataSepc();
 
 });
