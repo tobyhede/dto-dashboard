@@ -65,43 +65,43 @@ test.beforeEach(t => {
 });
 
 
-test('convertData - data is an array with length 1', t => {
+test('data is an array with length 1', t => {
   let data = t.context.data.data;
   t.true(_.isArray(data) && data.length === 1);
 });
 
-test('convertData - data should have same number of datums as data length', t => {
+test('data should have same number of datums as data length', t => {
   let data = t.context.data.data;
   let inputDataLen = inputData.datasets[0].data.length;
   let outputDataLen = data[0].length;
   t.true(inputDataLen === outputDataLen);
 });
 
-test('convertData - has datum', t => {
+test('has datum', t => {
   t.true(!!t.context.data.datum);
 });
 
-test('convertData - property "x" should exist and is correct type', t => {
+test('property "x" should exist and is correct type', t => {
   let x = t.context.data.datum.x;
   t.true(x && _.isDate(x));
 });
 
-test('convertData - property "y" should exist and is correct type', t => {
+test('property "y" should exist and is correct type', t => {
   let y = t.context.data.datum.y;
   t.true(y && _.isNumber(y));
 });
 
-test('convertData - property "id" should exist', t => {
+test('property "id" should exist', t => {
   let id = t.context.data.datum.id;
   t.true(!!id);
 });
 
-test('convertData - property "color" should exist and is one of PATTERNS', t => {
+test('property "color" should exist and is one of PATTERNS', t => {
   let color = t.context.data.datum.altColor;
   t.true(!!color && PATTERNS.includes(color));
 });
 
-test('convertData - property "color" should exist and is one of PATTERNSDARK', t => {
+test('property "color" should exist and is one of PATTERNSDARK', t => {
   let color = t.context.data.datum.altColorDark;
   t.true(!!color && PATTERNSDARK.includes(color));
 });
