@@ -1,0 +1,266 @@
+{
+  "version":      "1",
+  "updated_at":   "2016-08-22T10:35:02.000Z",
+  "name":         "Medicare Newborn Enrolment",
+  "url":          "https://www.humanservices.gov.au/",
+  "agency":       "Medicare",
+  "description":  "Medicare Newborn Enrolment Performance Dashboard",
+  "notes":        "",
+  "datasets":     [
+    {
+        "id":            "user-satisfaction",
+        "recorded_at":  "2016-08-22T01:01:01.111Z",
+        "units":        "%",
+        "name":         "User Satisfaction",
+        "data":[
+            { "label":"2016-07", "value":96.5 }
+        ]
+     },
+     {
+         "id":           "cost-per-transaction",
+         "recorded_at":  "2016-08-22T01:01:01.111Z",
+         "units":        "$",
+         "name":         "Cost per transaction",
+         "note":         "",
+         "data":         null
+     },
+     {
+        "id":"number-of-newborns-enrolled",
+        "name":"Enrolled",
+        "units": "n",
+        "recorded_at":"2016-08-22T01:01:01.111Z",
+        "data":[
+           {
+              "label":"2016-04",
+              "value":31
+           },
+           {
+              "label":"2016-05",
+              "value":201
+           },
+           {
+              "label":"2016-06",
+              "value":212
+           },
+           {
+              "label":"2016-07",
+              "value":342
+           }
+        ]
+     },
+     {
+        "id":"total-number-of-newborns-enrolled",
+        "name":"Total Enrolments",
+        "units": "n",
+        "recorded_at":"2016-08-22T01:01:01.111Z",
+        "data":[
+           {
+              "label":"2016-07",
+              "value":786
+           }
+        ]
+     },
+     {
+        "id":"total-number-of-newborns-by-month",
+        "name":"Total",
+        "recorded_at":"2016-08-22T01:01:01.111Z",
+        "data":[
+           {
+              "label":"2016-04",
+              "value":156
+           },
+           {
+              "label":"2016-05",
+              "value":376
+           },
+           {
+              "label":"2016-06",
+              "value":377
+           },
+           {
+              "label":"2016-07",
+              "value":505
+           }
+        ]
+     },
+     {
+        "id":"number-of-participating-mothers",
+        "name":"Participants",
+        "units": "n",
+        "recorded_at":"2016-08-22T01:01:01.111Z",
+        "data":[
+           {
+              "label":"2016-04",
+              "value":35
+           },
+           {
+              "label":"2016-05",
+              "value":239
+           },
+           {
+              "label":"2016-06",
+              "value":236
+           },
+           {
+              "label":"2016-07",
+              "value":389
+           }
+        ]
+    },
+    {
+        "id":"digital-take-up",
+        "name":"Digital take-up",
+        "units": "%",
+        "recorded_at":"2016-08-22T01:01:01.111Z",
+        "data":[
+           {
+              "label":"2016-04",
+              "value":22.4
+           },
+           {
+              "label":"2016-05",
+              "value":63.6
+           },
+           {
+              "label":"2016-06",
+              "value":62.6
+           },
+           {
+              "label":"2016-07",
+              "value":77.0
+           }
+        ]
+      },
+      {
+        "id":           "completion-rate",
+        "recorded_at":  "2016-08-22T01:01:01.111Z",
+        "units":        "%",
+        "name":         "Completion rate",
+        "data":[
+           {"label":"2016-04", "value":93.9},
+           {"label":"2016-05","value":95.3},
+           {"label":"2016-06", "value":99.1},
+           {"label":"2016-07", "value":87.9 }
+        ]
+      },
+      {
+        "id":"reason-unable-to-enrol-01",
+        "data":[
+           {
+              "label":"2016-04",
+              "value":25
+           },
+           {
+              "label":"2016-05",
+              "value": 73.7
+           },
+           {
+              "label":"2016-06",
+              "value":92.3
+           },
+           {
+              "label":"2016-07",
+              "value":55.8
+           }
+        ],
+        "name":"Already enrolled",
+        "note":"note for this dataset",
+        "units":"%",
+        "recorded_at":"2016-08-22T01:01:01.111Z"
+     },
+     {
+    "id":"reason-unable-to-enrol-02",
+        "data":[
+           {
+              "label":"2016-04",
+              "value":50
+           },
+           {
+              "label":"2016-05",
+              "value": 23.7
+           },
+           {
+              "label":"2016-06",
+              "value":4.2
+           },
+           {
+              "label":"2016-07",
+              "value":30.8
+           }
+        ],
+        "name":"Conditional migrant",
+        "note":"note for this dataset",
+        "units": "%",
+        "recorded_at":"2016-08-22T01:01:01.111Z"
+     },
+     {
+       "id":"reason-unable-to-enrol-03",
+        "data":[
+           {
+              "label":"2016-04",
+              "value":0
+           },
+           {
+              "label":"2016-05",
+              "value": 2.6
+           },
+           {
+              "label":"2016-06",
+              "value":4.2
+           },
+           {
+              "label":"2016-07",
+              "value":13.4
+           }
+        ],
+        "name":"Unable to contact",
+        "recorded_at":"2016-08-22T01:01:01.111Z"
+     },
+     {
+        "id":"reason-unable-to-enrol-04",
+        "data":[
+           {
+              "label":"2016-04",
+              "value":25
+           },
+           {
+              "label":"2016-05",
+              "value":0
+           },
+           {
+              "label":"2016-06",
+              "value":0
+           },
+           {
+              "label":"2016-07",
+              "value":0
+           }
+        ],
+        "name":"Duplicate enrolment",
+        "recorded_at":"2016-08-22T01:01:01.111Z"
+     },
+     {
+       "id":"reason-unable-to-enrol-05",
+        "data":[
+           {
+              "label":"2016-04",
+              "value":0
+           },
+           {
+              "label":"2016-05",
+              "value":0
+           },
+           {
+              "label":"2016-06",
+              "value":0
+           },
+           {
+              "label":"2016-07",
+              "value":0
+           }
+        ],
+        "name":"Other",
+        "recorded_at":"2016-08-22T01:01:01.111Z"
+     }
+  ]
+}
