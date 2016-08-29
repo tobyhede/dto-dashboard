@@ -1,8 +1,8 @@
 class WidgetSerializer < ActiveModel::Serializer
   attributes :id, :name, :type, :size, :latest, :units,
               :definition, :description, :updated_at,
+              :prefix, :suffix,
               :stacking, :displayRoundedData
-
 
   has_many :datasets, :include => :datapoints
 
