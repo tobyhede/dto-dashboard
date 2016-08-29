@@ -5,7 +5,6 @@ namespace :import do
   task data: :environment do
 
     orgs = %w(mygov dibp industry imports medicare medicare-enrolment marketplace)
-    # orgs = %w(medicare-enrolment)
 
     orgs.each do |name|
 
@@ -51,6 +50,9 @@ namespace :import do
           [row, a.index(widget['id'])] if a.index(widget['id'])
         }.compact.flatten
 
+        # this widget does not to be specified in the layout section (will not render it).
+        # if we let it go further, it will break the database validation
+        next if res.empty?
 
         # puts widget['id']
         description = widget['definition'].present? ? widget['definition'] : widget['description']
