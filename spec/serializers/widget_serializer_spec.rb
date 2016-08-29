@@ -17,6 +17,8 @@ RSpec.describe WidgetSerializer, type: :serializer do
   it { is_expected.to include('definition') }
   it { is_expected.to include('updated_at') }
   it { is_expected.to include('datasets') }
+  it { is_expected.to include('prefix') }
+  it { is_expected.to include('suffix') }
 
   it { expect(data['definition']).to eq data['description']}
 
@@ -38,5 +40,5 @@ RSpec.describe WidgetSerializer, type: :serializer do
       it { is_expected.to include('value') }
     end
   end
-    
+
 end
