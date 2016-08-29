@@ -1,5 +1,8 @@
 module.exports = {
   "parser": "babel-eslint",
+  "plugins": [
+    "react"
+  ],
   "extends": [
     "eslint:recommended",
     "formidable",
