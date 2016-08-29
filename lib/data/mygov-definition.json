@@ -5,7 +5,7 @@
   "widgets":  [
     {
       "id":   "new-accounts",
-      "recorded_at":  "2016-06-30T01:01:01.111Z",
+      "recorded_at":  "2016-08-25T01:01:01.111Z",
       "name": "New Accounts",
       "type": "bar",
       "size": "large",
@@ -16,7 +16,7 @@
     },
     {
       "id":   "total-accounts",
-      "recorded_at":  "2016-06-30T01:01:01.111Z",
+      "recorded_at":  "2016-08-25T01:01:01.111Z",
       "name": "Total Accounts",
       "type": "sparkline",
       "size": "small",
@@ -26,7 +26,7 @@
     },
     {
       "id":   "fact-1",
-      "recorded_at":  "2016-06-30T01:01:01.111Z",
+      "recorded_at":  "2016-08-25T01:01:01.111Z",
       "name": "Fact",
       "type": "fact",
       "size": "small",
@@ -35,7 +35,7 @@
     },
     {
       "id":   "fact-2",
-      "recorded_at":  "2016-06-30T01:01:01.111Z",
+      "recorded_at":  "2016-08-25T01:01:01.111Z",
       "name": "Fact",
       "type": "fact",
       "size": "small",
@@ -44,7 +44,7 @@
     },
     {
       "id":   "member-service-adoption",
-      "recorded_at":  "2016-06-30T01:01:01.111Z",
+      "recorded_at":  "2016-08-25T01:01:01.111Z",
       "name": "Member Service Adoption",
       "type": "line",
       "size": "large",
@@ -55,7 +55,7 @@
     },
     {
       "id":   "sign-ins-per-account",
-      "recorded_at":  "2016-06-30T01:01:01.111Z",
+      "recorded_at":  "2016-08-25T01:01:01.111Z",
       "name": "Sign-ins per myGov Account",
       "type": "line",
       "size": "medium",
@@ -65,7 +65,7 @@
     },
     {
       "id":   "navigations-per-signin",
-      "recorded_at":  "2016-06-30T01:01:01.111Z",
+      "recorded_at":  "2016-08-25T01:01:01.111Z",
       "name": "Visits To Member Services",
       "type": "line",
       "size": "medium",
@@ -75,7 +75,7 @@
     },
     {
       "id":   "device-usage",
-      "recorded_at":  "2016-06-30T01:01:01.111Z",
+      "recorded_at":  "2016-08-25T01:01:01.111Z",
       "name": "Device Usage",
       "type": "line",
       "size": "large",
@@ -85,7 +85,7 @@
     },
     {
       "id":   "browser-types",
-      "recorded_at":  "2016-06-30T01:01:01.111Z",
+      "recorded_at":  "2016-08-25T01:01:01.111Z",
       "name": "Browser types",
       "type": "pie",
       "size": "small",
@@ -96,7 +96,7 @@
     },
     {
       "id":   "linked-member-services",
-      "recorded_at":  "2016-06-30T01:01:01.111Z",
+      "recorded_at":  "2016-08-25T01:01:01.111Z",
       "name": "Linked Member Services",
       "type": "bar",
       "size": "medium",
@@ -108,7 +108,7 @@
     },
     {
       "id":   "member-service-activity",
-      "recorded_at":  "2016-06-30T01:01:01.111Z",
+      "recorded_at":  "2016-08-25T01:01:01.111Z",
       "name": "Member Services Activity",
       "type": "bar",
       "size": "medium",
@@ -120,7 +120,7 @@
     },
     {
       "id":   "traffic-source",
-      "recorded_at":  "2016-06-30T01:01:01.111Z",
+      "recorded_at":  "2016-08-25T01:01:01.111Z",
       "name": "Traffic source",
       "type": "bar",
       "size": "large",

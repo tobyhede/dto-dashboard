@@ -4,7 +4,8 @@ namespace :import do
   desc 'Imports Data'
   task data: :environment do
 
-    orgs = %w(mygov dibp industry imports )
+    orgs = %w(mygov dibp industry imports medicare medicare-enrolment marketplace)
+    # orgs = %w(medicare-enrolment)
 
     orgs.each do |name|
 
@@ -49,6 +50,7 @@ namespace :import do
         res = definition['layout'].collect.with_index{ |a, row|
           [row, a.index(widget['id'])] if a.index(widget['id'])
         }.compact.flatten
+
 
         # puts widget['id']
         description = widget['definition'].present? ? widget['definition'] : widget['description']
