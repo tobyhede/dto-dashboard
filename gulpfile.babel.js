@@ -99,7 +99,7 @@ function build(env) {
                 `${DIR_SRC}/scripts/`
             ]
         })
-            .transform({continuous: true}, eslintify)
+            // .transform({continuous: true}, eslintify)
             .transform(babelify),
         true,
         false
@@ -117,7 +117,7 @@ function watch(env) {
                 `${DIR_SRC}/scripts/`
             ]
         })
-            .transform({continuous: true}, eslintify)
+            // .transform({continuous: true}, eslintify)
             .transform(babelify),
         {poll: 1000}
     );
@@ -220,4 +220,4 @@ gulp.task('build', gulp.series('clean', gulp.parallel('scripts', 'sass', 'images
 
 gulp.task('watch', gulp.series('build', watch, 'scripts_watch'));
 
-gulp.task('serve', gulp.series('build', 'connect', watch));
+gulp.task('serve', gulp.parallel('connect', 'watch'));

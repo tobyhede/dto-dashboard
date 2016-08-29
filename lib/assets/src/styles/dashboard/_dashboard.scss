@@ -52,11 +52,10 @@
   margin-bottom: 15px;
 
   .widget__title:before {
-    display: inline;
+    display: inline-block;
     content: '\f111';
     font-family: 'fontawesome';
     padding-right: 10px;
-
   }
 
   .widget__definition,
