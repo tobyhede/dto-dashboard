@@ -46,7 +46,7 @@ namespace :import do
       end
 
       definition['widgets'].each do |widget|
-        res = definition['layout'].collect.with_index{ |a, row|
+        res = definition['layout'].collect.with_index { |a, row|
           [row, a.index(widget['id'])] if a.index(widget['id'])
         }.compact.flatten
 
@@ -59,7 +59,7 @@ namespace :import do
         is_hero = widget['is_hero'].present? ? widget['is_hero'] : false
 
         options = {}
-        options['displayRoundedData'] = widget['displayRoundedData'] if widget['displayRoundedData'].present?
+        options['displayRoundedData'] = widget['displayRoundedData'] unless widget['displayRoundedData'].nil?
         options['stacking'] = widget['stacking'] if widget['stacking'].present?
 
         widget_model = Widget.create!(
@@ -77,7 +77,7 @@ namespace :import do
 
         if widget['datasets']
           widget['datasets'].each do |id|
-            widget_model.datasets <<  datasets[id]
+            widget_model.datasets << datasets[id]
           end
           widget_model.save!
         end
