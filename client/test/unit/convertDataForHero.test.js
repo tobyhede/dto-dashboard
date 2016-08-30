@@ -128,14 +128,40 @@ test.beforeEach(t => {
   let convertDataForHero = require('./../../../lib/assets/src/scripts/Helpers/convertData');
 
   let data = convertDataForHero(inputData);
+  let datums = data[0];
   let datum = data[0][0];
 
-  t.context.data = {data, datum};
+  t.context.data = {data, datums, datum};
 });
 
 
-test.todo('y should exist for all and be a number between 0 and 100');
+test('y should exist for all and be a number between 0 and 100', t => {
+  let datums = t.context.data.datums;
+  t.plan(datums.length);
+  datums.forEach((d) => {
+    t.true(d.y && d.y >= 0 && d.y <= 100);
+  });
+});
 
-test.todo('x should exist for all and be a date');
+test('x should exist for all and be a date', t => {
+  let datums = t.context.data.datums;
+  t.plan(datums.length);
+  datums.forEach((d) => {
+    t.true(d.x && _.isDate(d.x));
+  });
+});
 
-test.todo('datums with same id should have x as sequential months');
+test('datums with same id should have x as sequential months', t => {
+  let datums = t.context.data.datums;
+  datums.forEach((d, idx, arr) => {
+    let prev = arr[idx - 1];
+    if (prev) {
+      let currMonth = d.x.getMonth();
+      let prevMonth = prev.x.getMonth();
+      if (currMonth - prevMonth !== 1) {
+        t.fail();
+      }
+    }
+  });
+  t.pass();
+});
