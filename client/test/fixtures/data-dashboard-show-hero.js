@@ -1,4 +1,4 @@
-export default [{
+const fixture = [{
   "id": "user-satisfaction",
   "name": "User satisfaction",
   "units": "%",
@@ -160,5 +160,7 @@ export default [{
     "stacking": null,
     "displayRoundedData": null
   }]
-}]
+}];
+
+export default fixture;
 

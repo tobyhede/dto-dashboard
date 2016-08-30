@@ -94,15 +94,21 @@
     "start": "gulp serve",
     "test": "NODE_ENV=test npm run test-browser && npm run test-browser:legacy",
     "pretest-browser": "gulp clean:tests",
-    "test-browser": "ava 'client/test/**/*.test.js' --require=babel-register",
+    "test-browser": "nyc ava 'client/test/**/*.test.js' --require=babel-register",
     "test-browser:tap": "ava 'client/test/**/*.test.js' --require=babel-register --tap | tap-spec",
     "test-browser:watch": "DEBUG=ava:watcher ava 'client/test/**/*.test.js' --require=babel-register --watch --verbose",
-    "coverage": "NODE_ENV=test rm -rf coverage && nyc report --reporter=html --all npm test && open coverage/index.html",
+    "coverage": "rm -rf coverage && nyc report --reporter=html npm test-browser && open coverage/index.html",
     "test-browser:legacy": "karma start",
     "lint": "eslint ./client/src/**/*.js",
     "postinstall": "echo 'Installation with NPM successful. What to do next:\\n  npm run to see options'",
     "webpack:build": "NODE_ENV=production webpack --progress",
     "webpack:dev": "node devServer.js"
+  },
+  "nyc": {
+    "include": [
+      "lib/assets/src/scripts/**/*.js",
+      "client/src/**/*.js"
+    ]
   },
   "engines": {
     "node": "6.0.0"

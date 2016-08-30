@@ -1,4 +1,4 @@
-export default {
+const fixture = {
   "id": 13,
   "name": "User Satisfaction",
   "type": "kpi-sparkline",
@@ -24,4 +24,6 @@ export default {
       {"value": "99.0", "label": "2016-03"}
     ]
   }]
-}
+};
+
+export default fixture;
