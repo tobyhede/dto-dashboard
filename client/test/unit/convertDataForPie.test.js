@@ -54,10 +54,15 @@ test.beforeEach(t => {
   let convertDataForPie = require('./../../../lib/assets/src/scripts/Helpers/convertDataForPie');
 
   let data = convertDataForPie(inputData.datasets);
-  let datum = data[0][0];
 
-  t.context.data = {data, datum};
+  t.context.data = {data};
 });
 
 
-test.todo('all y should add to 100');
+test('all y should add to 100', t => {
+  let sum = 0;
+  t.context.data.data.forEach((d) => {
+    sum += d.y;
+  });
+  t.true(Math.round(sum) === 100);
+});

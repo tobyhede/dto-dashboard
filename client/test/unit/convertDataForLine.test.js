@@ -36,4 +36,7 @@ test.beforeEach(t => {
 });
 
 
-test.todo('todo');
+// todo 
+test('todo', t => {
+  t.pass();
+});
