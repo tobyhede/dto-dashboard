@@ -16,7 +16,6 @@ import addAxisSpec from 'd3-charts-dto/spec/javascripts/Charts/AxisSpec.js';
 import addLayerSpec from 'd3-charts-dto/spec/javascripts/Charts/LayerSpec.js';
 import addOverlayLayerSpec from 'd3-charts-dto/spec/javascripts/Charts/OverlayLayerSpec.js';
 
-import addConvertDataForHeroSpec from './helpers/convertDataForHeroSpec.js';
 import addSparklineWidgetSpec from './Widgets/SparklineWidgetSpec.js';
 import addHeroWidgetSpec from './Widgets/HeroWidgetSpec.js';
 
@@ -57,7 +56,6 @@ describe('Chart DOM test suite', () => {
   addLayerSpec();
   addOverlayLayerSpec();
 
-  addConvertDataForHeroSpec();
   addSparklineWidgetSpec();
   addHeroWidgetSpec();
 

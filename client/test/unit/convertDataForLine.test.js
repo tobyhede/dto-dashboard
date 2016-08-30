@@ -36,7 +36,7 @@ test.beforeEach(t => {
 });
 
 
-// todo 
+// todo
 test('todo', t => {
   t.pass();
 });
