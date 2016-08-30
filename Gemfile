@@ -1,11 +1,10 @@
- source 'https://rubygems.org'
-
+source 'https://rubygems.org'
+ruby '2.3.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.0.1'
 # Use sqlite3 as the database for Active Record
 gem 'pg'
-
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 # Use SCSS for stylesheets
@@ -25,8 +24,13 @@ gem 'turbolinks', '~> 5'
 
 gem 'active_model_serializers', '~> 0.10.0'
 
+gem 'cf-app-utils' # cloudfoundry utils
 gem 'draper',              '> 3.x'
 gem 'redcarpet', '~>3.3'
+
+group :production do
+  gem 'rails_12factor'
+end
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
