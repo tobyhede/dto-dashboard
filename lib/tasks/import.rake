@@ -4,7 +4,16 @@ namespace :import do
   desc 'Imports Data'
   task data: :environment do
 
-    orgs = %w(mygov dibp industry imports medicare medicare-enrolment marketplace)
+    orgs = %w(mygov dibp industry imports medicare-enrolment marketplace)
+
+    ids = {
+      'mygov' => 1,
+      'dibp'  => 2,
+      'industry' => 3,
+      'imports' => 4,
+      'medicare-enrolment' => 6,
+      'marketplace' => 7
+    }
 
     orgs.each do |name|
 
@@ -18,7 +27,8 @@ namespace :import do
 
       organisation = Organisation.find_or_create_by!(:name => data['agency'], :url => data['url'])
 
-      dashboard = Dashboard.find_or_create_by!(:name => definition['name'], :notes => definition['notes'], :organisation => organisation)
+      id = ids[name]
+      dashboard = Dashboard.find_or_create_by!(:id => id, :name => definition['name'], :notes => definition['notes'], :organisation => organisation)
       dashboard.published_at = Time.now
       dashboard.save!
 
