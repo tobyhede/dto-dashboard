@@ -17,14 +17,13 @@ import sourcemaps from 'gulp-sourcemaps';
 import eslintify from 'eslintify';
 import changed from 'gulp-changed';
 import print from 'gulp-print';
-
+import gutil from 'gulp-util';
 import sass from 'gulp-sass';
 import sassLint from 'gulp-sass-lint';
 import autoprefixer from 'gulp-autoprefixer';
 import bourbon from 'bourbon';
 import bourbonNeat from 'bourbon-neat';
 
-var browserSync = require('browser-sync').create();
 
 
 export const ENV = process.env.NODE_ENV || 'development';
@@ -46,22 +45,12 @@ const jsSource = {
     dev: {
         name: 'dev',
         entry: DIR_SRC_SCRIPTS,
-        build: 'javascripts/index.js',
-        dest: DIR_DIST
+        build: 'index.js',
+        dest: DIR_DIST_SCRIPTS
     },
 };
 
-const browserSyncConf = {
-	proxy: 'http://localhost:3000',  // local node app address
-	port: 3001,  // use *different* port than above to 'detach' client side
-	notify: true,
-	open: true
-};
 
-
-function reload() {
-	browserSync.reload();
-}
 
 function handleErrors() {
     const args = Array.prototype.slice.call(arguments);
@@ -69,6 +58,7 @@ function handleErrors() {
         title: 'Compile Error',
         message: '<%= error.message %>'
     }).apply(this, args);
+  gutil.log(gutil.colors.yellow(err.message));
     this.emit('end'); // Keep gulp from hanging on this task
 }
 
@@ -79,19 +69,20 @@ function bundle(env, bundler, minify, catchErrors) {
         result = result.on('error', handleErrors);
     }
     result = result
-        .pipe(source(env.build))
-        .pipe(buffer());
+      .pipe(source(env.build))
+      .pipe(buffer())
+      .pipe( print((file) => `Processing script: ${env.entry}/${file}`) );
 
     result = result
-    // Extract the embedded source map to a separate file.
-        .pipe(transform(function() { return exorcist(env.dest + '/' + env.build + '.map'); }))
-        // Write the finished product.
-        .pipe(gulp.dest(env.dest));
+      // Extract the embedded source map to a separate file.
+      .pipe(transform(function() { return exorcist(env.dest + '/' + env.build + '.map'); }))
+      // Write the finished product.
+      .pipe(gulp.dest(env.dest));
 
     return result;
 }
 
-function build(env) {
+function build_scripts(env) {
     return bundle(env, browserify({
             entries: env.entry,
             debug: true,
@@ -103,10 +94,11 @@ function build(env) {
             .transform(babelify),
         true,
         false
-    );
+    )
+      .pipe(gulp.dest(env.build));
 }
 
-function watch(env) {
+function watch_scripts(env) {
     const bundler = watchify(
         browserify({
             entries: env.entry,
@@ -129,13 +121,10 @@ function watch(env) {
         }
         const start = new Date();
         const result = bundle(env, bundler, false, true);
-        result.on('end', function() {
-            console.log('Rebuilt ' + env.build + ' in ' + (new Date() - start) + ' milliseconds.');
-        });
 
-      if (browserSync) {
-        browserSync.stream();
-      }
+        result.on('end', function() {
+          print('Rebuilt SCRIPT' + env.build + ' in ' + (new Date() - start) + ' milliseconds.');
+        });
 
       return result;
     }
@@ -182,34 +171,31 @@ gulp.task('sass', () => {
 				bourbonNeat.includePaths
 			]
 		}).on('error', sass.logError))
-		.pipe( print( (file) => 'Reading Sass: ' + file) )
+		.pipe( print( (file) => 'Processing Sass: ' + file) )
 		.pipe(autoprefixer())
 		.pipe(sourcemaps.write('./'))
 		.pipe(gulp.dest(DIR_DIST_STYLES));
 });
 
 
-gulp.task('scripts', () => build(jsSource.dev, false));
+gulp.task('scripts', () => build_scripts(jsSource.dev));
 
-gulp.task('scripts_watch', () => watch(jsSource.dev, reload));
+gulp.task('scripts_watch', () => watch_scripts(jsSource.dev));
 
 
 gulp.task('images', () => {
 	return gulp.src(`${DIR_SRC_IMAGES}/**/*.{jpg,png,gif,svg}`)
 		.pipe( changed(DIR_DIST_IMAGES) )                       // ignore unchanged
-		.pipe( print((file) => 'Reading IMAGE: ' + file))
+		.pipe( print((file) => 'Processing image: ' + file))
 		.pipe( gulp.dest(`${DIR_DIST_IMAGES}/`) );
 });
 
 
-function watch() {
-  gulp.watch(`${DIR_SRC_STYLES}/**/*.scss`).on('change', gulp.series('sass', reload));
-  gulp.watch(`${DIR_SRC_IMAGES}/**/*.{jpg,png,gif,svg}`).on('change', gulp.series('images', reload));
+function watch_task() {
+  gulp.watch(`${DIR_SRC_STYLES}/**/*.scss`).on('change', gulp.series('sass'));
+  gulp.watch(`${DIR_SRC_IMAGES}/**/*.{jpg,png,gif,svg}`).on('change', gulp.series('images'));
 }
 
-gulp.task('connect', () => {
-	browserSync.init(browserSyncConf);
-});
 
 
 /**
@@ -218,6 +204,5 @@ gulp.task('connect', () => {
 
 gulp.task('build', gulp.series('clean', gulp.parallel('scripts', 'sass', 'images')));
 
-gulp.task('watch', gulp.series('build', watch, 'scripts_watch'));
+gulp.task('watch', gulp.series('build', gulp.parallel(watch_task, 'scripts_watch')));
 
-gulp.task('serve', gulp.parallel('connect', 'watch'));
