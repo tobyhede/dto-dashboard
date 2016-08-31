@@ -22,6 +22,10 @@ staging:
   <<: *common
   url: <%= ENV['DATABASE_URL'] %>
 
+cloudfoundry:
+  <<: *common
+  url: <%= ENV['DATABASE_URL'] %>
+
 production:
   database: <%= ENV['DB_NAME'] %>
   url: <%= ENV['DATABASE_URL'] %>
