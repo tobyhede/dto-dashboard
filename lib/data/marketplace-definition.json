@@ -36,7 +36,7 @@
     {
       "id":   "digital-take-up",
       "updated_at": "2016-08-22T01:01:01.111Z",
-      "name": "Digital Take Up",
+      "name": "Digital Take-up",
       "type": "kpi-sparkline",
       "size": "extra-small",
       "units": "%",
