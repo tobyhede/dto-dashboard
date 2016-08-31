@@ -5,6 +5,11 @@ machine:
     - "curl -v -L -o cf-cli_amd64.deb 'https://cli.run.pivotal.io/stable?release=debian64&version=6.17.0&source=github'"
     - sudo dpkg -i cf-cli_amd64.deb
 
+test:
+  override:
+    - npm test
+    - bundle exec rspec spec
+
 deployment:
   development:
     branch: master
