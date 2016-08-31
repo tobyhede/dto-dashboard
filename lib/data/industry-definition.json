@@ -122,7 +122,7 @@
       "name": "Fact",
       "type": "fact",
       "size": "small",
-      "units": "s",
+      "units": "n",
       "description": "In June, 71% of contacts to the Contact Centre were by phone, 17% by web chat and 12% by email."
     }
   ],
