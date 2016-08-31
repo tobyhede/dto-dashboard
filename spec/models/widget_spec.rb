@@ -26,10 +26,15 @@ RSpec.describe Widget, type: :model do
   end
 
   describe 'options' do
-    subject(:widget) { FactoryGirl.create(:widget, :options => {'stacking' => 'percentage'}) }
+    subject(:widget) { FactoryGirl.create(:widget, :options => {'stacking' => 'percentage', 'displayRoundedData' => true}) }
 
-    its(:options) { is_expected.to include('stacking') }
-    it            { expect(widget.options['stacking']).to eq 'percentage' }
+    its(:options) {
+      is_expected.to include('stacking')
+      is_expected.to include('displayRoundedData')
+    }
+    it { expect(widget.options['stacking']).to eq 'percentage' }
+    it { expect(widget.options['displayRoundedData']).to eq true }
+
   end
 
   describe 'kpis' do
