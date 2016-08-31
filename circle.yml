@@ -1,0 +1,39 @@
+machine:
+  node:
+    version: 6.3.0
+  post:
+    # Install Cloud Foundry command line client for deployment
+    # - "curl -v -L -o cf-cli_amd64.deb 'https://cli.run.pivotal.io/stable?release=debian64&source=github'"
+    - "curl -v -L -o cf-cli_amd64.deb 'https://cli.run.pivotal.io/stable?release=debian64&version=6.17.0&source=github'"
+    - sudo dpkg -i cf-cli_amd64.deb
+
+deployment:
+  development:
+    branch: master
+    owner: AusDTO
+    commands:
+      - cf api $CF_API_DEV &> /dev/null
+      - cf auth $CF_USER_DEV $CF_PASSWORD_DEV &> /dev/null
+      - cf target -o $CF_ORG_DEV &> /dev/null
+      - cf target -s $CF_SPACE_STAGING &> /dev/null
+      - ./bin/ci-deploy-testing.sh
+
+  staging:
+    branch: staging
+    owner: AusDTO
+    commands:
+      - cf api $CF_API_DEV &> /dev/null
+      - cf auth $CF_USER_DEV $CF_PASSWORD_DEV &> /dev/null
+      - cf target -o $CF_ORG_DEV &> /dev/null
+      - cf target -s $CF_SPACE_STAGING &> /dev/null
+      - ./bin/ci-deploy-staging.sh
+
+  production:
+    tag: /release-.*/
+    owner: AusDTO
+    commands:
+      - cf api $CF_API_PROD &> /dev/null
+      - cf auth $CF_USER_PROD $CF_PASSWORD_PROD &> /dev/null
+      - cf target -o $CF_ORG_PROD &> /dev/null
+      - cf target -s $CF_SPACE_PROD &> /dev/null
+      - ./bin/ci-deploy-prod.sh

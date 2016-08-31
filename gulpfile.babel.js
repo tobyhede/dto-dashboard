@@ -205,6 +205,7 @@ gulp.task('images', () => {
 function watch() {
   gulp.watch(`${DIR_SRC_STYLES}/**/*.scss`).on('change', gulp.series('sass', reload));
   gulp.watch(`${DIR_SRC_IMAGES}/**/*.{jpg,png,gif,svg}`).on('change', gulp.series('images', reload));
+  watch(jsSource.dev, reload)
 }
 
 gulp.task('connect', () => {
@@ -218,6 +219,6 @@ gulp.task('connect', () => {
 
 gulp.task('build', gulp.series('clean', gulp.parallel('scripts', 'sass', 'images')));
 
-gulp.task('watch', gulp.series('build', watch, 'scripts_watch'));
+gulp.task('watch', gulp.series('build', watch));
 
 gulp.task('serve', gulp.parallel('connect', 'watch'));
