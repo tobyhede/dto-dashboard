@@ -74,6 +74,11 @@
   }
 }
 
+.ie9 .toggle-group {
+  display:none;
+}
+
+
 .toggle-group {
   position: relative;
   height: 27px;
