@@ -58,6 +58,7 @@ function handleErrors() {
         title: 'Compile Error',
         message: '<%= error.message %>'
     }).apply(this, args);
+  gutil.log(gutil.colors.yellow(err.message));
     this.emit('end'); // Keep gulp from hanging on this task
 }
 
@@ -68,14 +69,15 @@ function bundle(env, bundler, minify, catchErrors) {
         result = result.on('error', handleErrors);
     }
     result = result
-        .pipe(source(env.build))
-        .pipe(buffer());
+      .pipe(source(env.build))
+      .pipe(buffer())
+      .pipe( print((file) => `Processing SCRIPT: ${env.entry}/${file}`) );
 
     result = result
-    // Extract the embedded source map to a separate file.
-        .pipe(transform(function() { return exorcist(env.dest + '/' + env.build + '.map'); }))
-        // Write the finished product.
-        .pipe(gulp.dest(env.dest));
+      // Extract the embedded source map to a separate file.
+      .pipe(transform(function() { return exorcist(env.dest + '/' + env.build + '.map'); }))
+      // Write the finished product.
+      .pipe(gulp.dest(env.dest));
 
     return result;
 }
@@ -119,8 +121,9 @@ function watch_scripts(env) {
         }
         const start = new Date();
         const result = bundle(env, bundler, false, true);
+
         result.on('end', function() {
-            console.log('Rebuilt ' + env.build + ' in ' + (new Date() - start) + ' milliseconds.');
+          print('Rebuilt SCRIPT' + env.build + ' in ' + (new Date() - start) + ' milliseconds.');
         });
 
       return result;
@@ -168,7 +171,7 @@ gulp.task('sass', () => {
 				bourbonNeat.includePaths
 			]
 		}).on('error', sass.logError))
-		.pipe( print( (file) => 'Reading Sass: ' + file) )
+		.pipe( print( (file) => 'Processing Sass: ' + file) )
 		.pipe(autoprefixer())
 		.pipe(sourcemaps.write('./'))
 		.pipe(gulp.dest(DIR_DIST_STYLES));
@@ -183,7 +186,7 @@ gulp.task('scripts_watch', () => watch_scripts(jsSource.dev));
 gulp.task('images', () => {
 	return gulp.src(`${DIR_SRC_IMAGES}/**/*.{jpg,png,gif,svg}`)
 		.pipe( changed(DIR_DIST_IMAGES) )                       // ignore unchanged
-		.pipe( print((file) => 'Reading IMAGE: ' + file))
+		.pipe( print((file) => 'Processing image: ' + file))
 		.pipe( gulp.dest(`${DIR_DIST_IMAGES}/`) );
 });
 
