@@ -19,6 +19,7 @@ RSpec.describe WidgetSerializer, type: :serializer do
   it { is_expected.to include('datasets') }
   it { is_expected.to include('prefix') }
   it { is_expected.to include('suffix') }
+  it { is_expected.to_not include('displayRoundedData') }
 
   it { expect(data['definition']).to eq data['description']}
 
@@ -39,6 +40,11 @@ RSpec.describe WidgetSerializer, type: :serializer do
       it { is_expected.to include('label') }
       it { is_expected.to include('value') }
     end
+  end
+
+  context 'with options' do
+    let(:widget) { FactoryGirl.create(:widget_with_datasets, :options => {'displayRoundedData' => true}) }
+    it { is_expected.to include('displayRoundedData') }
   end
 
 end
