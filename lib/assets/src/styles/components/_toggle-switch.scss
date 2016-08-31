@@ -1,5 +1,6 @@
 #switch-mode {
   width: 58px;
+  margin-right: -69px;
   padding-left: 0;
 }
 
@@ -106,9 +107,7 @@
     }
   }
 }
-.toggle-group input[type=checkbox] {
-  position: absolute;
-}
+
 .toggle-group input[type=checkbox]:checked ~ .onoffswitch .onoffswitch-label .onoffswitch-inner {
   margin-left: 0;
 }
@@ -133,6 +132,24 @@
   font-weight: 200;
 }
 
+/* ==== Accessibility ===== */
+.aural {
+  clip: rect(1px, 1px, 1px, 1px);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  left: 10px;
+  width: 1px;
+}
+.aural:focus {
+  clip: rect(0, 0, 0, 0);
+  font-size: 1em;
+  height: auto;
+  outline: thin dotted;
+  position: static !important;
+  width: auto;
+  overflow: visible;
+}
 /* ==== Accessibility ===== */
 .aural {
   clip: rect(1px, 1px, 1px, 1px);
