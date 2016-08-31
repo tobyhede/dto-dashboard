@@ -17,14 +17,13 @@ import sourcemaps from 'gulp-sourcemaps';
 import eslintify from 'eslintify';
 import changed from 'gulp-changed';
 import print from 'gulp-print';
-
+import gutil from 'gulp-util';
 import sass from 'gulp-sass';
 import sassLint from 'gulp-sass-lint';
 import autoprefixer from 'gulp-autoprefixer';
 import bourbon from 'bourbon';
 import bourbonNeat from 'bourbon-neat';
 
-var browserSync = require('browser-sync').create();
 
 
 export const ENV = process.env.NODE_ENV || 'development';
@@ -46,22 +45,12 @@ const jsSource = {
     dev: {
         name: 'dev',
         entry: DIR_SRC_SCRIPTS,
-        build: 'javascripts/index.js',
-        dest: DIR_DIST
+        build: 'index.js',
+        dest: DIR_DIST_SCRIPTS
     },
 };
 
-const browserSyncConf = {
-	proxy: 'http://localhost:3000',  // local node app address
-	port: 3001,  // use *different* port than above to 'detach' client side
-	notify: true,
-	open: true
-};
 
-
-function reload() {
-	browserSync.reload();
-}
 
 function handleErrors() {
     const args = Array.prototype.slice.call(arguments);
@@ -91,7 +80,7 @@ function bundle(env, bundler, minify, catchErrors) {
     return result;
 }
 
-function build(env) {
+function build_scripts(env) {
     return bundle(env, browserify({
             entries: env.entry,
             debug: true,
@@ -103,10 +92,11 @@ function build(env) {
             .transform(babelify),
         true,
         false
-    );
+    )
+      .pipe(gulp.dest(env.build));
 }
 
-function watch(env) {
+function watch_scripts(env) {
     const bundler = watchify(
         browserify({
             entries: env.entry,
@@ -132,10 +122,6 @@ function watch(env) {
         result.on('end', function() {
             console.log('Rebuilt ' + env.build + ' in ' + (new Date() - start) + ' milliseconds.');
         });
-
-      if (browserSync) {
-        browserSync.stream();
-      }
 
       return result;
     }
@@ -189,9 +175,9 @@ gulp.task('sass', () => {
 });
 
 
-gulp.task('scripts', () => build(jsSource.dev, false));
+gulp.task('scripts', () => build_scripts(jsSource.dev));
 
-gulp.task('scripts_watch', () => watch(jsSource.dev, reload));
+gulp.task('scripts_watch', () => watch_scripts(jsSource.dev));
 
 
 gulp.task('images', () => {
@@ -202,14 +188,11 @@ gulp.task('images', () => {
 });
 
 
-function watch() {
-  gulp.watch(`${DIR_SRC_STYLES}/**/*.scss`).on('change', gulp.series('sass', reload));
-  gulp.watch(`${DIR_SRC_IMAGES}/**/*.{jpg,png,gif,svg}`).on('change', gulp.series('images', reload));
+function watch_task() {
+  gulp.watch(`${DIR_SRC_STYLES}/**/*.scss`).on('change', gulp.series('sass'));
+  gulp.watch(`${DIR_SRC_IMAGES}/**/*.{jpg,png,gif,svg}`).on('change', gulp.series('images'));
 }
 
-gulp.task('connect', () => {
-	browserSync.init(browserSyncConf);
-});
 
 
 /**
@@ -218,6 +201,5 @@ gulp.task('connect', () => {
 
 gulp.task('build', gulp.series('clean', gulp.parallel('scripts', 'sass', 'images')));
 
-gulp.task('watch', gulp.series('build', watch, 'scripts_watch'));
+gulp.task('watch', gulp.series('build', gulp.parallel(watch_task, 'scripts_watch')));
 
-gulp.task('serve', gulp.parallel('connect', 'watch'));
