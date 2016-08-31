@@ -86,8 +86,8 @@ namespace :import do
         )
 
         if widget['datasets']
-          widget['datasets'].each do |id|
-            widget_model.datasets << datasets[id]
+          widget['datasets'].each do |dataset_id|
+            widget_model.datasets << datasets[dataset_id]
           end
           widget_model.save!
         end
