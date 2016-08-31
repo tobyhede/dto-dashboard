@@ -71,7 +71,7 @@ function bundle(env, bundler, minify, catchErrors) {
     result = result
       .pipe(source(env.build))
       .pipe(buffer())
-      .pipe( print((file) => `Processing SCRIPT: ${env.entry}/${file}`) );
+      .pipe( print((file) => `Processing script: ${env.entry}/${file}`) );
 
     result = result
       // Extract the embedded source map to a separate file.
