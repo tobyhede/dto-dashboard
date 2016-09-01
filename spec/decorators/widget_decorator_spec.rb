@@ -10,7 +10,7 @@ RSpec.describe WidgetDecorator, type: :decorator do
 
   let(:unit)            { 's' }
 
-  let(:widget)      { FactoryGirl.create(:widget, :updated_at => '2020-01-01', :units => unit) }
+  let(:widget)      { FactoryGirl.create(:widget, :last_updated_at => '2020-01-01', :units => unit) }
   let(:dataset)     { FactoryGirl.create(:dataset, :units => unit) }
 
   let!(:latest)     { FactoryGirl.create(:datapoint, :dataset => dataset, :ts => latest_ts, :value => latest_value) }
@@ -24,7 +24,7 @@ RSpec.describe WidgetDecorator, type: :decorator do
   subject { widget.decorate }
 
   its(:summary)       { is_expected.to eq '' }
-  its(:humanised_last_updated)  { is_expected.to eq 'Jan 2020'}
+  its(:humanised_last_updated)  { is_expected.to eq '1 Jan 2020'}
   its(:units_to_s)    { is_expected.to eq 'String'}
 
   describe 'rendering data for charts' do
