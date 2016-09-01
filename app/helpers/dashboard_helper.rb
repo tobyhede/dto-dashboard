@@ -28,4 +28,9 @@ module DashboardHelper
     return name
   end
 
+  def display_high_contrast_mode
+    if (controller_name =="dashboards" and action_name == "show")
+      content_for(:toggle_switch)
+    end
+  end
 end
