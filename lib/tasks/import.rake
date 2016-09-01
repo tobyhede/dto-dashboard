@@ -90,6 +90,7 @@ namespace :import do
           :type => widget['type'],
           :size => widget['size'],
           :units => widget['units'],
+          :last_updated_at => widget['updated_at'],
           :is_hero => is_hero,
           :options => options,
           :row => res.first,
