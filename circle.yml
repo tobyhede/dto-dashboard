@@ -19,6 +19,7 @@ deployment:
       - cf auth $CF_USER_DEV $CF_PASSWORD_DEV &> /dev/null
       - cf target -o $CF_ORG_DEV &> /dev/null
       - cf target -s $CF_SPACE_STAGING &> /dev/null
+      - npm install
       - npm run build
       - cf push dashboard-testing
 
@@ -30,6 +31,7 @@ deployment:
       - cf auth $CF_USER_DEV $CF_PASSWORD_DEV &> /dev/null
       - cf target -o $CF_ORG_DEV &> /dev/null
       - cf target -s $CF_SPACE_STAGING &> /dev/null
+      - npm install
       - npm run build
       - ./bin/ci-deploy-staging.sh
 
@@ -41,5 +43,6 @@ deployment:
       - cf auth $CF_USER_PROD $CF_PASSWORD_PROD &> /dev/null
       - cf target -o $CF_ORG_PROD &> /dev/null
       - cf target -s $CF_SPACE_PROD &> /dev/null
+      - npm install
       - npm run build
       - ./bin/ci-deploy-prod.sh
