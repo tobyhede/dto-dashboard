@@ -4,7 +4,16 @@ namespace :import do
   desc 'Imports Data'
   task data: :environment do
 
-    orgs = %w(mygov dibp industry imports )
+    orgs = %w(mygov dibp industry imports medicare-enrolment marketplace)
+
+    ids = {
+      'mygov' => 1,
+      'dibp'  => 2,
+      'industry' => 3,
+      'imports' => 4,
+      'medicare-enrolment' => 6,
+      'marketplace' => 7
+    }
 
     orgs.each do |name|
 
@@ -18,7 +27,19 @@ namespace :import do
 
       organisation = Organisation.find_or_create_by!(:name => data['agency'], :url => data['url'])
 
-      dashboard = Dashboard.find_or_create_by!(:name => definition['name'], :notes => definition['notes'], :organisation => organisation)
+      display_hero = definition['displayHero'].nil?
+      display_kpis = definition['displayKPIs'].nil?
+
+      id = ids[name]
+      dashboard = Dashboard.create!(
+        :id => id,
+        :name => definition['name'],
+        :notes => definition['notes'],
+        :url => definition['url'],
+        :display_hero => display_hero,
+        :display_kpis => display_kpis,
+        :organisation => organisation
+      )
       dashboard.published_at = Time.now
       dashboard.save!
 
@@ -46,16 +67,20 @@ namespace :import do
       end
 
       definition['widgets'].each do |widget|
-        res = definition['layout'].collect.with_index{ |a, row|
+        res = definition['layout'].collect.with_index { |a, row|
           [row, a.index(widget['id'])] if a.index(widget['id'])
         }.compact.flatten
+
+        # this widget does not to be specified in the layout section (will not render it).
+        # if we let it go further, it will break the database validation
+        next if res.empty?
 
         # puts widget['id']
         description = widget['definition'].present? ? widget['definition'] : widget['description']
         is_hero = widget['is_hero'].present? ? widget['is_hero'] : false
 
         options = {}
-        options['displayRoundedData'] = widget['displayRoundedData'] if widget['displayRoundedData'].present?
+        options['displayRoundedData'] = widget['displayRoundedData'] unless widget['displayRoundedData'].nil?
         options['stacking'] = widget['stacking'] if widget['stacking'].present?
 
         widget_model = Widget.create!(
@@ -72,8 +97,8 @@ namespace :import do
         )
 
         if widget['datasets']
-          widget['datasets'].each do |id|
-            widget_model.datasets <<  datasets[id]
+          widget['datasets'].each do |dataset_id|
+            widget_model.datasets << datasets[dataset_id]
           end
           widget_model.save!
         end

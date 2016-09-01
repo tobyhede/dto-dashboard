@@ -10,7 +10,7 @@
   "datasets": [
     {
         "id":           "user-satisfaction",
-        "recorded_at":  "2016-06-30T01:01:01.111Z",
+        "recorded_at":  "2016-08-01T01:01:01.111Z",
         "units":        "%",
         "name":         "User satisfaction",
         "note":         "We do not have this data at the moment because we are....",
@@ -18,7 +18,7 @@
     },
     {
         "id":           "cost-per-transaction",
-        "recorded_at":  "2016-06-30T01:01:01.111Z",
+        "recorded_at":  "2016-08-01T01:01:01.111Z",
         "units":        "$",
         "name":         "Cost per transaction",
         "note":         "We do not have this data at the moment because we are....",
@@ -26,7 +26,7 @@
     },
     {
         "id":           "completion-rate",
-        "recorded_at":  "2016-06-30T01:01:01.111Z",
+        "recorded_at":  "2016-08-01T01:01:01.111Z",
         "units":        "%",
         "name":         "Completion rate",
         "note":         "We do not have this data at the moment because we are...",
@@ -34,24 +34,25 @@
     },
     {
         "id":           "digital-take-up",
-        "recorded_at":  "2016-06-30T01:01:01.111Z",
+        "recorded_at":  "2016-08-01T01:01:01.111Z",
         "units":        "%",
         "name":         "Digital take-up",
         "note":         "Digital take-up measures the percentage of import permits that are available in the Permit Verification Service.",
         "data": [
           { "label": "2016-05", "value": 77},
-          { "label": "2016-06", "value": 89}
-      ]
+          { "label": "2016-06", "value": 89},
+          { "label": "2016-07", "value": 90}     ]
     },
     {
         "id":           "clearing-time",
-        "recorded_at":  "2016-06-30T01:01:01.111Z",
+        "recorded_at":  "2016-08-01T01:01:01.111Z",
         "units":        "i",
         "name":         "Time to clear",
         "note":         "This shows the average time taken to clear a permit using the Permit Verifcation Service.",
         "data": [
           { "label": "2016-05", "value": 84807},
-          { "label": "2016-06", "value": 48317}
+          { "label": "2016-06", "value": 48317},
+          { "label": "2016-07", "value": 51420}
       ]
     }
   ]

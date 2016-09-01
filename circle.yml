@@ -7,6 +7,15 @@ machine:
     - "curl -v -L -o cf-cli_amd64.deb 'https://cli.run.pivotal.io/stable?release=debian64&version=6.17.0&source=github'"
     - sudo dpkg -i cf-cli_amd64.deb
 
+dependencies:
+  pre:
+    - npm install -g npm
+
+test:
+  override:
+    - npm test
+    - bundle exec rspec
+
 deployment:
   development:
     branch: master
@@ -16,7 +25,8 @@ deployment:
       - cf auth $CF_USER_DEV $CF_PASSWORD_DEV &> /dev/null
       - cf target -o $CF_ORG_DEV &> /dev/null
       - cf target -s $CF_SPACE_STAGING &> /dev/null
-      - ./bin/ci-deploy-testing.sh
+      - npm run build
+      - cf push dashboard-testing
 
   staging:
     branch: staging
@@ -26,6 +36,7 @@ deployment:
       - cf auth $CF_USER_DEV $CF_PASSWORD_DEV &> /dev/null
       - cf target -o $CF_ORG_DEV &> /dev/null
       - cf target -s $CF_SPACE_STAGING &> /dev/null
+      - npm run build
       - ./bin/ci-deploy-staging.sh
 
   production:
@@ -36,4 +47,5 @@ deployment:
       - cf auth $CF_USER_PROD $CF_PASSWORD_PROD &> /dev/null
       - cf target -o $CF_ORG_PROD &> /dev/null
       - cf target -s $CF_SPACE_PROD &> /dev/null
+      - npm run build
       - ./bin/ci-deploy-prod.sh

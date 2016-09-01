@@ -2,7 +2,10 @@ class WidgetSerializer < ActiveModel::Serializer
   attributes :id, :name, :type, :size, :latest, :units,
               :definition, :description, :updated_at,
               :prefix, :suffix,
-              :stacking, :displayRoundedData
+              :stacking
+
+  attribute   :displayRoundedData, :if => :displayRoundedData?
+  attribute   :stacking, :if => :stacking?
 
   has_many :datasets, :include => :datapoints
 
@@ -10,12 +13,20 @@ class WidgetSerializer < ActiveModel::Serializer
     object.description
   end
 
+  def displayRoundedData?
+    object.options && object.options.key?('displayRoundedData')
+  end
+
   def displayRoundedData
-    object.options['displayRoundedData'] if object.options
+    object.options['displayRoundedData']
+  end
+
+  def stacking?
+    object.options && object.options.key?('stacking')
   end
 
   def stacking
-    object.options['stacking'] if object.options
+    object.options['stacking']
   end
 
   def latest
