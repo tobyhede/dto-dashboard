@@ -9,6 +9,34 @@
   "notes":        "",
   "datasets": [
     {
+       "id":            "user-satisfaction",
+        "recorded_at":  "2016-08-25T01:01:01.111Z",
+        "name":         "User Satisfaction",
+        "data":          null
+     },
+     {
+         "id":           "cost-per-transaction",
+         "recorded_at":  "2016-08-25T01:01:01.111Z",
+         "units":        "$",
+         "name":         "Cost per transaction",
+         "note":         "",
+         "data":         null
+     },
+    {
+        "id":           "digital-take-up",
+        "name":         "Digital take-up",
+        "units":        "%",
+        "recorded_at":  "2016-08-25T01:01:01.111Z",
+        "data":          null
+      },
+      {
+        "id":           "completion-rate",
+        "recorded_at":  "2016-08-25T01:01:01.111Z",
+        "units":        "%",
+        "name":         "Completion rate",
+        "data":          null
+      },
+    {
       "id":           "browser-usage-chrome",
       "name": "Chrome",
       "recorded_at":  "2016-08-25T01:01:01.111Z",
