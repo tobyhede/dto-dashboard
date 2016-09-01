@@ -27,7 +27,7 @@ namespace :import do
 
       organisation = Organisation.find_or_create_by!(:name => data['agency'], :url => data['url'])
 
-      display_hero = definition['displayHero'].nil?    
+      display_hero = definition['displayHero'].nil?
       display_kpis = definition['displayKPIs'].nil?
 
       id = ids[name]
@@ -35,6 +35,7 @@ namespace :import do
         :id => id,
         :name => definition['name'],
         :notes => definition['notes'],
+        :url => definition['url'],
         :display_hero => display_hero,
         :display_kpis => display_kpis,
         :organisation => organisation

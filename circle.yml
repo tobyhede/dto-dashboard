@@ -7,6 +7,10 @@ machine:
     - "curl -v -L -o cf-cli_amd64.deb 'https://cli.run.pivotal.io/stable?release=debian64&version=6.17.0&source=github'"
     - sudo dpkg -i cf-cli_amd64.deb
 
+dependencies:
+  pre:
+    - npm install -g npm
+
 test:
   override:
     - npm test
@@ -24,7 +28,6 @@ deployment:
       - cf auth $CF_USER_DEV $CF_PASSWORD_DEV &> /dev/null
       - cf target -o $CF_ORG_DEV &> /dev/null
       - cf target -s $CF_SPACE_STAGING &> /dev/null
-      - npm install
       - npm run build
       - cf push dashboard-testing
 
