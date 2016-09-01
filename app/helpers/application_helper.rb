@@ -11,4 +11,9 @@ module ApplicationHelper
     return class_name_str
   end
 
+  def display_high_contrast_mode(controller, action)
+    if (controller =="dashboards" and action == "show")
+      content_for(:toggle_switch)
+    end
+  end
 end
