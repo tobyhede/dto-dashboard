@@ -6,7 +6,7 @@
   "widgets":  [
     {
       "id":   "kpis",
-      "updated_at": "2016-01-01T01:01:01.111Z",
+      "updated_at": "2016-08-25T01:01:01.111Z",
       "name": "Kpis",
       "type": "full",
       "size": "extra-large",
