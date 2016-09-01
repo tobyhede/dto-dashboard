@@ -14,10 +14,7 @@ dependencies:
 test:
   override:
     - npm test
-    - bundle exec rspec:
-        parallel: true
-        files:
-          - spec/**/*.rb
+    - bundle exec rspec
 
 deployment:
   development:
