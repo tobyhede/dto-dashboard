@@ -27,8 +27,18 @@ namespace :import do
 
       organisation = Organisation.find_or_create_by!(:name => data['agency'], :url => data['url'])
 
+      display_hero = definition['displayHero'].nil?    
+      display_kpis = definition['displayKPIs'].nil?
+
       id = ids[name]
-      dashboard = Dashboard.find_or_create_by!(:id => id, :name => definition['name'], :notes => definition['notes'], :organisation => organisation)
+      dashboard = Dashboard.create!(
+        :id => id,
+        :name => definition['name'],
+        :notes => definition['notes'],
+        :display_hero => display_hero,
+        :display_kpis => display_kpis,
+        :organisation => organisation
+      )
       dashboard.published_at = Time.now
       dashboard.save!
 
