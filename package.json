@@ -66,6 +66,7 @@
     "jasmine-core": "^2.4.1",
     "jasmine-jquery": "^2.1.1",
     "karma": "^1.2.0",
+    "jsdom": "^9.4.5",
     "karma-browserify": "^5.1.0",
     "karma-chrome-launcher": "^2.0.0",
     "karma-jasmine": "^1.0.2",
@@ -96,14 +97,21 @@
     "start": "echo 'No start tast, use 'npm run dev' or 'npm run build''",
     "test": "NODE_ENV=test npm run test-browser && npm run test-browser:legacy",
     "pretest-browser": "gulp clean:tests",
-    "test-browser": "ava 'client/test/**/*.test.js' --require=babel-register --tap | tap-spec",
-    "test-browser:watch": "DEBUG=ava:watcher npm run test-browser -- --watch --verbose",
-    "test-browser:coverage": "nyc ava",
-    "test-browser:legacy": "karma start",
+    "test-browser": "NODE_ENV=test ava 'client/test/**/*.test.js' --require=babel-register",
+    "test-browser:tap": "npm run test-browser -- --tap | tap-spec",
+    "test-browser:watch": "DEBUG=ava:watcher ava 'client/test/**/*.test.js' --require=babel-register --watch --verbose",
+    "coverage": "nyc report --reporter=html --reporter=text npm test-browser",
+    "test-browser:legacy": "NODE_ENV=test karma start",
     "lint": "eslint ./client/src/**/*.js",
     "postinstall": "echo 'Installation with NPM successful. What to do next:\\n  npm run to see options'",
     "webpack:build": "NODE_ENV=production webpack --progress",
     "webpack:dev": "node devServer.js"
+  },
+  "nyc": {
+    "include": [
+      "lib/assets/src/scripts/**/*.js",
+      "client/src/**/*.js"
+    ]
   },
   "engines": {
     "node": "6.0.0"

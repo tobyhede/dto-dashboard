@@ -42,95 +42,95 @@ export const DIR_DIST_SCRIPTS = path.join(DIR_DIST, 'javascripts');
 export const DIR_DIST_IMAGES = path.join(DIR_DIST, 'images');
 
 const jsSource = {
-    dev: {
-        name: 'dev',
-        entry: DIR_SRC_SCRIPTS,
-        build: 'index.js',
-        dest: DIR_DIST_SCRIPTS
-    },
+  dev: {
+    name: 'dev',
+    entry: DIR_SRC_SCRIPTS,
+    build: 'index.js',
+    dest: DIR_DIST_SCRIPTS
+  },
 };
 
 
 
 function handleErrors() {
-    const args = Array.prototype.slice.call(arguments);
-    notify.onError({
-        title: 'Compile Error',
-        message: '<%= error.message %>'
-    }).apply(this, args);
+  const args = Array.prototype.slice.call(arguments);
+  notify.onError({
+    title: 'Compile Error',
+    message: '<%= error.message %>'
+  }).apply(this, args);
   gutil.log(gutil.colors.yellow(err.message));
-    this.emit('end'); // Keep gulp from hanging on this task
+  this.emit('end'); // Keep gulp from hanging on this task
 }
 
 function bundle(env, bundler, minify, catchErrors) {
-    let result = bundler.bundle();
-    if (catchErrors) {
-        // Display errors to the user, and don't let them propagate.
-        result = result.on('error', handleErrors);
-    }
-    result = result
-      .pipe(source(env.build))
-      .pipe(buffer())
-      .pipe( print((file) => `Processing script: ${env.entry}/${file}`) );
+  let result = bundler.bundle();
+  if (catchErrors) {
+    // Display errors to the user, and don't let them propagate.
+    result = result.on('error', handleErrors);
+  }
+  result = result
+    .pipe(source(env.build))
+    .pipe(buffer())
+    .pipe( print((file) => `Processing script: ${env.entry}/${file}`) );
 
-    result = result
-      // Extract the embedded source map to a separate file.
-      .pipe(transform(function() { return exorcist(env.dest + '/' + env.build + '.map'); }))
-      // Write the finished product.
-      .pipe(gulp.dest(env.dest));
+  result = result
+  // Extract the embedded source map to a separate file.
+    .pipe(transform(function() { return exorcist(env.dest + '/' + env.build + '.map'); }))
+    // Write the finished product.
+    .pipe(gulp.dest(env.dest));
 
-    return result;
+  return result;
 }
 
 function build_scripts(env) {
-    return bundle(env, browserify({
-            entries: env.entry,
-            debug: true,
-            paths: [
-                `${DIR_SRC}/scripts/`
-            ]
-        })
-            // .transform({continuous: true}, eslintify)
-            .transform(babelify),
-        true,
-        false
-    )
-      .pipe(gulp.dest(env.build));
+  return bundle(env, browserify({
+      entries: env.entry,
+      debug: true,
+      paths: [
+        `${DIR_SRC}/scripts/`
+      ]
+    })
+    // .transform({continuous: true}, eslintify)
+      .transform(babelify),
+    true,
+    false
+  )
+    .pipe(gulp.dest(env.build));
 }
 
 function watch_scripts(env) {
-    const bundler = watchify(
-        browserify({
-            entries: env.entry,
-            debug: true,
-            cache: {},
-            packageCache: {},
-            paths: [
-                `${DIR_SRC}/scripts/`
-            ]
-        })
-            // .transform({continuous: true}, eslintify)
-            .transform(babelify),
-        {poll: 1000}
-    );
+  const bundler = watchify(
+    browserify({
+      entries: env.entry,
+      debug: true,
+      cache: {},
+      packageCache: {},
+      paths: [
+        `${DIR_SRC}/scripts/`
+      ]
+    })
+    // .transform({continuous: true}, eslintify)
+      .transform(babelify),
+    {poll: 1000}
+  );
 
-    function rebundle(ids) {
-        // Don't rebundle if only the version changed.
-        if (ids && ids.length === 1 && (/\/version\.js$/).test(ids[0])) {
-            return false;
-        }
-        const start = new Date();
-        const result = bundle(env, bundler, false, true);
-
-        result.on('end', function() {
-          print('Rebuilt SCRIPT' + env.build + ' in ' + (new Date() - start) + ' milliseconds.');
-        });
-
-      return result;
+  function rebundle(ids) {
+    // Don't rebundle if only the version changed.
+    if (ids && ids.length === 1 && (/\/version\.js$/).test(ids[0])) {
+      return false;
     }
+    const start = new Date();
+    const result = bundle(env, bundler, false, true);
 
-    bundler.on('update', rebundle);
-    return rebundle();
+    result.on('end', function() {
+      print('Rebuilt SCRIPT' + env.build + ' in ' + (new Date() - start) + ' milliseconds.');
+    });
+
+    return result;
+  }
+
+  bundler.on('update', rebundle);
+  return rebundle();
 }
 
 function clean(files, done) {
@@ -143,11 +143,11 @@ function clean(files, done) {
  */
 
 gulp.task('clean', (done) => {
-	return clean([
-		DIR_DIST_STYLES + '/**/*',  // don't remove the folder
-		DIR_DIST_SCRIPTS + '/**/*',
-		DIR_DIST_IMAGES + '/**/*',
-	], done);
+  return clean([
+    DIR_DIST_STYLES + '/**/*',  // don't remove the folder
+    DIR_DIST_SCRIPTS + '/**/*',
+    DIR_DIST_IMAGES + '/**/*',
+  ], done);
 });
 
 gulp.task('clean:tests', (done) => {
@@ -158,23 +158,23 @@ gulp.task('clean:tests', (done) => {
 
 
 gulp.task('sass', () => {
-	return gulp.src(`${DIR_SRC_STYLES}/**/*.scss`)
-		// .pipe(sassLint({ // todo - sass lint
-		// 	configFile: './.sass-lint.yml'
-		// }))
-		// .pipe(sassLint.format())
-		// .pipe(sourcemaps.init())
-		.pipe(sass({
-			includePaths: [
-				DIR_NPM,
-				bourbon.includePaths,   // todo - deprecate
-				bourbonNeat.includePaths
-			]
-		}).on('error', sass.logError))
-		.pipe( print( (file) => 'Processing Sass: ' + file) )
-		.pipe(autoprefixer())
-		.pipe(sourcemaps.write('./'))
-		.pipe(gulp.dest(DIR_DIST_STYLES));
+  return gulp.src(`${DIR_SRC_STYLES}/**/*.scss`)
+  // .pipe(sassLint({ // todo - sass lint
+  // 	configFile: './.sass-lint.yml'
+  // }))
+  // .pipe(sassLint.format())
+  // .pipe(sourcemaps.init())
+    .pipe(sass({
+      includePaths: [
+        DIR_NPM,
+        bourbon.includePaths,   // todo - deprecate
+        bourbonNeat.includePaths
+      ]
+    }).on('error', sass.logError))
+    .pipe( print( (file) => 'Processing Sass: ' + file) )
+    .pipe(autoprefixer())
+    .pipe(sourcemaps.write('./'))
+    .pipe(gulp.dest(DIR_DIST_STYLES));
 });
 
 
@@ -184,10 +184,10 @@ gulp.task('scripts_watch', () => watch_scripts(jsSource.dev));
 
 
 gulp.task('images', () => {
-	return gulp.src(`${DIR_SRC_IMAGES}/**/*.{jpg,png,gif,svg}`)
-		.pipe( changed(DIR_DIST_IMAGES) )                       // ignore unchanged
-		.pipe( print((file) => 'Processing image: ' + file))
-		.pipe( gulp.dest(`${DIR_DIST_IMAGES}/`) );
+  return gulp.src(`${DIR_SRC_IMAGES}/**/*.{jpg,png,gif,svg}`)
+    .pipe( changed(DIR_DIST_IMAGES) )                       // ignore unchanged
+    .pipe( print((file) => 'Processing image: ' + file))
+    .pipe( gulp.dest(`${DIR_DIST_IMAGES}/`) );
 });
 
 
