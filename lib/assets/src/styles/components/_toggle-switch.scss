@@ -10,3 +10,26 @@
     float: right;
   }
 }
+
+.switch-material.switch-light input:checked ~ span {
+  background: $cerulean;
+}
+
+.switch-material.switch-light input:checked ~ span a {
+  background-color: $white;
+  background-position:center;
+  background-size: 70%;
+  background-color: #fff;
+  background-repeat: no-repeat;
+  background-image: url('../images/low-vision-icon.png');
+}
+
+.switch-light.switch-material a {
+  top: 0;
+  width: 1.5em;
+  height: 1.5em;
+}
+
+.switch-material.switch-light > span {
+  background: $secondary-text-colour;
+}
