@@ -4,7 +4,7 @@ class DashboardsController < ApplicationController
   helper_method :dashboards, :dashboard
 
   def index
-    @dashboards = Dashboard.published.by_name.all
+    @dashboards = Dashboard.published.by_name.all.decorate
 
     @title = "Dashboard"
     @description = "Dashboard"

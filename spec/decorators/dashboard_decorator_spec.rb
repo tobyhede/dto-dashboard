@@ -1,42 +1,38 @@
 require 'rails_helper'
 
 RSpec.describe DashboardDecorator, type: :decorator do
+  let(:opts)      { {} }
+  let(:dashboard) { FactoryGirl.create(:dashboard_with_widgets, opts) }
+  let(:decorator) { DashboardDecorator.new(dashboard) }
 
-  context 'dashboard' do
-    let(:dashboard) { FactoryGirl.create(:dashboard) }
-    subject {dashboard.decorate}
+  subject {dashboard.decorate}
+
+  context 'dashboard without widgets' do
+    let(:dashboard) { FactoryGirl.create(:dashboard, opts) }
     it { is_expected.to_not be_show_hero }
     it { is_expected.to_not be_show_kpis }
   end
 
   context 'dashboard with widgets' do
-    let(:dashboard) { FactoryGirl.create(:dashboard_with_widgets) }
-    subject {dashboard.decorate}
-
     it { is_expected.to be_show_hero }
     it { is_expected.to be_show_kpis }
   end
 
   context 'hide hero' do
-    let(:dashboard) { FactoryGirl.create(:dashboard_with_widgets, :display_hero => false) }
-    subject {dashboard.decorate}
-
+    let(:opts) { { :display_hero => false } }
     it { is_expected.to_not be_show_hero }
     it { is_expected.to be_show_kpis }
   end
 
   context 'hide kpis' do
-    let(:dashboard) { FactoryGirl.create(:dashboard_with_widgets, :display_hero => true, :display_kpis => false) }
-    subject {dashboard.decorate}
-
+    let(:opts) { { :display_hero => false, :display_kpis => false } }
     it { is_expected.to_not be_show_hero }
     it { is_expected.to_not be_show_kpis }
   end
 
 
   describe 'convert notes to html' do
-    let(:dashboard) { FactoryGirl.create(:dashboard, :notes => '# Heading') }
-    let(:decorator) { DashboardDecorator.new(dashboard) }
+    let(:opts) { { :notes => '# Heading' } }
 
     subject { decorator.notes_to_html }
 
@@ -44,13 +40,30 @@ RSpec.describe DashboardDecorator, type: :decorator do
 
   end
 
-  describe 'verify "dashboard" strips from title' do
-    let(:dashboard) { FactoryGirl.create(:dashboard, :name => "Australian Citizenship Appointment Booking Service Dashboard") }
-    let(:decorator) { DashboardDecorator.new(dashboard) }
+  describe 'title' do
+    let(:opts) { { :name => 'Blah Dashboard' } }
+    subject { decorator.name }
 
-    subject { decorator.title }
-
-    it { is_expected.to eq "Australian Citizenship Appointment Booking Service" }
+    it { is_expected.to eq 'Blah' }
   end
 
+  describe 'dashboardized_name' do
+    context 'dashboard' do
+      let(:opts) { { :name => 'Blah Dashboard' } }
+      subject { decorator.dashboardized_name }
+
+      it { is_expected.to eq 'Blah Dashboard' }
+    end
+    context 'no dashboard' do
+      let(:opts) { { :name => 'Blah' } }
+      subject { decorator.dashboardized_name }
+
+      it { is_expected.to eq 'Blah Dashboard' }
+    end
+  end
+
+  describe 'last_updated_at' do
+    subject { decorator.last_updated_at }
+    it { is_expected.to eq Time.zone.now.to_formatted_s(:month_year) }
+  end
 end

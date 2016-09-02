@@ -28,9 +28,11 @@ class Dashboard < ApplicationRecord
     rows.drop(1)
   end
 
-
   def to_param
     @slug ||= "#{id}-#{name.parameterize}"
   end
 
+  def last_updated_at
+    widgets.last_updated.last_updated_at
+  end
 end

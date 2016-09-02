@@ -28,6 +28,15 @@ RSpec.describe Dashboard, type: :model do
     it { is_expected.to have(1).widget }
   end
 
+  describe 'last_updated' do
+    before do
+      FactoryGirl.create(:widget, :dashboard => dashboard, :last_updated_at => '2020-01-01')
+      FactoryGirl.create(:widget, :dashboard => dashboard)
+    end
+
+    it { expect(dashboard.last_updated_at).to eq Date.parse('2020-01-01') }
+  end
+
   describe 'other widgets' do
     let!(:widget) { FactoryGirl.create(:widget, :dashboard => dashboard) }
     subject { dashboard.widgets.other }
