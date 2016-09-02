@@ -4,6 +4,10 @@
   p {
     display: inline-block;
     padding-right: 25px;
+
+    @media screen and (max-width: $screen-sm) {
+      display: none;
+    }
   }
 
   .switch-material.switch-light {
