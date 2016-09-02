@@ -38,4 +38,6 @@ rules:
       - 4
 
   # Name Formats
-  class-name-format: 0 
+  class-name-format: 0
+
+  no-duplicate-properties: 0
