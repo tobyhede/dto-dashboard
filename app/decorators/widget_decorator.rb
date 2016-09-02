@@ -5,8 +5,8 @@ class WidgetDecorator < Draper::Decorator
   def units_to_s
     if money? || percentage?
       units
-    elsif string?
-      'String'
+    elsif seconds?
+      'Seconds'
     else
       'Numeric'
     end
@@ -22,9 +22,7 @@ class WidgetDecorator < Draper::Decorator
   end
 
   def summary
-    if (!has_data? || dataset.string? || dataset.previous.blank?)
-      return ''
-    end
+    return '' if (has_no_data? || dataset.previous.blank?)
 
     date = dataset.previous.ts.to_formatted_s(:month_year)
 

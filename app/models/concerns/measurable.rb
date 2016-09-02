@@ -7,8 +7,16 @@ module Measurable
         message: "%{value} is not a valid unit" }
   end
 
-  def string?
+  def seconds?
     units == 's'
+  end
+
+  def number?
+    units == 'n'
+  end
+
+  def fact?
+    units == 'f'
   end
 
   def integer?
@@ -28,7 +36,7 @@ module Measurable
   end
 
   def suffix
-    percentage? ? '%' : ''
+    (percentage? || seconds?) ? units : ''
   end
 
 end

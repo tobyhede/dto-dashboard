@@ -23,9 +23,9 @@ RSpec.describe WidgetDecorator, type: :decorator do
 
   subject { widget.decorate }
 
-  its(:summary)       { is_expected.to eq '' }
+  its(:summary)       { is_expected.to eq 'Unchanged since Jan 2020' }
   its(:humanised_last_updated)  { is_expected.to eq '1 Jan 2020'}
-  its(:units_to_s)    { is_expected.to eq 'String'}
+  its(:units_to_s)    { is_expected.to eq 'Seconds'}
 
   describe 'rendering data for charts' do
 
