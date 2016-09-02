@@ -23,7 +23,6 @@ let webpackConfig = {
 		sourceMapFilename: "javascripts/[name].js.map"
 	},
   externals: {
-    window: "window"
   },
 	module: {
 		preLoaders: [

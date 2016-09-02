@@ -1,4 +1,4 @@
-let window = require('window');
+let window = window || global;
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunkMiddleware from 'redux-thunk';
 import createLogger from 'redux-logger';
