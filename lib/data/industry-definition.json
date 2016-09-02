@@ -114,7 +114,7 @@
       "name": "Fact",
       "type": "fact",
       "size": "medium",
-      "units": "s",
+      "units": "f",
       "description": "79% of people who sought help from the Contact Centre were seeking general information about the tool, 21% needed assistance interpreting their results."
     },
     {

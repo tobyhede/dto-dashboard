@@ -62,6 +62,10 @@ class Widget < ApplicationRecord
     datasets.many?
   end
 
+  def has_no_data?
+    !has_data?
+  end
+
   def has_data?
     datapoints.any?
   end

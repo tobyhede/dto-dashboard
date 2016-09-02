@@ -52,4 +52,27 @@ RSpec.describe Widget, type: :model do
     subject { Widget.hero }
     it { is_expected.to have(1).widget }
   end
+
+  describe 'units' do
+    subject(:widget) { FactoryGirl.create(:widget, :units => units) }
+
+    context 'seconds' do
+      let(:units) { 's' }
+      its(:suffix) { is_expected.to eq 's' }
+      its(:prefix) { is_expected.to eq '' }
+    end
+
+    context 'percentage' do
+      let(:units) { '%' }
+      its(:suffix) { is_expected.to eq '%' }
+      its(:prefix) { is_expected.to eq '' }
+    end
+
+    context 'money' do
+      let(:units) { '$' }
+      its(:suffix) { is_expected.to eq '' }
+      its(:prefix) { is_expected.to eq '$' }
+    end
+  end
+
 end
