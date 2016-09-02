@@ -27,5 +27,4 @@ module DashboardHelper
     end
     return name
   end
-
 end
