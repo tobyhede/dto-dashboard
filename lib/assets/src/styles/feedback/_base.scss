@@ -1,36 +1,36 @@
 .feedback_index {
-	.container {
-		margin-right: auto;
-		margin-left: auto;
-		padding-left: 15px;
-		padding-right: 15px;
+  .container {
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 15px;
+    padding-right: 15px;
 
-		@include media(768px) {
-			width: 750px;
-		}
+    @include media(768px) {
+      width: 750px;
+    }
 
-		@include media(992px) {
-			width: 970px;
-		}
+    @include media(992px) {
+      width: 970px;
+    }
 
-		@include media(1200px) {
-			width: 1170px;
-		}
-	}
+    @include media(1200px) {
+      width: 1170px;
+    }
+  }
 
-	.full {
-		@include span-columns(12);
-		padding-left: 15px;
-		padding-right: 15px;
-	}
+  .full {
+    @include span-columns(12);
+    padding-left: 15px;
+    padding-right: 15px;
+  }
 
-	.row {
-	  margin-bottom: $spacing-unit;
-	}
+  .row {
+    margin-bottom: $spacing-unit;
+  }
 
-	.full {
-	  @include span-columns(12);
-	  padding-left: 15px;
-	  padding-right: 15px;
-	}
+  .full {
+    @include span-columns(12);
+    padding-left: 15px;
+    padding-right: 15px;
+  }
 }
