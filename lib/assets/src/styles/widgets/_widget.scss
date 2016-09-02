@@ -1,8 +1,3 @@
-.widget {
-  position: relative;
-  overflow: hidden;
-}
-
 .widget__definition--title {
   cursor: pointer;
   color: $link-colour;
@@ -13,7 +8,7 @@
     color: $link-hover-colour;
   }
 
-  &:after {
+  &::after {
     visibility: hidden;
     content: '\f0de';
     font-family: 'fontawesome';
@@ -36,57 +31,69 @@
 
   .widget__definition--content__inner {
     background: $charcoal-grey;
-    color: #fff;
+    color: $white;
     border-radius: 1px;
     padding: 5px 10px;
     font-size: 12px;
   }
 
-  .dashboard__kpis &, .fact & {
+  .dashboard__kpis &,
+  .fact & {
     display: none;
   }
 }
 
-.widget__definition.is-open {
-  .widget__definition--title {
-    &:after {
+.widget__definition {
+  &.is-open {
+    .widget__definition--title {
+      &::after {
+        visibility: visible;
+      }
+    }
+
+    .widget__definition--content {
       visibility: visible;
     }
   }
+}
 
-  .widget__definition--content {
-    visibility: visible;
+.sr-only,
+.widget {
+  .widget__data {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
   }
 }
 
-.sr-only, .widget .widget__data {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  margin: -1px;
-  padding: 0;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  border: 0;
-}
-
-.clearfix:before, .widget__inner:before, .clearfix:after, .widget__inner:after {
+.clearfix::before,
+.widget__inner::before,
+.clearfix::after,
+.widget__inner::after {
   content: '';
   display: table;
 }
 
-.clearfix:after, .widget__inner:after {
+.clearfix::after,
+.widget__inner::after {
   clear: both;
 }
 
 .widget {
+  position: relative;
+  overflow: hidden;
   padding-top: $spacing-unit / 4;
   padding-bottom: $spacing-unit / 2;
   width: 100%;
   margin: $spacing-unit / 2 0;
   height: auto;
   min-height: $widget-height;
-  background: #fff;
+  background: $white;
   box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.04);
   border: solid 1px rgba(0, 0, 0, 0.09);
 
@@ -117,7 +124,7 @@
   .widget__title {
     margin-top: 0;
     margin-bottom: 0.5em;
-    padding: 0 $spacing-unit/2;
+    padding: 0 $spacing-unit / 2;
 
     @media screen and(min-width: $screen-md) {
       height: 50px;
@@ -127,6 +134,14 @@
 
     @media screen and(max-width: $screen-md) {
       height: 77px;
+    }
+
+    h4 {
+      font-size: 1.25 * $fallback;
+      color: $primary-text-colour;
+      font-size: 1.25rem;
+      margin-top: 0;
+      margin-bottom: $gutter / 2;
     }
 
     .widget__last-updated,
@@ -163,14 +178,6 @@
         border-left: none;
       }
     }
-  }
-
-  .widget__title h4 {
-    font-size: 1.25 * $fallback;
-    color: $primary-text-colour;
-    font-size: 1.25rem;
-    margin-top: 0;
-    margin-bottom: $gutter / 2;
   }
 
   .widget__last-updated {
@@ -238,7 +245,7 @@
   text-align: left;
 
   .fa {
-    color: #0074c4;
+    color: $brand-colour;
     vertical-align: top;
     padding-left: 8px;
   }
@@ -248,18 +255,18 @@
     opacity: 0.95;
     display: block;
     position: absolute;
-    padding: $gutter/5 $gutter;
-    background: #fff;
+    padding: $gutter / 5 $gutter;
+    background: $white;
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.3);
     width: $note-width;
     right: 0;
 
-    &:before {
+    &::before {
       transform: rotate(45deg);
       content: '';
       width: 14px;
       height: 14px;
-      background: #fff;
+      background: $white;
       position: absolute;
       right: 3px;
       top: -5px;
@@ -272,7 +279,7 @@
       left: 30px;
       right: 0;
 
-      &:before {
+      &::before {
         transform: rotate(45deg);
         left: -8px;
         top: 5px;
@@ -291,7 +298,7 @@
       top: 20px;
       right: 0;
 
-      &:before {
+      &::before {
         transform: rotate(45deg);
 
         left: $note-width - 15;
@@ -301,7 +308,7 @@
       @include media($screen-sm) {
         left: -$note-width / 2;
 
-        &:before {
+        &::before {
           left: $note-width / 2 + 10;
           top: -8px;
         }
@@ -330,7 +337,7 @@
   }
 
   dd {
-    margin-bottom: $gutter/2;
+    margin-bottom: $gutter / 2;
   }
 
   .department {
@@ -360,7 +367,7 @@
 }
 
 .missing-data {
-  color: #dc271b;
+  color: $missing-data-colour;
 }
 
 @each $metric, $color in $metrics {
@@ -373,9 +380,10 @@
       color: $color;
     }
   }
+
   .dashboard__kpis {
     .widget.#{$metric} {
-      .widget__title:before {
+      .widget__title::before {
         content: '\f111';
         font-family: 'fontawesome';
         padding-right: 10px;
@@ -441,28 +449,12 @@
 //  }
 //}
 
-@include media($screen-md) {  // TODO remove this hack to fix truncation on hobby charts
-  .dashboard__secondary {
-    .aus-width-one-half {
-      .widget__inner.pie {
-        .chart {
-          width: calc(100% - 200px);
-        }
-
-        .legend {
-          width: 200px;
-        }
-      }
-    }
-  }
-}
-
 .dashboard__secondary {
   .widget__inner {
     margin-top: 10px;
 
     .legend {
-      padding: 0 $spacing-unit/2;
+      padding: 0 $spacing-unit / 2;
     }
 
     @media screen and (min-width: $screen-sm) {
@@ -542,15 +534,22 @@
   }
 }
 
-.is-high-contrast .dashboard__kpis .widget .widget__title:before {
-  display: none;
+.is-high-contrast {
+  .dashboard__kpis {
+    .widget {
+      .widget__title::before {
+        display: none;
+      }
+    }
+  }
 }
 
 .no-flexbox {
   .widget__inner {
     display: block;
 
-    .chart, .legend {
+    .chart,
+    .legend {
       overflow: hidden;
       float: left;
     }
@@ -569,10 +568,11 @@
 
 .reasons-unable-to-enrol {
   .widget__inner {
-    @media screen and (min-width: 992px){
+    @media screen and (min-width: 992px) {
       .chart {
         width: calc(100% - 240px);
       }
+
       .legend {
         width: 240px;
       }
