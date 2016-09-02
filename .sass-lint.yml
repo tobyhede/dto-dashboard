@@ -36,3 +36,6 @@ rules:
     - 2
     - max-depth:
       - 4
+
+  # Name Formats
+  class-name-format: 0 

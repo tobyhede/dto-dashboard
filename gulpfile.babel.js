@@ -158,11 +158,11 @@ gulp.task('clean:tests', (done) => {
 
 gulp.task('sass', () => {
   return gulp.src(`${DIR_SRC_STYLES}/**/*.scss`)
-  // .pipe(sassLint({ // todo - sass lint
-  // 	configFile: './.sass-lint.yml'
-  // }))
-  // .pipe(sassLint.format())
-  // .pipe(sourcemaps.init())
+  .pipe(sassLint({ // todo - sass lint
+  	configFile: './.sass-lint.yml'
+  }))
+  .pipe(sassLint.format())
+  .pipe(sourcemaps.init())
     .pipe(sass({
       includePaths: [
         DIR_NPM,
@@ -204,4 +204,3 @@ function watch_task() {
 gulp.task('build', gulp.series('clean', gulp.parallel('scripts', 'sass', 'images')));
 
 gulp.task('watch', gulp.series('build', gulp.parallel(watch_task, 'scripts_watch')));
-
