@@ -94,8 +94,8 @@
   height: auto;
   min-height: $widget-height;
   background: $white;
-  box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.04);
-  border: solid 1px rgba(0, 0, 0, 0.09);
+  box-shadow: $widget-box-shadow;
+  border: $widget-border;
 
   @include media($screen-sm) {
     height: $widget-height-tablet;
@@ -257,7 +257,7 @@
     position: absolute;
     padding: $gutter / 5 $gutter;
     background: $white;
-    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.3);
+    box-shadow: $widget-note-box-shadow;
     width: $note-width;
     right: 0;
 
@@ -370,6 +370,7 @@
   color: $missing-data-colour;
 }
 
+// scss-lint:disable all
 @each $metric, $color in $metrics {
   .widget.#{$metric} {
     .widget__title {
@@ -396,6 +397,7 @@
     }
   }
 }
+// scss-lint:enable all
 
 .meta-group {
   display: inline-block;
