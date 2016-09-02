@@ -3,6 +3,10 @@
   position: relative;
   top: 4px;
 
+  @media screen and (max-width: $screen-sm) {
+    top: -2px;
+ }
+
   p {
     display: inline-block;
     padding-right: 10px;
