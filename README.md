@@ -115,7 +115,7 @@ For advice for writing specs check [betterspecs](http://betterspecs.org/).
 
 ### Branch Often.
 
- All work should be on a branch. Discretion is accepted for small changes.
+ All work should be on a branch.
 
  Rebase long-living branches often (on master).
 
@@ -127,7 +127,7 @@ For advice for writing specs check [betterspecs](http://betterspecs.org/).
  Examples;
  ​
 
- - `bugfix/477-broken-redirects-for-guests`
+ - `fix/477-broken-redirects-for-guests`
 
  - `feature/502-new-cart-logo`
 
@@ -148,7 +148,9 @@ For advice for writing specs check [betterspecs](http://betterspecs.org/).
 
  test    -> adding missing tests
 
- tweak   -> small changes, documentation, refactors
+ tweak   -> small changes, refactors
+
+ doc     -> documentation
 
  ```
 
@@ -160,8 +162,20 @@ For advice for writing specs check [betterspecs](http://betterspecs.org/).
 
  - Create the PR early and label as `WIP`
 
+### Rebasing
 
- ### Review
+Rebasing before merging a PR ensures a clean commit history, please see [Merging vs Rebasing](https://www.atlassian.com/git/tutorials/merging-vs-rebasing/) for more details.
+
+If rebasing often, its a good idea to use `rerere`, see:
+[Fix conflicts only once with git rerere](https://medium.com/@porteneuve/fix-conflicts-only-once-with-git-rerere-7d116b2cec67a)
+
+If your branch is long-lived (longer than a day on an active codebase), its a good idea to periodically rebase so you are actively tracking changes in master. This makes merge conflicts 1) less likely and 2) smaller and easier to deal with.
+
+Merge conflicts need to be carefully resolved as part of the rebase process. A tool like git-tower can be useful.
+
+
+
+### Review
 
 
  - At least one other person should review the PR before merge.
