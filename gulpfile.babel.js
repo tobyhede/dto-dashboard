@@ -94,8 +94,7 @@ function build_scripts(env) {
       .transform(babelify),
     true,
     false
-  )
-    .pipe(gulp.dest(env.build));
+  );
 }
 
 function watch_scripts(env) {
