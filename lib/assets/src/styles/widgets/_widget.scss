@@ -202,6 +202,15 @@
   }
 }
 
+// todo - verify PD-444
+//.ie9,
+//.ie10 {
+//  .fact__inner {
+//    display: block;
+//    width: 100%;
+//  }
+//}
+
 .no-js {
   .widget__definition {
     a {
@@ -411,10 +420,30 @@
     font-weight: 600;
   }
 }
+// todo - verify PD-444
+//.ie9,
+//.ie10 {
+//  .widget {
+//    @include clearfix;
+//    .widget__inner {
+//      position: relative;
+//      .legend {
+//        padding-top: 20px;
+//        display: inline-block;
+//        position: absolute;
+//        bottom: 5px;
+//        right: 15px;
+//      }
+//      .chart {
+//        display: inline-block;
+//      }
+//    }
+//  }
+//}
 
 @include media($screen-md) {  // TODO remove this hack to fix truncation on hobby charts
   .dashboard__secondary {
-    .medium {
+    .aus-width-one-half {
       .widget__inner.pie {
         .chart {
           width: calc(100% - 200px);
