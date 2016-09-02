@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(version: 20160728011053) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["dataset_id"], name: "index_datapoints_on_dataset_id", using: :btree
+    t.index ["ts"], name: "index_datapoints_on_ts", using: :btree
   end
 
   create_table "dataset_widgets", force: :cascade do |t|
