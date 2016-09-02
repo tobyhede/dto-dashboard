@@ -1,9 +1,13 @@
-.toggle-switch{
+.toggle-switch {
   color: #fff;
+  position: relative;
+  top: 4px;
 
   p {
     display: inline-block;
-    padding-right: 25px;
+    padding-right: 10px;
+    position: relative;
+    top: 3px;
 
     @media screen and (max-width: $screen-sm) {
       display: none;
