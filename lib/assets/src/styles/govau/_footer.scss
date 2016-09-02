@@ -5,7 +5,7 @@ footer {
   padding-bottom: $default-padding;
 
   img {
-    @media screen and (max-width: $screen-sm){
+    @media screen and (max-width: $screen-sm) {
       display: block;
       margin: 0 auto;
     }
@@ -14,7 +14,7 @@ footer {
   section {
     @extend .container;
 
-    &:after {
+    &::after {
       clear: both;
     }
   }
@@ -24,21 +24,23 @@ footer {
 
     a {
       text-decoration: none;
-      color: white;
+      color: $white;
     }
   }
 
   a {
     text-decoration: none;
-    color: white;
+    color: $white;
 
-    &:hover, &:focus, &:active {
-      color: white;
+    &:hover,
+    &:focus,
+    &:active {
+      color: $white;
       text-decoration: underline;
     }
 
     &:visited {
-      color: white;
+      color: $white;
       background-color: $primary-text-colour;
     }
   }
@@ -49,7 +51,7 @@ footer section ul {
   margin: 0;
   padding: 0;
 
-   @media screen and (max-width: $screen-sm){
+  @media screen and (max-width: $screen-sm) {
     float: none;
     padding: 40px 0 0 0;
   }
