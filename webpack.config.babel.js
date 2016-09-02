@@ -30,6 +30,7 @@ let webpackConfig = {
   },
   // When you want to import a global API into the bundle
   externals: {
+    window: "window"
   },
   module: {
     // Pre-process files as they are loaded by "import" statements.

@@ -22,8 +22,9 @@ let webpackConfig = {
 		// publicPath:  `http://${CONFIG.HOST}:${CONFIG.PORT}/`
 		sourceMapFilename: "javascripts/[name].js.map"
 	},
-	externals: {
-	},
+  externals: {
+    window: "window"
+  },
 	module: {
 		preLoaders: [
       {

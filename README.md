@@ -84,6 +84,40 @@ The site can now be viewed at `http://localhost:3000/`
 
 Administration is available at `http://localhost:3000/admin`
 
+
+### Front end
+
+Install the legacy pipeline
+```
+npm install 
+npm run build
+```
+
+Build the new shiny stuff
+```
+npm run webpack:build
+```
+
+Work in the new shiny stuff?
+
+1. Install this Chrome Extension:
+
+https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd?hl=en
+
+More information here: http://zalmoxisus.github.io/redux-devtools-extension/
+
+
+2. Set .env variable to enable Dev Server mode
+```
+DEV_SERVER = true
+```
+
+3. Run 
+```
+npm run webpack:dev
+```
+
+
 ## Tests
 
 ```
