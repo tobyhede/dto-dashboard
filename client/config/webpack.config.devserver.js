@@ -3,24 +3,30 @@ import BellOnBundlerErrorPlugin from 'bell-on-bundler-error-plugin';
 import autoprefixer from 'autoprefixer';
 import * as CONFIG from './_config';
 
-const projectName = require('./../package').name;
+const projectName = require('./../../package').name;
 
 
 let webpackConfig = {
 	name: projectName,
 	bail: true,
 	debug: true,
-	devtool: 'eval',        // better sourcemaps -> cheap-module-eval-source-map
+	devtool: 'eval',        // need sourcemaps? -> cheap-module-eval-source-map
 	context: CONFIG.DIR_SRC,
-  entry: {
-    ['dashboard']: [`./dashboard`],
-  },
+    entry: {
+      ['dashboard']: [`./dashboard`],
+    },
 	output: {
-		path: CONFIG.DIR_DIST,
-		filename: 'javascripts/[name].js',       // relative     - determines output file
-    publicPath:  `/`,     // Web root. publicPath + filename must equal resource path in dev server
-		// publicPath:  `http://${CONFIG.HOST}:${CONFIG.PORT}/`
-		sourceMapFilename: "javascripts/[name].js.map"
+	  path: CONFIG.DIR_DIST,
+      // Add /* filename */ comments to generated require()s in the output.
+      pathinfo: true,
+      // This does not produce a real file. It's just the virtual path that is
+      // served by WebpackDevServer in development. This is the JS bundle
+      // containing code from all our entry points, and the Webpack runtime.
+	  filename: 'javascripts/[name].js',       // relative     - determines output file
+      // In development, we always serve from the root. This makes config easier.
+      publicPath:  `/`,     // Web root. publicPath + filename must equal resource path in dev server
+      // publicPath:  `http://${CONFIG.HOST}:${CONFIG.PORT}/` could be this
+      sourceMapFilename: "javascripts/[name].js.map"
 	},
 	externals: {
 	},
