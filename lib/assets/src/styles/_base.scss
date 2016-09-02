@@ -1,9 +1,7 @@
 html {
   overflow-x: hidden;
   font-size: 90%;
-
   min-width: $screen-min;
-
 
   @include media($screen-sm) {
     font-size: 80%;
