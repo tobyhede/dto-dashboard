@@ -2,13 +2,14 @@ FactoryGirl.define do
   factory :widget do
     dashboard
     sequence(:name) { |n| "widget-#{n}" }
-    size      'medium'
-    type      'bar'
-    units     'n'
-    row       0
-    pos       0
-    is_hero   false
-    
+    size              'medium'
+    type              'bar'
+    units             'n'
+    row               0
+    pos               0
+    is_hero           false
+    last_updated_at   { rand(100).hours.ago }
+
     factory :widget_with_datasets do
       transient do
         datasets_count 1

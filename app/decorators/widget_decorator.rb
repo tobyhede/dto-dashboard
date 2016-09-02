@@ -26,7 +26,7 @@ class WidgetDecorator < Draper::Decorator
       return ''
     end
 
-    date = dataset.previous.ts.to_formatted_s(:month_and_year)
+    date = dataset.previous.ts.to_formatted_s(:month_year)
 
     if dataset.trending?
       "#{dataset.trend.capitalize} by #{format(dataset.difference)} since #{date}"
@@ -36,7 +36,7 @@ class WidgetDecorator < Draper::Decorator
   end
 
   def humanised_last_updated
-    updated_at.to_formatted_s(:month_and_year)
+    last_updated_at.to_formatted_s(:day_month_year).strip
   end
 
   def format(change)

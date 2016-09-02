@@ -11,6 +11,7 @@ class CreateWidgets < ActiveRecord::Migration[5.0]
       t.text       :description, :null => true
       t.text       :options, :null => true
       t.boolean    :is_hero, :default => false, :null => false
+      t.timestamp  :last_updated_at, :null => false
       t.timestamps
     end
   end
