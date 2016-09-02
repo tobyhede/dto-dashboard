@@ -6,5 +6,8 @@ class CreateDatapoints < ActiveRecord::Migration[5.0]
       t.numeric     :value, :null => true
       t.timestamps
     end
+
+    add_index :datapoints, :dataset_id
+
   end
 end

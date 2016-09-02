@@ -14,5 +14,7 @@ class CreateWidgets < ActiveRecord::Migration[5.0]
       t.timestamp  :last_updated_at, :null => false
       t.timestamps
     end
+
+    add_index :widgets, :dashboard_id
   end
 end

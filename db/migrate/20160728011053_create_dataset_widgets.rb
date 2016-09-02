@@ -5,5 +5,8 @@ class CreateDatasetWidgets < ActiveRecord::Migration[5.0]
       t.references :widget, :null => false
       t.timestamps
     end
+
+    add_index :dataset_widgets, :dataset_id
+    add_index :dataset_widgets, :widget_id  
   end
 end
