@@ -53,7 +53,8 @@ let webpackConfig = {
 	},
 	plugins: [
 		new webpack.DefinePlugin({
-			'process.env.NODE_ENV': JSON.stringify(CONFIG.ENV)
+			'process.env.NODE_ENV': JSON.stringify(CONFIG.ENV),
+          __DEV__: true
 		}),
 		new BellOnBundlerErrorPlugin()
 	],

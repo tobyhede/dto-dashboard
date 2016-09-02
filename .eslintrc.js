@@ -13,7 +13,8 @@ module.exports = {
     "node": true
   },
   "globals": {
-    "window": true
+    "window": true,
+    "__DEV__": true
   },
   "rules": {
     // Best Practices

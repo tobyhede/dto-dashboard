@@ -18,7 +18,8 @@ for(let [key, value] of Object.entries(webpackConfig.entry)) {
 	}
 	value.unshift(
 		`webpack-dev-server/client?${devServerPublicPath}`,
-		'webpack/hot/dev-server'    // webpack/hot/only-dev-server
+		'webpack/hot/dev-server',    // reload if HMR fails
+    // './../../client/src/dashboard'
 	);
 }
 
@@ -31,13 +32,16 @@ var devCompiler = webpack(webpackConfig);
 
 // create an instance of webpack-dev-server
 let devServer = new WebpackDevServer(devCompiler, {
-	publicPath: devServerPublicPath,
-	hot: true,
-	noInfo: false,
-	quiet: false,
-	stats: {
-		colors: true
-	}
+  publicPath: devServerPublicPath,
+  hot: true,
+  // Set this as true if you want to access dev server from arbitrary url.
+  // This is handy if you are using a html5 router.
+  historyApiFallback: false,
+  noInfo: false,
+  quiet: false,
+  stats: {
+	  colors: true
+  }
 });
 
 // bind the server to location and callback

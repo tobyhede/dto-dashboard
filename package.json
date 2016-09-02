@@ -31,8 +31,9 @@
   },
   "devDependencies": {
     "ava": "^0.15.2",
-    "babel-core": "^6.5.2",
+    "babel-core": "^6.14.0",
     "babel-eslint": "^6.1.2",
+    "babel-loader": "^6.2.5",
     "babel-plugin-transform-es2015-classes": "^6.8.0",
     "babel-plugin-transform-proto-to-assign": "^6.8.0",
     "babel-preset-es2015": "^6.5.0",
@@ -65,8 +66,8 @@
     "jasmine": "^2.4.1",
     "jasmine-core": "^2.4.1",
     "jasmine-jquery": "^2.1.1",
-    "karma": "^1.2.0",
     "jsdom": "^9.4.5",
+    "karma": "^1.2.0",
     "karma-browserify": "^5.1.0",
     "karma-chrome-launcher": "^2.0.0",
     "karma-jasmine": "^1.0.2",
@@ -87,24 +88,23 @@
     "vinyl-transform": "^1.0.0",
     "watchify": "^3.7.0",
     "webpack": "^1.13.2",
-    "webpack-dev-middleware": "^1.6.1",
-    "webpack-dev-server": "^1.15.0",
-    "webpack-hot-middleware": "^2.12.2"
+    "webpack-dev-server": "^1.15.0"
   },
   "scripts": {
     "build": "NODE_ENV=production gulp build",
     "dev": "gulp watch",
     "start": "echo 'No start tast, use 'npm run dev' or 'npm run build''",
-    "test": "NODE_ENV=test npm run test-browser && npm run test-browser:legacy",
+    "test": "npm run test-browser && npm run test-browser:legacy",
     "pretest-browser": "gulp clean:tests",
     "test-browser": "NODE_ENV=test ava 'client/test/**/*.test.js' --require=babel-register",
-    "test-browser:tap": "npm run test-browser -- --tap | tap-spec",
-    "test-browser:watch": "DEBUG=ava:watcher ava 'client/test/**/*.test.js' --require=babel-register --watch --verbose",
+    "test-browser:tap": "NODE_ENV=test npm run test-browser -- --tap | tap-spec",
+    "test-browser:watch": "NODE_ENV=test DEBUG=ava:watcher ava 'client/test/**/*.test.js' --require=babel-register --watch --verbose",
     "coverage": "nyc report --reporter=html --reporter=text npm test-browser",
     "test-browser:legacy": "NODE_ENV=test karma start",
     "lint": "eslint ./client/src/**/*.js",
     "postinstall": "echo 'Installation with NPM successful. What to do next:\\n  npm run to see options'",
-    "webpack:build": "NODE_ENV=production webpack --progress",
+    "webpack:build": "webpack -p",
+    "webpack:build:production": "NODE_ENV=production webpack -p --release",
     "webpack:dev": "node devServer.js"
   },
   "nyc": {
@@ -114,6 +114,6 @@
     ]
   },
   "engines": {
-    "node": "6.0.0"
+    "node": "6.3.0"
   }
 }
