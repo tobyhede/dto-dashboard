@@ -7,7 +7,7 @@
   "widgets":  [
     {
       "id":   "kpis",
-      "updated_at": "2016-06-30T01:01:01.111Z",
+      "updated_at": "2016-08-30T01:01:01.111Z",
       "name": "Kpis",
       "type": "full",
       "size": "extra-large",
@@ -17,7 +17,7 @@
     },
     {
       "id":   "user-satisfaction",
-      "updated_at": "2016-06-30T01:01:01.111Z",
+      "updated_at": "2016-08-30T01:01:01.111Z",
       "name": "User Satisfaction",
       "type": "kpi-sparkline",
       "size": "extra-small",
@@ -27,7 +27,7 @@
     },
     {
       "id":   "cost-per-transaction",
-      "updated_at": "2016-06-30T01:01:01.111Z",
+      "updated_at": "2016-08-30T01:01:01.111Z",
       "name": "Cost Per Transaction",
       "type": "kpi-sparkline",
       "size": "extra-small",
@@ -36,7 +36,7 @@
     },
     {
       "id":   "digital-take-up",
-      "updated_at": "2016-06-30T01:01:01.111Z",
+      "updated_at": "2016-08-30T01:01:01.111Z",
       "name": "Digital Take-up",
       "type": "kpi-sparkline",
       "size": "extra-small",
@@ -45,7 +45,7 @@
     },
     {
       "id":   "completion-rate",
-      "updated_at": "2016-06-30T01:01:01.111Z",
+      "updated_at": "2016-08-30T01:01:01.111Z",
       "name": "Completion Rate",
       "type": "kpi-sparkline",
       "size": "extra-small",
@@ -55,22 +55,24 @@
     },
     {
       "id":   "click-through",
-      "updated_at": "2016-06-30T01:01:01.111Z",
+      "updated_at": "2016-08-30T01:01:01.111Z",
       "name": "Users who navigated to another site",
-      "type": "pie",
+      "type": "bar",
       "size": "medium",
       "units": "%",
+      "stacking": "percentage",
       "displayRoundedData" : true,
       "definition": "This shows the percentage of users who click through to an external website from the Hobby or Business tool. Please note that these figures represent aggregated clicks to external government sites.",
-      "datasets": ["click-through-ato", "click-through-ablis", "click-through-bus.gov", "click-through-ip", "click-through-other"]
+      "datasets": ["click-through-ato", "click-through-ablis", "click-through-bus.gov", "click-through-ip", "click-through-abr", "click-through-asic", "click-through-other"]
     },
     {
       "id":   "external-referrals",
       "updated_at": "2016-06-30T01:01:01.111Z",
       "name": "How users are finding the hobby or business tool",
-      "type": "pie",
+      "type": "bar",
       "size": "medium",
       "units": "%",
+      "stacking": "percentage",
       "displayRoundedData" : true,
       "definition": "This shows the percentage of visits to the tool that came directly from business.gov.au or other external sites ie government, private sector or social media.",
       "datasets": ["external-referrals-ext", "external-referrals-direct"]
@@ -78,21 +80,23 @@
     {
       "id":   "help-sought",
       "updated_at": "2016-06-30T01:01:01.111Z",
-      "name": "Users seeking help from contact centre",
-      "type": "pie",
+      "name": "Users requiring help from contact centre",
+      "type": "bar",
       "size": "medium",
       "units": "%",
-      "displayRoundedData" : true,
-      "definition": "This shows the percentage of users who sought help from the business.gov.au contact centre via phone, web chat or email.",
+      "stacking": "percentage",
+      "displayRoundedData" : false,
+      "definition": "This shows the percentage of users who required help from the business.gov.au contact centre via phone, web chat or email.",
       "datasets": ["help-sought-contact", "help-sought-none"]
     },
     {
       "id":   "device",
       "updated_at": "2016-06-30T01:01:01.111Z",
       "name": "Devices used by users",
-      "type": "pie",
+      "type": "bar",
       "size": "small",
       "units": "%",
+      "stacking": "percentage",
       "displayRoundedData" : true,
       "definition": "This shows the types of devices used by users to access the Hobby or Business tool.",
       "datasets": ["device-usage-desktop", "device-usage-mobile", "device-usage-tablet"]
@@ -101,7 +105,7 @@
       "id":   "browser",
       "updated_at": "2016-06-30T01:01:01.111Z",
       "name": "Browsers used by users",
-      "type": "pie",
+      "type": "line",
       "size": "small",
       "units": "%",
       "displayRoundedData" : true,
@@ -115,7 +119,7 @@
       "type": "fact",
       "size": "medium",
       "units": "f",
-      "description": "79% of people who sought help from the Contact Centre were seeking general information about the tool, 21% needed assistance interpreting their results."
+      "description": "85% of users who received a business or hobby result thought the tool was helpful."
     },
     {
       "id":   "fact-1",
@@ -124,7 +128,7 @@
       "type": "fact",
       "size": "small",
       "units": "n",
-      "description": "In June, 71% of contacts to the Contact Centre were by phone, 17% by web chat and 12% by email."
+      "description": "The ATO page \"Income you must declare\" is the most clicked obligation link on the results page."
     }
   ],
   "layout":   [
