@@ -1,4 +1,29 @@
 .sparkline__inner {
+  // Edge case for hero KPI when there is missing data sections
+  &.no-data {
+    .metric-data {
+      .value {
+        text-transform: none;
+        color: $charcoal-grey;
+
+        @media (min-width: $screen-sm) {
+          font-size: 3rem;
+        }
+
+        &::first-letter {
+          text-transform: uppercase;
+        }
+      }
+    }
+
+    .decorator,
+    .sparkline,
+    .metric-meta {
+      display: none;
+    }
+  }
+  //end edge case
+
   .metric-trend {
     color: $cerulean;
   }
@@ -88,7 +113,10 @@
         display: none;
       }
 
-      .widget__title, .widget__inner, .metric-data .value,.sparkline {
+      .widget__title,
+      .widget__inner,
+      .metric-data .value,
+      .sparkline {
         display: table-cell;
         font-size: $fallback;
         font-size: 1rem;
@@ -156,23 +184,5 @@
         height: auto;
       }
     }
-  }
-}
-
-// Edge case for hero KPI when there is missing data sections
-.sparkline__inner.no-data {
-  .metric-data .value {
-    @media (min-width: $screen-sm) {
-      font-size: 3rem;
-    }
-    text-transform: none;
-    color: $charcoal-grey;
-
-    &:first-letter {
-      text-transform: uppercase;
-    }
-  }
-  .decorator, .sparkline, .metric-meta {
-    display: none;
   }
 }
