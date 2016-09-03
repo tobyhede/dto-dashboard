@@ -11,6 +11,10 @@ footer {
     }
   }
 
+  li {
+    line-height: $line-height-base;
+  }
+
   section {
     @extend .container;
 
@@ -19,12 +23,23 @@ footer {
     }
   }
 
-  ul li {
-    padding-left: 0;
+  ul {
+    float: right;
+    margin: 0;
+    padding: 0;
 
-    a {
-      text-decoration: none;
-      color: $white;
+    @media screen and (max-width: $screen-sm) {
+      float: none;
+      padding: 40px 0 0 0;
+    }
+
+    li {
+      padding-left: 0;
+
+      a {
+        text-decoration: none;
+        color: $white;
+      }
     }
   }
 
@@ -44,19 +59,4 @@ footer {
       background-color: $primary-text-colour;
     }
   }
-}
-
-footer section ul {
-  float: right;
-  margin: 0;
-  padding: 0;
-
-  @media screen and (max-width: $screen-sm) {
-    float: none;
-    padding: 40px 0 0 0;
-  }
-}
-
-footer li {
-  line-height: $line-height-base;
 }
