@@ -370,34 +370,36 @@
   color: $missing-data-colour;
 }
 
-// scss-lint:disable all
 @each $metric, $color in $metrics {
-  .widget.#{$metric} {
-    .widget__title {
-      border-bottom: 5px solid $color;
-    }
+  .widget {
+    &.#{$metric} {
+      .widget__title {
+        border-bottom: 5px solid $color;
+      }
 
-    .fa-circle {
-      color: $color;
+      .fa-circle {
+        color: $color;
+      }
     }
   }
 
   .dashboard__kpis {
-    .widget.#{$metric} {
-      .widget__title::before {
-        content: '\f111';
-        font-family: 'fontawesome';
-        padding-right: 10px;
-        color: $color;
+    .widget {
+      &.#{$metric} {
+        .widget__title::before {
+          content: '\f111';
+          font-family: 'fontawesome';
+          padding-right: 10px;
+          color: $color;
 
-        @include media($screen-sm) {
-          display: none;
+          @include media($screen-sm) {
+            display: none;
+          }
         }
       }
     }
   }
 }
-// scss-lint:enable all
 
 .meta-group {
   display: inline-block;
