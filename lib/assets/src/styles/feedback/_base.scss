@@ -27,10 +27,4 @@
   .row {
     margin-bottom: $spacing-unit;
   }
-
-  .full {
-    @include span-columns(12);
-    padding-left: 15px;
-    padding-right: 15px;
-  }
 }
