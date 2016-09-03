@@ -1,13 +1,9 @@
 // todo - scope dashboard pages with parent scopes
-.dashboards_index {
-
-}
 
 .container {
   margin-right: auto;
   margin-left: auto;
-  padding-left: 15px;
-  padding-right: 15px;
+  @include add-gutter;
 
   @include media(768px) {
     width: 750px;
@@ -24,8 +20,7 @@
 
 .aus-width-one-whole {
   @include span-columns(12);
-  padding-left: 15px;
-  padding-right: 15px;
+  @include add-gutter;
 }
 
 .aus-width-one-half  {
@@ -76,8 +71,7 @@
 
 .aus-width-seven-twelfths {
   @include span-columns(7);
-  padding-left: 15px;
-  padding-right: 15px;
+  @include add-gutter;
 
   @media (max-width: 768px) {
     @include span-columns(12);
@@ -86,9 +80,8 @@
 
 .aus-width-five-twelfths {
   @include span-columns(5);
-  @include omega();
-  padding-left: 15px;
-  padding-right: 15px;
+  @include omega;
+  @include add-gutter;
 
   @media (max-width: 768px) {
     @include span-columns(12);
@@ -112,17 +105,17 @@
 }
 
 .aus-end-row {
-  @include omega();
+  @include omega;
 }
 
 .row {
-  @include row();
+  @include row;
 }
 
 .prototype-warning {
   background-color: $cerulean;
   font-size: 0.9rem;
-  color: #fff;
+  color: $white;
   padding: 5px 0;
   margin-right: auto;
   margin-left: auto;
@@ -140,9 +133,9 @@ body {
   background: $cerulean;
 }
 
-#main {
+main {
   min-height: calc(100vh - 260px);
-  background: #fff;
+  background: $white;
 }
 
 .list-unstyled {
@@ -159,8 +152,8 @@ body {
 }
 
 .p1 {
-  padding-left: $spacing-unit/2;
-  padding-right: $spacing-unit/2;
+  padding-left: $spacing-unit / 2;
+  padding-right: $spacing-unit / 2;
 }
 
 .block {
@@ -186,7 +179,7 @@ svg {
 }
 
 section {
-  @include row();
+  @include row;
 }
 
 p {
@@ -211,7 +204,7 @@ $badges: (
     line-height: 1;
     padding: 0.3em 0.7em;
     font-weight: bold;
-    color: #fff;
+    color: $white;
   }
 }
 
