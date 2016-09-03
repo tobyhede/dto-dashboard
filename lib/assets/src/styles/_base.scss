@@ -33,7 +33,7 @@ h1 {
   font-size: 1.5rem;
   font-weight: 700;
   margin-bottom: 1.5rem;
-  margin-top: $gutter/2;
+  margin-top: $gutter / 2;
 
   @include media($screen-sm) {
     font-size: 2.25 * $fallback;
@@ -74,7 +74,7 @@ h4 {
 }
 
 .fa-arrow-unchanged {
-  &:before {
+  &::before {
     content: '\f068';
   }
 }
