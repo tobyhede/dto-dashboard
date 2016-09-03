@@ -79,11 +79,15 @@
     padding: 0;
   }
 
-  .widget__inner .sparkline__inner .chart {
-    display: none;
+  .widget__inner {
+    .sparkline__inner {
+      .chart {
+        display: none;
 
-    @include media($screen-sm) {
-      display: block;
+        @include media($screen-sm) {
+          display: block;
+        }
+     }
     }
   }
 
@@ -115,11 +119,13 @@
 
       .widget__title,
       .widget__inner,
-      .metric-data .value,
-      .sparkline {
-        display: table-cell;
-        font-size: $fallback;
-        font-size: 1rem;
+      .metric-data {
+        .value,
+        .sparkline {
+          display: table-cell;
+          font-size: $fallback;
+          font-size: 1rem;
+        }
       }
 
       .widget__inner {
@@ -150,8 +156,10 @@
 }
 
 .has-data-false {
-  .metric-data .value {
-    font-size: 3rem;
+  .metric-data {
+    .value {
+      font-size: 3rem;
+    }
   }
 }
 
