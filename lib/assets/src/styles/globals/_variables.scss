@@ -48,11 +48,9 @@ $gutter:                            10px;
 // Typography:
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700,300,600');
 $font-family-sans-serif:            'Open Sans', sans-serif !default;
-$open-sans:                         'Open Sans', sans-serif !default;
 $fallback:                          16px;
 $biggie:                            4.7rem;
 $biggie-fallback:                   4.7 * $fallback;
-$base-font-family:                  $open-sans;
 $base-font-size:                    1rem;
 $base-line-height:                  1.5;
 $line-height-base:                  1.428571429; // 20/14
