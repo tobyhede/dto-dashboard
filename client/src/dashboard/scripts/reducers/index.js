@@ -1,9 +1,16 @@
 import { combineReducers } from 'redux';
+
+import app from './app';
 import ui from './ui';
+import widgets from './widgets';
+import datums from './datums';
 
 
 const rootReducer = combineReducers({
-  ui
+  app,
+  ui,
+  widgets,
+  datums
 });
 
 export default rootReducer;

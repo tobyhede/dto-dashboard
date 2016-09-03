@@ -1,14 +1,15 @@
 import initialState from './../store/initialState';
 
 
-const uiReducer = (state = initialState.ui, action) => {
+const datumsReducer = (state = initialState.datums, action) => {
   switch (action.type) {
     default:
       return state;
   }
 };
 
-export default uiReducer;
+export default datumsReducer;
 
 
 // Helpers
+

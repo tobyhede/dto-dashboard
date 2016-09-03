@@ -1,1 +1,3 @@
-export const DOIN_IT = 'DOIN_IT';
+export const SET_HIGH_CONTRAST = 'Set high contrast';
+
+export const CREATE_WIDGET = 'Create widget';

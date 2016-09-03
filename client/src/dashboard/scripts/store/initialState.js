@@ -1,5 +1,8 @@
 export default {
-  ui: {
-    app: {}
-  }
+  app: {
+    highContrast: false
+  },
+  ui: {},
+  widgets: {},
+  datums: {}
 };
