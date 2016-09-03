@@ -10,24 +10,41 @@ svg:not(:root) {
 
 .line-group {
   fill: none;
+
+  circle {
+    fill-opacity: 0 !important;
+    stroke-width: 0;
+
+    &.is-hover {
+      fill: $white;
+      stroke-width: 1px;
+      fill-opacity: 1 !important;
+    }
+
+    &.is-null {
+      stroke-width: 0;
+    }
+  }
 }
 
 .layer--bottom {
   rect {
     fill: none;
-  }
 
-  rect.empty {
-    fill: url(#diagonal-stripe-1);
-    fill-opacity: 0.3;
+    &.empty {
+      fill: url('#diagonal-stripe-1');
+      fill-opacity: 0.3;
+    }
   }
 }
 
-.axis path,
-.axis line {
-  fill: none;
-  stroke: #c7ccd2;
-  stroke-width: 1px;
+.axis {
+  path,
+  line {
+    fill: none;
+    stroke: $axis-stroke-colour;
+    stroke-width: 1px;
+  }
 }
 
 .line {
@@ -41,31 +58,49 @@ svg:not(:root) {
   .line {
     stroke-width: 4px;
   }
-}
 
-.tick text {
-  font-size: 12px;
-  fill: $secondary-text-colour;
-}
-
-.y.axis {
-  .domain {
+  .ruler-wrapper {
     display: none;
   }
-}
 
-.hero .line-group {
-  path,
-  line {
-    stroke-opacity: 0.7;
-    shape-rendering: inherit;
-    stroke-linecap: round;
+  circle {
+    &.is-hover {
+      stroke-width: 2px;
+
+      &.is-null {
+        stroke-width: 0;
+      }
+    }
   }
 }
 
 .tick {
+  text {
+    font-size: 12px;
+    fill: $secondary-text-colour;
+  }
+
   line {
     display: none;
+  }
+}
+
+.y {
+  &.axis {
+    .domain {
+      display: none;
+    }
+  }
+}
+
+.hero {
+  .line-group {
+    path,
+    line {
+      stroke-opacity: 0.7;
+      shape-rendering: inherit;
+      stroke-linecap: round;
+    }
   }
 }
 
@@ -81,16 +116,23 @@ svg:not(:root) {
       text-transform: uppercase;
     }
   }
+
+  svg {
+    display: inline-block;
+    margin-right: 3px;
+  }
 }
 
-.hero-widget {
+hero-widget {
   path {
     fill-opacity: 1;
     stroke-width: 6px;
   }
 
-  .line-group circle {
-    fill-opacity: 1;
+  .line-group {
+    circle {
+      fill-opacity: 1;
+    }
   }
 }
 
@@ -106,43 +148,7 @@ svg:not(:root) {
 
     text {
       display: block;
-      fill: #5c6976;
+      fill: $back-link-colour;
     }
   }
-}
-
-.line-group {
-  circle {
-    fill-opacity: 0 !important;
-    stroke-width: 0;
-  }
-
-  circle.is-hover {
-    fill: #fff;
-    stroke-width: 1px;
-    fill-opacity: 1 !important;
-  }
-
-  circle.is-null {
-    stroke-width: 0;
-  }
-}
-
-.sparkline {
-  .ruler-wrapper {
-    display: none;
-  }
-
-  circle.is-hover {
-    stroke-width: 2px;
-
-    &.is-null {
-      stroke-width: 0;
-    }
-  }
-}
-
-.legend svg {
-  display: inline-block;
-  margin-right: 3px;
 }
