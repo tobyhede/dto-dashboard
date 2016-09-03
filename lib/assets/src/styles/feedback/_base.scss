@@ -1,9 +1,8 @@
 .feedback_index {
   .container {
+    @include add-gutter;
     margin-right: auto;
     margin-left: auto;
-    padding-left: 15px;
-    padding-right: 15px;
 
     @include media(768px) {
       width: 750px;
@@ -20,8 +19,7 @@
 
   .full {
     @include span-columns(12);
-    padding-left: 15px;
-    padding-right: 15px;
+    @include add-gutter;
   }
 
   .row {
