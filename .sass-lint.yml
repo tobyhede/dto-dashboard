@@ -41,3 +41,4 @@ rules:
   class-name-format: 0
 
   no-duplicate-properties: 0
+  no-transition-all: 0
