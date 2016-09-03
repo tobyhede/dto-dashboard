@@ -1,8 +1,8 @@
 .debug-mode {
-  background: yellow;
+  background: $debug-colour;
   margin-left: 10px;
 
   svg:not(:root) {
-    background: rgba(yellow, 0.1);
+    background: $debug-svg-colour;
   }
 }
