@@ -1,5 +1,6 @@
 import * as types from './_types';
 
+
 export function createWidget(payload) {
   return {
     type: types.CREATE_WIDGET,
@@ -8,3 +9,10 @@ export function createWidget(payload) {
   }
 }
 
+export function createWidgets(payload) {
+  return {
+    type: types.CREATE_WIDGETS,
+    payload,
+    meta: {}
+  }
+}

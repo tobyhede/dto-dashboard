@@ -3,14 +3,14 @@ import { combineReducers } from 'redux';
 import app from './app';
 import ui from './ui';
 import widgets from './widgets';
-import datums from './datums';
+import datasets from './datasets';
 
 
 const rootReducer = combineReducers({
   app,
   ui,
   widgets,
-  datums
+  datasets
 });
 
 export default rootReducer;

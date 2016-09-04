@@ -1,8 +1,6 @@
 export default {
-  app: {
-    highContrast: false
-  },
+  app: {},
   ui: {},
-  widgets: {},
-  datums: {}
+  widgets: [],
+  datasets: []
 };
