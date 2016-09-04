@@ -1,9 +1,9 @@
 import webpack from 'webpack';
 import BellOnBundlerErrorPlugin from 'bell-on-bundler-error-plugin';
 import autoprefixer from 'autoprefixer';
-import * as CONFIG from './_config';
 
-const projectName = require('./../../package').name;
+import * as CONFIG from './_config';
+const projectName = require('./../package').name;
 
 
 let webpackConfig = {

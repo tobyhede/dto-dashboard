@@ -14,9 +14,7 @@
 
   <link rel="stylesheet" href="<%= stylesheet_path('index.css') %>"/>
 
-  <% if Rails.env.development? && ENV['DEV_SERVER'] %>
-      <link rel="stylesheet" href="http://localhost:8080/stylesheets/dashboard.css"/>
-<% else %>
+  <% if !(Rails.env.development? && ENV['DEV_SERVER']) %>
       <link rel="stylesheet" href="/stylesheets/dashboard.css"/>
   <% end %>
   <%= render 'layouts/analytics' %>
