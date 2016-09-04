@@ -16,7 +16,7 @@
                 <%= title_end_with_dashboard(dashboard.name) %>
             </h2>
             <div class="updated-at">
-              <p>Updated at <%= dashboard.published_at.strftime("%b %Y") %></p>
+              <p>Updated at <%= dashboard.widgets.order(:last_updated_at => 'ASC').last.last_updated_at.strftime("%b %Y") %> </p>
             </div>
           </div>
           <%= link_to "View #{dashboard.name}", dashboard_path(dashboard), :class => "card__link__visible" %>

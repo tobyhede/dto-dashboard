@@ -1,8 +1,20 @@
 import webpack from 'webpack';
 import WebpackDevServer from 'webpack-dev-server';
+import opn from 'opn';
 
 import * as CONFIG from './_config';
 import webpackConfig from './webpack.config.devserver';
+
+
+function clearConsole() {
+  // This seems to work best on Windows and other systems.
+  // The intention is to clear the output so you can focus on most recent build.
+  process.stdout.write('\x1bc');
+}
+
+function openBrowser() {
+  opn(CONFIG.RAILS_HTTP);
+}
 
 
 let devServerPublicPath = `http://${CONFIG.HOST}:${CONFIG.PORT}/`;
@@ -17,9 +29,10 @@ for(let [key, value] of Object.entries(webpackConfig.entry)) {
 		throw new Error('Entry value must be an array');
 	}
 	value.unshift(
-		`webpack-dev-server/client?${devServerPublicPath}`,
-		'webpack/hot/dev-server',    // reload if HMR fails
-    // './../../client/src/dashboard'
+	  `webpack-dev-server/client?${devServerPublicPath}`,
+	  'webpack/hot/dev-server',    // reload if HMR fails
+      // app entry point is not required here because it is carried across
+      // from webpack.config, a la unshift.
 	);
 }
 
@@ -41,15 +54,22 @@ let devServer = new WebpackDevServer(devCompiler, {
   quiet: false,
   stats: {
 	  colors: true
+  },
+  // Reportedly, this avoids CPU overload on some systems.
+  watchOptions: {
+    ignored: /node_modules/
   }
 });
 
 // bind the server to location and callback
 devServer.listen(CONFIG.PORT, CONFIG.HOST, function (err) {
-	if (err) {
-		console.log(err);
-	}
-	console.log(`Listening at ${devServerPublicPath}..`);
+  if (err) {
+	  console.log(err);
+  }
+  clearConsole();
+  console.log(`Listening at ${devServerPublicPath}... . Opening.`);
+  console.log();
+  openBrowser();
 });
 
 

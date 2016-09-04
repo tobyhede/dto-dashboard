@@ -3,10 +3,14 @@ import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import BellOnBundlerErrorPlugin from 'bell-on-bundler-error-plugin';
 import autoprefixer from 'autoprefixer';
 
-import * as CONFIG from './client/_config';
+import * as CONFIG from './client/config/_config';
 const projectName = require('./package').name;
 const DEBUG = !process.argv.includes('--release');
 
+
+if (!DEBUG) {
+   console.log('PREPARING FOR PRODUCTION.');
+}
 
 let ExtractSass = new ExtractTextPlugin("stylesheets/[name].css", {
   publicPath: CONFIG.DIR_DIST,
@@ -45,12 +49,16 @@ let webpackConfig = {
     ],
     loaders: [
       {
-        test: /\.(js|json)$/,
+        test: /\.(js)$/,
         loaders: ['babel'],
         exclude: [
           CONFIG.DIR_NPM,
           CONFIG.DIR_TEST
         ],
+      },
+      {
+        test: /\.json$/,
+        loader: 'json'
       },
       {
         test: /\.(scss|css)$/,
@@ -97,12 +105,24 @@ let webpackConfig = {
       CONFIG.DIR_SRC,
       CONFIG.DIR_NPM
     ],
-    sourceMap: true,
-    lineNumbers: true,
+    sourceMap: DEBUG,
+    lineNumbers: DEBUG,
     bundleExec: true,
     data: `$env:  ${CONFIG.ENV === 'production' ? 'production' : 'development'};`
   }
 };
+
+if (!DEBUG) {
+  webpackConfig.plugins.push(
+    new webpack.optimize.DedupePlugin(),
+    new webpack.optimize.OccurenceOrderPlugin(),
+    new webpack.optimize.UglifyJsPlugin({
+      compress: {
+        warnings: false
+      }
+    })
+  )
+}
 
 
 export default webpackConfig;
