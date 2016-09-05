@@ -9,6 +9,7 @@ gem 'puma', '~> 3.0'
 gem 'active_model_serializers', '~> 0.10.0'
 gem 'draper',                   '> 3.x'
 gem 'jquery-rails'
+gem 'newrelic_rpm'
 gem 'redcarpet',                '~>3.3'
 gem 'sass-rails',               '~> 5.0'
 gem 'turbolinks',               '~> 5'
@@ -35,7 +36,6 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'web-console'
-  gem 'rails-controller-testing'
 end
 
 group :test do
