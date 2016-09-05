@@ -49,6 +49,7 @@ group :test do
   gem 'rspec-its'
   gem 'rails-controller-testing'
   gem 'rspec_junit_formatter'
+  gem 'selenium-webdriver', '~> 2.53.4'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
