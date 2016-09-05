@@ -1,3 +1,0 @@
-@function image-url($relative-path) {
-  @return url("#{$assets-image-url}/{$releative-path}");
-}
