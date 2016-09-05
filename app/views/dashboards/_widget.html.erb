@@ -4,7 +4,7 @@
       <h4><%= widget.name %></h4>
       <a href="#dashboard-notes" title="View KPI <%= widget.name %> definition" class="fa fa-question-circle info" ga-on="click" ga-event-category="<%= GA::CATEGORY_SEEK_MORE_INFO %>" ga-event-action="<%= GA::ACTION_CLICK %>" ga-event-label="Hero title - <%= widget.name %>"></a>
       <div class="meta-group">
-        <span class="widget__last-updated">Last updated <%= widget.humanised_last_updated %></span>
+        <span class="widget__last-updated">Last updated <%= widget.last_updated_at %></span>
       </div>
       <div class="meta-group">
         <% if widget.show_description? %>

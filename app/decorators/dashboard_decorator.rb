@@ -25,8 +25,16 @@ class DashboardDecorator < Draper::Decorator
     markdown.render(notes).html_safe
   end
 
-  def title
-    name.gsub(/dashboard/i, '').strip
+  def name
+    object.name.gsub(/dashboard/i, '').strip
+  end
+
+  def dashboardized_name
+    name.downcase.index('dashboard') ? name : "#{name} Dashboard"
+  end
+
+  def last_updated_at
+    object.last_updated_at.to_formatted_s(:month_year)
   end
 
   private
