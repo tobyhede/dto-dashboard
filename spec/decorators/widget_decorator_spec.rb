@@ -482,5 +482,16 @@ RSpec.describe WidgetDecorator, type: :decorator do
     end
   end
 
+  describe 'size extra-small to style' do
+    let(:widget) { FactoryGirl.create(:widget, :size => 'extra-small') }
+    subject { widget.decorate }
+    its(:size_to_style) { is_expected.to eq 'aus-width-one-fourth' }
+  end
+
+  describe 'size small to style' do
+    let(:widget) { FactoryGirl.create(:widget, :size => 'small') }
+    subject { widget.decorate }
+    its(:size_to_style) { is_expected.to eq 'aus-width-one-third' }
+  end
 
 end
