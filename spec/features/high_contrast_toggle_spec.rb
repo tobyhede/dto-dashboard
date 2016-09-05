@@ -1,5 +1,18 @@
 require 'rails_helper'
 
 RSpec.describe "high contrast mode toggle", :type => :feature, :js => true do
-  it "is a pending example"
+  # visit '/dashboards/2-australian-citizenship-appointment-booking-service-dashboard'
+  # page.check('switch-mode')
+  # page.should have_css('body.is-high-contrast')
+
+  context 'switching high contrast mode on' do
+    let!(:dashboard)    { FactoryGirl.create(:dashboard_published) }
+    it 'should show toggle switch' do
+      puts dashboard.inspect
+      puts dashboard_path(dashboard)
+      visit(dashboard_path(dashboard))
+
+      page.has_css?('div.toggle-switch')
+    end
+  end
 end
