@@ -39,6 +39,7 @@ group :development do
 end
 
 group :test do
+  gem 'capybara', '~> 2.8.1'
   gem "codeclimate-test-reporter", require: false
   gem 'factory_girl_rails', '~> 4.0'
   gem 'guard-rspec', require: false
