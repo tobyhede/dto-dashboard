@@ -1,75 +1,46 @@
-.label-switch {
-  $action-color: #477DCA !default;
-  $base-background-color: white !default;
-  $switch-width: 52px;
-  $switch-padding: 2px;
-  $switch-height: 32px;
-  $switch-radius: $switch-height;
-  $knob-size: $switch-height - ($switch-padding * 2);
-  $knob-radius: $switch-height - ($switch-padding * 2);
-  $knob-width: $knob-size;
-  $switch-background: $base-background-color;
-  $switch-border-background: darken($base-background-color, 9%);
-  $switch-shadow: 0 2px 5px transparentize(black, 0.6);
-
-  border-radius: $switch-radius;
-  cursor: pointer;
-  display: inline-block;
-  height: $switch-height;
+.toggle-switch {
+  color: #fff;
   position: relative;
-  width: $switch-width;
+  top: 4px;
 
-  input[type="checkbox"] {
-    display: none;
+  @media screen and (max-width: $screen-sm) {
+    top: -2px;
+ }
 
-    + .checkbox {
-      background: $switch-border-background;
-      border: 0;
-      border-radius: $switch-radius;
-      cursor: pointer;
-      height: $switch-height;
-      margin: 0;
-      padding: 0;
-      position: relative;
-      transition: all 0.3s ease;
-      width: $switch-width;
-      z-index: 0;
+  p {
+    display: inline-block;
+    padding-right: 10px;
+    position: relative;
+    top: 3px;
 
-      &::before {
-        @include position(absolute, 2px 0 0 2px);
-        background: $switch-background;
-        border-radius: $switch-radius;
-        content: "";
-        height: $knob-radius;
-        transform: scale(1);
-        transition: all 0.3s ease;
-        width: $switch-width - ($switch-padding * 2);
-        z-index: 1;
-      }
+    @media screen and (max-width: $screen-sm) {
+      display: none;
+    }
+  }
 
-      &::after {
-        @include position(absolute, 2px 0 0 2px);
-        @include size($knob-size);
-        background: $switch-background;
-        border-radius: $knob-radius;
-        box-shadow: $switch-shadow;
-        content: "";
-        transition: all 0.3s ease;
-        z-index: 2;
-      }
+  .switch-material.switch-light {
+    float: right;
+
+    a {
+      top: 0;
+      width: 1.5em;
+      height: 1.5em;
     }
 
-    &:checked {
-      + .checkbox {
-        background: $action-color;
+    > span {
+      background: $secondary-text-colour;
+    }
 
-        &::before {
-          transform: scale(0);
-        }
+    input:checked ~ span {
+      background: $cerulean;
 
-        &::after {
-          left: $switch-width - $knob-width - ($switch-padding);
-        }
+      a {
+        background-color: $white;
+        background-position:center;
+        background-size: 70%;
+        background-color: #fff;
+        background-repeat: no-repeat;
+        background-image: url(#{$assets-image-url}/low-vision-icon.png); //TODO refactor into function
       }
     }
   }
