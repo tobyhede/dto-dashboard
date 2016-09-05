@@ -158,7 +158,7 @@ gulp.task('clean:tests', (done) => {
 
 gulp.task('sass', () => {
   return gulp.src(`${DIR_SRC_STYLES}/**/*.scss`)
-  .pipe(sassLint({ // todo - sass lint
+  .pipe(sassLint({ 
   	configFile: './.sass-lint.yml'
   }))
   .pipe(sassLint.format())
