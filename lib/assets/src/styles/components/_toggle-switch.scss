@@ -40,7 +40,7 @@
         background-size: 70%;
         background-color: #fff;
         background-repeat: no-repeat;
-        background-image: url(/images/low-vision-icon.png); //TODO refactor into function
+        background-image: url(#{$assets-image-url}/low-vision-icon.png); //TODO refactor into function
       }
     }
   }
