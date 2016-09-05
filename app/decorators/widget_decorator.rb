@@ -63,4 +63,13 @@ class WidgetDecorator < Draper::Decorator
     name.downcase.parameterize()
   end
 
+  # create a class level hash to store the size to style mapping data for a faster lookup than case-when statement
+  SIZE_TO_STYLE = {'extra-small' => 'aus-width-one-fourth', 'small' => 'aus-width-one-third',
+                       'medium' => 'aus-width-one-half', 'large' => 'aus-width-two-thirds',
+                       'full' => 'aus-width-one-whole'}
+
+  def size_to_style
+    SIZE_TO_STYLE[size] || 'aus-width-one-half'
+  end
+
 end
