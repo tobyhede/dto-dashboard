@@ -69,7 +69,7 @@ class WidgetDecorator < Draper::Decorator
                        'full' => 'aus-width-one-whole'}
 
   def size_to_style
-    SIZE_TO_STYLE[size]  || 'aus-width-one-half'
+    SIZE_TO_STYLE[size] || 'aus-width-one-half'
   end
 
 end

@@ -16,7 +16,7 @@ class Widget < ApplicationRecord
 
   validates :size, :type, :presence => true
 
-  validates :size, inclusion: { in: %w(extra-small small medium large extra-large),
+  validates :size, inclusion: { in: %w(extra-small small medium large full),
       message: "%{value} is not a valid size" }
 
   validates :type, inclusion: { in: %w(bar fact full kpi-sparkline line pie sparkline),
