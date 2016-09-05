@@ -28,7 +28,7 @@ deployment:
       - cf target -o $CF_ORG_DEV &> /dev/null
       - cf target -s $CF_SPACE_STAGING &> /dev/null
       - npm run build
-      - cf push dashboard-testing
+      - ./bin/ci-deploy.sh
 
   staging:
     branch: staging
