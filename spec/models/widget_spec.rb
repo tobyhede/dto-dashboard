@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Widget, type: :model do
 
-  let(:size)   { %w(extra-small small medium large full) }
+  let(:size)   { %w(extra-small small medium large extra-large) }
   let(:type)   { %w(bar fact full kpi-sparkline line pie sparkline) }
   let(:units)  { %w(% $ n) }
 
