@@ -1,17 +1,3 @@
-.card {
-  background-image: linear-gradient(to bottom, #f9fafb, #f0f3f5);
-  margin: 0 0 $spacing-unit 0;
-  display: block;
-  position: relative;
-  padding: $gutter $gutter $gutter 25px;
-  color: #000000;
-
-  h2 {
-    line-height: 1.2;
-    margin: $gutter 0;
-  }
-}
-
 .card__link {
   position: absolute;
   height: 100%;
@@ -23,19 +9,32 @@
 
 .card {
   border-left: 6px solid $charcoal-grey;
-  box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: $card-box-shadow;
+  background-image: linear-gradient(to bottom, $card-grey-colour, $light-grey);
+  margin: 0 0 $spacing-unit 0;
+  display: block;
+  position: relative;
+  padding: $gutter $gutter $gutter 25px;
+  color: $black;
+
+  h2 {
+    line-height: 1.2;
+    margin: $gutter 0;
+  }
 
   @include media($screen-sm) {
     display: flex;
   }
 
-  a.card__link__visible {
-    font-weight: 600;
-    text-decoration: underline;
-    display: block;
+  a {
+    &.card__link__visible {
+      font-weight: 600;
+      text-decoration: underline;
+      display: block;
 
-    &:visited {
-      color: $brand-primary-colour;
+      &:visited {
+        color: $brand-primary-colour;
+      }
     }
   }
 
@@ -65,14 +64,17 @@
 .card__right {
   .widget {
     background: transparent;
+
     .widget__title {
       padding: 0;
     }
   }
 
-  .metric-data .decorator {
-    font-size: $fallback;
-    font-size: 1rem;
+  .metric-data {
+    .decorator {
+      font-size: $fallback;
+      font-size: 1rem;
+    }
   }
 
   .metric-trend,
@@ -88,32 +90,46 @@
     width: 70%;
     float: left;
 
-    .widget__inner .sparkline__inner .chart {
-      margin: 5px 10px;
+    .widget__inner {
+      .sparkline__inner {
+        .chart {
+          margin: 5px 10px;
+        }
+      }
     }
 
-    &.dashboard__kpis  .widget__title {
-      height: 50px;
+    &.dashboard__kpis {
+      .widget__title {
+        height: 50px;
+      }
     }
 
     .widget {
       padding: 0;
       margin: 0;
 
-      &.has-data-false .metric-data .value {
-        font-size: 2 * $fallback;
-        font-size: 2rem;
+      &.has-data-false {
+        .metric-data {
+          .value {
+            font-size: 2 * $fallback;
+            font-size: 2rem;
+          }
+        }
       }
 
-      .metric-data .value {
-        font-size: 3.75 * $fallback;
-        font-size: 3.75rem;
+      .metric-data {
+        .value {
+          font-size: 3.75 * $fallback;
+          font-size: 3.75rem;
+        }
       }
 
-      .widget__title h4 {
-        line-height: 1;
-        font-size: $fallback;
-        font-size: 1rem;
+      .widget__title {
+        h4 {
+          line-height: 1;
+          font-size: $fallback;
+          font-size: 1rem;
+        }
       }
     }
   }

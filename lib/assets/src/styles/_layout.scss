@@ -2,7 +2,7 @@
 * Site header
 */
 .logo-primary {
-  background: #232d35;
+  background: $logo-bg-colour;
   padding: $gutter 0;
 
   .container {
@@ -23,7 +23,7 @@
   }
 
   @include media($screen-sm) {
-    padding: $spacing-unit/2 0;
+    padding: $spacing-unit / 2 0;
 
     img {
       height: 40px;
