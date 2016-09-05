@@ -26,7 +26,7 @@ deployment:
       - cf api $CF_API_DEV &> /dev/null
       - cf auth $CF_USER_DEV $CF_PASSWORD_DEV &> /dev/null
       - cf target -o $CF_ORG_DEV &> /dev/null
-      - cf target -s $CF_SPACE_STAGING &> /dev/null
+      - cf target -s $CF_SPACE_DEV &> /dev/null
       - npm run build
       - ./bin/ci-deploy.sh
 
