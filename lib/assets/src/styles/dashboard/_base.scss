@@ -235,6 +235,8 @@ dd {
     .sparkline__inner:not(.no-data) {
       .metric-data {
         display: table;
+        width: 100px;
+        margin: auto;
 
         .value,
         .decorator {
