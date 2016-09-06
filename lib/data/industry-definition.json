@@ -63,7 +63,7 @@
       "stacking": "percentage",
       "displayRoundedData" : true,
       "definition": "This shows the percentage of users who click through to an external website from the Hobby or Business tool. Please note that these figures represent aggregated clicks to external government sites.",
-      "datasets": ["click-through-ato", "click-through-ablis", "click-through-bus.gov", "click-through-ip", "click-through-abr", "click-through-asic", "click-through-other"]
+      "datasets": ["click-through-ato", "click-through-ablis", "click-through-bus.gov", "click-through-ip", "click-through-other"]
     },
     {
       "id":   "external-referrals",
