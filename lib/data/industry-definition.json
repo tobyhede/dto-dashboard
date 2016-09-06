@@ -3,7 +3,7 @@
   "url":      "https://start.business.gov.au/",
   "agency":   "DIIS",
   "displayHero": false,
-  "notes": "<dl> <dt> What is the Hobby or Business Help Me Work It Out Tool? <dd> This public beta release of the tool is for people who are getting money or intend to get money from creative works, and are unsure if they are a hobby or a business. The tool guides them on their government obligations. <dt> Who is the user group of the Hobby or Business Help Me Work It Out Tool? <dd> The first release applies to artists, creatives and makers. Future enhancements to the tool, building on the public beta, will add new user groups, and over time, the digital take-up figure will reflect the increasing number of users who are able to use it. <dt> User Satisfaction <dd> User satisfaction figures will be reported from August 2016. <dt> Cost per Transaction <dd> We do not have this data at the moment because we are currently in the process of determining the best way to measure cost per transaction for information services. <dt> Digital Take-up <dd> Digital take-up measures the percentage of visitors to the page on business.gov.au, where the tool can be found, who go on to use it. The percentage is calculated by comparing the total number of users who access the public beta tool to the total number of unique visits to the page on business.gov.au. We are working on a more precise measure of take-up, comparing use of the tool to users accessing this information through our contact centre. We will update the Dashboard in the near future with this data. <dt> Completion Rate <dd> Completion rate measures the percentage of users who successfully generate a result by using the public beta release of the tool. This percentage is calculated by dividing the total number of successfully completed interactions by the total number of started interactions. </dl>",
+  "notes": "<dl> <dt> What is the Hobby or Business Help Me Work It Out Tool? <dd> This public beta release of the tool is for people who are getting money or intend to get money from creative works, and are unsure if they are a hobby or a business. The tool guides them on their government obligations. <dt> Who is the user group of the Hobby or Business Help Me Work It Out Tool? <dd> The first release applies to artists, creatives and makers. Future enhancements to the tool, building on the public beta, will add new user groups, and over time, the digital take-up figure will reflect the increasing number of users who are able to use it. <dt> User Satisfaction <dd> User satisfaction measures the percentage of users who responded “yes” to finding the service useful in the feedback survey as compared to the total number of respondents. <dt> Cost per Transaction <dd> We do not have this data at the moment because we are currently in the process of determining the best way to measure cost per transaction for information services. <dt> Digital Take-up <dd> Digital take-up measures the percentage of visitors to the page on business.gov.au, where the tool can be found, who go on to use it. The percentage is calculated by comparing the total number of users who access the public beta tool to the total number of unique visits to the page on business.gov.au. We are working on a more precise measure of take-up, comparing use of the tool to users accessing this information through our contact centre. We will update the Dashboard in the near future with this data. <dt> Completion Rate <dd> Completion rate measures the percentage of users who successfully generate a result by using the public beta release of the tool. This percentage is calculated by dividing the total number of successfully completed interactions by the total number of started interactions. </dl>",
   "widgets":  [
     {
       "id":   "kpis",
@@ -86,7 +86,7 @@
       "units": "%",
       "stacking": "percentage",
       "displayRoundedData" : false,
-      "definition": "This shows the percentage of users who required help from the business.gov.au contact centre via phone, web chat or email.",
+      "definition": "This shows number of users who sought help from the contact centre about the Hobby or Business tool as a percentage of overall number of visits to business.gov.au.",
       "datasets": ["help-sought-contact", "help-sought-none"]
     },
     {
@@ -94,7 +94,7 @@
       "updated_at": "2016-06-30T01:01:01.111Z",
       "name": "Devices used by users",
       "type": "bar",
-      "size": "small",
+      "size": "medium",
       "units": "%",
       "stacking": "percentage",
       "displayRoundedData" : true,
@@ -106,7 +106,7 @@
       "updated_at": "2016-06-30T01:01:01.111Z",
       "name": "Browsers used by users",
       "type": "line",
-      "size": "small",
+      "size": "medium",
       "units": "%",
       "displayRoundedData" : true,
       "definition": "This shows the types of browsers used by users to access the Hobby or Business tool.",
@@ -117,7 +117,7 @@
       "updated_at": "2016-06-30T01:01:01.111Z",
       "name": "Fact",
       "type": "fact",
-      "size": "medium",
+      "size": "extra-small",
       "units": "f",
       "description": "85% of users who received a business or hobby result thought the tool was helpful."
     },
@@ -126,7 +126,7 @@
       "updated_at": "2016-06-30T01:01:01.111Z",
       "name": "Fact",
       "type": "fact",
-      "size": "small",
+      "size": "extra-small",
       "units": "n",
       "description": "The ATO page \"Income you must declare\" is the most clicked obligation link on the results page."
     }
@@ -135,7 +135,7 @@
     ["kpis"],
     ["user-satisfaction", "cost-per-transaction", "digital-take-up", "completion-rate"],
     ["click-through", "external-referrals"],
-    ["fact-2", "help-sought"],
-    ["device", "browser", "fact-1"]
+    ["fact-2", "help-sought","fact-1"],
+    ["device", "browser"]
   ]
 }
