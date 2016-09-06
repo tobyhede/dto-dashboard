@@ -20,7 +20,6 @@
     "babel-register": "^6.11.6",
     "bourbon": "git@github.com:thoughtbot/bourbon.git#v5.0.0.beta.6",
     "bourbon-neat": "git@github.com:thoughtbot/neat.git#v1.8.0",
-    "css-toggle-switch": "^4.0.2",
     "d3": "^3.5.17",
     "d3-charts-dto": "git+ssh://git@github.com:AusDTO/d3-charts-dto.git#1.2",
     "eslint": "^3.1.1",

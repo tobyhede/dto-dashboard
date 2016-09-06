@@ -6,6 +6,9 @@ options:
   merge-default-rules: true
 files:
   include: 'lib/**/*.scss'
+  ignore:
+      - 'lib/assets/src/styles/_vendor/**/*.scss'
+
 rules:
 
   # Extends
