@@ -2,10 +2,18 @@ require 'json'
 
 namespace :import do
   desc 'Imports Data'
-  task data: :environment do
 
+  task update: :environment do
     orgs = %w(industry)
+    run(orgs)
+  end
 
+  task data: :environment do
+    orgs = %w(mygov dibp industry imports medicare-enrolment marketplace)
+    run(orgs)
+  end
+
+  def run(orgs)
     ids = {
       'mygov' => 1,
       'dibp'  => 2,
@@ -63,8 +71,6 @@ namespace :import do
           :units => units)
 
         datasets[dataset['id']] = dataset_model
-
-        # puts dataset['id']
 
         if dataset['data']
 
