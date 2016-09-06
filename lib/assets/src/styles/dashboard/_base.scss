@@ -229,3 +229,33 @@ dd {
 .text-right {
   text-align: right;
 }
+
+.no-flexbox {
+  &.no-flexboxlegacy {
+    .sparkline__inner:not(.no-data) {
+      .metric-data {
+        display: table;
+        width: 100px;
+        margin: auto;
+
+        .value,
+        .decorator {
+          display: table-cell;
+        }
+      }
+    }
+
+    .metric-meta {
+      span {
+        display: table;
+        width: 200px;
+        margin: auto;
+      }
+
+      &.metric-trend,
+      &.summary-text {
+        display: table-cell;
+      }
+    }
+  }
+}
