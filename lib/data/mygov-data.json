@@ -1,6 +1,6 @@
 {
   "version":      "1",
-  "updated_at":   "2016-08-25T01:01:01.111Z",
+  "updated_at":   "2016-09-06T01:01:01.111Z",
   "name":         "MyGov",
   "url":          "https://my.gov.au/",
   "agency":       "DHS",
@@ -10,13 +10,13 @@
   "datasets": [
     {
        "id":            "user-satisfaction",
-        "recorded_at":  "2016-08-25T01:01:01.111Z",
+        "recorded_at":  "2016-09-06T01:01:01.111Z",
         "name":         "User Satisfaction",
         "data":          null
      },
      {
          "id":           "cost-per-transaction",
-         "recorded_at":  "2016-08-25T01:01:01.111Z",
+         "recorded_at":  "2016-09-06T01:01:01.111Z",
          "units":        "$",
          "name":         "Cost per transaction",
          "note":         "",
@@ -26,12 +26,12 @@
         "id":           "digital-take-up",
         "name":         "Digital take-up",
         "units":        "%",
-        "recorded_at":  "2016-08-25T01:01:01.111Z",
+        "recorded_at":  "2016-09-06T01:01:01.111Z",
         "data":          null
       },
       {
         "id":           "completion-rate",
-        "recorded_at":  "2016-08-25T01:01:01.111Z",
+        "recorded_at":  "2016-09-06T01:01:01.111Z",
         "units":        "%",
         "name":         "Completion rate",
         "data":          null
@@ -39,7 +39,7 @@
     {
       "id":           "browser-usage-chrome",
       "name": "Chrome",
-      "recorded_at":  "2016-08-25T01:01:01.111Z",
+      "recorded_at":  "2016-09-06T01:01:01.111Z",
       "units":        "%",
       "note": "note for this dataset",
       "data": [
@@ -48,13 +48,14 @@
           {"label": "2016-03", "value": 40.15},
           {"label": "2016-04", "value": 41.37},
           {"label": "2016-05", "value": null},
-          {"label": "2016-06", "value": null}
+          {"label": "2016-06", "value": null},
+          {"label": "2016-07", "value": null}
       ]
     },
     {
       "id":           "browser-usage-safari",
       "name": "Safari",
-      "recorded_at":  "2016-08-25T01:01:01.111Z",
+      "recorded_at":  "2016-09-06T01:01:01.111Z",
       "units":        "%",
       "note": "note for this dataset",
       "data": [
@@ -63,13 +64,15 @@
           {"label": "2016-03", "value": 26.33},
           {"label": "2016-04", "value": 24.82},
           {"label": "2016-05", "value": null},
-          {"label": "2016-06", "value": null}
+          {"label": "2016-06", "value": null},
+          {"label": "2016-07", "value": null}
+
       ]
     },
     {
       "id":           "browser-usage-mozilla",
       "name": "Mozilla",
-      "recorded_at":  "2016-08-25T01:01:01.111Z",
+      "recorded_at":  "2016-09-06T01:01:01.111Z",
       "units":        "%",
       "note": "note for this dataset",
       "data": [
@@ -78,13 +81,15 @@
           {"label": "2016-03", "value": 29.39},
           {"label": "2016-04", "value": 30.74},
           {"label": "2016-05", "value": null},
-          {"label": "2016-06", "value": null}
+          {"label": "2016-06", "value": null},
+          {"label": "2016-07", "value": null}
+
       ]
     },
     {
       "id":           "browser-usage-IE",
       "name": "IE",
-      "recorded_at":  "2016-08-25T01:01:01.111Z",
+      "recorded_at":  "2016-09-06T01:01:01.111Z",
       "units":        "%",
       "note": "note for this dataset",
       "data": [
@@ -93,13 +98,15 @@
           {"label": "2016-03", "value": 2.81},
           {"label": "2016-04", "value": 2.16},
           {"label": "2016-05", "value": null},
-          {"label": "2016-06", "value": null}
+          {"label": "2016-06", "value": null},
+          {"label": "2016-07", "value": null}
+
       ]
     },
     {
       "id":           "browser-usage-other",
       "name": "Other",
-      "recorded_at":  "2016-08-25T01:01:01.111Z",
+      "recorded_at":  "2016-09-06T01:01:01.111Z",
       "units":        "%",
       "note": "note for this dataset",
       "data": [
@@ -108,48 +115,51 @@
           {"label": "2016-03", "value": 1.32},
           {"label": "2016-04", "value": 0.91},
           {"label": "2016-05", "value": null},
-          {"label": "2016-06", "value": null}
+          {"label": "2016-06", "value": null},
+          {"label": "2016-07", "value": null}
+
       ]
     },
     {
       "id":           "web-traffic-source-01",
       "name":         "humanservices.gov.au",
-      "recorded_at":  "2016-08-25T01:01:01.111Z",
+      "recorded_at":  "2016-09-06T01:01:01.111Z",
       "units":        "%",
       "note": "note for this dataset",
       "data": [
-          { "label": "2014-05", "value":	40.6 },
-          { "label": "2014-06", "value":	37.6 },
-          { "label": "2014-07", "value":	17.7 },
-          { "label": "2014-08", "value":	19.6 },
-          { "label": "2014-09", "value":	22.2 },
-          { "label": "2014-10", "value":	19.7 },
-          { "label": "2014-11", "value":	29.3 },
-          { "label": "2014-12", "value":	33.5 },
-          { "label": "2015-01", "value":	33.3 },
-          { "label": "2015-02", "value":	38.1 },
-          { "label": "2015-03", "value":	41.3 },
-          { "label": "2015-04", "value":	31.7 },
-          { "label": "2015-05", "value":	36.4 },
-          { "label": "2015-06", "value":	35.9 },
-          { "label": "2015-07", "value":	21.1 },
-          { "label": "2015-08", "value":	22.2 },
-          { "label": "2015-09", "value":	23.5 },
-          { "label": "2015-10", "value":	21.3 },
-          { "label": "2015-11", "value":	24.9 },
-          { "label": "2015-12", "value":	28.9 },
-          { "label": "2016-01", "value":	29.4 },
-          { "label": "2016-02", "value":	25.7 },
-          { "label": "2016-03", "value":	25.1 },
+          { "label": "2014-05", "value":  40.6 },
+          { "label": "2014-06", "value":  37.6 },
+          { "label": "2014-07", "value":  17.7 },
+          { "label": "2014-08", "value":  19.6 },
+          { "label": "2014-09", "value":  22.2 },
+          { "label": "2014-10", "value":  19.7 },
+          { "label": "2014-11", "value":  29.3 },
+          { "label": "2014-12", "value":  33.5 },
+          { "label": "2015-01", "value":  33.3 },
+          { "label": "2015-02", "value":  38.1 },
+          { "label": "2015-03", "value":  41.3 },
+          { "label": "2015-04", "value":  31.7 },
+          { "label": "2015-05", "value":  36.4 },
+          { "label": "2015-06", "value":  35.9 },
+          { "label": "2015-07", "value":  21.1 },
+          { "label": "2015-08", "value":  22.2 },
+          { "label": "2015-09", "value":  23.5 },
+          { "label": "2015-10", "value":  21.3 },
+          { "label": "2015-11", "value":  24.9 },
+          { "label": "2015-12", "value":  28.9 },
+          { "label": "2016-01", "value":  29.4 },
+          { "label": "2016-02", "value":  25.7 },
+          { "label": "2016-03", "value":  25.1 },
           { "label": "2016-04", "value":  23.5 },
           { "label": "2016-05", "value":  24.3 },
-          { "label": "2016-06", "value":  19.8}
+          { "label": "2016-06", "value":  19.8 },
+          { "label": "2016-07", "value":  14.2 }
       ]
     },
     {
       "id":           "web-traffic-source-02",
       "name":         "Direct",
-      "recorded_at":  "2016-08-25T01:01:01.111Z",
+      "recorded_at":  "2016-09-06T01:01:01.111Z",
       "units":        "%",
       "note": "note for this dataset",
       "data": [
@@ -178,14 +188,15 @@
           { "label": "2016-03", "value": 23.1 },
           { "label": "2016-04", "value": 25.1 },
           { "label": "2016-05", "value": 23.1 },
-          { "label": "2016-06", "value": 24.6}
+          { "label": "2016-06", "value": 24.6 },
+          { "label": "2016-07", "value": 19.9 }
 
       ]
     },
     {
       "id":           "web-traffic-source-03",
       "name":         "ato.gov.au",
-      "recorded_at":  "2016-08-25T01:01:01.111Z",
+      "recorded_at":  "2016-09-06T01:01:01.111Z",
       "units":        "%",
       "note": "note for this dataset",
       "data": [
@@ -214,13 +225,15 @@
         { "label": "2016-03", "value": 3.9 },
         { "label": "2016-04", "value": 3.7 },
         { "label": "2016-05", "value": 4.2 },
-        { "label": "2016-06", "value": 6.3}
+        { "label": "2016-06", "value": 6.3 },
+        { "label": "2016-07", "value": 19.1 }
+
       ]
     },
     {
       "id":           "web-traffic-source-04",
       "name":         "Google",
-      "recorded_at":  "2016-08-25T01:01:01.111Z",
+      "recorded_at":  "2016-09-06T01:01:01.111Z",
       "units":        "%",
       "note": "note for this dataset",
       "data": [
@@ -249,13 +262,15 @@
         { "label": "2016-03", "value": 33.8 },
         { "label": "2016-04", "value": 34.0 },
         { "label": "2016-05", "value": 33.6 },
-        { "label": "2016-06", "value": 34.8 }
+        { "label": "2016-06", "value": 34.8 },
+        { "label": "2016-07", "value": 35.0}
+
       ]
     },
     {
       "id":           "web-traffic-source-05",
       "name":         "Other",
-      "recorded_at":  "2016-08-25T01:01:01.111Z",
+      "recorded_at":  "2016-09-06T01:01:01.111Z",
       "units":        "%",
       "note": "note for this dataset",
       "data": [
@@ -284,13 +299,15 @@
         { "label": "2016-03", "value": 14.0 },
         { "label": "2016-04", "value": 13.9 },
         { "label": "2016-05", "value": 14.8 },
-        { "label": "2016-06", "value": 14.6 }
+        { "label": "2016-06", "value": 14.6 },
+        { "label": "2016-07", "value": 11.9}
+
       ]
     },
     {
       "id":           "linked-accounts-01",
       "name":         "1 service",
-      "recorded_at":  "2016-08-25T01:01:01.111Z",
+      "recorded_at":  "2016-09-06T01:01:01.111Z",
       "units":        "%",
       "note": "note for this dataset",
       "data": [
@@ -309,13 +326,14 @@
         { "label": "2016-03", "value": 57.84 },
         { "label": "2016-04", "value": 57.42 },
         { "label": "2016-05", "value": 56.98 },
-        { "label": "2016-06", "value": 56.50 }
+        { "label": "2016-06", "value": 56.50 },
+        { "label": "2016-07", "value": 55.83 }
       ]
     },
     {
       "id":           "linked-accounts-02",
       "name":         "2 services",
-      "recorded_at":  "2016-08-25T01:01:01.111Z",
+      "recorded_at":  "2016-09-06T01:01:01.111Z",
       "units":        "%",
       "note": "note for this dataset",
       "data": [
@@ -334,13 +352,14 @@
         { "label": "2016-03", "value": 25.23 },
         { "label": "2016-04", "value": 25.38 },
         { "label": "2016-05", "value": 25.52 },
-        { "label": "2016-06", "value": 25.64 }
+        { "label": "2016-06", "value": 25.64 },
+        { "label": "2016-07", "value": 25.71 }
       ]
     },
     {
       "id":           "linked-accounts-03",
       "name":         "3 services",
-      "recorded_at":  "2016-08-25T01:01:01.111Z",
+      "recorded_at":  "2016-09-06T01:01:01.111Z",
       "units":        "%",
       "note": "note for this dataset",
       "data": [
@@ -359,13 +378,15 @@
         { "label": "2016-03", "value": 11.79 },
         { "label": "2016-04", "value": 11.94 },
         { "label": "2016-05", "value": 12.11 },
-        { "label": "2016-06", "value": 12.28 }
+        { "label": "2016-06", "value": 12.28 },
+        { "label": "2016-07", "value": 12.58 }
+
       ]
     },
     {
         "id":           "linked-accounts-04",
         "name":         "4 services",
-        "recorded_at":  "2016-08-25T01:01:01.111Z",
+        "recorded_at":  "2016-09-06T01:01:01.111Z",
         "units":        "%",
         "note": "note for this dataset",
         "data": [
@@ -384,7 +405,9 @@
           { "label": "2016-03", "value": 3.97 },
           { "label": "2016-04", "value": 4.05 },
           { "label": "2016-05", "value": 4.14 },
-          { "label": "2016-06", "value": 4.25 }
+          { "label": "2016-06", "value": 4.25 },
+          { "label": "2016-07", "value": 4.46 }
+
 
         ],
       "color": "#32b0b4"
@@ -392,7 +415,7 @@
     {
         "id":           "linked-accounts-05",
         "name":         "5+ services",
-        "recorded_at":  "2016-08-25T01:01:01.111Z",
+        "recorded_at":  "2016-09-06T01:01:01.111Z",
         "units":        "%",
         "note": "note for this dataset",
         "data": [
@@ -411,7 +434,9 @@
           { "label": "2016-03", "value": 1.18 },
           { "label": "2016-04", "value": 1.22 },
           { "label": "2016-05", "value": 1.25 },
-          { "label": "2016-06", "value": 1.32 }
+          { "label": "2016-06", "value": 1.32 },
+          { "label": "2016-07", "value": 1.43 }
+
         ]
     },
     {
@@ -436,13 +461,15 @@
           { "label": "2016-03", "value": 148489 },
           { "label": "2016-04", "value": 141670 },
           { "label": "2016-05", "value": 152011 },
-          { "label": "2016-06", "value": 155572 }
+          { "label": "2016-06", "value": 155572 },
+          { "label": "2016-07", "value": 387871 }
+
         ]
     },
     {
         "id":           "sign-ins-per-account",
         "name": "Sign in per account",
-        "recorded_at":  "2016-08-25T01:01:01.111Z",
+        "recorded_at":  "2016-09-06T01:01:01.111Z",
         "units":        "n",
         "note": "note for this dataset",
         "data": [
@@ -461,12 +488,13 @@
           { "label": "2016-03", "value": 0.58 },
           { "label": "2016-04", "value": 0.56 },
           { "label": "2016-05", "value": 0.58 },
-          { "label": "2016-06", "value": 0.69 }
+          { "label": "2016-06", "value": 0.69 },
+          { "label": "2016-07", "value": 1.43 }
         ]
     },
     {
         "id":           "navigations-per-signin",
-        "recorded_at":  "2016-08-25T01:01:01.111Z",
+        "recorded_at":  "2016-09-06T01:01:01.111Z",
         "name":         "Visits to member services",
         "note":         "The average number of member services a user visits during sign-in",
         "units":        "n",
@@ -486,13 +514,15 @@
           { "label": "2016-03", "value": 1.42 },
           { "label": "2016-04", "value": 1.24 },
           { "label": "2016-05", "value": 1.20 },
-          { "label": "2016-06", "value": 1.23 }
+          { "label": "2016-06", "value": 1.23 },
+          { "label": "2016-07", "value": 1.26 }
+
         ],
       "color": "#32b0b4"
     },
     {
         "id":           "total-accounts",
-        "recorded_at":  "2016-08-25T01:01:01.111Z",
+        "recorded_at":  "2016-09-06T01:01:01.111Z",
         "units":        "i",
         "name":         "Total accounts",
         "note":         "The total number of myGov accounts held be all users",
@@ -534,14 +564,16 @@
           { "label": "2016-03", "value": 9117290 },
           { "label": "2016-04", "value": 9258960 },
           { "label": "2016-05", "value": 9410971 },
-          { "label": "2016-06", "value": 9566543 }
+          { "label": "2016-06", "value": 9566543 },
+          { "label": "2016-07", "value": 9954414 }
+
         ],
       "color": "#FCB639"
     },
     {
         "id":           "links-by-member-service-01",
         "name":         "Medicare",
-        "recorded_at":  "2016-08-25T01:01:01.111Z",
+        "recorded_at":  "2016-09-06T01:01:01.111Z",
         "units":        "%",
         "note": "note for this dataset",
         "data": [
@@ -560,7 +592,8 @@
           { "label": "2016-03", "value": 29 },
           { "label": "2016-04", "value": 29 },
           { "label": "2016-05", "value": 29 },
-          { "label": "2016-06", "value": 29 }
+          { "label": "2016-06", "value": 29 },
+          { "label": "2016-07", "value": 29 }
 
         ],
       "color": "#f39841"
@@ -568,7 +601,7 @@
     {
         "id":           "links-by-member-service-02",
         "name":         "Centrelink",
-        "recorded_at":  "2016-08-25T01:01:01.111Z",
+        "recorded_at":  "2016-09-06T01:01:01.111Z",
         "units":        "%",
         "note": "note for this dataset",
         "data": [
@@ -587,14 +620,16 @@
           { "label": "2016-03", "value": 28 },
           { "label": "2016-04", "value": 28 },
           { "label": "2016-05", "value": 28 },
-          { "label": "2016-06", "value": 28 }
+          { "label": "2016-06", "value": 28 },
+          { "label": "2016-07", "value": 28 }
+
         ],
       "color": "#fcb639"
     },
     {
         "id":           "links-by-member-service-03",
         "name":         "CSA",
-        "recorded_at":  "2016-08-25T01:01:01.111Z",
+        "recorded_at":  "2016-09-06T01:01:01.111Z",
         "units":        "%",
         "note": "note for this dataset",
         "data": [
@@ -613,14 +648,16 @@
           { "label": "2016-03", "value": 3 },
           { "label": "2016-04", "value": 3 },
           { "label": "2016-05", "value": 3 },
-          { "label": "2016-06", "value": 3 }
+          { "label": "2016-06", "value": 3 },
+          { "label": "2016-07", "value": 3 }
+
         ],
       "color": "#32b0b4"
     },
     {
         "id":           "links-by-member-service-05",
         "name":         "MyHealth",
-        "recorded_at":  "2016-08-25T01:01:01.111Z",
+        "recorded_at":  "2016-09-06T01:01:01.111Z",
         "units":        "%",
         "note": "note for this dataset",
         "data": [
@@ -639,14 +676,16 @@
           { "label": "2016-03", "value": 7 },
           { "label": "2016-04", "value": 7 },
           { "label": "2016-05", "value": 7 },
-          { "label": "2016-06", "value": 7 }
+          { "label": "2016-06", "value": 7 },
+          { "label": "2016-07", "value": 7 }
+
         ],
       "color": "#79be73"
     },
     {
         "id":           "links-by-member-service-07",
         "name":         "ATO",
-        "recorded_at":  "2016-08-25T01:01:01.111Z",
+        "recorded_at":  "2016-09-06T01:01:01.111Z",
         "units":        "%",
         "note": "note for this dataset",
         "data": [
@@ -665,14 +704,16 @@
           { "label": "2016-03", "value": 31 },
           { "label": "2016-04", "value": 31 },
           { "label": "2016-05", "value": 30 },
-          { "label": "2016-06", "value": 30 }
+          { "label": "2016-06", "value": 30 },
+          { "label": "2016-07", "value": 30 }
+
         ],
       "color": "#ea7b49"
     },
     {
         "id":           "links-by-member-service-09",
         "name":         "Other",
-        "recorded_at":  "2016-08-25T01:01:01.111Z",
+        "recorded_at":  "2016-09-06T01:01:01.111Z",
         "units":        "%",
         "note":         "Includes DVA, NDIS, JobSearch & MyAgedCare",
         "data": [
@@ -691,14 +732,16 @@
           { "label": "2016-03", "value": 3 },
           { "label": "2016-04", "value": 3 },
           { "label": "2016-05", "value": 3 },
-          { "label": "2016-06", "value": 3 }
+          { "label": "2016-06", "value": 3 },
+          { "label": "2016-07", "value": 3 }
+
         ],
       "color": "#5261c9"
     },
     {
         "id":           "total-new-links",
         "name":         "Total New Links",
-        "recorded_at":  "2016-08-25T01:01:01.111Z",
+        "recorded_at":  "2016-09-06T01:01:01.111Z",
         "units":        "n",
         "data": [
           { "label": "2015-03", "value": 311453 },
@@ -716,14 +759,16 @@
           { "label": "2016-03", "value": 297264 },
           { "label": "2016-04", "value": 289200 },
           { "label": "2016-05", "value": 319353 },
-          { "label": "2016-06", "value": 330028 }
+          { "label": "2016-06", "value": 330028 },
+          { "label": "2016-07", "value": 699368 }
+
 
         ]
     },
     {
         "id":           "device-types-01",
         "name":         "Desktop",
-        "recorded_at":  "2016-08-25T01:01:01.111Z",
+        "recorded_at":  "2016-09-06T01:01:01.111Z",
         "units":        "%",
         "note": "note for this dataset",
         "data": [
@@ -742,7 +787,9 @@
           { "label": "2016-03", "value": 80.71 },
           { "label": "2016-04", "value": 82.07 },
           { "label": "2016-05", "value": null },
-          { "label": "2016-06", "value": null }
+          { "label": "2016-06", "value": null },
+          { "label": "2016-07", "value": null }
+
         ],
       "color": "#ea7b49"
     },
@@ -750,7 +797,7 @@
     {
         "id":           "device-types-03",
         "name":         "Mobile",
-        "recorded_at":  "2016-08-25T01:01:01.111Z",
+        "recorded_at":  "2016-09-06T01:01:01.111Z",
         "units":        "%",
         "note": "note for this dataset",
         "data": [
@@ -769,14 +816,16 @@
           { "label": "2016-03", "value": 12.65 },
           { "label": "2016-04", "value": 11.81 },
           { "label": "2016-05", "value": null },
-          { "label": "2016-06", "value": null }
+          { "label": "2016-06", "value": null },
+          { "label": "2016-07", "value": null }
+
         ],
       "color": "#fcb639"
     },
     {
         "id":           "device-types-04",
         "name":         "Other",
-        "recorded_at":  "2016-08-25T01:01:01.111Z",
+        "recorded_at":  "2016-09-06T01:01:01.111Z",
         "units":        "%",
         "note": "note for this dataset",
         "data": [
@@ -795,14 +844,16 @@
           { "label": "2016-03", "value": 6.64 },
           { "label": "2016-04", "value": 6.12 },
           { "label": "2016-05", "value": null },
-          { "label": "2016-06", "value": null }
+          { "label": "2016-06", "value": null },
+          { "label": "2016-07", "value": null }
+
         ],
       "color": "#5261c9"
     },
     {
         "id":           "navigations-by-service-01",
         "name":         "Medicare",
-        "recorded_at":  "2016-08-25T01:01:01.111Z",
+        "recorded_at":  "2016-09-06T01:01:01.111Z",
         "units":        "%",
         "note": "note for this dataset",
         "data": [
@@ -821,14 +872,15 @@
           { "label": "2016-03", "value": 12.14 },
           { "label": "2016-04", "value": 12.14 },
           { "label": "2016-05", "value": 15.44 },
-          { "label": "2016-06", "value": 14.79 }
+          { "label": "2016-06", "value": 14.79 },
+          { "label": "2016-07", "value": 7.39 }
         ],
       "color": "#f39841"
     },
     {
         "id":           "navigations-by-service-03",
         "name":         "Centrelink",
-        "recorded_at":  "2016-08-25T01:01:01.111Z",
+        "recorded_at":  "2016-09-06T01:01:01.111Z",
         "units":        "%",
         "note": "note for this dataset",
         "data": [
@@ -848,6 +900,7 @@
           { "label": "2016-04", "value": 55.51 },
           { "label": "2016-05", "value": 52.55 },
           { "label": "2016-06", "value": 55.70 }
+          { "label": "2016-07", "value": 36.42 }
 
         ],
       "color": "#fcb639"
@@ -855,7 +908,7 @@
     {
         "id":           "navigations-by-service-04",
         "name":         "Child Support",
-        "recorded_at":  "2016-08-25T01:01:01.111Z",
+        "recorded_at":  "2016-09-06T01:01:01.111Z",
         "units":        "%",
         "note": "note for this dataset",
         "data": [
@@ -875,6 +928,7 @@
           { "label": "2016-04", "value": 10.37},
           { "label": "2016-05", "value": 10.26},
           { "label": "2016-06", "value": 8.36 }
+          { "label": "2016-07", "value": 5.63 }
 
         ],
       "color": "#32b0b4"
@@ -882,7 +936,7 @@
     {
         "id":           "navigations-by-service-05",
         "name":         "ATO",
-        "recorded_at":  "2016-08-25T01:01:01.111Z",
+        "recorded_at":  "2016-09-06T01:01:01.111Z",
         "units":        "%",
         "note": "note for this dataset",
         "data": [
@@ -901,14 +955,16 @@
           { "label": "2016-03", "value": 11.57 },
           { "label": "2016-04", "value": 13.00 },
           { "label": "2016-05", "value": 14.33 },
-          { "label": "2016-06", "value": 14.92 }
+          { "label": "2016-06", "value": 14.92 },
+          { "label": "2016-07", "value": 46.76 }
+
         ],
       "color": "#ea7b49"
     },
     {
         "id":           "navigations-by-service-06",
         "name":         "Other",
-        "recorded_at":  "2016-08-25T01:01:01.111Z",
+        "recorded_at":  "2016-09-06T01:01:01.111Z",
         "units":        "%",
         "note":         "Includes Disability Care, DVA, DSS, PCHER, MyHealth",
         "data": [
@@ -927,13 +983,15 @@
           { "label": "2016-03", "value": 5.81 },
           { "label": "2016-04", "value": 6.73 },
           { "label": "2016-05", "value": 7.42 },
-          { "label": "2016-06", "value": 6.23 }
+          { "label": "2016-06", "value": 6.23 },
+          { "label": "2016-07", "value": 3.80 }
+
         ],
       "color": "#5261c9"
     },
     {
         "id":           "service-adoption",
-        "recorded_at":  "2016-08-25T01:01:01.111Z",
+        "recorded_at":  "2016-09-06T01:01:01.111Z",
         "name":         "Member service adoption",
         "units":        "%",
         "note":         "The percentage of accounts with links to two or more member services",
@@ -975,15 +1033,16 @@
           { "label": "2016-03", "value": 42.16 },
           { "label": "2016-04", "value": 42.58 },
           { "label": "2016-05", "value": 43.02 },
-          { "label": "2016-06", "value": 45.12 }
+          { "label": "2016-06", "value": 45.12 },
+          { "label": "2016-07", "value": 44.17 }
         ]
     },
     {
         "id":           "visits-to-member-services",
         "name":         "Visits To Member Services",
-        "recorded_at":  "2016-08-25T01:01:01.111Z",
+        "recorded_at":  "2016-09-06T01:01:01.111Z",
         "units":        "%",
-        "note": "note for this dataset",
+        "note": "navigations per sign-in",
         "data": [
           { "label": "2013-07", "value": 2.75 },
           { "label": "2013-08", "value": 1.23 },
@@ -1014,13 +1073,14 @@
           { "label": "2015-09", "value": 2.32 },
           { "label": "2015-10", "value": 2.02 },
           { "label": "2015-11", "value": 2.96 },
-          { "label": "2015-12", "value": 1.77 },
-          { "label": "2016-01", "value": 1.35 },
-          { "label": "2016-02", "value": 1.04 },
-          { "label": "2016-03", "value": 1.42 },
+          { "label": "2015-12", "value": 3.62 },
+          { "label": "2016-01", "value": 3.20 },
+          { "label": "2016-02", "value": 3.12 },
+          { "label": "2016-03", "value": 3.42 },
           { "label": "2016-04", "value": 1.24 },
           { "label": "2016-05", "value": 1.20 },
-          { "label": "2016-06", "value": 1.23 }
+          { "label": "2016-06", "value": 1.23 },
+          { "label": "2016-07", "value": 1.26 }
         ]
     }
   ]
