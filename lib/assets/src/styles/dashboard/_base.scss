@@ -232,12 +232,14 @@ dd {
 
 .no-flexbox {
   &.no-flexboxlegacy {
-    .metric-data {
-      display: table;
+    .sparkline__inner:not(.no-data) {
+      .metric-data {
+        display: table;
 
-      .value,
-      .decorator {
-        display: table-cell;
+        .value,
+        .decorator {
+          display: table-cell;
+        }
       }
     }
   }
