@@ -11,9 +11,6 @@ RSpec.describe "high contrast mode toggle", :type => :feature, :js => true do
 
     it 'should show toggle switch' do
       page.has_css?('div.toggle-switch')
-    end
-
-    it 'should have an additional class when on' do
       find("label.switch-light").click
       page.has_css?('body.is-high-contrast')
     end
