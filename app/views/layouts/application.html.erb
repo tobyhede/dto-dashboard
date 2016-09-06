@@ -35,10 +35,12 @@
     </div>
     <div class="logo-primary">
       <div class="container">
-        <a href="/" class="site-title block">
+        <a href="/" class="site-title">
           <img src="<%= image_path('gov-performance.svg') %>" alt="Logo of GOV.AU"/>
         </a>
-        <%= render :partial => "partials/toggle-switch"  if display_high_contrast_mode? %>
+        <div class="l-toggle-switch">
+          <%= render :partial => "partials/toggle-switch"  if display_high_contrast_mode? %>
+        </div>
       </div>
     </div>
   </header>

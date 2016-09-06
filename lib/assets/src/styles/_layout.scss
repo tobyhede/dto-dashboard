@@ -11,7 +11,12 @@
   }
 
   .site-title {
+    display: inline-block;
     flex: 1;
+  }
+
+  .l-toggle-switch {
+    float: right;
   }
 
   img {
