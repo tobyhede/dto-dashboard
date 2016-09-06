@@ -229,3 +229,16 @@ dd {
 .text-right {
   text-align: right;
 }
+
+.no-flexbox {
+  &.no-flexboxlegacy {
+    .metric-data {
+      display: table;
+
+      .value,
+      .decorator {
+        display: table-cell;
+      }
+    }
+  }
+}
