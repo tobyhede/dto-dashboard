@@ -1,6 +1,6 @@
 <div class="<%= widget.size_to_style %>">
   <div class="widget <%= widget.name_slug %> has-data-<%= widget.has_data? %> <%= widget.style %>">
-    <div id="<%= widget.name_slug %>" class="widget__title">
+    <div id="<%= widget.name_slug %>" data-id="<%= widget.id %>" class="widget__title">
       <h4><%= widget.name %></h4>
       <a href="#dashboard-notes" title="View KPI <%= widget.name %> definition" class="fa fa-question-circle info" ga-on="click" ga-event-category="<%= GA::CATEGORY_SEEK_MORE_INFO %>" ga-event-action="<%= GA::ACTION_CLICK %>" ga-event-label="Hero title - <%= widget.name %>"></a>
       <div class="meta-group">

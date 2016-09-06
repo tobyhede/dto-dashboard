@@ -4,7 +4,7 @@ namespace :import do
   desc 'Imports Data'
   task data: :environment do
 
-    orgs = %w(mygov dibp industry imports medicare-enrolment marketplace)
+    orgs = %w(industry)
 
     ids = {
       'mygov' => 1,
@@ -31,6 +31,15 @@ namespace :import do
       display_kpis = definition['displayKPIs'].nil?
 
       id = ids[name]
+
+      if dashboard = Dashboard.find(id)
+        dashboard.widgets.each do |widget|
+          widget.datasets.delete_all
+          widget.delete
+        end
+        dashboard.delete
+      end
+
       dashboard = Dashboard.create!(
         :id => id,
         :name => definition['name'],
