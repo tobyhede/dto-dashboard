@@ -83,30 +83,8 @@
         "note": "",
         "data": [
           { "label": "2016-06", "value": 6.0},
-            { "label": "2016-07", "value": 0}
+          { "label": "2016-07", "value": 3.0}
         ]
-    },
-    {
-        "id":           "click-through-abr",
-        "recorded_at": "2016-08-30T01:01:01.111Z",
-        "units": "%",
-        "name": "Australian Business Register",
-        "note": "",
-        "data": [
-          { "label": "2016-06", "value": 0},
-          { "label": "2016-07", "value": 4.0}
-        ]
-    },
-    {
-        "id":           "click-through-asic",
-        "recorded_at":  "2016-08-30T01:01:01.111Z",
-        "units":        "%",
-        "name":         "ASIC",
-        "note":         "",
-        "data": [
-        { "label": "2016-06", "value": 0},
-          { "label": "2016-07", "value": 4.0}
-      ]
     },
     {
         "id":           "click-through-other",
@@ -116,7 +94,7 @@
         "note":         "",
         "data": [
           { "label": "2016-06", "value": 11.0},
-          { "label": "2016-07", "value": 10.0}
+          { "label": "2016-07", "value": 18.0}
       ]
     },
     {
