@@ -16,7 +16,9 @@ dependencies:
 test:
   override:
     - npm test
-    - bundle exec rspec
+    - bundle exec rspec --exclude-pattern "features/**"
+    - npm run build
+    - bundle exec rspec spec/features
 
 deployment:
   development:
