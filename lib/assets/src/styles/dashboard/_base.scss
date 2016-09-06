@@ -244,5 +244,18 @@ dd {
         }
       }
     }
+
+    .metric-meta {
+      span {
+        display: table;
+        width: 200px;
+        margin: auto;
+      }
+
+      &.metric-trend,
+      &.summary-text {
+        display: table-cell;
+      }
+    }
   }
 }
