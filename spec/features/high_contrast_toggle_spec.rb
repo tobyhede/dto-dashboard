@@ -5,7 +5,7 @@ RSpec.describe "high contrast mode toggle", :type => :feature, :js => true do
   # page.check('switch-mode')
   # page.should have_css('body.is-high-contrast')
 
-  context 'switching high contrast mode on' do
+  context 'a user should be able to change the contrast of the dashboard pages' do
     let(:dashboard)    { FactoryGirl.create(:dashboard_published) }
 
     it 'should show toggle switch' do
