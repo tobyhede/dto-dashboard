@@ -272,6 +272,7 @@ DEPENDENCIES
   coffee-rails
   dotenv-rails
   draper (> 3.x)
+  erubis
   factory_girl_rails (~> 4.0)
   guard-rspec
   jquery-rails
