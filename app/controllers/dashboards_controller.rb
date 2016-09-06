@@ -5,10 +5,7 @@ class DashboardsController < ApplicationController
 
   def index
     @dashboards = Dashboard.published.by_name.all.decorate
-
-    @title = "Dashboard"
-    @description = "Dashboard"
-
+  
     render :index
   end
 
