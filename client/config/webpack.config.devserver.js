@@ -1,16 +1,17 @@
 import webpack from 'webpack';
 import BellOnBundlerErrorPlugin from 'bell-on-bundler-error-plugin';
 import autoprefixer from 'autoprefixer';
+import sassLintPlugin from 'sasslint-webpack-plugin';
 
 import * as CONFIG from './_config';
-const projectName = require('./../package').name;
+const projectName = require('./../../package').name;
 
 
 let webpackConfig = {
 	name: projectName,
 	bail: true,
 	debug: true,
-	devtool: 'eval',        // need sourcemaps? -> cheap-module-eval-source-map
+	devtool: 'cheap-module-eval-source-map',        // or 'eval', or ...
 	context: CONFIG.DIR_SRC,
     entry: {
       ['dashboard']: [`./dashboard`],
@@ -45,19 +46,22 @@ let webpackConfig = {
 			},
 			{
         test: /\.(scss)$/,
-				loader: 'style!css?&sourceMap!postcss!sass?sourceMap'
+				loader: 'style!css?&sourceMap!postcss!resolve-url!sass?sourceMap'
 			},
 			{
 				test: /\.(jpe?g|gif|png|svg)$/,
-				loader: "file?name=images/[name].[ext]"
+				loader: "file?name=/images/[name].[ext]"
 			},
-			{
-				test: /\.(eot|ttf|woff|svg|woff2)$/,
-				loader: "url?limit=10000&name=fonts/[name].[ext]"
-			}
+      // {  // todo - enable if we have fonts - must prefix regex with fonts/ and images with images/
+      //   test: /\.(eot|ttf|woff|svg|woff2)$/,
+      //   loader: "url?limit=10000&name=fonts/[name].[ext]"
+      // }
 		]
 	},
 	plugins: [
+    // new sassLintPlugin({ // todo
+    //   config: './../.sass-lint.yml'
+    // }),
 		new webpack.DefinePlugin({
 			'process.env.NODE_ENV': JSON.stringify(CONFIG.ENV),
           __DEV__: true

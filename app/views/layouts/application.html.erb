@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
 
-  <title><%= @title || "Performance Dashboards" %></title>
+  <title><%= @title || "Performance Dashboard" %></title>
   <meta name="description" content="<%= @description || "Australian Government Performance Dashboards" %>">
 
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,9 +12,11 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css"/>
 
-  <link rel="stylesheet" href="<%= stylesheet_path('index.css') %>"/>
-
-  <% if !(Rails.env.development? && ENV['DEV_SERVER']) %>
+  <%
+    #
+    # Production mode or not required for webpack-dev-server mode
+    #
+    if !(Rails.env.development? && ENV['DEV_SERVER'] == true) %>
       <link rel="stylesheet" href="/stylesheets/dashboard.css"/>
   <% end %>
   <%= render 'layouts/analytics' %>
@@ -33,27 +35,29 @@
     </div>
     <div class="logo-primary">
       <div class="container">
-        <a href="/" class="site-title block">
+        <a href="/" class="site-title">
           <img src="<%= image_path('gov-performance.svg') %>" alt="Logo of GOV.AU"/>
         </a>
-        <%= render :partial => "partials/toggle-switch"  if display_high_contrast_mode? %>
+        <div class="l-toggle-switch">
+          <%= render :partial => "partials/toggle-switch"  if display_high_contrast_mode? %>
+        </div>
       </div>
     </div>
   </header>
 
-  <div id="main">
+  <main>
     <%= yield %>
-  </div>
+  </main>
 
   <footer>
     <section>
       <img src="<%= image_path('coatofarms.svg') %>" height="76" alt="Logo of Commonwealth Coat of Arms"/>
       <ul>
-        <li><a href="https://www.dto.gov.au/standard/">Digital Service Standard</a></li>
-        <li><a href="https://www.dto.gov.au/standard/11-measure-performance/">About Performance Measurement</a></li>
+        <li><a href="https://www.dto.gov.au/standard/" rel="external" class="link--external-alt" target="_blank">Digital Service Standard</a></li>
+        <li><a href="https://www.dto.gov.au/standard/11-measure-performance/" rel="external" class="link--external-alt" target="_blank">About Performance Measurement</a></li>
         <li><a href="/copyright">Copyright</a></li>
-        <li><a href="https://www.dto.gov.au/blog/">DTO Blog</a></li>
-        <li><a href="https://github.com/AusDTO/dto-dashboard">Our Code</a></li>
+        <li><a href="https://www.dto.gov.au/blog/" rel="external" class="link--external-alt" target="_blank">DTO Blog</a></li>
+        <li><a href="https://github.com/AusDTO/dto-dashboard" rel="external" class="link--external-alt" target="_blank">Our Code</a></li>
         <li><a href="/feedback">Please give feedback</a></li>
       </ul>
     </section>
@@ -63,10 +67,14 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.js"></script>
   <script src="<%= javascript_path('index.js') %>"></script>
 
-  <% if Rails.env.development? && ENV['DEV_SERVER'] %>
-    <script src="http://localhost:8080/javascripts/dashboard.js"></script>
+  <%
+    #
+    # Production mode or webpack-dev-server mode
+    #
+    if !(Rails.env.development? && ENV['DEV_SERVER'] == true) %>
+    <script src="/javascripts/dashboard.js"></script>
   <% else %>
-      <script src="<%= javascript_path('dashboard.js') %>"></script>
+    <script src="http://localhost:8080/javascripts/dashboard.js"></script>
   <% end %>
 </body>
 </html>

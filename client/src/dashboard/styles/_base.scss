@@ -1,9 +1,7 @@
 html {
   overflow-x: hidden;
   font-size: 90%;
-
   min-width: $screen-min;
-
 
   @include media($screen-sm) {
     font-size: 80%;
@@ -20,7 +18,7 @@ html {
 
 body {
   margin: 0;
-  font-family: $base-font-family;
+  font-family: $font-family-sans-serif;
   font-size: $base-font-size;
   line-height: $base-line-height;
   font-weight: 400;
@@ -35,7 +33,7 @@ h1 {
   font-size: 1.5rem;
   font-weight: 700;
   margin-bottom: 1.5rem;
-  margin-top: $gutter/2;
+  margin-top: $gutter / 2;
 
   @include media($screen-sm) {
     font-size: 2.25 * $fallback;
@@ -76,7 +74,7 @@ h4 {
 }
 
 .fa-arrow-unchanged {
-  &:before {
+  &::before {
     content: '\f068';
   }
 }

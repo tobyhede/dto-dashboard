@@ -33,8 +33,8 @@ class WidgetDecorator < Draper::Decorator
     end
   end
 
-  def humanised_last_updated
-    last_updated_at.to_formatted_s(:day_month_year).strip
+  def last_updated_at
+    object.last_updated_at.to_formatted_s(:day_month_year).strip
   end
 
   def format(change)
@@ -60,7 +60,16 @@ class WidgetDecorator < Draper::Decorator
   end
 
   def name_slug
-    name.downcase.parameterize('-')
+    name.downcase.parameterize()
+  end
+
+  # create a class level hash to store the size to style mapping data for a faster lookup than case-when statement
+  SIZE_TO_STYLE = {'extra-small' => 'aus-width-one-fourth', 'small' => 'aus-width-one-third',
+                      'medium' => 'aus-width-one-half', 'large' => 'aus-width-two-thirds',
+                       'extra-large' => 'aus-width-one-whole'}
+
+  def size_to_style
+    SIZE_TO_STYLE[size] || 'aus-width-one-half'
   end
 
 end

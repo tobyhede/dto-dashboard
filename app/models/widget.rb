@@ -58,6 +58,14 @@ class Widget < ApplicationRecord
     order(:pos => 'ASC')
   end
 
+  def self.by_last_updated
+    order(:last_updated_at => 'ASC')
+  end
+
+  def self.last_updated
+    by_last_updated.last
+  end
+
   def multiple?
     datasets.many?
   end

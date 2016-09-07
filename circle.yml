@@ -16,7 +16,9 @@ dependencies:
 test:
   override:
     - npm test
-    - bundle exec rspec
+    - bundle exec rspec --exclude-pattern "features/**"
+    - npm run build
+    - bundle exec rspec spec/features
 
 deployment:
   development:
@@ -26,9 +28,9 @@ deployment:
       - cf api $CF_API_DEV &> /dev/null
       - cf auth $CF_USER_DEV $CF_PASSWORD_DEV &> /dev/null
       - cf target -o $CF_ORG_DEV &> /dev/null
-      - cf target -s $CF_SPACE_STAGING &> /dev/null
+      - cf target -s $CF_SPACE_DEV &> /dev/null
       - npm run build
-      - cf push dashboard-testing
+      - ./bin/ci-deploy.sh
 
   staging:
     branch: staging

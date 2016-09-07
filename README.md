@@ -121,8 +121,16 @@ npm run webpack:dev
 ## Tests
 
 ```
-rspec
+bundle exec rspec
 ```
+
+Run specs without the features (features use a browser and Capybara so can be much slower)
+
+```
+bundle exec rspec --exclude-pattern "features/**"
+```
+
+https://dashboard.gov.au/api/1/dashboards/1-mygov-dashboard
 
 You can also use guard to run specs automatically on save with
 

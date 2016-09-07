@@ -8,7 +8,9 @@ gem 'puma', '~> 3.0'
 # gem 'jquery-rails'
 gem 'active_model_serializers', '~> 0.10.0'
 gem 'draper',                   '> 3.x'
+gem 'erubis'
 gem 'jquery-rails'
+gem 'newrelic_rpm'
 gem 'redcarpet',                '~>3.3'
 gem 'sass-rails',               '~> 5.0'
 gem 'turbolinks',               '~> 5'
@@ -35,19 +37,22 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'web-console'
-  gem 'rails-controller-testing'
 end
 
 group :test do
+  gem 'capybara', '~> 2.8.1'
   gem "codeclimate-test-reporter", require: false
+  gem 'database_cleaner'
   gem 'factory_girl_rails', '~> 4.0'
   gem 'guard-rspec', require: false
-  gem 'shoulda-matchers', '~> 3.1'
+  gem 'poltergeist'
   gem 'rspec-rails'
   gem 'rspec-collection_matchers'
   gem 'rspec-its'
   gem 'rails-controller-testing'
   gem 'rspec_junit_formatter'
+  gem 'selenium-webdriver', '~> 2.53.4'
+  gem 'shoulda-matchers', '~> 3.1'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
