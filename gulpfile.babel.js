@@ -1,3 +1,5 @@
+// todo - npm uninstall unused packages
+
 import gulp from 'gulp';
 
 import path from 'path';
@@ -143,9 +145,7 @@ function clean(files, done) {
 
 gulp.task('clean', (done) => {
   return clean([
-    DIR_DIST_STYLES + '/**/*',  // don't remove the folder
-    DIR_DIST_SCRIPTS + '/**/*',
-    DIR_DIST_IMAGES + '/**/*',
+    DIR_DIST_SCRIPTS + '/**/*' // don't remove the folder
   ], done);
 });
 

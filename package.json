@@ -80,6 +80,7 @@
     "nyc": "^8.1.0",
     "postcss-loader": "^0.10.1",
     "resolve-url": "^0.2.1",
+    "resolve-url-loader": "^1.6.0",
     "sass-loader": "^4.0.0",
     "sasslint-webpack-plugin": "^1.0.4",
     "style-loader": "^0.13.1",
