@@ -87,18 +87,23 @@ Administration is available at `http://localhost:3000/admin`
 
 ### Front end
 
-Install the legacy pipeline
+Install the pipeline. Mostly this is all you will need.
 ```
 npm install 
 npm run build
 ```
 
-Build the new shiny stuff
+Build gulp (legacy js)
 ```
-npm run webpack:build
+npm run gulp:build
 ```
 
-Work in the new shiny stuff?
+Build webpack 
+```
+npm run webpack:dev
+```
+
+Develop mode in Webpack? 
 
 1. Install this Chrome Extension:
 
