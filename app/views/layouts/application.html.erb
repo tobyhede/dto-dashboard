@@ -12,13 +12,13 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css"/>
 
-  <link rel="stylesheet" href="<%= stylesheet_path('index.css') %>"/>
   <%
+    #
     # Production mode or not required for webpack-dev-server mode
-    # todo - require once we port to new pipeline
-    # if !(Rails.env.development? && ENV['DEV_SERVER']) %>
-      <!--<link rel="stylesheet" href="/stylesheets/dashboard.css"/>-->
-  <% # end %>
+    #
+    if !(Rails.env.development? && ENV['DEV_SERVER']) %>
+      <link rel="stylesheet" href="/stylesheets/dashboard.css"/>
+  <% end %>
   <%= render 'layouts/analytics' %>
 </head>
 
@@ -68,10 +68,11 @@
   <script src="<%= javascript_path('index.js') %>"></script>
 
   <%
+    #
     # Production mode or webpack-dev-server mode
-    # todo - require once we port to new pipeline
+    #
     if !(Rails.env.development? && ENV['DEV_SERVER']) %>
-    <!--<script src="/javascripts/dashboard.js"></script>-->
+    <script src="/javascripts/dashboard.js"></script>
   <% else %>
     <script src="http://localhost:8080/javascripts/dashboard.js"></script>
   <% end %>

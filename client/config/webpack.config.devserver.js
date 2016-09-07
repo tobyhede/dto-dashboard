@@ -1,9 +1,10 @@
 import webpack from 'webpack';
 import BellOnBundlerErrorPlugin from 'bell-on-bundler-error-plugin';
 import autoprefixer from 'autoprefixer';
+import sassLintPlugin from 'sasslint-webpack-plugin';
 
 import * as CONFIG from './_config';
-const projectName = require('./../package').name;
+const projectName = require('./../../package').name;
 
 
 let webpackConfig = {
@@ -58,6 +59,9 @@ let webpackConfig = {
 		]
 	},
 	plugins: [
+    // new sassLintPlugin({ // todo
+    //   config: './../.sass-lint.yml'
+    // }),
 		new webpack.DefinePlugin({
 			'process.env.NODE_ENV': JSON.stringify(CONFIG.ENV),
           __DEV__: true

@@ -13,16 +13,16 @@ import source from 'vinyl-source-stream';
 import transform from 'vinyl-transform';
 import watchify from 'watchify';
 
-import sourcemaps from 'gulp-sourcemaps';
-import eslintify from 'eslintify';
-import changed from 'gulp-changed';
+// import sourcemaps from 'gulp-sourcemaps';
+// import eslintify from 'eslintify';
+// import changed from 'gulp-changed';
 import print from 'gulp-print';
 import gutil from 'gulp-util';
-import sass from 'gulp-sass';
-import sassLint from 'gulp-sass-lint';
-import autoprefixer from 'gulp-autoprefixer';
-import bourbon from 'bourbon';
-import bourbonNeat from 'bourbon-neat';
+// import sass from 'gulp-sass';
+// import sassLint from 'gulp-sass-lint';
+// import autoprefixer from 'gulp-autoprefixer';
+// import bourbon from 'bourbon';
+// import bourbonNeat from 'bourbon-neat';
 
 
 
@@ -34,12 +34,12 @@ export const DIR_NPM = path.join(__dirname, 'node_modules');
 export const DIR_TEST = path.join(__dirname, 'client/test_legacy');
 export const DIR_DIST_TEST = path.join(DIR_TEST, '.tmp');
 
-export const DIR_SRC_STYLES = path.join(DIR_SRC, 'styles');
+// export const DIR_SRC_STYLES = path.join(DIR_SRC, 'styles');
 export const DIR_SRC_SCRIPTS = path.join(DIR_SRC, 'scripts');
-export const DIR_SRC_IMAGES = path.join(DIR_SRC, 'images');
-export const DIR_DIST_STYLES = path.join(DIR_DIST, 'stylesheets');
+// export const DIR_SRC_IMAGES = path.join(DIR_SRC, 'images');
+// export const DIR_DIST_STYLES = path.join(DIR_DIST, 'stylesheets');
 export const DIR_DIST_SCRIPTS = path.join(DIR_DIST, 'javascripts');
-export const DIR_DIST_IMAGES = path.join(DIR_DIST, 'images');
+// export const DIR_DIST_IMAGES = path.join(DIR_DIST, 'images');
 
 const jsSource = {
   dev: {
@@ -156,44 +156,9 @@ gulp.task('clean:tests', (done) => {
 });
 
 
-gulp.task('sass', () => {
-  return gulp.src(`${DIR_SRC_STYLES}/**/*.scss`)
-  .pipe(sassLint({ 
-  	configFile: './.sass-lint.yml'
-  }))
-  .pipe(sassLint.format())
-  .pipe(sourcemaps.init())
-    .pipe(sass({
-      includePaths: [
-        DIR_NPM,
-        bourbon.includePaths,   // todo - deprecate
-        bourbonNeat.includePaths
-      ]
-    }).on('error', sass.logError))
-    .pipe( print( (file) => 'Processing Sass: ' + file) )
-    .pipe(autoprefixer())
-    .pipe(sourcemaps.write('./'))
-    .pipe(gulp.dest(DIR_DIST_STYLES));
-});
-
-
 gulp.task('scripts', () => build_scripts(jsSource.dev));
 
 gulp.task('scripts_watch', () => watch_scripts(jsSource.dev));
-
-
-gulp.task('images', () => {
-  return gulp.src(`${DIR_SRC_IMAGES}/**/*.{jpg,png,gif,svg}`)
-    .pipe( changed(DIR_DIST_IMAGES) )                       // ignore unchanged
-    .pipe( print((file) => 'Processing image: ' + file))
-    .pipe( gulp.dest(`${DIR_DIST_IMAGES}/`) );
-});
-
-
-function watch_task() {
-  gulp.watch(`${DIR_SRC_STYLES}/**/*.scss`).on('change', gulp.series('sass'));
-  gulp.watch(`${DIR_SRC_IMAGES}/**/*.{jpg,png,gif,svg}`).on('change', gulp.series('images'));
-}
 
 
 
@@ -201,6 +166,6 @@ function watch_task() {
  * Workflows
  */
 
-gulp.task('build', gulp.series('clean', gulp.parallel('scripts', 'sass', 'images')));
+gulp.task('build', gulp.series('clean', gulp.parallel('scripts')));
 
-gulp.task('watch', gulp.series('build', gulp.parallel(watch_task, 'scripts_watch')));
+gulp.task('watch', gulp.series('build', gulp.parallel('scripts_watch')));
