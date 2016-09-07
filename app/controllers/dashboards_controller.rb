@@ -1,4 +1,4 @@
-class DashboardsController < ApplicationController
+class DashboardsController < AuthenticatedController
 
   attr_reader :dashboards, :dashboard, :widgets
   helper_method :dashboards, :dashboard

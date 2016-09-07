@@ -1,4 +1,4 @@
-class AboutController < ApplicationController
+class AboutController < AuthenticatedController
 
   def index
     render :copyright
