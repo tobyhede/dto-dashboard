@@ -3,7 +3,7 @@ class Dataset < ApplicationRecord
   include Nameable
 
   belongs_to :organisation
-  has_many :datapoints
+  has_many :datapoints, :dependent => :destroy 
   has_many :widgets, :through => :dataset_widgets
   has_many :dataset_widgets
 

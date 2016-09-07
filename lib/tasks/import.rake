@@ -2,10 +2,18 @@ require 'json'
 
 namespace :import do
   desc 'Imports Data'
+
+  task update: :environment do
+    orgs = %w(industry)
+    run(orgs)
+  end
+
   task data: :environment do
-
     orgs = %w(mygov dibp industry imports medicare-enrolment marketplace)
+    run(orgs)
+  end
 
+  def run(orgs)
     ids = {
       'mygov' => 1,
       'dibp'  => 2,
@@ -31,6 +39,15 @@ namespace :import do
       display_kpis = definition['displayKPIs'].nil?
 
       id = ids[name]
+
+      if dashboard = Dashboard.find(id)
+        dashboard.widgets.each do |widget|
+          widget.datasets.delete_all
+          widget.delete
+        end
+        dashboard.delete
+      end
+
       dashboard = Dashboard.create!(
         :id => id,
         :name => definition['name'],
@@ -54,8 +71,6 @@ namespace :import do
           :units => units)
 
         datasets[dataset['id']] = dataset_model
-
-        # puts dataset['id']
 
         if dataset['data']
 

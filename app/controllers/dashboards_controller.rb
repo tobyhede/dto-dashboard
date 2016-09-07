@@ -5,14 +5,13 @@ class DashboardsController < ApplicationController
 
   def index
     @dashboards = Dashboard.published.by_name.all.decorate
-  
+
     render :index
   end
 
   def show
     @dashboard = Dashboard.find(params[:id]).decorate
-    @widgets = Widget.where(dashboard_id: @dashboard.id)
-
+    
     @title = @dashboard.name
     @description = @dashboard.name
 
