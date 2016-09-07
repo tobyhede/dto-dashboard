@@ -37,7 +37,45 @@ class DashboardDecorator < Draper::Decorator
     object.last_updated_at.to_formatted_s(:month_year)
   end
 
+  def to_csv
+    cnt = CSV.generate( {} ) do |csv|
+      csv.add_row CVS_COL_NAME
+
+      dashboard.first_row.each do |kpi|
+        widget = kpi.decorate
+
+        wi_values ||= []
+        wi_values.push(widget.id || " ")
+        wi_values.push(widget.name || " ")
+        wi_values.push(widget.type || " ")
+        wi_values.push(widget.units || " ")
+        wi_values.push(widget.description || " ")
+        wi_values.push(widget.options || " ")
+
+        widget.datasets.each do |dataset|
+          if dataset.datapoints != nil
+            dataset.datapoints.each do |datapoint|
+              dp_values ||= []
+              dp_values.push(datapoint.label() || " ")
+              dp_values.push(datapoint.value || " ")
+              csv.add_row wi_values + dp_values
+            end
+          else
+            dp_values ||=[" ", " "]
+            csv.add_row wi_values + dp_values
+          end
+        end
+
+      end
+
+    end
+
+    puts cnt.to_s
+    return cnt
+  end
+
   private
+  CVS_COL_NAME = ['id', 'last_updated_at', 'name','type', 'units','description', 'options', 'data_label', 'data_value']
 
   def markdown
     render_options = {
