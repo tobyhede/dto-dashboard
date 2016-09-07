@@ -64,7 +64,7 @@ $govau-light-aqua:    lighten($govau-aqua, 30%);
     }
 
     &::after {
-      //background-image: url('./external-link--aqua.svg'); 
+      background-image: url('external-link--aqua.svg'); // todo - should be alt color
       @extend %base-link-icon--after;
       background-size: (0.75 * $govau-medium-spacing) auto;
     }

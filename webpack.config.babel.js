@@ -62,7 +62,7 @@ let webpackConfig = {
       },
       {
         test: /\.(scss|css)$/,
-        loader: ExtractSass.extract('style', 'css?&sourceMap!postcss!resolve-url!sass?sourceMap')
+        loader: ExtractSass.extract('style', `css?${DEBUG ? 'sourceMap': ''}!postcss!resolve-url!sass?sourceMap`)
       },
       {
         test: /\.(jpe?g|gif|png|svg)$/,
