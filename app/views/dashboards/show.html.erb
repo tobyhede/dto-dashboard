@@ -1,4 +1,8 @@
-<% content_for :body_class_names do %>high-contrast<% end %>
+<%
+  content_for :body_class_names, 'high-contrast'
+  content_for :title, dashboard.name
+  content_for :description, dashboard.name
+%>
 
 <script type="text/javascript">
   window.__INITIAL_STATE__ = {};
