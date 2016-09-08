@@ -9,6 +9,9 @@
 
 @import 'base';
 @import 'layout';
+
+@import 'components/toggle-switch';
+
 @import 'govau/footer';
 @import 'dashboard/chart';
 @import 'dashboard/base';
@@ -20,4 +23,3 @@
 @import 'widgets/widget';
 @import 'widgets/sparkline';
 
-@import 'components/toggle-switch';
