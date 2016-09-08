@@ -40,7 +40,7 @@ namespace :import do
 
       id = ids[name]
 
-      if dashboard = Dashboard.find(id)
+      if dashboard = Dashboard.find_by(:id => id)
         dashboard.widgets.each do |widget|
           widget.datasets.delete_all
           widget.delete
