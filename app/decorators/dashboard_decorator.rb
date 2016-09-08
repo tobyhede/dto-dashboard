@@ -42,16 +42,9 @@ class DashboardDecorator < Draper::Decorator
       csv.add_row CVS_COL_NAME
 
       self.widgets.each do |widget|
-        dataset = widget.dataset
-        if !dataset.nil? && !dataset.datapoints.nil?
-          darray = dataset.datapoints.collect { |d| [dataset.name, dataset.units, d.ts.strftime("%d/%m/%Y %H:%M"), d.label(), d.value.to_s] }
-
-          if darray.any?
-            darray.each do |item|
-              csv.add_row item
-            end
-          end
-
+        datasets = widget.datasets
+        datasets.each do |dataset|
+          dataset.datapoints.each { |d| csv << [dataset.name, dataset.units, d.ts.strftime("%d/%m/%Y %H:%M"), d.label(), d.value.to_s] }
         end
       end
     end
