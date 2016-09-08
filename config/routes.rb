@@ -8,4 +8,7 @@ Rails.application.routes.draw do
   get '/index.html', :to => redirect('/')
 
   get '/copyright', :to => 'about#index'
+
+  get '/export', :to => 'dashboards#export'
+
 end

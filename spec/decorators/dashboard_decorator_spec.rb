@@ -68,9 +68,7 @@ RSpec.describe DashboardDecorator, type: :decorator do
   end
 
   describe 'to_csv' do
-    context 'csv content not empty' do
-      subject { decorator.to_csv }
-      it { is_expected.not_to be_empty }
-    end
+    subject { decorator.to_csv }
+    it { is_expected.not_to be_empty }
   end
 end
