@@ -71,7 +71,7 @@ class DashboardDecorator < Draper::Decorator
       end
 
       # export other wiget data
-      dashboard.remaining_rows.each do |other_widget|
+      self.remaining_rows.each do |other_widget|
         widget = other_widget.decorate
 
         wi_values ||= []
