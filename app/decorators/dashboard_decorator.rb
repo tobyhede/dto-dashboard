@@ -38,21 +38,21 @@ class DashboardDecorator < Draper::Decorator
   end
 
   def to_csv
-    cnt = CSV.generate( {} ) do |csv|
+    CSV.generate( {} ) do |csv|
       csv.add_row CVS_COL_NAME
 
       # export KPI data
       self.first_row.each do |kpi|
         widget = kpi.decorate
 
-        wi_values ||= []
-        wi_values.push(widget.id || " ")
-        wi_values.push(widget.name || " ")
-        wi_values.push(widget.type || " ")
-        wi_values.push(widget.size || " ")
-        wi_values.push(widget.units || " ")
-        wi_values.push(widget.description || " ")
-        wi_values.push(widget.options || " ")
+        kpi_values ||= []
+        kpi_values.push(widget.id || " ")
+        kpi_values.push(widget.name || " ")
+        kpi_values.push(widget.type || " ")
+        kpi_values.push(widget.size || " ")
+        kpi_values.push(widget.units || " ")
+        kpi_values.push(widget.description || " ")
+        kpi_values.push(widget.options || " ")
 
         widget.datasets.each do |dataset|
           if dataset.datapoints != nil
@@ -60,11 +60,11 @@ class DashboardDecorator < Draper::Decorator
               dp_values ||= []
               dp_values.push(datapoint.label() || " ")
               dp_values.push(datapoint.value || " ")
-              csv.add_row wi_values + dp_values
+              csv.add_row kpi_values + dp_values
             end
           else
             dp_values ||=[" ", " "]
-            csv.add_row wi_values + dp_values
+            csv.add_row kpi_values + dp_values
           end
         end
 
