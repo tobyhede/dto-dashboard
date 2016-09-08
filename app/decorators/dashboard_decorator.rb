@@ -44,7 +44,7 @@ class DashboardDecorator < Draper::Decorator
       self.widgets.each do |widget|
         dataset = widget.dataset
         if !dataset.nil? && !dataset.datapoints.nil?
-          darray = dataset.datapoints.collect { |d| [dataset.name, d.ts.strftime("%d/%m/%Y %H:%M"), d.value.to_s] }
+          darray = dataset.datapoints.collect { |d| [dataset.name, dataset.units, d.ts.strftime("%d/%m/%Y %H:%M"), d.label(), d.value.to_s] }
 
           if darray.any?
             darray.each do |item|
@@ -59,7 +59,7 @@ class DashboardDecorator < Draper::Decorator
   end
 
   private
-  CVS_COL_NAME = ['dataset_name', 'time_stamp', 'data_value']
+  CVS_COL_NAME = ['dataset_name', 'units', 'time_stamp', 'label', 'value']
 
   def markdown
     render_options = {
