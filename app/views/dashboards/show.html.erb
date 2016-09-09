@@ -81,7 +81,7 @@
             <% end %>
           </div>
           <div class="widget-text__footer aus-width-five-twelfths">
-            <p>Download this dashboard data with<a href="<%= url_for controller: 'dashboards', action: 'export', id: dashboard.id, format: 'csv' %>" target="_blank"><%= 'CSV format' %><i class="fa fa-external-link"></i></a></p>
+            <p>Download this dashboard data with <%= link_to export_dashboard_path(dashboard, :format => 'csv') do %>CSV format<i class="fa fa-external-link"></i> <% end %></p>
           </div>
         </div>
       </div>

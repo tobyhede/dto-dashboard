@@ -22,6 +22,13 @@ RSpec.describe DashboardCSVSerializer, type: :serializer do
       expect(parser).not_to eq be_empty
       expect(parser.length).to be >= 1  # it should, at least, have a csv header line
       expect(parser[0].length).to be == 5 # data should be with 5 columns
+
+      # check the data items
+      expect(csv).to include(dashboard.widgets[0].datasets[0].name)
+      expect(csv).to include(dashboard.widgets[0].datasets[0].units)
+      expect(csv).to include(dashboard.widgets[0].datasets[0].datapoints[0].label())
+      expect(csv).to include(dashboard.widgets[0].datasets[0].datapoints[0].value.to_s )
+
       # parser.each do |row|
       #   puts row.to_s
       # end
@@ -29,16 +36,17 @@ RSpec.describe DashboardCSVSerializer, type: :serializer do
   end
 
   describe "dashboard without widgets test" do
-    let(:empty_dashboard) { FactoryGirl.create(:dashboard, opts) }
-    subject(:serializer2) { DashboardCSVSerializer.new(empty_dashboard) }
+    let(:dashboard) { FactoryGirl.create(:dashboard, opts) }
+
     it do
-      csv = serializer2.to_csv
+      csv = serializer.to_csv
       parser = CSV.parse(csv)
       expect(parser).not_to eq be_empty
       expect(parser.length).to be == 1  # it should contain a csv header line
+
+      expect(parser[0]).to be === ['dataset_name', 'units', 'time_stamp', 'label', 'value']
     end
-
   end
+ end
 
-end
 
