@@ -8,4 +8,6 @@ Rails.application.routes.draw do
   get '/index.html', :to => redirect('/')
 
   get '/copyright', :to => 'about#index'
+
+  get '/portal', :to => 'portal#index'
 end
