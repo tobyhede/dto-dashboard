@@ -1,3 +1,7 @@
-body {
-  content: 'portal'
-}
+@charset 'utf-8';
+
+@import '~bourbon/core/bourbon';
+@import '~bourbon-neat/app/assets/stylesheets/neat';
+@import '_vendor/gov-au-ui-kit/ui-kit';
+
+@import 'variables';
