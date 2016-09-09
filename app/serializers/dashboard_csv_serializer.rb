@@ -5,6 +5,7 @@ class DashboardCSVSerializer < ActiveModel::Serializer
 
   end
 
+  CVS_COL_NAME = ['dataset_name', 'units', 'time_stamp', 'label', 'value']
   def to_csv
     CSV.generate({}) do |csv|
       csv.add_row CVS_COL_NAME
@@ -18,8 +19,5 @@ class DashboardCSVSerializer < ActiveModel::Serializer
     end
 
   end
-
-  private
-  CVS_COL_NAME = ['dataset_name', 'units', 'time_stamp', 'label', 'value']
 
 end
