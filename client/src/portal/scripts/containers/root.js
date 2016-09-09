@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Provider } from 'react-redux';
-import { Router, Route, browserHistory, IndexRedirect } from 'react-router';
+import { Router, Route, hashHistory, IndexRedirect } from 'react-router';
 
 import Layout from './layout';
 import Dashboards from './../pages/dashboards';
@@ -13,12 +13,11 @@ export default class Root extends Component {
     let { store } = this.props;
     return (
       <Provider store={store}>
-        <Router history={browserHistory}>
-          <Route path="/portal" component={Layout}>
-            <IndexRedirect to="/dashboards" />
-            <Route path="dashboards" component={Dashboards} store={store}>
-              <Route path="/dashboard/:id" component={Dashboard} store={store} />
-            </Route>
+        <Router history={hashHistory}>
+          <Route path="/" component={Layout}>
+            <IndexRedirect to="dashboards" />
+            <Route path="dashboards" component={Dashboards} store={store} />
+            <Route path="dashboard/:id" component={Dashboard} store={store} />
             <Route path="*" component={NoMatch}/>
           </Route>
         </Router>
