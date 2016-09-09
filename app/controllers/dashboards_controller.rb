@@ -23,7 +23,7 @@ class DashboardsController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.csv { send_data @dashboard.to_csv, :type => 'text/csv', :disposition=>'attachment', :filename=>'dashboard.csv' }
+      format.csv { send_data DashboardCSVSerializer.new(@dashboard).to_csv, :type => 'text/csv', :disposition=>'attachment', :filename=>'dashboard.csv' }
     end
   end
 end

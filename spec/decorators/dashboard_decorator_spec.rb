@@ -67,12 +67,4 @@ RSpec.describe DashboardDecorator, type: :decorator do
     it { is_expected.to eq Time.zone.now.to_formatted_s(:month_year) }
   end
 
-  describe 'to_csv' do
-    subject(:csv)  { decorator.to_csv }
-    it do
-      # uncomment the following for debugging only!
-      # puts csv.to_s
-      is_expected.not_to be_empty
-    end
-  end
 end
