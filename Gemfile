@@ -1,41 +1,38 @@
- source 'https://rubygems.org'
+source 'https://rubygems.org'
+ruby '2.3.1'
 
-
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.0.0'
-# Use sqlite3 as the database for Active Record
+gem 'rails', '~> 5.0.0.1'
 gem 'pg'
-
-# Use Puma as the app server
 gem 'puma', '~> 3.0'
-# Use SCSS for stylesheets
-gem 'sass-rails', '~> 5.0'
-# Use Uglifier as compressor for JavaScript assets
-gem 'uglifier', '>= 1.3.0'
-# Use jquery as the JavaScript library
+
+# gem 'jquery-rails'
+gem 'active_model_serializers', '~> 0.10.0'
+gem 'draper',                   '> 3.x'
+gem 'erubis'
 gem 'jquery-rails'
-# Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
-gem 'turbolinks', '~> 5'
-# Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'jbuilder', '~> 2.5'
-# Use Redis adapter to run Action Cable in production
-# gem 'redis', '~> 3.0'
-# Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
+gem 'newrelic_rpm'
+gem 'redcarpet',                '~>3.3'
+gem 'sass-rails',               '~> 5.0'
+gem 'turbolinks',               '~> 5'
+gem 'uglifier',                 '>= 1.3.0'
 
-gem 'activeadmin', github: 'activeadmin'
-gem 'inherited_resources', github: 'activeadmin/inherited_resources'
-gem 'ransack',             github: 'activerecord-hackery/ransack'
-gem 'draper',              '> 3.x'
+group :production do
+  gem 'rails_12factor'
+end
 
+group :assets do
+   gem 'coffee-rails'
+end
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
+  gem 'dotenv-rails'
 end
 
 group :development do
-  gem 'dotenv-rails'
+  gem "binding_of_caller"
+  gem "better_errors"
   gem 'listen', '~> 3.0.5'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
@@ -43,12 +40,19 @@ group :development do
 end
 
 group :test do
+  gem 'capybara', '~> 2.8.1'
+  gem "codeclimate-test-reporter", require: false
+  gem 'database_cleaner'
   gem 'factory_girl_rails', '~> 4.0'
   gem 'guard-rspec', require: false
-  gem 'shoulda-matchers', '~> 3.1'
+  gem 'poltergeist'
   gem 'rspec-rails'
   gem 'rspec-collection_matchers'
   gem 'rspec-its'
+  gem 'rails-controller-testing'
+  gem 'rspec_junit_formatter'
+  gem 'selenium-webdriver', '~> 2.53.4'
+  gem 'shoulda-matchers', '~> 3.1'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

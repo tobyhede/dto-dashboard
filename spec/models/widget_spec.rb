@@ -25,13 +25,54 @@ RSpec.describe Widget, type: :model do
     it { is_expected.to_not have_data }
   end
 
+  describe 'options' do
+    subject(:widget) { FactoryGirl.create(:widget, :options => {'stacking' => 'percentage', 'displayRoundedData' => true}) }
+
+    its(:options) {
+      is_expected.to include('stacking')
+      is_expected.to include('displayRoundedData')
+    }
+    it { expect(widget.options['stacking']).to eq 'percentage' }
+    it { expect(widget.options['displayRoundedData']).to eq true }
+
+  end
+
   describe 'kpis' do
     before {
       Widget::KPIS.each{ |n| FactoryGirl.create(:widget, :name => n) }
     }
-
     subject { Widget.kpis }
     it { is_expected.to have(4).widgets }
+  end
+
+  describe 'hero' do
+    before {
+      FactoryGirl.create(:widget, :is_hero => true)
+    }
+    subject { Widget.hero }
+    it { is_expected.to have(1).widget }
+  end
+
+  describe 'units' do
+    subject(:widget) { FactoryGirl.create(:widget, :units => units) }
+
+    context 'seconds' do
+      let(:units) { 's' }
+      its(:suffix) { is_expected.to eq 's' }
+      its(:prefix) { is_expected.to eq '' }
+    end
+
+    context 'percentage' do
+      let(:units) { '%' }
+      its(:suffix) { is_expected.to eq '%' }
+      its(:prefix) { is_expected.to eq '' }
+    end
+
+    context 'money' do
+      let(:units) { '$' }
+      its(:suffix) { is_expected.to eq '' }
+      its(:prefix) { is_expected.to eq '$' }
+    end
   end
 
 end

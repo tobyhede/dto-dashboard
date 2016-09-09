@@ -2,6 +2,12 @@
 
 [![CircleCI](https://circleci.com/gh/AusDTO/dto-dashboard/tree/master.svg?style=svg)](https://circleci.com/gh/AusDTO/dto-dashboard/tree/master)
 
+[![Code Climate](https://codeclimate.com/github/AusDTO/dto-dashboard/badges/gpa.svg)](https://codeclimate.com/github/AusDTO/dto-dashboard)
+
+[![Issue Count](https://codeclimate.com/github/AusDTO/dto-dashboard/badges/issue_count.svg)](https://codeclimate.com/github/AusDTO/dto-dashboard)
+
+[![Test Coverage](https://codeclimate.com/github/AusDTO/dto-dashboard/badges/coverage.svg)](https://codeclimate.com/github/AusDTO/dto-dashboard/coverage)
+
 Version 3.0 of the Performance Dashboard.
 
 Currently WIP.
@@ -57,6 +63,12 @@ Import the dashboard data
 rake import:data
 ```
 
+(Optional) If you need to hard reset the database
+
+```
+rake db:drop db:create db:migrate import:data
+```
+
 ### Run the App
 
 To run on the default port (3000)
@@ -64,15 +76,66 @@ To run on the default port (3000)
 rails server
 ```
 
+```
+bin/start.sh
+```
+
 The site can now be viewed at `http://localhost:3000/`
 
 Administration is available at `http://localhost:3000/admin`
 
+
+### Front end
+
+Install the pipeline. Mostly this is all you will need.
+```
+npm install 
+npm run build
+```
+
+Build gulp (legacy js)
+```
+npm run gulp:build
+```
+
+Build webpack 
+```
+npm run webpack:dev
+```
+
+Develop mode in Webpack? 
+
+1. Install this Chrome Extension:
+
+https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd?hl=en
+
+More information here: http://zalmoxisus.github.io/redux-devtools-extension/
+
+
+2. Set .env variable to enable Dev Server mode
+```
+DEV_SERVER = true
+```
+
+3. Run 
+```
+npm run webpack:dev
+```
+
+
 ## Tests
 
 ```
-rspec
+bundle exec rspec
 ```
+
+Run specs without the features (features use a browser and Capybara so can be much slower)
+
+```
+bundle exec rspec --exclude-pattern "features/**"
+```
+
+https://dashboard.gov.au/api/1/dashboards/1-mygov-dashboard
 
 You can also use guard to run specs automatically on save with
 
@@ -99,7 +162,7 @@ For advice for writing specs check [betterspecs](http://betterspecs.org/).
 
 ### Branch Often.
 
- All work should be on a branch. Discretion is accepted for small changes.
+ All work should be on a branch.
 
  Rebase long-living branches often (on master).
 
@@ -111,7 +174,7 @@ For advice for writing specs check [betterspecs](http://betterspecs.org/).
  Examples;
  ​
 
- - `bugfix/477-broken-redirects-for-guests`
+ - `fix/477-broken-redirects-for-guests`
 
  - `feature/502-new-cart-logo`
 
@@ -132,7 +195,9 @@ For advice for writing specs check [betterspecs](http://betterspecs.org/).
 
  test    -> adding missing tests
 
- tweak   -> small changes, documentation, refactors
+ tweak   -> small changes, refactors
+
+ doc     -> documentation
 
  ```
 
@@ -144,8 +209,20 @@ For advice for writing specs check [betterspecs](http://betterspecs.org/).
 
  - Create the PR early and label as `WIP`
 
+### Rebasing
 
- ### Review
+Rebasing before merging a PR ensures a clean commit history, please see [Merging vs Rebasing](https://www.atlassian.com/git/tutorials/merging-vs-rebasing/) for more details.
+
+If rebasing often, its a good idea to use `rerere`, see:
+[Fix conflicts only once with git rerere](https://medium.com/@porteneuve/fix-conflicts-only-once-with-git-rerere-7d116b2cec67a)
+
+If your branch is long-lived (longer than a day on an active codebase), its a good idea to periodically rebase so you are actively tracking changes in master. This makes merge conflicts 1) less likely and 2) smaller and easier to deal with.
+
+Merge conflicts need to be carefully resolved as part of the rebase process. A tool like git-tower can be useful.
+
+
+
+### Review
 
 
  - At least one other person should review the PR before merge.
@@ -153,3 +230,7 @@ For advice for writing specs check [betterspecs](http://betterspecs.org/).
  - A review should ideally involve actually checking out and running the code, and sanity checking it before merge.
 
  - Close any related issues​ in Jira
+
+### Coding Standard/s
+
+[Ruby Style Guide](https://github.com/bbatsov/ruby-style-guide)

@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20160728011053) do
     t.integer  "organisation_id",                null: false
     t.text     "name",                           null: false
     t.text     "notes"
+    t.text     "url"
     t.boolean  "display_hero",    default: true, null: false
     t.boolean  "display_kpis",    default: true, null: false
     t.datetime "published_at"
@@ -34,6 +35,7 @@ ActiveRecord::Schema.define(version: 20160728011053) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["dataset_id"], name: "index_datapoints_on_dataset_id", using: :btree
+    t.index ["ts"], name: "index_datapoints_on_ts", using: :btree
   end
 
   create_table "dataset_widgets", force: :cascade do |t|
@@ -49,6 +51,7 @@ ActiveRecord::Schema.define(version: 20160728011053) do
     t.integer  "organisation_id", null: false
     t.text     "name",            null: false
     t.text     "units",           null: false
+    t.text     "notes"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.index ["organisation_id"], name: "index_datasets_on_organisation_id", using: :btree
@@ -63,17 +66,19 @@ ActiveRecord::Schema.define(version: 20160728011053) do
   end
 
   create_table "widgets", force: :cascade do |t|
-    t.integer  "dashboard_id",           null: false
-    t.integer  "row",          limit: 2, null: false
-    t.integer  "pos",          limit: 2, null: false
-    t.text     "name",                   null: false
-    t.text     "type",                   null: false
-    t.text     "size",                   null: false
-    t.text     "units",                  null: false
+    t.integer  "dashboard_id",                              null: false
+    t.integer  "row",             limit: 2,                 null: false
+    t.integer  "pos",             limit: 2,                 null: false
+    t.text     "name",                                      null: false
+    t.text     "type",                                      null: false
+    t.text     "size",                                      null: false
+    t.text     "units",                                     null: false
     t.text     "description"
     t.text     "options"
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.boolean  "is_hero",                   default: false, null: false
+    t.datetime "last_updated_at",                           null: false
+    t.datetime "created_at",                                null: false
+    t.datetime "updated_at",                                null: false
     t.index ["dashboard_id"], name: "index_widgets_on_dashboard_id", using: :btree
   end
 

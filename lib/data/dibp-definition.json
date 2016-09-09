@@ -1,5 +1,5 @@
 {
-  "name":     "Australian Citizenship Appointment Booking Service Dashboard",
+  "name":     "Australian Citizenship Appointment Booking Service",
   "agency":   "DIBP",
   "widgets":  [
     {
@@ -89,6 +89,7 @@
       "type": "full",
       "size": "extra-large",
       "units": "n",
+      "is_hero": true,
       "datasets": ["user-satisfaction", "cost-per-transaction", "digital-take-up", "completion-rate"]
     }
   ],

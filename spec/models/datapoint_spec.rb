@@ -9,9 +9,7 @@ RSpec.describe Datapoint, type: :model do
 
   let(:dataset) { FactoryGirl.create(:dataset) }
 
-  describe '#label' do
-    subject     { FactoryGirl.create(:datapoint, :ts => Date.parse('2016-01-01'), :dataset => dataset) }
-    its(:label) { is_expected.to eq '2016-01' }
-  end
+  subject(:datapoint) { FactoryGirl.create(:datapoint, :ts => Date.parse('2016-01-01'), :dataset => dataset) }
 
+  its(:label) { is_expected.to eq '2016-01' }
 end

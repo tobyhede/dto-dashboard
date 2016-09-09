@@ -52,8 +52,4 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
-  # Build front end
-  config.after_initialize do
-    system 'npm run build'
-  end
 end

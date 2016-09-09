@@ -9,4 +9,7 @@ module ApplicationHelper
     class_names.flatten.join(' ')
   end
 
+  def display_high_contrast_mode?
+    controller.controller_name == 'dashboards' && controller.action_name == 'show'
+  end
 end

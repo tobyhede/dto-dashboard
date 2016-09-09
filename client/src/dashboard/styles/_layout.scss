@@ -1,0 +1,37 @@
+/**
+* Site header
+*/
+.logo-primary {
+  background: $logo-bg-colour;
+  padding: $gutter 0;
+
+  .container {
+    display: flex;
+    align-items: flex-end;
+  }
+
+  .site-title {
+    display: inline-block;
+    flex: 1;
+  }
+
+  .l-toggle-switch {
+    float: right;
+  }
+
+  img {
+    height: 30px;
+    width: auto;
+    display: block;
+    max-width: 90%;
+    height: auto;
+  }
+
+  @include media($screen-sm) {
+    padding: $spacing-unit / 2 0;
+
+    img {
+      height: 40px;
+    }
+  }
+}

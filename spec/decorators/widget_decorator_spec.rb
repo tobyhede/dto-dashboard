@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe WidgetDecorator, type: :decorator do
- 
+
   let(:latest_value)    { 99 }
   let(:latest_ts)       { Date.parse('2020-02-01') }
 
@@ -10,7 +10,7 @@ RSpec.describe WidgetDecorator, type: :decorator do
 
   let(:unit)            { 's' }
 
-  let(:widget)      { FactoryGirl.create(:widget) }
+  let(:widget)      { FactoryGirl.create(:widget, :last_updated_at => '2020-01-01', :units => unit) }
   let(:dataset)     { FactoryGirl.create(:dataset, :units => unit) }
 
   let!(:latest)     { FactoryGirl.create(:datapoint, :dataset => dataset, :ts => latest_ts, :value => latest_value) }
@@ -23,60 +23,47 @@ RSpec.describe WidgetDecorator, type: :decorator do
 
   subject { widget.decorate }
 
-  its(:summary) { is_expected.to eq '' }
+  its(:summary)         { is_expected.to eq 'Unchanged since Jan 2020' }
+  its(:last_updated_at) { is_expected.to eq '1 Jan 2020'}
+  its(:units_to_s)      { is_expected.to eq 'Seconds'}
 
   describe 'rendering data for charts' do
 
     let(:widget)  { FactoryGirl.create(:widget_with_datasets) }
 
-    subject(:chart)   { widget.decorate.to_chart }
+    let(:chart)     { widget.decorate.to_chart }
+    subject(:data)  { JSON.parse(chart) }
 
-    it { should include("summary") }
-    it { should include("id") }
-    it { should include("latest") }
-    it { should include("suffix") }
+    it { is_expected.to include('id') }
+    it { is_expected.to include('name') }
+    it { is_expected.to include('units') }
+    it { is_expected.to include('latest') }
+    it { is_expected.to include('datasets') }
 
-    {
-    	"suffix": "%",
-    	"latest": {
-    		"label": "2016-06",
-    		"value": 97
-    	},
-    	"change": 7,
-    	"summary": "Up by undefined7.0% since 2016-05",
-    	"id": "user-satisfaction",
-    	"name": "User Satisfaction",
-    	"size": "extra-small",
-    	"type": "kpi-sparkline",
-    	"units": "%",
-    	"datasets": [{
-    		"id": "user-satisfaction",
-    		"data": [{
-    			"label": "2016-03",
-    			"value": 99
-    		}, {
-    			"label": "2016-04",
-    			"value": 95
-    		}, {
-    			"label": "2016-05",
-    			"value": 90
-    		}, {
-    			"label": "2016-06",
-    			"value": 97
-    		}],
-    		"name": "User satisfaction",
-    		"note": "",
-    		"color": "#f0f0f0",
-    		"units": "",
-    		"recorded_at": "2016-06-30T01:01:01.111Z"
-    	}],
-    	"updated_at": "2016-06-30T01:01:01.111Z",
-    	"description": "Overall satisfaction score includes all ratings weighted from 100% for very satisfied to 0% for very dissatisfied"
-    }
+    describe 'dataset' do
+
+      subject(:chart_dataset) { data['datasets'].first }
+
+      it { is_expected.to include('id') }
+      it { is_expected.to include('data') }
+
+      describe 'datapoint' do
+        subject(:datapoint) { chart_dataset['data'].first }
+        it { is_expected.to include('label') }
+        it { is_expected.to include('value') }
+      end
+    end
+
+    describe 'dataset_to_chart' do
+
+      subject(:datasets) { widget.decorate.datasets_to_chart }
+      subject(:data)  { JSON.parse(datasets) }
+
+      it { is_expected.to have(2).datasets }
+    end
 
 
   end
-
 
   describe 'up' do
 
@@ -154,9 +141,7 @@ RSpec.describe WidgetDecorator, type: :decorator do
     end
   end
 
-
   describe 'unchanged' do
-
     let(:latest_value)    { 100 }
     let(:previous_value)  { 100 }
 
@@ -175,4 +160,28 @@ RSpec.describe WidgetDecorator, type: :decorator do
       its(:summary) { is_expected.to eq 'Unchanged since Jan 2020' }
     end
   end
+
+  describe 'size to style' do
+    let(:attrs) { {} }
+    let(:widget) { FactoryGirl.create(:widget, attrs) }
+    subject { widget.decorate }
+
+    context 'extra-small' do
+      let(:attrs) { {:size => 'extra-small'} }
+      its(:size_to_style) { is_expected.to eq 'aus-width-one-fourth' }
+    end
+
+    context 'small' do
+      let(:attrs) { {:size => 'small'} }
+      its(:size_to_style) { is_expected.to eq 'aus-width-one-third' }
+    end
+
+    context 'full' do
+      let(:attrs) { {:size => 'extra-large'} }
+      its(:size_to_style) { is_expected.to eq 'aus-width-one-whole' }
+    end
+
+
+  end
+
 end
