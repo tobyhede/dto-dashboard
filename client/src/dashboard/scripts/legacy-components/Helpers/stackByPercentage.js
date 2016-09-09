@@ -5,7 +5,6 @@ function stackByPercentage(data){
   // need refactor
   transformed = transformed.map((c) => c.map((d, j) => {
       return {
-
           x: d.x,
           y: d.y === null ?
                 null :
