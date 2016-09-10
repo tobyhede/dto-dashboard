@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { Provider } from 'react-redux';
-import { Router, Route, hashHistory, IndexRedirect } from 'react-router';
+import { Router, Route, IndexRedirect } from 'react-router';
 
 import Layout from './layout';
 import Dashboards from './../pages/dashboards';
@@ -9,11 +9,17 @@ import NoMatch from './../pages/no-match';
 
 
 export default class Root extends Component {
+
+  static propTypes = {
+    store: PropTypes.object,
+    history: PropTypes.object
+  };
+
   render() {
-    let { store } = this.props;
+    let { store, history } = this.props;
     return (
       <Provider store={store}>
-        <Router history={hashHistory}>
+        <Router history={history}>
           <Route path="/" component={Layout}>
             <IndexRedirect to="dashboards" />
             <Route path="dashboards" component={Dashboards} store={store} />
