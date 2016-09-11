@@ -23,11 +23,21 @@ RSpec.describe DashboardCSVSerializer, type: :serializer do
       expect(parser.length).to be >= 1  # it should, at least, have a csv header line
       expect(parser[0].length).to be == 5 # data should be with 5 columns
 
-      # check the data items
-      expect(csv).to include(dashboard.widgets[0].datasets[0].name)
-      expect(csv).to include(dashboard.widgets[0].datasets[0].units)
-      expect(csv).to include(dashboard.widgets[0].datasets[0].datapoints[0].label())
-      expect(csv).to include(dashboard.widgets[0].datasets[0].datapoints[0].value.to_s )
+      # check the data items, note that the iteration here will not 100% ensure
+      # the data correction, an manual check may still be required if needed
+      dashboard.widgets.each do |widget|
+        widget.datasets.each do |dataset|
+
+          expect(csv).to include(dataset.name)
+          expect(csv).to include(dataset.units)
+
+          dataset.datapoints.each do |datapoint|
+            expect(csv).to include(datapoint.ts.strftime("%d/%m/%Y %H:%M"))
+            expect(csv).to include(datapoint.label())
+            expect(csv).to include(datapoint.value.to_s)
+          end
+        end
+      end
 
       # parser.each do |row|
       #   puts row.to_s
