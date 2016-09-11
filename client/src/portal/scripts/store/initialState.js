@@ -1,5 +1,9 @@
 export default {
   routing: {},
+  currentUser: {},
   app: {},
-  ui: {}
+  ui: {
+    // formEditDashboard: {}
+  },
+  dashboards: [],
 };

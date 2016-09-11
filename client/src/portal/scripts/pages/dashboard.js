@@ -1,13 +1,19 @@
 import React, { Component, PropTypes } from 'react';
+import { Link } from 'react-router';
 
 
-export default class Dashboard extends Component {
+class Dashboard extends Component {
+
   render() {
     return (
       <div>
-        <h1>Dashboard</h1>
-        {this.props.children}
+        <Link to="/dashboards">Back to My Dashboards</Link>
+        <div>
+          {this.props.children}
+        </div>
       </div>
     )
   }
 }
+
+export default Dashboard;
