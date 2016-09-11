@@ -33,4 +33,15 @@ RSpec.describe DashboardsController, :type => :controller do
     end
 
   end
+
+  describe "Export the csv data" do
+    context "with a valid dashboard id" do
+      let(:opts) { {} }
+      let(:dashboard) { FactoryGirl.create(:dashboard_with_widgets, opts) }
+      it "responds successfully with an HTTP 200 status code" do
+        get :export, params: {id: dashboard.id, format: 'csv' }
+        expect(response).to be_success
+      end
+    end
+  end
 end
