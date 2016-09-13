@@ -17,6 +17,7 @@ Currently WIP.
 
  - ruby-2.3.1
  - Postgres 9.4
+ - Node 6.3.0
 
 
 ## Getting Started
