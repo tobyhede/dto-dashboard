@@ -89,7 +89,7 @@ Administration is available at `http://localhost:3000/admin`
 
 Install the pipeline. Mostly this is all you will need.
 ```
-npm install 
+npm install
 npm run build
 ```
 
@@ -98,12 +98,12 @@ Build gulp (legacy js)
 npm run gulp:build
 ```
 
-Build webpack 
+Build webpack
 ```
 npm run webpack:dev
 ```
 
-Develop mode in Webpack? 
+Develop mode in Webpack?
 
 1. Install these Chrome Extensions:
 
@@ -122,7 +122,7 @@ https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopl
 DEV_SERVER = true
 ```
 
-3. Run 
+3. Run
 ```
 npm run webpack:dev
 ```
@@ -147,6 +147,16 @@ You can also use guard to run specs automatically on save with
 ```
 bundle exec guard
 ```
+
+When running under guard, it can be useful to isolate a specific test.
+This can be achieved by using `:focus => true` on the desired spec.
+
+```
+it 'authenticates', :focus => true do
+end
+```
+
+Remember to NOT commit this as it will mean the test suite no longer runs all the tests.
 
 For advice for writing specs check [betterspecs](http://betterspecs.org/).
 
