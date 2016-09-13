@@ -3,29 +3,31 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router';
 
 
-const mapStateToProps = ({dashboards}) => ({
-  dashboards
+const mapStateToProps = (store, ownProps) => ({
+  dashboards: ownProps.dashboards
 });
-
 const mapDispatchToProps = dispatch => ({});
 
-class Dashboards extends Component {
-
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
-
+class DashboardsIndex extends Component {
   render() {
     let { dashboards } = this.props;
     return (
       <div>
         <h1>Dashboards</h1>
-        <ul>
-          {dashboards.map((d, idx) => {
-            return <li key={idx}><Link to={`/dashboard/${d.id}`}>{d.id} - {d.title}</Link></li>
-          })}
-        </ul>
+        <table>
+          <thead>
+            <tr>
+              <td>ID</td><td>Name</td>
+            </tr>
+          </thead>
+          <tbody>
+            {dashboards.map((d, idx) => (
+              <tr key={idx}>
+                <td>{d.id}</td><td>{d.name}</td><td><Link to={`/dashboards/${d.id}`}>Edit</Link></td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
     )
   }
@@ -34,4 +36,4 @@ class Dashboards extends Component {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Dashboards);
+)(DashboardsIndex);
