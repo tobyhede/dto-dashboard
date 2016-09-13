@@ -37,8 +37,6 @@ class DashboardDecorator < Draper::Decorator
     object.last_updated_at.to_formatted_s(:month_year)
   end
 
-  private
-
   def markdown
     render_options = {
       # will remove from the output HTML tags inputted by user
