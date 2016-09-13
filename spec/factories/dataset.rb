@@ -18,9 +18,9 @@ FactoryGirl.define do
       transient do
         count 1
       end
-      
+
       after(:create) do |dataset, evaluator|
-        dataset.token  << create_list(:token, evaluator.count)
+        dataset.tokens  << create_list(:token, evaluator.count)
         dataset.save!
       end
     end
