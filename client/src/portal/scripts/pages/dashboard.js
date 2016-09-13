@@ -3,29 +3,16 @@ import { bindActionCreators } from 'redux';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import DashboardForm from './../components/forms/dashboard-form';
-import { updateDashboard } from './../actions/dashboard';
 
 
 const mapStateToProps = (store, ownProps) => ({
   dashboard: ownProps.dashboard,
   widgets: ownProps.widgets
 });
-const mapDispatchToProps = dispatch => ({
-  // submit: bindActionCreators(saveDashboard, dispatch)
-});
+const mapDispatchToProps = null;
+
 
 class DashboardIndex extends Component {
-
-  handleSubmit(data, dispatch) {
-    let self = this;
-    return new Promise(resolve => {
-      setTimeout(() => {  // simulate server latency
-        dispatch(updateDashboard(self.props.dashboard.id, data));
-        window.alert(`You submitted:\n\n${JSON.stringify(data, null, 2)}`);
-        resolve()
-      }, 500)
-    });
-  }
 
   render() {
     let { dashboard, widgets } = this.props;
@@ -34,8 +21,7 @@ class DashboardIndex extends Component {
       <div>
         <h2>{dashboard.name}</h2>
 
-        {/*TODO - edit dashboard*/}
-        <DashboardForm onSubmit={this.handleSubmit.bind(this)} dashboard={dashboard} />
+        <DashboardForm dashboard={dashboard} />
 
         <div>
           <h3>Widgets</h3>

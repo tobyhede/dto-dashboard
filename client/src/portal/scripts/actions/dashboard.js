@@ -1,7 +1,7 @@
 import * as types from "./_types";
 
 
-export function updateDashboard(id, formData = {}) {
+export function updateDashboard(formData = {}) {
   return {
     type: types.UPDATE_DASHBOARD,
     payload: formData,

@@ -1,6 +1,9 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux'
 import { Field, reduxForm } from 'redux-form';
+import { bindActionCreators } from 'redux';
+import { updateDashboard } from './../../actions/dashboard';
+import { SubmissionError } from 'redux-form'
 
 
 const renderInputField = ({ input, label, type, name, meta: { touched, error } }) => {
@@ -26,21 +29,32 @@ const renderTextareaField = ({ input, label, name, meta: { touched, error } }) =
 )};
 
 
+const sleep = ms => new Promise(resolve => setTimeout(resolve, ms))
+function submit(data, dispatch) {
+  return sleep(1000) // simulate server latency
+    .then(() => {
+      // if (![ 'john', 'paul', 'george', 'ringo' ].includes(values.name)) {
+        // throw new SubmissionError({ name: 'Name does not exist', _error: 'Submit failed!' })
+      // } else {
+      dispatch(updateDashboard(data)); // todo - this will be async not sync
+      window.alert(`You submitted:\n\n${JSON.stringify(data, null, 2)}`);
+      // }
+    });
+}
+
 let UpdateDashboardForm = props => {
 
-  const {
-    handleSubmit, pristine, submitting, valid
-  } = props;
+  const { error, handleSubmit, pristine, submitting, valid } = props;
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit(submit)}>
       <Field name="name" type="text" component={renderInputField} label="Name"/>
       <Field name="notes" component={renderTextareaField} label="Notes"/>
       <Field name="url" type="text" component={renderInputField} label="url"/>
-
       <div>
         <button type="submit" disabled={pristine || submitting || !valid}>Submit</button>
       </div>
+      {error && <strong style={{color:'red'}}>{error}</strong>}
     </form>
   )
 };
@@ -56,7 +70,7 @@ const validate = (values, props) => {
   return errors;
 };
 
-// decorate with reduxForm()
+// decorate with reduxForm
 UpdateDashboardForm = reduxForm({
   form: 'updateDashboard',
   validate
