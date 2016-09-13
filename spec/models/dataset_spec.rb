@@ -110,7 +110,7 @@ RSpec.describe Dataset, type: :model do
     describe '#authenicate' do
       let(:token) { dataset.token }
 
-      it 'finds the correct dataset', :focus => true  do
+      it 'finds the correct dataset'  do
         expect(dataset).to eq Dataset.authenticate(token)
         expect(dataset).to_not eq Dataset.authenticate('blahvtha')
       end
