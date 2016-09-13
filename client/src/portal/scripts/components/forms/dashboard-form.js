@@ -3,47 +3,57 @@ import { connect } from 'react-redux'
 import { Field, reduxForm } from 'redux-form';
 
 
-let UpdateDashboardForm = (props) => {
+const renderInputField = ({ input, label, type, name, meta: { touched, error } }) => {
+  return (
+  <div>
+    <label htmlFor={name}>{label}</label>
+    <div>
+      <input {...input} placeholder={label} type={type} name={name} />
+      {touched && error && <span style={{color:'red'}}>{error}</span>}
+    </div>
+  </div>
+)};
+
+const renderTextareaField = ({ input, label, name, meta: { touched, error } }) => {
+  return (
+  <div>
+    <label htmlFor={name}>{label}</label>
+    <div>
+      <textarea {...input} placeholder={label} name={name} />
+      {touched && error && <span style={{color:'red'}}>{error}</span>}
+    </div>
+  </div>
+)};
+
+
+let UpdateDashboardForm = props => {
 
   const {
     handleSubmit, pristine, submitting
   } = props;
 
-  const reset = () => {
-    // todo - restore initial props and pristine
-  };
-
   return (
     <form onSubmit={handleSubmit}>
-      <div>
-        <label htmlFor="name">Name</label>
-        <div>
-          <Field name="name" component="input" type="text"/>
-        </div>
-      </div>
-      <div>
-        <label htmlFor="notes">Notes</label>
-        <div>
-          <Field name="notes" component="textarea" />
-        </div>
-      </div>
-      <div>
-        <label htmlFor="url">Url</label>
-        <div>
-          <Field name="url" component="input" type="url"/>
-        </div>
-      </div>
+      <Field name="name" type="text" component={renderInputField} label="Name"/>
+      <Field name="notes" component={renderTextareaField} label="Notes"/>
+      <Field name="url" type="text" component={renderInputField} label="url"/>
 
       <div>
         <button type="submit" disabled={pristine || submitting}>Submit</button>
-        {/*<button type="cancel" disabled={pristine || submitting} onClick={reset}>Cancel</button>*/}
       </div>
     </form>
   )
 };
 
 const validate = (values, props) => {
-  return {};
+  const errors = {};
+  const requiredFields = ['name', 'notes', 'url'];
+  requiredFields.forEach(field => {
+    if (!values[field]) {
+      errors[field] = 'Required'
+    }
+  });
+  return errors;
 };
 
 // decorate with reduxForm()
@@ -56,7 +66,7 @@ UpdateDashboardForm = reduxForm({
 UpdateDashboardForm = connect(
   (state, ownProps) => ({
     initialValues: ownProps.dashboard
-  }),
+  })
 )(UpdateDashboardForm);
 
 export default UpdateDashboardForm
