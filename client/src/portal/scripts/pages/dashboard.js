@@ -28,7 +28,8 @@ class DashboardIndex extends Component {
       <div>
         <h2>{dashboard.name}</h2>
 
-        <DashboardForm onSubmit={this.handleSubmit.bind(this)} dashboard={dashboard} widgets={widgets} />
+        {/*TODO - edit dashboard*/}
+        <DashboardForm onSubmit={this.handleSubmit.bind(this)} dashboard={dashboard} />
 
         <div>
           <h3>Widgets</h3>

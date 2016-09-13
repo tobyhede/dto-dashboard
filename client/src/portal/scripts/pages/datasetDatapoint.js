@@ -19,6 +19,12 @@ class DatasetDatapointPage extends Component {
       <div>
         <h1>Dataset Datapoint</h1>
 
+        {/*TODO - edit datapoint*/}
+        <div>
+          FORM
+        </div>
+
+
         <p>label: {datapoint.label}</p>
         <p>value: {datapoint.value}</p>
       </div>

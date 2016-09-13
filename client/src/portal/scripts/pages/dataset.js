@@ -22,6 +22,12 @@ class DatasetIndex extends Component {
 
         <Link to={`/datasets/${dataset.id}/datapoints/new`}>Create new</Link>
 
+        {/*TODO - edit widget*/}
+        <div>
+          FORM
+        </div>
+
+
         <div>
           <h3>Datapoints</h3>
           <table>

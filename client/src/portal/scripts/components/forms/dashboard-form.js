@@ -8,20 +8,28 @@ let UpdateDashboardForm = (props) => {
   const {
     handleSubmit, pristine, submitting
   } = props;
+
   return (
     <form onSubmit={handleSubmit}>
       <div>
         <label htmlFor="name">Name</label>
-        <Field name="name" component="input" type="text"/>
+        <div>
+          <Field name="name" component="input" type="text"/>
+        </div>
       </div>
       <div>
         <label htmlFor="notes">Notes</label>
-        <Field name="notes" component="input" type="text"/>
+        <div>
+          <Field name="notes" component="textarea" />
+        </div>
       </div>
       <div>
         <label htmlFor="url">Url</label>
-        <Field name="url" component="input" type="url"/>
+        <div>
+          <Field name="url" component="input" type="url"/>
+        </div>
       </div>
+
       <div>
         <button type="submit" disabled={pristine || submitting}>Submit</button>
       </div>
@@ -29,9 +37,14 @@ let UpdateDashboardForm = (props) => {
   )
 };
 
+const validate = (values, props) => {
+  return {};
+};
+
 // decorate with reduxForm()
 UpdateDashboardForm = reduxForm({
-  form: 'updateDashboard'
+  form: 'updateDashboard',
+  validate
 })(UpdateDashboardForm);
 
 // read the initialValues prop

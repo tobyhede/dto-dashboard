@@ -24,6 +24,11 @@ class Widget extends Component {
         <h2>dashboard: {dashboard.name}</h2>
         <h2>widget: {widget.name}</h2>
 
+        {/*TODO - edit widget*/}
+        <div>
+          FORM
+        </div>
+
         <div>
           <h3>Datasets</h3>
           <table>
