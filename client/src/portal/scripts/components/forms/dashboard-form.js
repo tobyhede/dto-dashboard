@@ -29,7 +29,7 @@ const renderTextareaField = ({ input, label, name, meta: { touched, error } }) =
 let UpdateDashboardForm = props => {
 
   const {
-    handleSubmit, pristine, submitting
+    handleSubmit, pristine, submitting, valid
   } = props;
 
   return (
@@ -39,7 +39,7 @@ let UpdateDashboardForm = props => {
       <Field name="url" type="text" component={renderInputField} label="url"/>
 
       <div>
-        <button type="submit" disabled={pristine || submitting}>Submit</button>
+        <button type="submit" disabled={pristine || submitting || !valid}>Submit</button>
       </div>
     </form>
   )
