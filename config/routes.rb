@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  devise_for :users, path: '', path_names: { sign_in: 'login', sign_out: 'logout', sign_up: 'register', edit: 'settings' }
+  get root :to => 'dashboards#index'
+
   resources :dashboards, :only => [:index, :show] do
     member do
       get :export
@@ -14,8 +17,6 @@ Rails.application.routes.draw do
   end
 
   get 'feedback', :to => 'feedback#index'
-
-  get root 'dashboards#index'
 
   get '/index.html', :to => redirect('/')
 
