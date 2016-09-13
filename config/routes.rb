@@ -13,4 +13,6 @@ Rails.application.routes.draw do
 
   get '/copyright', :to => 'about#index'
 
+  get '/portal', :to => 'portal#index' unless Rails.env.production?
+
 end

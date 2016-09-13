@@ -15,6 +15,7 @@ let webpackConfig = {
 	context: CONFIG.DIR_SRC,
     entry: {
       ['dashboard']: [`./dashboard`],
+      ['portal']: [`./portal`],
     },
 	output: {
 	  path: CONFIG.DIR_DIST,

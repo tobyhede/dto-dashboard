@@ -105,11 +105,16 @@ npm run webpack:dev
 
 Develop mode in Webpack? 
 
-1. Install this Chrome Extension:
+1. Install these Chrome Extensions:
 
+* Redux Dev Tools:
 https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd?hl=en
 
 More information here: http://zalmoxisus.github.io/redux-devtools-extension/
+
+
+* React Developer Tools:
+https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi
 
 
 2. Set .env variable to enable Dev Server mode

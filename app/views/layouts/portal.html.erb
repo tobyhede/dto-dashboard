@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Portal</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <%
+    #
+    # Production mode or not required for webpack-dev-server mode
+    #
+    if !(Rails.env.development? && ENV['DEV_SERVER'] == 'true') %>
+      <link rel="stylesheet" href="/stylesheets/portal.css"/>
+  <% end %>
+</head>
+<body class="<%= body_class(yield(:body_class_names)) %>">
+  <%= yield %>
+  <%
+    #
+    # Production mode or webpack-dev-server mode
+    #
+    if !(Rails.env.development? && ENV['DEV_SERVER'] == 'true') %>
+    <script src="/javascripts/portal.js"></script>
+  <% else %>
+      <script src="http://localhost:8080/javascripts/portal.js"></script>
+  <% end %>
+</body>
+</html>

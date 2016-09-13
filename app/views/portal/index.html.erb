@@ -1,0 +1,130 @@
+<script type="text/javascript">
+//  let map = {
+//    currentUser: {id: 1,},
+//    dashboards: [
+//      {id: 1},
+//    ],
+//    widgets: [
+//      {id: 1, dashboard_id: 1, datasets: [1,2]},
+//      {id: 2, dashboard_id: 1, datasets: []}
+//    ],
+//    datasets: [
+//      {id: 1},
+//      {id: 2}
+//    ],
+//    datapoints: [
+//      {id: 1, dataset_id: 1},
+//      {id: 2, dataset_id: 1}
+//    ],
+//    organisations: [
+//      {id: 1, name: "DHS", }
+//    ]
+//  };
+
+
+
+  window.__INITIAL_STATE__ = {
+    currentUser: {
+      id: 1,
+      firstName: '',
+      lastName: '',
+      canEditDashboard: [1, 2]
+    },
+    app: {},
+    dashboards: [
+      {
+        id: 1,
+        name: 'myGov',
+        notes: '<dl> <dt> Where is this information from? <dd> myGov & Australian Department of Human Services. <dt> What is myGov? <dd> myGov is a secure, fast and simple way to access Australian Government services online with one username and password. <dt> What is an "Active Account"? <dd> An account on myGov with at least 1 linked member service. <dt> What is a "Sign-in"? <dd> A log in to the myGov service. In a given month, multiple sign-ins by a single account will be counted multiple times. <dt> What is a member service? <dd> This is an Australian Government service available to users through the myGov account. </dl>',
+        url: 'https://my.gov.au',
+        display_hero: true,
+        display_kpis: true,
+        published_at: '2016-09-06 05:28:50.365576',
+        created_at: '2016-09-06 05:28:50.356717',
+        updated_at: '2016-09-06 05:28:50.366554'
+      },
+    ],
+    widgets: [
+      {
+        id: 1,
+        dashboard_id: 1,
+        datasets: [1],
+        row: 0,
+        pos: 0,
+        name: 'Kpis',
+        type: 'full',
+        size: 'extra-large',
+        units: 'n',
+        description: null,
+        options: {},
+        is_hero: true,
+        last_updated_at: '2016-09-06 05:28:50.365576',
+        created_at: '2016-09-06 05:28:50.356717',
+        updated_at: '2016-09-06 05:28:50.366554',
+
+      },
+      {
+        id: 2,
+        dashboard_id: 1,
+        datasets: [],
+        row: 0,
+        pos: 0,
+        name: 'User Satisfaction',
+        type: 'full',
+        size: 'extra-large',
+        units: '%',
+        description: 'Overall satisfaction score includes all ratings weighted from 100% for very satisfied to 0% for very dissatisfied',
+        options: {},
+        is_hero: false,
+        last_updated_at: '2016-09-06 05:28:50.365576',
+        created_at: '2016-09-06 05:28:50.356717',
+        updated_at: '2016-09-06 05:28:50.366554'
+      }
+    ],
+    datasets: [
+      {
+        id: 1,
+        name: 'User Satisfaction',
+        units: 'n',
+        notes: null,
+        published_at: '2016-09-06 05:28:50.365576',
+        created_at: '2016-09-06 05:28:50.356717',
+        updated_at: '2016-09-06 05:28:50.366554'
+      },
+      {
+        id: 2,
+        name: 'Cost per transaction',
+        units: '$',
+        notes: null,
+        published_at: '2016-09-06 05:28:50.365576',
+        created_at: '2016-09-06 05:28:50.356717',
+        updated_at: '2016-09-06 05:28:50.366554'
+      }
+    ],
+    datapoints: [
+      {
+        id: 1,
+        dataset_id: 1,
+        value: "96.0",
+        label: "2016-07",
+        timestamp: '2016-09-06 05:28:50.365576'
+      },
+      {
+        id: 2,
+        dataset_id: 1,
+        value: "96.0",
+        label: "2016-08",
+        timestamp: '2016-09-06 05:28:50.365576'
+      }
+    ],
+//    organisations: [
+//      {
+//        id: 1,
+//        name: "DHS",
+//        url: "https://my.gov.au/",
+//        description: null
+//      }
+//    ]
+  };
+</script>
+<div id="portal_index"></div>
