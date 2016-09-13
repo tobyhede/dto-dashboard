@@ -13,5 +13,16 @@ FactoryGirl.define do
         create_list(:datapoint, evaluator.datapoints_count, dataset: dataset)
       end
     end
+
+    factory :dataset_with_token do
+      transient do
+        count 1
+      end
+      
+      after(:create) do |dataset, evaluator|
+        dataset.token  << create_list(:token, evaluator.count)
+        dataset.save!
+      end
+    end
   end
 end

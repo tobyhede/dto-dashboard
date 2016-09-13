@@ -72,12 +72,6 @@ RSpec.describe Dataset, type: :model do
       its(:trend)       { is_expected.to eq 'unchanged' }
     end
 
-
-    # describe '.summary' do
-    #   let(:widget) { FactoryGirl.create(:widget_with_datasets) }
-    #   let(:latest) { Datapoint.by_time.last }
-    #   it { expect(widget.latest).to eq latest }
-    # end
   end
 
   describe 'measurable' do
@@ -103,6 +97,23 @@ RSpec.describe Dataset, type: :model do
 
       its(:prefix) { is_expected.to eq ''}
       its(:suffix) { is_expected.to eq '%'}
+    end
+  end
+
+
+  describe 'Authenticatable' do
+    subject(:dataset) { FactoryGirl.create(:dataset_with_token) }
+
+    its(:token) { should be_present }
+    its(:token) { should eq dataset.tokens.first }
+
+    describe '#authenicate' do
+      let(:token) { dataset.token }
+
+      it 'finds the correct dataset', :focus => true  do
+        expect(dataset).to eq Dataset.authenticate(token)
+        expect(dataset).to_not eq Dataset.authenticate('blahvtha')
+      end
     end
   end
 
