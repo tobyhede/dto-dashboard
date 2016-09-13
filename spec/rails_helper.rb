@@ -9,7 +9,6 @@ require 'capybara/rails'
 require 'capybara/rspec'
 require 'capybara/poltergeist'
 require 'database_cleaner'
-require 'devise'
 
 Capybara.javascript_driver = :poltergeist
 

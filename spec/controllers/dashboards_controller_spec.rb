@@ -1,4 +1,5 @@
 require "rails_helper"
+require 'devise'
 
 RSpec.describe DashboardsController, :type => :controller do
   login_user
