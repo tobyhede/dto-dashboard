@@ -2,13 +2,11 @@ class Dataset < ApplicationRecord
   include Measurable
   include Nameable
   include Authenticatable
-  
+
   belongs_to :organisation
   has_many :datapoints, :dependent => :destroy
   has_many :widgets, :through => :dataset_widgets
   has_many :dataset_widgets
-
-  has_and_belongs_to_many :tokens
 
   def latest
     datapoints.by_time.last
