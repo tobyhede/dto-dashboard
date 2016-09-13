@@ -9,6 +9,10 @@ let UpdateDashboardForm = (props) => {
     handleSubmit, pristine, submitting
   } = props;
 
+  const reset = () => {
+    // todo - restore initial props and pristine
+  };
+
   return (
     <form onSubmit={handleSubmit}>
       <div>
@@ -32,6 +36,7 @@ let UpdateDashboardForm = (props) => {
 
       <div>
         <button type="submit" disabled={pristine || submitting}>Submit</button>
+        {/*<button type="cancel" disabled={pristine || submitting} onClick={reset}>Cancel</button>*/}
       </div>
     </form>
   )

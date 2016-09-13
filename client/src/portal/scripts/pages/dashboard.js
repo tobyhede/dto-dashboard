@@ -17,8 +17,14 @@ const mapDispatchToProps = dispatch => ({
 class DashboardIndex extends Component {
 
   handleSubmit(data, dispatch) {
-    dispatch(updateDashboard(this.props.dashboard.id, data));
-    return false;
+    let self = this;
+    return new Promise(resolve => {
+      setTimeout(() => {  // simulate server latency
+        dispatch(updateDashboard(self.props.dashboard.id, data));
+        window.alert(`You submitted:\n\n${JSON.stringify(data, null, 2)}`);
+        resolve()
+      }, 500)
+    });
   }
 
   render() {
