@@ -17,6 +17,7 @@ Currently WIP.
 
  - ruby-2.3.1
  - Postgres 9.4
+ - Node 6.3.0
 
 
 ## Getting Started
@@ -219,7 +220,7 @@ For advice for writing specs check [betterspecs](http://betterspecs.org/).
 Rebasing before merging a PR ensures a clean commit history, please see [Merging vs Rebasing](https://www.atlassian.com/git/tutorials/merging-vs-rebasing/) for more details.
 
 If rebasing often, its a good idea to use `rerere`, see:
-[Fix conflicts only once with git rerere](https://medium.com/@porteneuve/fix-conflicts-only-once-with-git-rerere-7d116b2cec67a)
+[Fix conflicts only once with git rerere](https://medium.com/@porteneuve/fix-conflicts-only-once-with-git-rerere-7d116b2cec67)
 
 If your branch is long-lived (longer than a day on an active codebase), its a good idea to periodically rebase so you are actively tracking changes in master. This makes merge conflicts 1) less likely and 2) smaller and easier to deal with.
 
