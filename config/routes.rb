@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users, path: '', path_names: { sign_in: 'login', sign_out: 'logout', sign_up: 'register', edit: 'settings' }
+  devise_for :users, controllers: { sessions: "users/sessions" }, path_names: { sign_in: 'login', sign_out: 'logout', sign_up: 'register', edit: 'settings' }
   get root :to => 'dashboards#index'
 
   resources :dashboards, :only => [:index, :show] do
