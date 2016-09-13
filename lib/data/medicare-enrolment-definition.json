@@ -6,7 +6,7 @@
   "widgets":  [
     {
       "id":   "kpis",
-      "updated_at": "2016-08-22T01:01:01.111Z",
+      "updated_at": "2016-09-13T01:01:01.111Z",
       "name": "Kpis",
       "type": "full",
       "size": "extra-large",
@@ -16,7 +16,7 @@
     },
     {
       "id":   "user-satisfaction",
-      "updated_at": "2016-08-22T01:01:01.111Z",
+      "updated_at": "2016-09-13T01:01:01.111Z",
       "name": "User Satisfaction",
       "type": "kpi-sparkline",
       "size": "extra-small",
@@ -26,7 +26,7 @@
     },
     {
       "id":   "cost-per-transaction",
-      "updated_at": "2016-08-22T01:01:01.111Z",
+      "updated_at": "2016-09-13T01:01:01.111Z",
       "name": "Cost Per Transaction",
       "type": "kpi-sparkline",
       "size": "extra-small",
@@ -35,7 +35,7 @@
     },
     {
       "id":   "digital-take-up",
-      "updated_at": "2016-08-22T01:01:01.111Z",
+      "updated_at": "2016-09-13T01:01:01.111Z",
       "name": "Digital Take-up",
       "type": "kpi-sparkline",
       "size": "extra-small",
@@ -44,7 +44,7 @@
     },
     {
       "id":   "completion-rate",
-      "updated_at": "2016-08-22T01:01:01.111Z",
+      "updated_at": "2016-09-13T01:01:01.111Z",
       "name": "Completion Rate",
       "type": "kpi-sparkline",
       "size": "extra-small",
@@ -54,7 +54,7 @@
     },
     {
       "id":   "reasons-unable-to-enrol",
-      "updated_at": "2016-08-22T01:01:01.111Z",
+      "updated_at": "2016-09-13T01:01:01.111Z",
       "name": "Reasons unable to participate in the trial",
       "type": "bar",
       "size": "large",
@@ -66,7 +66,7 @@
     },
     {
       "id":   "number-of-newborns-by-month",
-      "updated_at": "2016-08-22T01:01:01.111Z",
+      "updated_at": "2016-09-13T01:01:01.111Z",
       "name": "Number of newborns",
       "type": "line",
       "size": "medium",
@@ -77,7 +77,7 @@
     },
     {
       "id":   "total-number-of-newborns-enrolled",
-      "updated_at": "2016-08-22T01:01:01.111Z",
+      "updated_at": "2016-09-13T01:01:01.111Z",
       "name": "Total number of newborns enrolled",
       "type": "sparkline",
       "size": "small",
@@ -88,7 +88,7 @@
     },
     {
       "id":   "number-of-participating-mothers",
-      "updated_at": "2016-08-22T01:01:01.111Z",
+      "updated_at": "2016-09-13T01:01:01.111Z",
       "name": "Number of participating mothers",
       "type": "line",
       "size": "medium",
@@ -98,7 +98,7 @@
     },
     {
       "id":   "fact-1",
-      "updated_at": "2016-08-22T01:01:01.111Z",
+      "updated_at": "2016-09-13T01:01:01.111Z",
       "name": "Fact",
       "type": "fact",
       "size": "extra-small",
@@ -107,7 +107,7 @@
     },
     {
       "id":   "fact-2",
-      "updated_at": "2016-08-22T01:01:01.111Z",
+      "updated_at": "2016-09-13T01:01:01.111Z",
       "name": "Fact",
       "type": "fact",
       "size": "small",
@@ -116,7 +116,7 @@
     },
     {
       "id":   "fact-3",
-      "updated_at": "2016-08-22T01:01:01.111Z",
+      "updated_at": "2016-09-13T01:01:01.111Z",
       "name": "Fact",
       "type": "fact",
       "size": "extra-small",
@@ -125,7 +125,7 @@
     },
     {
       "id":   "fact-4",
-      "updated_at": "2016-08-22T01:01:01.111Z",
+      "updated_at": "2016-09-13T01:01:01.111Z",
       "name": "Fact",
       "type": "fact",
       "size": "extra-small",
@@ -134,7 +134,7 @@
     },
     {
       "id":   "fact-5",
-      "updated_at": "2016-08-22T01:01:01.111Z",
+      "updated_at": "2016-09-13T01:01:01.111Z",
       "name": "Fact",
       "type": "fact",
       "size": "extra-small",
