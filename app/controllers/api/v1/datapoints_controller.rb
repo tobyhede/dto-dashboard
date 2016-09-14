@@ -45,7 +45,7 @@ class Api::V1::DatapointsController < ActionController::API
   end
 
   def authenticate_token
-    authenticate_with_http_token do |token, options|
+    authenticate_with_http_token do |token, _options|
       @token = Token.authenticate(token)
     end
   end
