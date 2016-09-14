@@ -8,6 +8,63 @@ RSpec.describe Api::V1::DatapointsController, :type => :controller do
   #   it     { expect(response).to have_http_status(200) }
   # end
 
+  describe "#show" do
+
+    context 'without auth token' do
+      before { get :show, :params => { :dataset_id => 999, :id => 999 } }
+
+      it 'unauthorized' do
+        expect(response).to have_http_status(401)
+      end
+    end
+
+    context 'with invalid auth token' do
+      let(:authorization)   { ActionController::HttpAuthentication::Token.encode_credentials('blahvtha') }
+
+      before do
+        request.env["HTTP_AUTHORIZATION"] = authorization
+        get :show, :params => { :dataset_id => 999, :id => 999 }
+      end
+
+      it 'unauthorized' do
+        expect(response).to have_http_status(401)
+      end
+    end
+
+    context 'with valid token and dataset' do
+      let(:dataset)         { FactoryGirl.create(:dataset_with_token) }
+      let(:datapoint)       { FactoryGirl.create(:datapoint, :dataset => dataset) }
+
+      let(:authorization)   { ActionController::HttpAuthentication::Token.encode_credentials(dataset.token) }
+
+      before do
+        request.env["HTTP_AUTHORIZATION"] = authorization
+        get :show, :params => { :dataset_id => dataset.id, :id => datapoint.id }
+      end
+
+      it 'returns the datapoint' do
+        expect(response).to be_success
+        expect(response).to have_http_status(200)
+        expect(response.body).to include("{\"id\":#{datapoint.id}")
+      end
+    end
+
+    context 'with valid token and invalid dataset' do
+      let(:dataset)         { FactoryGirl.create(:dataset_with_token) }
+      let(:authorization)   { ActionController::HttpAuthentication::Token.encode_credentials(dataset.token) }
+
+      before do
+        request.env["HTTP_AUTHORIZATION"] = authorization
+        get :show, :params => { :dataset_id => dataset.id, :id => 999 }
+      end
+
+      it 'should not be found' do
+        expect(response).to have_http_status(404)
+      end
+    end
+  end
+
+
   describe "#create" do
     let(:attributes)  { FactoryGirl.attributes_for(:datapoint) }
     let(:dataset_id)  { 999 }

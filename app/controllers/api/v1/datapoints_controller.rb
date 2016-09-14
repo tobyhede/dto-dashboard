@@ -10,6 +10,16 @@ class Api::V1::DatapointsController < ActionController::API
     render :json => []
   end
 
+  def show
+    begin
+      dataset = token.datasets.find(params[:dataset_id])
+      datapoint = dataset.datapoints.find(params[:id])
+      render :json => datapoint
+    rescue ActiveRecord::RecordNotFound
+      head :not_found
+    end
+  end
+
   def create
     begin
       dataset = token.datasets.find(params[:dataset_id])
