@@ -19,7 +19,7 @@ class DashboardIndex extends Component {
 
     return (
       <div>
-        <h2>{dashboard.name}</h2>
+        <h2>Dashboard: {dashboard.name}</h2>
 
         <DashboardForm initialValues={dashboard} />
 

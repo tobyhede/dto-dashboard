@@ -31,13 +31,22 @@ const renderTextareaField = ({ input, label, name, meta: { touched, error } }) =
 )};
 
 
-const submit = (data, dispatch) => {
+/**
+ * @param values
+ * @param dispatch
+ * @returns {Promise} - !important - this function *must* return Promise, until
+ * resolve is called, its' submitting prop will be true
+ */
+const submit = (values, dispatch) => {
+  // dispatch(startLoading());
+
   return new Promise((resolve, reject) => {
-    dispatch(updateDashboard(data)).then(
+    dispatch(updateDashboard(values)).then(
       (data) => {
-        if (data.type === types.UPDATE_DASHBOARD_FAIL) {
+        if (data.type === types.UPDATE_DASHBOARD_FAIL) {  // todo // if (data.status === 202) {}
           reject(data);
         }
+        // dispatch(stopLoading());
         resolve();
       },
       (error) => {
@@ -45,6 +54,8 @@ const submit = (data, dispatch) => {
       }
     );
   }).catch((data) => {
+    // dispatch(stopLoading());
+
     // todo - check error and fail accordingly
     throw new SubmissionError({ name: 'Name does not exist', _error: 'Submit failed!' });
   });
