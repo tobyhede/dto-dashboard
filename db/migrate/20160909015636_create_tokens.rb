@@ -2,7 +2,7 @@ class CreateTokens < ActiveRecord::Migration[5.0]
   def change
     create_table :tokens do |t|
       t.text       :token, :null => false
-      t.timestamp  :deleted_at, :null => true
+      t.timestamp  :expired_at, :null => true
       t.timestamps
     end
   end

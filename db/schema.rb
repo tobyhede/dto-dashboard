@@ -81,7 +81,7 @@ ActiveRecord::Schema.define(version: 20160909055149) do
 
   create_table "tokens", force: :cascade do |t|
     t.text     "token",      null: false
-    t.datetime "deleted_at"
+    t.datetime "expired_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
