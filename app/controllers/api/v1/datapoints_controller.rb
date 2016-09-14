@@ -1,8 +1,8 @@
 class Api::V1::DatapointsController < ActionController::API
+  include ActionController::HttpAuthentication::Token::ControllerMethods
+  include Sslify
 
   attr_reader :token
-
-  include ActionController::HttpAuthentication::Token::ControllerMethods
 
   before_action :authenticate
 
