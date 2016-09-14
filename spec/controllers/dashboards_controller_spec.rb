@@ -2,13 +2,6 @@ require "rails_helper"
 require 'devise'
 
 RSpec.describe DashboardsController, :type => :controller do
-  login_user
-
-  it "should have a current_user" do
-    # note the fact that you should remove the "validate_session" parameter if this was a scaffold-generated controller
-    expect(subject.current_user).to_not eq(nil)
-  end
-
   describe "GET index page" do
     it "responds successfully with an HTTP 200 status code" do
       get :index

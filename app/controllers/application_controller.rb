@@ -3,9 +3,10 @@ class ApplicationController < ActionController::Base
 
   #http_basic_authenticate_with :name => ENV['HTTP_BASIC_USERNAME'], :password => ENV['HTTP_BASIC_PASSWORD'] if (Rails.env.cloudfoundry? || Rails.env.staging?)
 
+  # The following several lines should be moved into the controllers need to be authenticated
   protect_from_forgery with: :exception
   before_action :configure_permitted_parameters, if: :devise_controller?
-  before_action :authenticate_user!, except: []
+  before_action :authenticate_user!, except: [:index, :show, :export]
 
   protected
 
