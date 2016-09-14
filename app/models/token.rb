@@ -8,6 +8,10 @@ class Token < ApplicationRecord
 
   has_and_belongs_to_many :datasets
 
+  def self.authenticate(token)
+    find_by(:token => token.to_s)
+  end
+
   def to_s
     token
   end

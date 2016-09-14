@@ -1,6 +1,6 @@
 class Api::V1::DatapointsController < ActionController::API
 
-  attr_reader :dataset
+  attr_reader :token
 
   include ActionController::HttpAuthentication::Token::ControllerMethods
 
@@ -12,27 +12,31 @@ class Api::V1::DatapointsController < ActionController::API
 
   def create
     begin
+      dataset = token.datasets.find(params[:dataset_id])
       datapoint = dataset.datapoints.create!(datapoint_data)
-      render :json => { :id => datapoint.id }, :status => :created
+      render :json => datapoint, :status => :created
     rescue ActiveRecord::RecordNotFound
       head :not_found
+    rescue ActiveSupport::JSON.parse_error
+      head :bad_request
     end
   end
 
   private
 
+
   def datapoint_data
     data = ActiveSupport::JSON.decode(params[:datapoint])
     data.slice('ts', 'value')
   end
-  
+
   def authenticate
     authenticate_token || render_unauthorized
   end
 
   def authenticate_token
     authenticate_with_http_token do |token, options|
-      @dataset = Dataset.authenticate(token)
+      @token = Token.authenticate(token)
     end
   end
 
