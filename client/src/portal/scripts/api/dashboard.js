@@ -18,7 +18,7 @@ export const update = (id, data) => {
     });
   } else {
     // todo - token etc
-    return fetch(`/api/dashboard/${id}`, {
+    return fetch(`/api/dashboards/${id}`, {
       method: 'POST',
       body: data
     }).then((response) => {

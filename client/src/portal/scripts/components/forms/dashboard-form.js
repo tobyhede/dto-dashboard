@@ -1,10 +1,10 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux'
 import { Field, reduxForm } from 'redux-form';
-import { bindActionCreators } from 'redux';
 import { updateDashboard } from './../../actions/dashboard';
 import { SubmissionError } from 'redux-form'
 import * as types from './../../actions/_types';
+import isValidUrl from './../../utils/isValidUrl';
 
 
 const renderInputField = ({ input, label, type, name, meta: { touched, error } }) => {
@@ -30,7 +30,7 @@ const renderTextareaField = ({ input, label, name, meta: { touched, error } }) =
 )};
 
 
-let submit = (data, dispatch) => {
+const submit = (data, dispatch) => {
   return new Promise((resolve, reject) => {
     dispatch(updateDashboard(data)).then(
       (data) => {
@@ -49,16 +49,18 @@ let submit = (data, dispatch) => {
   });
 };
 
+
 let UpdateDashboardForm = props => {
 
   const { error, handleSubmit, pristine, submitting, valid } = props;
 
-  // todo - 2. all fields
   return (
     <form onSubmit={handleSubmit(submit.bind(this))}>
       <Field name="name" type="text" component={renderInputField} label="Name"/>
       <Field name="notes" component={renderTextareaField} label="Notes"/>
-      <Field name="url" type="text" component={renderInputField} label="url"/>
+      <Field name="url" type="text" component={renderInputField} label="Url"/>
+      <Field name="display_hero" type="checkbox" component={renderInputField} label="Display hero"/>
+      <Field name="display_kpis" type="checkbox" component={renderInputField} label="Display kpi"/>
       <div>
         <button type="submit" disabled={pristine || submitting || !valid}>Submit</button>
       </div>
@@ -67,7 +69,7 @@ let UpdateDashboardForm = props => {
   )
 };
 
-const validate = (values, props) => {   // todo - 3. validation by type
+const validate = (values, props) => {
   const errors = {};
   const requiredFields = ['name', 'notes', 'url'];
   requiredFields.forEach(field => {
@@ -75,6 +77,11 @@ const validate = (values, props) => {   // todo - 3. validation by type
       errors[field] = 'Required'
     }
   });
+
+  if (!errors['url'] && isValidUrl(values.url) === false) {
+    errors['url'] = 'Must be a valid URL'
+  }
+
   return errors;
 };
 
