@@ -7,6 +7,7 @@ gem 'puma', '~> 3.0'
 
 # gem 'jquery-rails'
 gem 'active_model_serializers', '~> 0.10.0'
+gem 'devise',                   '>= 4.2.0'
 gem 'draper',                   '> 3.x'
 gem 'erubis'
 gem 'jquery-rails'
@@ -15,7 +16,7 @@ gem 'redcarpet',                '~>3.3'
 gem 'sass-rails',               '~> 5.0'
 gem 'turbolinks',               '~> 5'
 gem 'uglifier',                 '>= 1.3.0'
-gem 'devise',                   '>= 4.2.0'
+
 
 group :production do
   gem 'rails_12factor'
