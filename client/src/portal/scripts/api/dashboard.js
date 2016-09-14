@@ -1,3 +1,4 @@
+import fetch from 'whatwg-fetch';
 import { USE_FIXTURES } from './../config';
 
 
@@ -7,13 +8,22 @@ import { USE_FIXTURES } from './../config';
  * @returns {Promise}
  */
 
-// todo - real !
 export const update = (id, data) => {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      resolve({data, status:'success'});  // success interface
-      // reject();                           // failure interface
-    }, 800);
-  });
+  if (USE_FIXTURES) {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve({data, status:'success'});  // success interface
+        // reject();                           // failure interface
+      }, 800);
+    });
+  } else {
+    // todo - token etc
+    return fetch(`/api/dashboard/${id}`, {
+      method: 'POST',
+      body: data
+    }).then((response) => {
+      // todo
+    })
+  }
 };
 
