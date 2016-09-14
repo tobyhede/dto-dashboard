@@ -23,7 +23,7 @@ class Token < ApplicationRecord
   end
 
   def generate_token
-    2.times.collect{ SecureRandom.uuid.gsub(/\-/,'') }.join
+    2.times.collect{ SecureRandom.uuid.delete('-') }.join
   end
 
 end
