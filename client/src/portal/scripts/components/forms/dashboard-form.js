@@ -4,6 +4,7 @@ import { Field, reduxForm } from 'redux-form';
 import { bindActionCreators } from 'redux';
 import { updateDashboard } from './../../actions/dashboard';
 import { SubmissionError } from 'redux-form'
+import * as types from './../../actions/_types';
 
 
 const renderInputField = ({ input, label, type, name, meta: { touched, error } }) => {
@@ -29,25 +30,32 @@ const renderTextareaField = ({ input, label, name, meta: { touched, error } }) =
 )};
 
 
-const sleep = ms => new Promise(resolve => setTimeout(resolve, ms))
-function submit(data, dispatch) {
-  return sleep(1000) // simulate server latency
-    .then(() => {
-      // if (![ 'john', 'paul', 'george', 'ringo' ].includes(values.name)) {
-        // throw new SubmissionError({ name: 'Name does not exist', _error: 'Submit failed!' })
-      // } else {
-      dispatch(updateDashboard(data)); // todo - this will be async not sync
-      window.alert(`You submitted:\n\n${JSON.stringify(data, null, 2)}`);
-      // }
-    });
-}
+let submit = (data, dispatch) => {
+  return new Promise((resolve, reject) => {
+    dispatch(updateDashboard(data)).then(
+      (data) => {
+        if (data.type === types.UPDATE_DASHBOARD_FAIL) {
+          reject(data);
+        }
+        resolve();
+      },
+      (error) => {
+        reject(error);
+      }
+    );
+  }).catch((data) => {
+    // todo - check error and fail accordingly
+    throw new SubmissionError({ name: 'Name does not exist', _error: 'Submit failed!' });
+  });
+};
 
 let UpdateDashboardForm = props => {
 
   const { error, handleSubmit, pristine, submitting, valid } = props;
 
+  // todo - 2. all fields
   return (
-    <form onSubmit={handleSubmit(submit)}>
+    <form onSubmit={handleSubmit(submit.bind(this))}>
       <Field name="name" type="text" component={renderInputField} label="Name"/>
       <Field name="notes" component={renderTextareaField} label="Notes"/>
       <Field name="url" type="text" component={renderInputField} label="url"/>
@@ -59,7 +67,7 @@ let UpdateDashboardForm = props => {
   )
 };
 
-const validate = (values, props) => {
+const validate = (values, props) => {   // todo - 3. validation by type
   const errors = {};
   const requiredFields = ['name', 'notes', 'url'];
   requiredFields.forEach(field => {
