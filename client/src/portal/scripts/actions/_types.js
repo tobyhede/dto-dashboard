@@ -1,3 +1,3 @@
-export const UPDATE_DASHBOARD = 'Save dashboard';
-export const UPDATE_DASHBOARD_SUCCESS = 'Save dashboard - success';
-export const UPDATE_DASHBOARD_FAIL = 'Save dashboard - fail';
+export const UPDATE_DASHBOARD = 'dashboard/save';
+export const UPDATE_DASHBOARD_SUCCESS = 'dashboard/save_success';
+export const UPDATE_DASHBOARD_FAIL = 'dashboard/save_fail';

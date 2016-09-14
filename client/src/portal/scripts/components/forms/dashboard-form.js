@@ -1,10 +1,11 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux'
 import { Field, reduxForm } from 'redux-form';
-import { updateDashboard } from './../../actions/dashboard';
 import { SubmissionError } from 'redux-form'
+
+import { updateDashboard } from './../../actions/dashboard';
 import * as types from './../../actions/_types';
-import isValidUrl from './../../utils/isValidUrl';
+import { isURL } from 'validator';
 
 
 const renderInputField = ({ input, label, type, name, meta: { touched, error } }) => {
@@ -71,31 +72,33 @@ let UpdateDashboardForm = props => {
 
 const validate = (values, props) => {
   const errors = {};
-  const requiredFields = ['name', 'notes', 'url'];
-  requiredFields.forEach(field => {
-    if (!values[field]) {
-      errors[field] = 'Required'
-    }
-  });
 
-  if (!errors['url'] && isValidUrl(values.url) === false) {
-    errors['url'] = 'Must be a valid URL'
+  if (!values.name) {
+    errors.name = 'Required';
+  }
+
+  if (!values.notes) {
+    errors.notes = 'Required';
+  }
+
+  if (!values.url) {
+    errors.url = 'Required';
+  } else if (isURL(values.url) === false) {
+    errors.url = 'Must be a valid URL';
   }
 
   return errors;
 };
 
-// decorate with reduxForm
+// decorate
 UpdateDashboardForm = reduxForm({
   form: 'updateDashboard',
   validate
 })(UpdateDashboardForm);
 
-// read the initialValues prop
-UpdateDashboardForm = connect(
-  (state, ownProps) => ({
-    initialValues: ownProps.dashboard
-  })
-)(UpdateDashboardForm);
+// UpdateDashboardForm = connect(
+//   (state, ownProps) => ({}),
+//   (dispatch) => ({})
+// (UpdateDashboardForm);
 
 export default UpdateDashboardForm

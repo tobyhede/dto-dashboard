@@ -21,7 +21,7 @@ class DashboardIndex extends Component {
       <div>
         <h2>{dashboard.name}</h2>
 
-        <DashboardForm dashboard={dashboard} />
+        <DashboardForm initialValues={dashboard} />
 
         <div>
           <h3>Widgets</h3>
