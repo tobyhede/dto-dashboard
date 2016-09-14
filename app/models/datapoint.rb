@@ -1,4 +1,4 @@
-class Datapoint < ApplicationRecord
+class Datapoint < ApplicationRecord  
   belongs_to :dataset
 
   validates :ts, :presence => true
