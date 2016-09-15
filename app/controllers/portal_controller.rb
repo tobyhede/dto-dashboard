@@ -6,7 +6,6 @@ class PortalController < ApplicationController
   protected
 
   def configure_permitted_parameters
-
   end
 
   def index
