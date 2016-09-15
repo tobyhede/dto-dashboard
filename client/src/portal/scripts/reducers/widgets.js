@@ -1,8 +1,20 @@
+import * as types from './../actions/_types';
 import initialState from './../store/initialState';
 
 
 const widgetsReducer = (state = initialState.widgets, action) => {
   switch (action.type) {
+
+    case types.UPDATE_WIDGET_SUCCESS:
+      return state.map((d) => {
+        if (d.id === action.payload.id) {
+          return {...d, ...action.payload}
+        }
+        return d;
+      });
+      break;
+
+    case types.UPDATE_WIDGET_FAIL:
     default:
       return state;
   }

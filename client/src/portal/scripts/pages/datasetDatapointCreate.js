@@ -14,6 +14,12 @@ class DatasetDatapointCreatePage extends Component {
     return (
       <div>
         <h1>Create datapoint</h1>
+
+        {/*TODO - create datapoint*/}
+        <div>
+          FORM
+        </div>
+
       </div>
     )
   }
