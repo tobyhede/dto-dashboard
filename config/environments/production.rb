@@ -57,6 +57,9 @@ Rails.application.configure do
   # config.active_job.queue_name_prefix = "dashboard-cool_#{Rails.env}"
   config.action_mailer.perform_caching = false
 
+  # Uncomment the following line and setup the mailer url
+  # config.action_mailer.default_url_options = { host: 'dashboard.gov.au', port: 3000 }
+
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   # config.action_mailer.raise_delivery_errors = false

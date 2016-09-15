@@ -17,6 +17,7 @@ Currently WIP.
 
  - ruby-2.3.1
  - Postgres 9.4
+ - Node 6.3.0
 
 
 ## Getting Started
@@ -89,7 +90,7 @@ Administration is available at `http://localhost:3000/admin`
 
 Install the pipeline. Mostly this is all you will need.
 ```
-npm install 
+npm install
 npm run build
 ```
 
@@ -98,12 +99,12 @@ Build gulp (legacy js)
 npm run gulp:build
 ```
 
-Build webpack 
+Build webpack
 ```
 npm run webpack:dev
 ```
 
-Develop mode in Webpack? 
+Develop mode in Webpack?
 
 1. Install these Chrome Extensions:
 
@@ -122,7 +123,7 @@ https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopl
 DEV_SERVER = true
 ```
 
-3. Run 
+3. Run
 ```
 npm run webpack:dev
 ```
@@ -147,6 +148,16 @@ You can also use guard to run specs automatically on save with
 ```
 bundle exec guard
 ```
+
+When running under guard, it can be useful to isolate a specific test.
+This can be achieved by using `:focus => true` on the desired spec.
+
+```
+it 'authenticates', :focus => true do
+end
+```
+
+Remember to NOT commit this as it will mean the test suite no longer runs all the tests.
 
 For advice for writing specs check [betterspecs](http://betterspecs.org/).
 
@@ -219,7 +230,7 @@ For advice for writing specs check [betterspecs](http://betterspecs.org/).
 Rebasing before merging a PR ensures a clean commit history, please see [Merging vs Rebasing](https://www.atlassian.com/git/tutorials/merging-vs-rebasing/) for more details.
 
 If rebasing often, its a good idea to use `rerere`, see:
-[Fix conflicts only once with git rerere](https://medium.com/@porteneuve/fix-conflicts-only-once-with-git-rerere-7d116b2cec67a)
+[Fix conflicts only once with git rerere](https://medium.com/@porteneuve/fix-conflicts-only-once-with-git-rerere-7d116b2cec67)
 
 If your branch is long-lived (longer than a day on an active codebase), its a good idea to periodically rebase so you are actively tracking changes in master. This makes merge conflicts 1) less likely and 2) smaller and easier to deal with.
 

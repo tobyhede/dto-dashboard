@@ -1,4 +1,4 @@
-class FeedbackController < ApplicationController
+class FeedbackController < AuthenticatedController
 
   def index
     render :index

@@ -1,13 +1,29 @@
 Rails.application.routes.draw do
+
+  unless Rails.env.production?
+    devise_for :users,
+      controllers: { sessions: "users/sessions" },
+      :path => '',
+      path_names: { sign_in: 'login', sign_out: 'logout' }
+  end
+
+  get root :to => 'dashboards#index'
+
   resources :dashboards, :only => [:index, :show] do
     member do
       get :export
     end
   end
 
-  get 'feedback', :to => 'feedback#index'
+  namespace :api, defaults: {format: 'json'} do
+    namespace :v1 do
+      resources :datasets do
+        resources :datapoints
+      end
+    end
+  end
 
-  get root 'dashboards#index'
+  get 'feedback', :to => 'feedback#index'
 
   get '/index.html', :to => redirect('/')
 

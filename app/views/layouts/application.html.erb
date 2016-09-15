@@ -19,6 +19,7 @@
     if !(Rails.env.development? && ENV['DEV_SERVER'] == 'true') %>
       <link rel="stylesheet" href="/stylesheets/dashboard.css"/>
   <% end %>
+
   <%= render 'layouts/analytics' %>
 </head>
 
@@ -77,5 +78,9 @@
   <% else %>
     <script src="http://localhost:8080/javascripts/dashboard.js"></script>
   <% end %>
+
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
+
 </body>
 </html>

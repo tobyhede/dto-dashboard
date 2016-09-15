@@ -1,4 +1,4 @@
 class DatapointSerializer < ActiveModel::Serializer
-  attributes :value, :label
+  attributes :id, :ts, :value, :label, :created_at, :updated_at
 
 end
