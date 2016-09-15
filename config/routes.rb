@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
 
-  devise_for :users,
-    controllers: { sessions: "users/sessions" },
-    :path => '',
-    path_names: { sign_in: 'login', sign_out: 'logout' }
-
+  unless Rails.env.production?
+    devise_for :users,
+      controllers: { sessions: "users/sessions" },
+      :path => '',
+      path_names: { sign_in: 'login', sign_out: 'logout' }
+  end
 
   get root :to => 'dashboards#index'
 
