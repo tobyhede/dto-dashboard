@@ -3,11 +3,35 @@ import React from 'react';
 
 export const Input = (props) => {
   let { input, label, type, name, meta: { touched, error } } = props;
+
+  if (type === 'checkbox') {
+    throw new Error('Use "checkbox" input instead.');
+  }
+
   return (
     <div className="field">
       <label htmlFor={name}>{label}</label>
       <div>
         <input {...input} placeholder={label} type={type} name={name} id={name} className={touched && error ? `invalid` : ``} />
+        {touched && error && <span className="field___error">{error}</span>}
+      </div>
+    </div>
+  )
+};
+
+export const Checkbox = (props) => {
+  let checked = false;
+  if (props.input.value) {
+    checked = props.input.value;
+    delete props.input.value;
+  }
+  let { input, label, name, meta: { touched, error } } = props;
+
+  return (
+    <div className="field">
+      <input {...input} checked={checked} type="checkbox" placeholder={label} name={name} id={name} className={touched && error ? `invalid` : ``} />
+      <label htmlFor={name}>{label}</label>
+      <div>
         {touched && error && <span className="field___error">{error}</span>}
       </div>
     </div>

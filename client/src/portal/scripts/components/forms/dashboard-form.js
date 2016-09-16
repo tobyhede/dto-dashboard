@@ -7,7 +7,11 @@ import { isURL } from 'validator';
 import { updateDashboard } from './../../actions/dashboard';
 import * as types from './../../actions/_types';
 
-import { Input, Textarea } from './../../../../react-ui-kit/components/redux-form-fields';
+import {
+  Input,
+  Checkbox,
+  Textarea
+} from './../../../../react-ui-kit/components/redux-form-fields';
 
 
 /**
@@ -23,8 +27,8 @@ let UpdateDashboardForm = props => {
       <Field name="name" type="text" component={Input} label="Name"/>
       <Field name="notes" component={Textarea} label="Notes"/>
       <Field name="url" type="text" component={Input} label="Url"/>
-      <Field name="display_hero" type="checkbox" component={Input} label="Display hero"/>
-      <Field name="display_kpis" type="checkbox" component={Input} label="Display kpi"/>
+      <Field name="display_hero" component={Checkbox} label="Display hero"/>
+      <Field name="display_kpis" component={Checkbox} label="Display kpi"/>
       <div>
         <button type="submit" disabled={pristine || submitting || !valid}>Submit</button>
       </div>
