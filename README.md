@@ -70,6 +70,20 @@ rake import:data
 rake db:drop db:create db:migrate import:data
 ```
 
+Create seed data for accessing the portal
+
+```
+rails db:seed
+```
+
+You will now be able to login to the portal in the development environment with
+
+```
+:email => 'dev@localhost'
+:password => 'password'
+```
+
+
 ### Run the App
 
 To run on the default port (3000)
