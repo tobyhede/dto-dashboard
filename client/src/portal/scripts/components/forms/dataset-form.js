@@ -3,31 +3,35 @@ import { connect } from 'react-redux'
 import { Field, reduxForm, SubmissionError } from 'redux-form';
 import { isURL } from 'validator';
 
-import { updateDashboard } from './../../actions/dashboard';
+import { updateDataset } from './../../actions/dataset';
 import * as types from './../../actions/_types';
 
 import {
   Input,
-  Checkbox,
-  Textarea
+  Textarea,
+  Select
 } from './../../../../react-ui-kit/components/redux-form-fields';
 
 
 /**
- * Update Dashboard Form
+ * Update Dataset Form
  * @constructor
  */
-let UpdateDashboardForm = props => {
+let DatasetForm = props => {
 
   const { error, handleSubmit, pristine, submitting, valid } = props;
 
   return (
     <form onSubmit={handleSubmit(submit.bind(this))}>
       <Field name="name" type="text" component={Input} label="Name"/>
+      <Field name="units" options={[
+        { value: 'n', label: 'Percentage' },
+        { value: '$', label: 'Currency' },
+        { value: 'n', label: 'Number' },
+        { value: 'f', label: 'Float' },
+        { value: 's', label: 'Seconds' }
+      ]} component={Select} label="Units"/>
       <Field name="notes" component={Textarea} label="Notes"/>
-      <Field name="url" type="text" component={Input} label="Url"/>
-      <Field name="display_hero" component={Checkbox} label="Display hero"/>
-      <Field name="display_kpis" component={Checkbox} label="Display kpi"/>
       <div>
         <button type="submit" disabled={pristine || submitting || !valid}>Save</button>
       </div>
@@ -47,9 +51,9 @@ const submit = (values, dispatch) => {
   // dispatch(startLoading());
 
   return new Promise((resolve, reject) => {
-    dispatch(updateDashboard(values)).then(
+    dispatch(updateDataset(values)).then(
       (data) => {
-        if (data.type === types.UPDATE_DASHBOARD_FAIL) {  // todo // if (data.status === 202) {}
+        if (data.type === types.UPDATE_DATASET_FAIL) {  // todo // if (data.status === 202) {}
           reject(data);
         }
         // dispatch(stopLoading());
@@ -90,14 +94,14 @@ const validate = (values, props) => {
 
 
 // decorate
-UpdateDashboardForm = reduxForm({
-  form: 'updateDashboard',
+DatasetForm = reduxForm({
+  form: 'datasetForm',
   validate
-})(UpdateDashboardForm);
+})(DatasetForm);
 
-// UpdateDashboardForm = connect(
+// DatasetForm = connect(
 //   (state, ownProps) => ({}),
 //   (dispatch) => ({})
-// (UpdateDashboardForm);
+// (DatasetForm);
 
-export default UpdateDashboardForm
+export default DatasetForm

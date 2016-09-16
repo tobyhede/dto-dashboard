@@ -1,8 +1,28 @@
+import * as types from './../actions/_types';
 import initialState from './../store/initialState';
 
 
 const datapointsReducer = (state = initialState.datapoints, action) => {
   switch (action.type) {
+
+    case types.CREATE_DATAPOINT_SUCCESS:
+      return [
+        ...state,
+        action.payload
+      ];
+      break;
+
+    case types.UPDATE_DATAPOINT_SUCCESS:
+      return state.map((d) => {
+        if (d.id === action.payload.id) {
+          return {...d, ...action.payload}
+        }
+        return d;
+      });
+      break;
+
+    case types.CREATE_DATAPOINT_FAIL:
+    case types.UPDATE_DATAPOINT_FAIL:
     default:
       return state;
   }

@@ -1,7 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux'
-import { Field, reduxForm } from 'redux-form';
-import { SubmissionError } from 'redux-form'
+import { Field, reduxForm, SubmissionError } from 'redux-form';
 
 import { updateWidget } from './../../actions/widget';
 import * as types from './../../actions/_types';
@@ -89,7 +88,7 @@ let UpdateWidgetForm = props => {
       {/*updated_at: '2016-09-06 05:28:50.366554',*/}
 
       <div>
-        <button type="submit" disabled={pristine || submitting || !valid}>Submit</button>
+        <button type="submit" disabled={pristine || submitting || !valid}>Save</button>
       </div>
       {error && <strong style={{color:'red'}}>{error}</strong>}
     </form>
