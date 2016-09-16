@@ -7,7 +7,12 @@ import { updateWidget } from './../../actions/widget';
 import * as types from './../../actions/_types';
 import { isURL } from 'validator';
 
-import { Input, Textarea, Select } from './../../../../react-ui-kit/components/redux-form-fields';
+import {
+  Input,
+  Checkbox,
+  Textarea,
+  Select
+} from './../../../../react-ui-kit/components/redux-form-fields';
 
 
 /**
@@ -78,7 +83,7 @@ let UpdateWidgetForm = props => {
       ]} component={Select} label="Units"/>
       <Field name="description" component={Textarea} label="Description"/>
       {/*options: {},*/}
-      <Field name="is_hero" type="checkbox" component={Input} label="Is hero?"/>
+      <Field name="is_hero" component={Checkbox} label="Is hero?"/>
       {/*last_updated_at: '2016-09-06 05:28:50.365576',*/}
       {/*created_at: '2016-09-06 05:28:50.356717',*/}
       {/*updated_at: '2016-09-06 05:28:50.366554',*/}

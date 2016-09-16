@@ -44,7 +44,7 @@ export const Textarea = (props) => {
     <div className="field">
       <label htmlFor={name}>{label}</label>
       <div>
-        <textarea {...input} placeholder={label} name={name} id={name} className={touched && error ? `invalid` : ``} />
+        <textarea {...input} placeholder={label} name={name} id={name} className={touched && error ? `invalid` : ``} rows="3" />
         {touched && error && <span className="field___error">{error}</span>}
       </div>
     </div>
