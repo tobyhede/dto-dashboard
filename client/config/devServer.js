@@ -69,7 +69,7 @@ devServer.listen(CONFIG.PORT, CONFIG.HOST, function (err) {
   clearConsole();
   console.log(`Listening at ${devServerPublicPath}... . Opening.`);
   console.log();
-  openBrowser();
+  // openBrowser();
 });
 
 

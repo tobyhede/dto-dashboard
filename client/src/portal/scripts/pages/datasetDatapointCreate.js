@@ -2,6 +2,8 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 
+import DatapointForm from './../components/forms/datapoint-form';
+
 
 const mapStateToProps = (store, ownProps) => ({
   dataset: ownProps.dataset
@@ -15,10 +17,7 @@ class DatasetDatapointCreatePage extends Component {
       <div>
         <h1>Create datapoint</h1>
 
-        {/*TODO - create datapoint*/}
-        <div>
-          FORM
-        </div>
+        <DatapointForm />
 
       </div>
     )

@@ -29,6 +29,9 @@ module.exports = {
     // specify whether double or single quotes should be used
     "quotes": [1, "single"],
     // require or disallow use of semicolons instead of ASI
-    "semi": 1
+    "semi": 1,
+
+    // template strings must be declared with backticks
+    "quotes": ["wanrning", "backtick"]
   }
 };

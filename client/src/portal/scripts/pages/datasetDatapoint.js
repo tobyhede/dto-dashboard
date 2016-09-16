@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import { getDatapointById } from './../reducers/datapoints';
+import UpdateDatapointForm from './../components/forms/datapoint-form';
 
 
 const mapStateToProps = ({datapoints}, ownProps) => {
@@ -19,14 +20,8 @@ class DatasetDatapointPage extends Component {
       <div>
         <h1>Dataset Datapoint</h1>
 
-        {/*TODO - edit datapoint*/}
-        <div>
-          FORM
-        </div>
+        <UpdateDatapointForm initialValues={datapoint} />
 
-
-        <p>label: {datapoint.label}</p>
-        <p>value: {datapoint.value}</p>
       </div>
     )
   }
