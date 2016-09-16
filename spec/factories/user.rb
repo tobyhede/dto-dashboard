@@ -1,7 +1,9 @@
 FactoryGirl.define do
   factory :user do
     id { rand(30) }
-    email { 'test@digital.gov.au' }
-    password { '123456' }
+    email { 'dev@localhost' }
+    password { 'password' }
+    password_confirmation { "password" }
+    confirmed_at Date.today
   end
 end
