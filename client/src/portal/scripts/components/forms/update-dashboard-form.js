@@ -53,7 +53,7 @@ const submit = (values, dispatch) => {
           reject(data);
         }
         // dispatch(stopLoading());
-        resolve();
+        resolve(data.payload);
       },
       (error) => {
         reject(error);

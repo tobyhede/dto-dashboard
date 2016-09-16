@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { bindActionCreators } from 'redux';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
-import DashboardForm from './../components/forms/dashboard-form';
+import UpdateDashboardForm from './../components/forms/update-dashboard-form';
 
 
 const mapStateToProps = (store, ownProps) => ({
@@ -14,6 +14,10 @@ const mapDispatchToProps = null;
 
 class DashboardIndex extends Component {
 
+  onSubmitSuccess() {
+    console.log('do something with success');
+  }
+
   render() {
     let { dashboard, widgets } = this.props;
 
@@ -21,7 +25,7 @@ class DashboardIndex extends Component {
       <div>
         <h2>Dashboard: {dashboard.name}</h2>
 
-        <DashboardForm initialValues={dashboard} />
+        <UpdateDashboardForm initialValues={dashboard} onSubmitSuccess={this.onSubmitSuccess.bind(this)} />
 
         <div>
           <h3>Widgets</h3>
