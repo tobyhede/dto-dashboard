@@ -2,33 +2,36 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux'
 import { Field, reduxForm } from 'redux-form';
 import { SubmissionError } from 'redux-form'
+import { isURL } from 'validator';
 
 import { updateDashboard } from './../../actions/dashboard';
 import * as types from './../../actions/_types';
-import { isURL } from 'validator';
+
+import { Input, Textarea } from './../../../../react-ui-kit/components/redux-form-fields';
 
 
-const renderInputField = ({ input, label, type, name, meta: { touched, error } }) => {
+/**
+ * Update Dashboard Form
+ * @constructor
+ */
+let UpdateDashboardForm = props => {
+
+  const { error, handleSubmit, pristine, submitting, valid } = props;
+
   return (
-  <div>
-    <label htmlFor={name}>{label}</label>
-    <div>
-      <input {...input} placeholder={label} type={type} name={name} />
-      {touched && error && <span style={{color:'red'}}>{error}</span>}
-    </div>
-  </div>
-)};
-
-const renderTextareaField = ({ input, label, name, meta: { touched, error } }) => {
-  return (
-  <div>
-    <label htmlFor={name}>{label}</label>
-    <div>
-      <textarea {...input} placeholder={label} name={name} />
-      {touched && error && <span style={{color:'red'}}>{error}</span>}
-    </div>
-  </div>
-)};
+    <form onSubmit={handleSubmit(submit.bind(this))}>
+      <Field name="name" type="text" component={Input} label="Name"/>
+      <Field name="notes" component={Textarea} label="Notes"/>
+      <Field name="url" type="text" component={Input} label="Url"/>
+      <Field name="display_hero" type="checkbox" component={Input} label="Display hero"/>
+      <Field name="display_kpis" type="checkbox" component={Input} label="Display kpi"/>
+      <div>
+        <button type="submit" disabled={pristine || submitting || !valid}>Submit</button>
+      </div>
+      {error && <strong style={{color:'red'}}>{error}</strong>}
+    </form>
+  )
+};
 
 
 /**
@@ -62,25 +65,6 @@ const submit = (values, dispatch) => {
 };
 
 
-let UpdateDashboardForm = props => {
-
-  const { error, handleSubmit, pristine, submitting, valid } = props;
-
-  return (
-    <form onSubmit={handleSubmit(submit.bind(this))}>
-      <Field name="name" type="text" component={renderInputField} label="Name"/>
-      <Field name="notes" component={renderTextareaField} label="Notes"/>
-      <Field name="url" type="text" component={renderInputField} label="Url"/>
-      <Field name="display_hero" type="checkbox" component={renderInputField} label="Display hero"/>
-      <Field name="display_kpis" type="checkbox" component={renderInputField} label="Display kpi"/>
-      <div>
-        <button type="submit" disabled={pristine || submitting || !valid}>Submit</button>
-      </div>
-      {error && <strong style={{color:'red'}}>{error}</strong>}
-    </form>
-  )
-};
-
 const validate = (values, props) => {
   const errors = {};
 
@@ -100,6 +84,7 @@ const validate = (values, props) => {
 
   return errors;
 };
+
 
 // decorate
 UpdateDashboardForm = reduxForm({
