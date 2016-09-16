@@ -3,6 +3,7 @@ import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import { getWidgetById } from './../reducers/widgets';
 import { getDatasetsByIds } from './../reducers/datasets';
+import WidgetForm from './../components/forms/widget-form';
 
 
 const mapStateToProps = ({datasets}, ownProps) => {
@@ -23,6 +24,8 @@ class Widget extends Component {
       <div>
         <h2>dashboard: {dashboard.name}</h2>
         <h2>widget: {widget.name}</h2>
+
+        <WidgetForm initialValues={widget} />
 
         <div>
           <h3>Datasets</h3>
