@@ -23,7 +23,7 @@ class DatasetIndex extends Component {
       <div>
         <h1>Dataset: {dataset.name}</h1>
 
-        <Link to={`/datasets/${dataset.id}/datapoints/new`}>Create new</Link>
+        <Link to={`/datasets/${dataset.id}/datapoints-new`}>Create new</Link>
 
         <div>
           <h3>Datapoints</h3>

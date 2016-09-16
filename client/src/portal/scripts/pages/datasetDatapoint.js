@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import { getDatapointById } from './../reducers/datapoints';
-import UpdateDatapointForm from './../components/forms/datapoint-form';
+import UpdateDatapointForm from './../components/forms/update-datapoint-form';
 
 
 const mapStateToProps = ({datapoints}, ownProps) => {

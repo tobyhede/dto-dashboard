@@ -21,3 +21,23 @@ export function updateDatapoint(formData = {}) {
     )
   }
 }
+
+export function createDatapoint(formData = {}) {
+  return (dispatch, getState) => {
+    return update(formData.id, formData).then(
+      (resp) => {
+        return dispatch({
+          type: types.CREATE_DATAPOINT_SUCCESS,
+          payload: resp.data
+        });
+      },
+      (error) => {
+        return dispatch({
+          type: types.CREATE_DATAPOINT_FAIL,
+          error: error,
+          payload: formData
+        })
+      }
+    )
+  }
+}

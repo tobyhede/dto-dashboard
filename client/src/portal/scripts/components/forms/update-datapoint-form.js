@@ -42,9 +42,9 @@ const submit = (values, dispatch) => {
 };
 
 
-let DatapointForm = props => {
+let UpdateDatapointForm = props => {
 
-  let isTypeCreate = props.initialValues === false;
+  let isTypeCreate = !props.initialValues;
 
   const { error, handleSubmit, pristine, submitting, valid } = props;
 
@@ -55,7 +55,7 @@ let DatapointForm = props => {
       <Field name="value" type="text" component={Input} label="Value"/>
 
       <div>
-        <button type="submit" disabled={pristine || submitting || !valid}>{isTypeCreate ? 'Create' : 'Save'}</button>
+        <button type="submit" disabled={pristine || submitting || !valid}>Save</button>
       </div>
       {error && <strong style={{color:'red'}}>{error}</strong>}
     </form>
@@ -83,14 +83,14 @@ const validate = (values, props) => {
 };
 
 // decorate
-DatapointForm = reduxForm({
-  form: 'datapointForm',
+UpdateDatapointForm = reduxForm({
+  form: 'updateDatapointForm',
   validate
-})(DatapointForm);
+})(UpdateDatapointForm);
 
-// DatapointForm = connect(
+// UpdateDatapointForm = connect(
 //   (state, ownProps) => ({}),
 //   (dispatch) => ({})
-// (DatapointForm);
+// (UpdateDatapointForm);
 
-export default DatapointForm
+export default UpdateDatapointForm
