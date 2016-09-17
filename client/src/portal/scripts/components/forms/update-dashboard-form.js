@@ -22,20 +22,30 @@ let UpdateDashboardForm = props => {
   const { error, handleSubmit, pristine, submitting, valid } = props;
 
   return (
-    <form onSubmit={handleSubmit(submit.bind(this))}>
+    <form onSubmit={(e) => e.preventDefault()}>
+      <p>{props.isEditing ? 'EDIT' : 'NON EDIT'}</p>
+
       <Field name="name" type="text" component={Input} label="Name"/>
       <Field name="notes" component={Textarea} label="Notes"/>
       <Field name="url" type="text" component={Input} label="Url"/>
       <Field name="display_hero" component={Checkbox} label="Display hero"/>
       <Field name="display_kpis" component={Checkbox} label="Display kpi"/>
       <div>
-        <button type="submit" disabled={pristine || submitting || !valid}>Save</button>
+        <button type="submit" disabled={pristine || submitting || !valid} onClick={handleSubmit(submit.bind(this))}>Save</button>
+        <button type="cancel" disabled={submitting} onClick={cancel.bind({}, props)}>Cancel</button>
       </div>
       {error && <strong style={{color:'red'}}>{error}</strong>}
     </form>
   )
 };
 
+const cancel = (props, a,b,c,d) => {
+  // c.defaultPrevented = true;
+  props.reset(props.form);
+  // props.reset(props.form);
+  props.onCancelSuccess();
+  // return false;
+};
 
 /**
  * @param values
@@ -95,9 +105,16 @@ UpdateDashboardForm = reduxForm({
   validate
 })(UpdateDashboardForm);
 
-// UpdateDashboardForm = connect(
-//   (state, ownProps) => ({}),
-//   (dispatch) => ({})
-// (UpdateDashboardForm);
+UpdateDashboardForm = connect(
+  (state, ownProps) => ({
+    enableReinitialize: true
+  }),
+  (dispatch, ownProps) => ({
+    initialValues: ownProps.formModel
+  })
+//   dispatch => ({
+//     reinitialize: bindActionCreators(reinitialize, dispatch)
+//   })
+)(UpdateDashboardForm);
 
 export default UpdateDashboardForm
