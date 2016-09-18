@@ -53,22 +53,31 @@ const submit = (values, dispatch) => {
 
   return new Promise((resolve, reject) => {
     dispatch(updateDashboard(values)).then(
-      (data) => {
-        if (data.type === types.UPDATE_DASHBOARD_FAIL) {  // todo // if (data.status === 202) {}
-          reject(data);
-        }
-        // dispatch(stopLoading());
-        resolve(data.payload);
-      },
-      (error) => {
-        reject(error);
-      }
-    );
-  }).catch((data) => {
-    // dispatch(stopLoading());
+      (d) => {debugger},
+      (d) => {debugger},
+    ).catch((e) => {debugger});
 
-    // todo - check error and fail accordingly
-    throw new SubmissionError({ name: 'Name does not exist', _error: 'Submit failed!' });
+  //   .then(
+  //     (data) => {
+  //       if (data.type === types.UPDATE_DASHBOARD_FAIL) {  // todo // if (data.status === 202) {}
+  //         reject(data);
+  //       }
+  //       // dispatch(stopLoading());
+  //       resolve(data.payload);
+  //     },
+  //     (error) => {
+  //       reject(error);
+  //     }
+  //   );
+  // }).catch((data) => {
+  //   debugger
+  //   // dispatch(stopLoading());
+  //
+  //   // todo - check error and fail accordingly
+  //   throw new SubmissionError({ name: 'Name does not exist', _error: 'Submit failed!' });
+
+
+    // todo - somewhere listen for FORM SUBMISSION UPDATE ERROR
   });
 };
 
