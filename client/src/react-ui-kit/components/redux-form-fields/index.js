@@ -38,12 +38,12 @@ export const Checkbox = (props) => {
 };
 
 export const Textarea = (props) => {
-  let { input, label, name, disabled, meta: { touched, error } } = props;
+  let { input, label, name, disabled, rows, meta: { touched, error } } = props;
   return (
     <div className="field">
       <label htmlFor={name}>{label}</label>
       <div>
-        <textarea {...input} placeholder={label} name={name} id={name} disabled={disabled} className={touched && error ? `invalid` : ``} rows="3" />
+        <textarea {...input} placeholder={label} name={name} id={name} disabled={disabled} className={touched && error ? `invalid` : ``} rows={rows || `3`} />
         {touched && error && <span className="field___error">{error}</span>}
       </div>
     </div>

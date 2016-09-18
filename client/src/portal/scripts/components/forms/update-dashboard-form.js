@@ -19,32 +19,27 @@ import {
  */
 let UpdateDashboardForm = props => {
 
-  const { error, handleSubmit, pristine, submitting, valid } = props;
+  const { error, handleSubmit, pristine, submitting, valid, isEditing } = props;
 
   return (
     <form onSubmit={(e) => e.preventDefault()}>
-      <p>{props.isEditing ? 'EDIT' : 'NON EDIT'}</p>
-
-      <Field name="name" type="text" component={Input} label="Name"/>
-      <Field name="notes" component={Textarea} label="Notes"/>
-      <Field name="url" type="text" component={Input} label="Url"/>
-      <Field name="display_hero" component={Checkbox} label="Display hero"/>
-      <Field name="display_kpis" component={Checkbox} label="Display kpi"/>
+      <Field name="name" type="text" component={Input} label="Name" disabled={!isEditing} />
+      <Field name="notes" component={Textarea} rows="5" label="Notes" disabled={!isEditing} />
+      <Field name="url" type="text" component={Input} label="Url" disabled={!isEditing} />
+      <Field name="display_hero" component={Checkbox} label="Display hero" disabled={!isEditing} />
+      <Field name="display_kpis" component={Checkbox} label="Display kpi" disabled={!isEditing} />
       <div>
-        <button type="submit" disabled={pristine || submitting || !valid} onClick={handleSubmit(submit.bind(this))}>Save</button>
-        <button type="cancel" disabled={submitting} onClick={cancel.bind({}, props)}>Cancel</button>
+        <button type="submit" className='btn--primary' disabled={pristine || submitting || !valid} onClick={handleSubmit(submit.bind(this))}>Save</button>
+        <button type="cancel" className='btn--link--primary' disabled={!isEditing || submitting} onClick={cancel.bind({}, props)}>Cancel</button>
       </div>
       {error && <strong style={{color:'red'}}>{error}</strong>}
     </form>
   )
 };
 
-const cancel = (props, a,b,c,d) => {
-  // c.defaultPrevented = true;
+const cancel = (props) => {
   props.reset(props.form);
-  // props.reset(props.form);
   props.onCancelSuccess();
-  // return false;
 };
 
 /**
@@ -112,9 +107,6 @@ UpdateDashboardForm = connect(
   (dispatch, ownProps) => ({
     initialValues: ownProps.formModel
   })
-//   dispatch => ({
-//     reinitialize: bindActionCreators(reinitialize, dispatch)
-//   })
 )(UpdateDashboardForm);
 
 export default UpdateDashboardForm
