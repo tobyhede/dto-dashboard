@@ -7,6 +7,7 @@ const dashboardsReducer = (state = initialState.dashboards, action) => {
   switch (action.type) {
 
     case types.UPDATE_DASHBOARD_SUCCESS:
+      debugger;
       return state.map((d) => {
         if (d.id === action.payload.id) {
           return {...d, ...action.payload}
