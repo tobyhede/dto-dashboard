@@ -2,10 +2,11 @@
 
 @import './../../_ui-kit/_vendor/gov-au-ui-kit/sass/ui-kit';
 @import './../../_ui-kit/components/buttons';
+@import './../../_ui-kit/components/forms';
 
 @import './../../_react-ui-kit/components/redux-form-fields/index';
 
 
-@import './layouts/main';
+@import 'layouts/main';
 @import './../../_ui-kit/components/header';
 @import './../../_ui-kit/components/phase-banner';
