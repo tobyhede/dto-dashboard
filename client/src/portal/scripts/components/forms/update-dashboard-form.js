@@ -37,10 +37,6 @@ let UpdateDashboardForm = props => {
   )
 };
 
-const cancel = (props) => {
-  props.reset(props.form);
-  props.onCancelSuccess();
-};
 
 /**
  * @param values
@@ -71,7 +67,6 @@ const submit = (values, dispatch) => {
   });
 };
 
-
 const validate = (values, props) => {
   const errors = {};
 
@@ -90,6 +85,11 @@ const validate = (values, props) => {
   }
 
   return errors;
+};
+
+const cancel = (props) => {
+  props.reset(props.form);
+  props.onCancelSuccess();
 };
 
 

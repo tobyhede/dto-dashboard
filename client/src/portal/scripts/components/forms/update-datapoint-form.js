@@ -49,7 +49,7 @@ const submit = (values, dispatch) => {
   return new Promise((resolve, reject) => {
     dispatch(updateDatapoint(values)).then(
       (data) => {
-        if (data.type === types.UPDATE_DATAPOINT_FAIL) {  // todo // if (data.status === 202) {}
+        if (data.type === types.UPDATE_DATAPOINTS_FAIL) {  // todo // if (data.status === 202) {}
           reject(data);
         }
         // dispatch(stopLoading());

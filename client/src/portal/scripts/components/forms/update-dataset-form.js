@@ -3,8 +3,8 @@ import { connect } from 'react-redux'
 import { Field, reduxForm, SubmissionError } from 'redux-form';
 import { isURL } from 'validator';
 
-import { updateDataset } from './../../actions/dataset';
 import * as types from './../../actions/_types';
+import { updateDataset } from './../../actions/dataset';
 
 import {
   Input,
@@ -42,12 +42,6 @@ let UpdateDatasetForm = props => {
 };
 
 
-const cancel = (props) => {
-  props.reset(props.form);
-  props.onCancelSuccess();
-};
-
-
 /**
  * @param values
  * @param dispatch
@@ -60,7 +54,7 @@ const submit = (values, dispatch) => {
   return new Promise((resolve, reject) => {
     dispatch(updateDataset(values)).then(
       (data) => {
-        if (data.type === types.UPDATE_DATASET_FAIL) {  // todo // if (data.status === 202) {}
+        if (data.type === types.UPDATE_DATASETS_FAIL) {  // todo // if (data.status === 202) {}
           reject(data);
         }
         // dispatch(stopLoading());
@@ -97,6 +91,11 @@ const validate = (values, props) => {
   }
 
   return errors;
+};
+
+const cancel = (props) => {
+  props.reset(props.form);
+  props.onCancelSuccess();
 };
 
 

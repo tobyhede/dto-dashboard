@@ -8,7 +8,7 @@ export const updateDashboard = formData => {
       url: 'dashboards',
       method: 'POST',
       data: formData,
-      // pending: types.UPDATE_DASHBOARD_PENDING,
+      // pending: types.UPDATE_DASHBOARDS_PENDING,
       success: types.SET_DASHBOARDS,
       error: types.UPDATE_DASHBOARDS_FAIL
     }

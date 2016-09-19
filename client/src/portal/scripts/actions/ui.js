@@ -19,6 +19,15 @@ export const editFormAtDashboardWidgetPage = (edit) => {
   }
 };
 
+export const editFormAtDatasetPage = (edit) => {
+  return {
+    type: types.UI_PAGE_DATASET_FORM_EDIT,
+    payload: {
+      isEditing: edit
+    }
+  }
+};
+
 export const editFormAtDatasetDatapointPage = (edit) => {
   return {
     type: types.UI_PAGE_DATASETDATAPOINT_FORM_EDIT,
