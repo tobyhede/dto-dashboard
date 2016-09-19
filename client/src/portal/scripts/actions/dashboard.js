@@ -1,50 +1,7 @@
 import * as types from "./_types";
-// import { apiUpdate } from './../api/dashboard';
-
-// export function updateDashboard(formData = {}) {
-//   return (dispatch, getState) => {
-//     return apiUpdate(formData).then(
-//       (resp) => {
-//         return dispatch({
-//           type: types.UPDATE_DASHBOARD_SUCCESS,
-//           payload: resp.data
-//         });
-//       },
-//       (error) => {
-//         return dispatch({
-//           type: types.UPDATE_DASHBOARD_FAIL,
-//           error: error,
-//           payload: formData
-//         })
-//       }
-//     )
-//   }
-// }
-
-// export const fetchDashboards = () => ({
-//   type: types.CALL_API,
-//   payload: {
-//     method: 'GET',
-//     url: 'dashboards.json',
-//     success: types.SET_DASHBOARDS
-//   }
-// });
-//
-// export const saveDashboards = (dashboard) => ({
-//   type: types.CALL_API,
-//   payload: {
-//     method: 'POST',
-//     url: 'dashboards',
-//     success: types.SET_DASHBOARDS
-//   }
-// });
 
 
 export const updateDashboard = formData => {
-  if (!formData) {
-    throw new Error(`Can't submit dashboard without data.`)
-  }
-  debugger
   return {
     type: types.CALL_API,
     payload: {
@@ -52,8 +9,8 @@ export const updateDashboard = formData => {
       method: 'POST',
       data: formData,
       // pending: types.UPDATE_DASHBOARD_PENDING,
-      success: types.UPDATE_DASHBOARD_SUCCESS,
-      error: types.UPDATE_DASHBOARD_FAIL
+      success: types.SET_DASHBOARDS,
+      error: types.UPDATE_DASHBOARDS_FAIL
     }
   }
 };

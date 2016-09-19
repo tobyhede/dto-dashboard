@@ -4,13 +4,10 @@ export const CALL_API_ERROR = 'api/error';
 export const CALL_API_START = 'api/start';
 export const CALL_API_DONE = 'api/done';
 
-// export const SET_DASHBOARDS = 'dashboards/set';
-// export const FETCH_DASHBOARD_SUCCESS = 'dashboard/fetch';
+export const SET_DASHBOARDS = 'dashboards/set';
+export const UPDATE_DASHBOARDS_FAIL = 'dashboards/post_fail';
 
 
-export const UPDATE_DASHBOARD = 'dashboard/update';
-export const UPDATE_DASHBOARD_SUCCESS = 'dashboard/update_success';
-export const UPDATE_DASHBOARD_FAIL = 'dashboard/update_fail';
 
 export const UPDATE_WIDGET = 'widget/update';
 export const UPDATE_WIDGET_SUCCESS = 'widget/update_success';

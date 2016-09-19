@@ -8,10 +8,13 @@ import {
 } from './../config';
 
 
-const handleError = (error) => {
+const handleError = (error, data) => {
   return {
     type: types.CALL_API_ERROR,
-    error
+    error,
+    meta: {
+      data
+    }
   }
 };
 
@@ -51,8 +54,8 @@ const apiMiddleware = ({dispatch}) => next => action => {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         apiEnd();
-        resolve(dispatch({ type: success, payload: data, meta:{ status:'success'} }));  // success interface
-        // reject(dispatch({ type: error, error:{}, meta: { status: 'error'} }));  // failure interface
+        resolve(dispatch({ type: success, payload: data }));  // success interface
+        // reject(dispatch({ type: error, error:{}, meta: { data } }));  // failure interface
       }, 800);
     });
   }
@@ -65,15 +68,15 @@ const apiMiddleware = ({dispatch}) => next => action => {
         throw new Error(response.status);
       } else {
         response.json()
-          .then(data => {
+          .then(d => {
             apiEnd();
-            dispatch({ type: action.next, payload: data });  // todo - type: success
+            dispatch({ type: success, payload: d });  // todo - type: success
           });
       }
     })
     .catch(error => {
       apiEnd();
-      handleError(error)
+      handleError(error, data)
     });
 };
 
