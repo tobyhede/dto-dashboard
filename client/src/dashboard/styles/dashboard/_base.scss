@@ -248,7 +248,7 @@ dd {
     .metric-meta {
       span {
         display: table;
-        width: 200px;
+        width: 220px;
         margin: auto;
       }
 
@@ -256,6 +256,11 @@ dd {
       &.summary-text {
         display: table-cell;
       }
+    }
+
+    .badge__holder {
+      float:right;
+      margin-top: -15px;
     }
   }
 }
