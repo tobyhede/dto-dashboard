@@ -1,16 +1,13 @@
 @charset 'utf-8';
 
-@import '~bourbon/core/bourbon';
-@import '~bourbon-neat/app/assets/stylesheets/neat';
-@import '~bourbon-neat/app/assets/stylesheets/neat-helpers';
+@import './../../_ui-kit/_vendor/gov-au-ui-kit/sass/ui-kit';
+@import './../../_ui-kit/components/buttons';
+@import './../../_ui-kit/components/forms';
 
-@import '_vendor/gov-au-ui-kit/sass/ui-kit';
-
-@import './../../react-ui-kit/components/redux-form-fields/index';
+@import './../../_react-ui-kit/components/redux-form-fields/index';
 
 
-@import 'variables';
-
-@import './../../react-ui-kit/components/redux-form-fields/index';
-
-@import './components/buttons';
+@import 'layouts/main';
+@import './../../_ui-kit/components/header';
+@import './../../_ui-kit/components/phase-banner';
+@import 'components/footer';

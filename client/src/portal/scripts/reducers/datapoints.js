@@ -5,7 +5,7 @@ import initialState from './../store/initialState';
 const datapointsReducer = (state = initialState.datapoints, action) => {
   switch (action.type) {
 
-    case types.CREATE_DATAPOINT_SUCCESS:
+    case types.PUSH_DATAPOINT:
       return [
         ...state,
         action.payload
@@ -39,7 +39,7 @@ export default datapointsReducer;
  * @returns {Object} - datapoint
  */
 export const getDatapointById = (state, id) => {
-  return state.find((d) => Number(id) === d.id);
+  return state.find((d) => id == d.id);
 };
 
 /**
@@ -48,7 +48,9 @@ export const getDatapointById = (state, id) => {
  * @returns {Array} - datapoints
  */
 export const getDatapointsById = (state, ids) => {
-  return state.filter((d) => ids.includes(Number(d.id)));
+  return state.filter((d) => {
+    return ids.includes(d.id);
+  });
 };
 
 /**
@@ -57,6 +59,6 @@ export const getDatapointsById = (state, ids) => {
  * @returns {Array} - datapoints
  */
 export const getDatapointsByDatasetId = (state, dataset_id) => {
-  return state.filter((w) => Number(dataset_id) === w.dataset_id);
+  return state.filter((w) => dataset_id == w.dataset_id);
 };
 

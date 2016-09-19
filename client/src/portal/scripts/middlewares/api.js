@@ -1,5 +1,6 @@
-import fetch from 'whatwg-fetch'; // todo - fetch or axios
+import fetch from 'whatwg-fetch';
 import { bindActionCreators } from 'redux';
+import uuid from 'uuid';
 
 import * as types from './../actions/_types';
 import {
@@ -11,7 +12,8 @@ import {
 const handleError = (error, data) => {
   return {
     type: types.CALL_API_ERROR,
-    error,
+    payload: error,
+    error: true,
     meta: {
       data
     }
@@ -30,38 +32,42 @@ const apiEnd = () => {
   }
 };
 
-const apiMiddleware = ({dispatch}) => next => action => {
 
-  // if not an API call, pass through as normal
+/**
+ * @type {ReduxMiddleware}
+ * @returns result - next(action) - pipe the action to the next middleware,
+ * using dispatch instead will pass the action back to the start of the
+ * middleware chain
+ */
+const apiMiddleware = ({dispatch, getState}) => next => action => {
 
+  // if not an API call, do not decorate with middleware
   if (action.type !== types.CALL_API) {
     return next(action);
   }
 
-  bindActionCreators(handleError, dispatch);
-  bindActionCreators(apiStart, dispatch);
-  bindActionCreators(apiEnd, dispatch);
-
-
-  // if it's an API call, decorate it with middleware behaviour
-
   const { payload: { method, url, success, error, data } } = action;
 
-  apiStart();
 
+  apiStart();
 
   if (USE_FIXTURES) {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
+        if (!data.id) {
+          data.id = uuid.v1();
+        }
         apiEnd();
-        resolve(dispatch({ type: success, payload: data }));  // success interface
-        // reject(dispatch({ type: error, error:{}, meta: { data } }));  // failure interface
+        return resolve(next({ type: success, payload: data }));  // success interface
+        // return reject(next({ type: error, error:{}, meta: { data } }));  // failure interface
       }, 800);
     });
   }
 
   return fetch(`${API_BASE_URL}${url}`, {
-    method
+    method,
+    // body, credentials,
+    // headers: {'Content-Type': 'application/json'}
   })
     .then(response => {
       if (response.status >= 300) {
@@ -70,13 +76,13 @@ const apiMiddleware = ({dispatch}) => next => action => {
         response.json()
           .then(d => {
             apiEnd();
-            dispatch({ type: success, payload: d });  // todo - type: success
+            return next({type: success, payload: d});
           });
       }
     })
     .catch(error => {
       apiEnd();
-      handleError(error, data)
+      return next(handleError(error, data))
     });
 };
 

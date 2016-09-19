@@ -8,7 +8,7 @@ import { isURL } from 'validator';
 
 import {
   Input
-} from './../../../../react-ui-kit/components/redux-form-fields';
+} from './../../../../_react-ui-kit/components/redux-form-fields';
 
 
 let UpdateDatapointForm = props => {
@@ -18,8 +18,9 @@ let UpdateDatapointForm = props => {
   return (
     <form onSubmit={(e) => e.preventDefault()}>
 
-      <Field name="label" type="text" component={Input} label="Label" disabled="true"/>
-      <Field name="value" type="text" component={Input} label="Value" disabled={!isEditing} />
+      <Field type="text" name="label" label="Label" component={Input} inputProps={{readOnly:true}} />
+
+      <Field type="number" name="value" label="Value" component={Input} inputProps={{min:0,max:100,disabled:!isEditing}} />
 
       <div>
         <button type="submit" className='btn--primary' disabled={pristine || submitting || !valid} onClick={handleSubmit(submit.bind(this))}>Save</button>
@@ -70,19 +71,9 @@ const submit = (values, dispatch) => {
 const validate = (values, props) => {
   const errors = {};
 
-  if (!values.name) {
-    errors.name = 'Required';
+  if (!values.value) {
+    errors.value = 'Required';
   }
-
-  // if (!values.notes) {
-  //   errors.notes = 'Required';
-  // }
-  //
-  // if (!values.url) {
-  //   errors.url = 'Required';
-  // } else if (isURL(values.url) === false) {
-  //   errors.url = 'Must be a valid URL';
-  // }
 
   return errors;
 };

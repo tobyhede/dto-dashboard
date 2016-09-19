@@ -9,7 +9,7 @@ import * as types from './../../actions/_types';
 
 import {
   Input
-} from './../../../../react-ui-kit/components/redux-form-fields';
+} from './../../../../_react-ui-kit/components/redux-form-fields';
 
 
 /**
@@ -55,10 +55,10 @@ let CreateDatapointForm = props => {
 
   return (
     <form onSubmit={handleSubmit(submit.bind(this))}>
-      <Field name="label" type="text" component={Input} label="Label" />
-      <Field name="value" type="text" component={Input} label="Value" />
+      <Field name="label" type="text" component={Input} label="Label" inputProps={{readOnly:true}} />
+      <Field name="value" type="text" component={Input} label="Value" inputProps={{min:0,max:100}} />
       <div>
-        <button type="submit" disabled={pristine || submitting || !valid}>Create</button>
+        <button type="submit" className='btn--primary' disabled={pristine || submitting || !valid}>Create</button>
       </div>
       {error && <strong style={{color:'red'}}>{error}</strong>}
     </form>

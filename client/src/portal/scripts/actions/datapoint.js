@@ -23,7 +23,7 @@ export const createDatapoint = formData => {
       method: 'POST',
       data: formData,
       // pending: types.CREATE_DATAPOINT_PENDING,
-      success: types.SET_DATAPOINTS,
+      success: types.PUSH_DATAPOINT,
       error: types.CREATE_DATAPOINT_FAIL
     }
   }

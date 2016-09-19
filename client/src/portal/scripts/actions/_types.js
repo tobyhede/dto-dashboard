@@ -16,6 +16,7 @@ export const UPDATE_DATASETS_FAIL = 'datasets/update_fail';
 export const SET_DATAPOINTS = 'datapoints/set';
 export const UPDATE_DATAPOINTS_FAIL = 'datapoints/update_fail';
 
+export const PUSH_DATAPOINT = 'datapoints/create';
 export const CREATE_DATAPOINT_FAIL = 'datapoint/create_fail';
 
 

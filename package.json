@@ -41,6 +41,7 @@
     "redux-logger": "^2.6.1",
     "redux-thunk": "^2.1.0",
     "textures": "^1.0.3",
+    "uuid": "^2.0.3",
     "validator": "^5.7.0",
     "whatwg-fetch": "^1.0.0"
   },
