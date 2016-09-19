@@ -1,10 +1,10 @@
 import * as types from "./_types";
-import { update } from './../api/widget';
+import { apiUpdate } from './../api/widget';
 
 
 export function updateWidget(formData = {}) {
   return (dispatch, getState) => {
-    return update(formData.id, formData).then(
+    return apiUpdate(formData).then(
       (resp) => {
         return dispatch({
           type: types.UPDATE_WIDGET_SUCCESS,

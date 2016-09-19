@@ -17,27 +17,34 @@ import {
  * Update Dataset Form
  * @constructor
  */
-let DatasetForm = props => {
+let UpdateDatasetForm = props => {
 
-  const { error, handleSubmit, pristine, submitting, valid } = props;
+  const { error, handleSubmit, pristine, submitting, valid, isEditing } = props;
 
   return (
-    <form onSubmit={handleSubmit(submit.bind(this))}>
-      <Field name="name" type="text" component={Input} label="Name"/>
+    <form onSubmit={(e) => e.preventDefault()}>
+      <Field name="name" type="text" component={Input} label="Name" disabled={!isEditing} />
       <Field name="units" options={[
         { value: 'n', label: 'Percentage' },
         { value: '$', label: 'Currency' },
         { value: 'n', label: 'Number' },
         { value: 'f', label: 'Float' },
         { value: 's', label: 'Seconds' }
-      ]} component={Select} label="Units"/>
-      <Field name="notes" component={Textarea} label="Notes"/>
+      ]} component={Select} label="Units" disabled={!isEditing} />
+      <Field name="notes" component={Textarea} label="Notes" disabled={!isEditing} />
       <div>
-        <button type="submit" disabled={pristine || submitting || !valid}>Save</button>
+        <button type="submit" className='btn--primary' disabled={pristine || submitting || !valid} onClick={handleSubmit(submit.bind(this))}>Save</button>
+        <button type="cancel" className='btn--link--primary' disabled={!isEditing || submitting} onClick={cancel.bind({}, props)}>Cancel</button>
       </div>
       {error && <strong style={{color:'red'}}>{error}</strong>}
     </form>
   )
+};
+
+
+const cancel = (props) => {
+  props.reset(props.form);
+  props.onCancelSuccess();
 };
 
 
@@ -57,7 +64,7 @@ const submit = (values, dispatch) => {
           reject(data);
         }
         // dispatch(stopLoading());
-        resolve();
+        resolve(data.payload);
       },
       (error) => {
         reject(error);
@@ -94,14 +101,18 @@ const validate = (values, props) => {
 
 
 // decorate
-DatasetForm = reduxForm({
-  form: 'datasetForm',
+UpdateDatasetForm = reduxForm({
+  form: 'updateDatasetForm',
   validate
-})(DatasetForm);
+})(UpdateDatasetForm);
 
-// DatasetForm = connect(
-//   (state, ownProps) => ({}),
-//   (dispatch) => ({})
-// (DatasetForm);
+UpdateDatasetForm = connect(
+  (state, ownProps) => ({
+    enableReinitialize: true
+  }),
+  (dispatch, ownProps) => ({
+    initialValues: ownProps.formModel
+  })
+)(UpdateDatasetForm);
 
-export default DatasetForm
+export default UpdateDatasetForm

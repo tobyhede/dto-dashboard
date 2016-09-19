@@ -2,26 +2,52 @@ import React, { Component, PropTypes } from 'react';
 import { bindActionCreators } from 'redux';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
-import DashboardForm from './../components/forms/dashboard-form';
+
+import * as uiActions from './../actions/ui';
+import UpdateDashboardForm from './../components/forms/update-dashboard-form';
 
 
 const mapStateToProps = (store, ownProps) => ({
   dashboard: ownProps.dashboard,
-  widgets: ownProps.widgets
+  widgets: ownProps.widgets,
+  ui: store.ui.pageDashboard
 });
-const mapDispatchToProps = null;
-
+const mapDispatchToProps = dispatch => {
+  return {
+    actions: bindActionCreators(uiActions, dispatch)
+  }
+};
 
 class DashboardIndex extends Component {
 
-  render() {
-    let { dashboard, widgets } = this.props;
+  enterForm() {
+    this.props.actions.editFormAtDashboardPage(true);
+  }
 
+  exitForm() {
+    this.props.actions.editFormAtDashboardPage(false);
+  }
+
+  onSubmitSuccess() {
+    this.exitForm();
+  }
+
+  render() {
+    let { dashboard, widgets, ui } = this.props;
     return (
       <div>
         <h2>Dashboard: {dashboard.name}</h2>
 
-        <DashboardForm initialValues={dashboard} />
+        <button
+          className="btn--primary btn--small"
+          disabled={ui.isEditing}
+          onClick={this.enterForm.bind(this)}>Edit</button>
+
+        <UpdateDashboardForm
+          formModel={dashboard}
+          isEditing={ui.isEditing}
+          onSubmitSuccess={this.onSubmitSuccess.bind(this)}
+          onCancelSuccess={this.exitForm.bind(this)} />
 
         <div>
           <h3>Widgets</h3>

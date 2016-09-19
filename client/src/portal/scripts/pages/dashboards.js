@@ -9,6 +9,7 @@ const mapStateToProps = (store, ownProps) => ({
 const mapDispatchToProps = dispatch => ({});
 
 class DashboardsIndex extends Component {
+
   render() {
     let { dashboards } = this.props;
     return (
