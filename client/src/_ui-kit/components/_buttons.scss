@@ -25,6 +25,7 @@ button {
   padding-left: .2em;
   padding-right: .2em;
 }
+
 .btn--link--primary {
   @extend .btn--link;
   @include button-colours(transparent, transparent, transparent, $aqua, $aqua);
@@ -59,9 +60,11 @@ form input[type='checkbox'] + label {
 form input[type='checkbox'] + label::before {
   left: 10px;
 }
+
 form input[type='checkbox']:checked + label::after {
   left: 15px;
 }
+
 form input[type='radio'] + label,
 form input[type='checkbox'] + label {
   padding-left: 50px;

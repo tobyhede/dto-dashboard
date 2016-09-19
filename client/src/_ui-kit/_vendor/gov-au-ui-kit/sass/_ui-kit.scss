@@ -8,11 +8,14 @@ UI-Kit version: 1.8.0
 @import '~gov-au-ui-kit/assets/sass/utils';
 
 //@import '~gov-au-ui-kit/assets/sass/vendor/responsive-nav/responsive-nav';
-//@import '~gov-au-ui-kit/assets/sass/vendor/normalize';
-//@import '~gov-au-ui-kit/assets/sass/vendor/bourbon/bourbon';
-//@import '~gov-au-ui-kit/assets/sass/vendor/neat/neat-helpers';
+
+@import '~gov-au-ui-kit/assets/sass/vendor/normalize';
+@import '~bourbon/core/bourbon';
+@import '~bourbon-neat/app/assets/stylesheets/neat-helpers';
+
 @import '~gov-au-ui-kit/assets/sass/utils/grid-settings';
-//@import '~gov-au-ui-kit/assets/sass/vendor/neat/neat';
+
+@import '~bourbon-neat/app/assets/stylesheets/neat';
 
 @import '~gov-au-ui-kit/assets/sass/components/accordions';
 @import './components/buttons';

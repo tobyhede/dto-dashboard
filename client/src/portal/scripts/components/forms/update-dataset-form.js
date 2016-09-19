@@ -10,7 +10,7 @@ import {
   Input,
   Textarea,
   Select
-} from './../../../../react-ui-kit/components/redux-form-fields';
+} from './../../../../_react-ui-kit/components/redux-form-fields';
 
 
 /**

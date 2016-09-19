@@ -9,7 +9,7 @@ import * as types from './../../actions/_types';
 
 import {
   Input
-} from './../../../../react-ui-kit/components/redux-form-fields';
+} from './../../../../_react-ui-kit/components/redux-form-fields';
 
 
 /**
