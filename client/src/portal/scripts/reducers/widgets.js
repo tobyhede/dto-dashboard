@@ -5,7 +5,7 @@ import initialState from './../store/initialState';
 const widgetsReducer = (state = initialState.widgets, action) => {
   switch (action.type) {
 
-    case types.UPDATE_WIDGET_SUCCESS:
+    case types.SET_WIDGETS:
       return state.map((d) => {
         if (d.id === action.payload.id) {
           return {...d, ...action.payload}
@@ -14,7 +14,7 @@ const widgetsReducer = (state = initialState.widgets, action) => {
       });
       break;
 
-    case types.UPDATE_WIDGET_FAIL:
+    case types.UPDATE_WIDGETS_FAIL:
     default:
       return state;
   }

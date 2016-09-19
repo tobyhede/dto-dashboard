@@ -1,43 +1,30 @@
 import * as types from "./_types";
-import { apiUpdate, apiCreate } from './../api/datapoint';
 
 
-export function updateDatapoint(formData = {}) {
-  return (dispatch, getState) => {
-    return apiUpdate(formData).then(
-      (resp) => {
-        return dispatch({
-          type: types.UPDATE_DATAPOINT_SUCCESS,
-          payload: resp.data
-        });
-      },
-      (error) => {
-        return dispatch({
-          type: types.UPDATE_DATAPOINT_FAIL,
-          error: error,
-          payload: formData
-        })
-      }
-    )
+export const updateDatapoint = formData => {
+  return {
+    type: types.CALL_API,
+    payload: {
+      url: 'datapoints',
+      method: 'POST',
+      data: formData,
+      // pending: types.UPDATE_DATAPOINTS_PENDING,
+      success: types.SET_DATAPOINTS,
+      error: types.UPDATE_DATAPOINTS_FAIL
+    }
   }
-}
+};
 
-export function createDatapoint(formData = {}) {
-  return (dispatch, getState) => {
-    return apiCreate(formData).then(
-      (resp) => {
-        return dispatch({
-          type: types.CREATE_DATAPOINT_SUCCESS,
-          payload: resp.data
-        });
-      },
-      (error) => {
-        return dispatch({
-          type: types.CREATE_DATAPOINT_FAIL,
-          error: error,
-          payload: formData
-        })
-      }
-    )
+export const createDatapoint = formData => {
+  return {
+    type: types.CALL_API,
+    payload: {
+      url: 'datapoints',
+      method: 'POST',
+      data: formData,
+      // pending: types.CREATE_DATAPOINT_PENDING,
+      success: types.SET_DATAPOINTS,
+      error: types.CREATE_DATAPOINT_FAIL
+    }
   }
-}
+};

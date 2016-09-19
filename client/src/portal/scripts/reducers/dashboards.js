@@ -6,7 +6,7 @@ import initialState from './../store/initialState';
 const dashboardsReducer = (state = initialState.dashboards, action) => {
   switch (action.type) {
 
-    case types.UPDATE_DASHBOARD_SUCCESS:
+    case types.SET_DASHBOARDS:
       return state.map((d) => {
         if (d.id === action.payload.id) {
           return {...d, ...action.payload}
@@ -15,7 +15,7 @@ const dashboardsReducer = (state = initialState.dashboards, action) => {
       });
       break;
 
-    case types.UPDATE_DASHBOARD_FAIL:
+    case types.UPDATE_DASHBOARDS_FAIL:
     default:
       return state;
   }

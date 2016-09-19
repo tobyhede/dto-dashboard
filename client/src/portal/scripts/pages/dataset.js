@@ -1,43 +1,65 @@
 import React, { Component, PropTypes } from 'react';
+import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 
+import * as uiActions from './../actions/ui';
 import { getDatapointsById } from './../reducers/datapoints';
 import UpdateDatasetForm from './../components/forms/update-dataset-form';
 
 
-const mapStateToProps = ({datapoints}, ownProps) => {
+const mapStateToProps = ({datapoints, ui}, ownProps) => {
   let dataset = ownProps.dataset;
   return {
     dataset,
-    datapoints: getDatapointsById(datapoints, dataset.datapoints)
+    datapoints: getDatapointsById(datapoints, dataset.datapoints),
+    ui: ui.pageDataset
   }
 };
-const mapDispatchToProps = dispatch => ({});
+const mapDispatchToProps = dispatch => {
+  return {
+    actions: bindActionCreators(uiActions, dispatch)
+  }
+};
+
 
 class DatasetIndex extends Component {
 
-  constructor(props) {
-    super(props);
-    this.state = {}
+  enterForm() {
+    this.props.actions.editFormAtDatasetPage(true);
+  }
+
+  exitForm() {
+    this.props.actions.editFormAtDatasetPage(false);
   }
 
   onSubmitSuccess() {
-    console.log('do something with submit success for dataset');
+    this.exitForm();
   }
 
   render() {
-    let { dataset, datapoints } = this.props;
+    let { dataset, datapoints, ui } = this.props;
     return (
       <div>
         <h1>Dataset: {dataset.name}</h1>
 
-        <Link to={`/datasets/${dataset.id}/datapoints-new`}>Create new</Link>
+        <button
+          className="btn--primary btn--small"
+          disabled={ui.isEditing}
+          onClick={this.enterForm.bind(this)}>Edit</button>
 
-        <UpdateDatasetForm initialValues={dataset} onSubmitSuccess={this.onSubmitSuccess.bind(this)} />
+        <UpdateDatasetForm
+          formModel={dataset}
+          isEditing={ui.isEditing}
+          onSubmitSuccess={this.onSubmitSuccess.bind(this)}
+          onCancelSuccess={this.exitForm.bind(this)} />
 
         <div>
           <h3>Datapoints</h3>
+
+          <Link to={`/datasets/${dataset.id}/datapoints-new`}>Create new</Link>
+
+
           <table>
             <thead>
             <tr>

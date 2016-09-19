@@ -12,7 +12,7 @@ const datapointsReducer = (state = initialState.datapoints, action) => {
       ];
       break;
 
-    case types.UPDATE_DATAPOINT_SUCCESS:
+    case types.SET_DATAPOINTS:
       return state.map((d) => {
         if (d.id === action.payload.id) {
           return {...d, ...action.payload}
@@ -22,7 +22,7 @@ const datapointsReducer = (state = initialState.datapoints, action) => {
       break;
 
     case types.CREATE_DATAPOINT_FAIL:
-    case types.UPDATE_DATAPOINT_FAIL:
+    case types.UPDATE_DATAPOINTS_FAIL:
     default:
       return state;
   }

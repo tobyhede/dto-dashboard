@@ -13,13 +13,14 @@ let pageDashboard = (state = initialState.ui.pageDashboard, action) => {
         isEditing: payload.isEditing
       };
       break;
+
     default:
       return state;
   }
 };
 
 
-let pageDashboardWidget = (state = initialState.ui.pageDashboard, action) => {
+let pageDashboardWidget = (state = initialState.ui.pageDashboardWidget, action) => {
   let { payload } = action;
 
   switch (action.type) {
@@ -29,13 +30,14 @@ let pageDashboardWidget = (state = initialState.ui.pageDashboard, action) => {
         isEditing: payload.isEditing
       };
       break;
+
     default:
       return state;
   }
 };
 
 
-let pageDataset = (state = initialState.ui.pageDashboard, action) => {
+let pageDataset = (state = initialState.ui.pageDataset, action) => {
   let { payload } = action;
 
   switch (action.type) {
@@ -45,13 +47,14 @@ let pageDataset = (state = initialState.ui.pageDashboard, action) => {
         isEditing: payload.isEditing
       };
       break;
+
     default:
       return state;
   }
 };
 
 
-let pageDatasetDatapoint = (state = initialState.ui.pageDashboard, action) => {
+let pageDatasetDatapoint = (state = initialState.ui.pageDatasetDatapoint, action) => {
   let { payload } = action;
 
   switch (action.type) {
@@ -61,13 +64,14 @@ let pageDatasetDatapoint = (state = initialState.ui.pageDashboard, action) => {
         isEditing: payload.isEditing
       };
       break;
+
     default:
       return state;
   }
 };
 
 
-let pageDatasetDatapointCreate = (state = initialState.ui.pageDashboard, action) => {
+let pageDatasetDatapointCreate = (state = initialState.ui.pageDatasetDatapointCreate, action) => {
   switch (action.type) {
     default:
       return state;

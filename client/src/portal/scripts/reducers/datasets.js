@@ -5,7 +5,7 @@ import initialState from './../store/initialState';
 const datasetsReducer = (state = initialState.datasets, action) => {
   switch (action.type) {
 
-    case types.UPDATE_DATASET_SUCCESS:
+    case types.SET_DATASETS:
       return state.map((d) => {
         if (d.id === action.payload.id) {
           return {...d, ...action.payload}
@@ -14,7 +14,7 @@ const datasetsReducer = (state = initialState.datasets, action) => {
       });
       break;
 
-    case types.UPDATE_DATASET_FAIL:
+    case types.UPDATE_DATASETS_FAIL:
     default:
       return state;
   }

@@ -1,23 +1,16 @@
 import * as types from "./_types";
-import { apiUpdate } from './../api/widget';
 
 
-export function updateWidget(formData = {}) {
-  return (dispatch, getState) => {
-    return apiUpdate(formData).then(
-      (resp) => {
-        return dispatch({
-          type: types.UPDATE_WIDGET_SUCCESS,
-          payload: resp.data
-        });
-      },
-      (error) => {
-        return dispatch({
-          type: types.UPDATE_WIDGET_FAIL,
-          error: error,
-          payload: formData
-        })
-      }
-    )
+export const updateWidget = formData => {
+  return {
+    type: types.CALL_API,
+    payload: {
+      url: 'widgets',
+      method: 'POST',
+      data: formData,
+      // pending: types.UPDATE_WIDGETS_PENDING,
+      success: types.SET_WIDGETS,
+      error: types.UPDATE_WIDGETS_FAIL
+    }
   }
-}
+};

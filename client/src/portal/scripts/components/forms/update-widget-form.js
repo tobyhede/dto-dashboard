@@ -83,7 +83,7 @@ const submit = (values, dispatch) => {
   return new Promise((resolve, reject) => {
     dispatch(updateWidget(values)).then(
       (data) => {
-        if (data.type === types.UPDATE_WIDGET_FAIL) {  // todo // if (data.status === 202) {}
+        if (data.type === types.UPDATE_WIDGETS_FAIL) {  // todo // if (data.status === 202) {}
           reject(data);
         }
         // dispatch(stopLoading());

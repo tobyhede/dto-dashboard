@@ -1,23 +1,16 @@
 import * as types from "./_types";
-import { apiUpdate } from './../api/dashboard';
 
 
-export function updateDashboard(formData = {}) {
-  return (dispatch, getState) => {
-    return apiUpdate(formData).then(
-      (resp) => {
-        return dispatch({
-          type: types.UPDATE_DASHBOARD_SUCCESS,
-          payload: resp.data
-        });
-      },
-      (error) => {
-        return dispatch({
-          type: types.UPDATE_DASHBOARD_FAIL,
-          error: error,
-          payload: formData
-        })
-      }
-    )
+export const updateDashboard = formData => {
+  return {
+    type: types.CALL_API,
+    payload: {
+      url: 'dashboards',
+      method: 'POST',
+      data: formData,
+      // pending: types.UPDATE_DASHBOARDS_PENDING,
+      success: types.SET_DASHBOARDS,
+      error: types.UPDATE_DASHBOARDS_FAIL
+    }
   }
-}
+};

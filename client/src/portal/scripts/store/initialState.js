@@ -4,6 +4,7 @@ export default {
   ui: {
     pageDashboard: {},
     pageDashboardWidget: {},
+    pageDataset: {},
     pageDatasetDatapoint: {},
     pageDatasetDatapointCreate: {}
   },
