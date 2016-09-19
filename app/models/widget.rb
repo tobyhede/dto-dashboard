@@ -9,7 +9,9 @@ class Widget < ApplicationRecord
   belongs_to :dashboard
 
   has_many :dataset_widgets
+
   has_many :datasets, :through => :dataset_widgets
+
   has_many :datapoints, :through => :datasets
 
   KPIS = ['User Satisfaction', 'Cost Per Transaction', 'Digital Take-up', 'Completion Rate']

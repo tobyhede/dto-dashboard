@@ -1,11 +1,14 @@
 Rails.application.routes.draw do
 
+
   unless Rails.env.production?
     devise_for :users,
       controllers: { sessions: "users/sessions" },
       :path => '',
       path_names: { sign_in: 'login', sign_out: 'logout' }
   end
+
+  ActiveAdmin.routes(self)
 
   get root :to => 'dashboards#index'
 

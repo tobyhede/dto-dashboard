@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
 
   protect_from_forgery with: :exception
 
-  before_filter :store_current_location, :unless => :devise_controller?
+  before_action :store_current_location, :unless => :devise_controller?
 
   private
 
@@ -12,8 +12,8 @@ class ApplicationController < ActionController::Base
     store_location_for(:user, request.url)
   end
 
-  def after_sign_in_path_for(_resource_or_scope)
-   '/portal'
+  def after_sign_in_path_for(_resource)
+    session[:user_return_to] || '/portal'
   end
 
 end

@@ -100,23 +100,4 @@ RSpec.describe Dataset, type: :model do
     end
   end
 
-
-  describe 'Authenticatable' do
-
-    subject(:dataset) { FactoryGirl.create(:dataset_with_token) }
-
-    its(:token) { should be_present }
-    its(:token) { should eq dataset.tokens.first }
-
-    describe '#authenicate' do
-      subject(:token) { dataset.token }
-
-      it 'finds the correct dataset'  do
-        expect(dataset).to eq Dataset.authenticate(token)
-        expect(dataset).to_not eq Dataset.authenticate('blahvtha')
-      end
-    end
-
-  end
-
 end

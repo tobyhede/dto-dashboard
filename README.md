@@ -83,7 +83,6 @@ You will now be able to login to the portal in the development environment with
 :password => 'password'
 ```
 
-
 ### Run the App
 
 To run on the default port (3000)
@@ -98,6 +97,13 @@ bin/start.sh
 The site can now be viewed at `http://localhost:3000/`
 
 Administration is available at `http://localhost:3000/admin`
+
+### Mail
+
+To test mail in development, we're using mailcatcher.
+
+Once installed, mail can be viewed at
+[http://localhost:1080/](http://localhost:1080/)
 
 
 ### Front end

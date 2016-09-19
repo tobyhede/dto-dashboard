@@ -6,10 +6,12 @@ gem 'pg'
 gem 'puma', '~> 3.0'
 
 # gem 'jquery-rails'
+gem 'activeadmin', github: 'activeadmin'
 gem 'active_model_serializers', '~> 0.10.0'
 gem 'devise',                   '>= 4.2.0'
 gem 'draper',                   '> 3.x'
 gem 'erubis'
+gem 'inherited_resources', github: 'activeadmin/inherited_resources'
 gem 'jquery-rails'
 gem 'newrelic_rpm'
 gem 'redcarpet',                '~>3.3'
@@ -36,6 +38,7 @@ group :development do
   gem "binding_of_caller"
   gem "better_errors"
   gem 'listen', '~> 3.0.5'
+  gem 'mailcatcher'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'web-console'
@@ -46,6 +49,7 @@ group :test do
   gem "codeclimate-test-reporter", require: false
   gem 'database_cleaner'
   gem 'factory_girl_rails', '~> 4.0'
+  gem 'faker'
   gem 'guard-rspec', require: false
   gem 'poltergeist'
   gem 'rspec-rails'

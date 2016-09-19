@@ -4,17 +4,44 @@ class Token < ApplicationRecord
 
   before_create :set_token
 
-  has_one :organisation, :through => :organisations_tokens, :class_name => 'Organisation'
+  belongs_to :user
 
-  has_and_belongs_to_many :datasets
+  def self.api
+    where('session = false')
+  end
 
-  def self.authenticate(token)
-    find_by(:token => token.to_s)
+  def self.session
+    where('session = true')
+  end
+
+  def self.authenticate!(token)
+    active.find_by!(:token => token.to_s)
+  end
+
+  def self.active
+    where('expired_at IS NULL OR expired_at >= ?', Time.zone.now)
+  end
+
+  def self.expired
+    where('expired_at <= ?', Time.zone.now)
   end
 
   def to_s
     token
   end
+
+  def expire!
+    update!(:expired_at => Time.zone.now)
+  end
+
+  def expired?
+    expired_at.present? && expired_at <= Time.zone.now
+  end
+
+  def active?
+    !expired?
+  end
+
 
   private
 
