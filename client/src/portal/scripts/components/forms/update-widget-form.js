@@ -24,7 +24,7 @@ let UpdateWidgetForm = props => {
       {/*id: 1,*/}
       {/*row: 0,*/}
       {/*pos: 0,*/}
-      <Field name="name" type="text" component={Input} label="Name" disabled={!isEditing} />
+      <Field name="name" type="text" component={Input} label="Name" inputProps={{disabled:!isEditing}} />
 
       <Field name="type" options={[
         { value: 'full', label: 'Full' },
@@ -32,7 +32,7 @@ let UpdateWidgetForm = props => {
         { value: 'bar', label: 'Bar' },
         { value: 'fact', label: 'Fact' },
         { value: 'pie', label: 'Pie' }
-      ]} component={Select} label="Type" disabled={!isEditing} />
+      ]} component={Select} label="Type" inputProps={{disabled:!isEditing}} />
 
       <Field name="size" options={[
         { value: 'extra-small', label: 'Extra Small' },
@@ -40,7 +40,7 @@ let UpdateWidgetForm = props => {
         { value: 'medium', label: 'Medium' },
         { value: 'large', label: 'Large' },
         { value: 'extra-large', label: 'Extra Large' }
-      ]} component={Select} label="Size" disabled={!isEditing} />
+      ]} component={Select} label="Size" inputProps={{disabled:!isEditing}} />
 
       <Field name="units" options={[
         { value: '%', label: 'Percentage' },
@@ -48,10 +48,10 @@ let UpdateWidgetForm = props => {
         { value: 'n', label: 'Number' },
         { value: 'f', label: 'Float' },
         { value: 's', label: 'Seconds' }
-      ]} component={Select} label="Units" disabled={!isEditing} />
-      <Field name="description" component={Textarea} label="Description"  disabled={!isEditing} />
+      ]} component={Select} label="Units" inputProps={{disabled:!isEditing}} />
+      <Field name="description" component={Textarea} label="Description" inputProps={{disabled:!isEditing}} />
       {/*options: {},*/}
-      <Field name="is_hero" component={Checkbox} label="Is hero?" disabled={!isEditing}/>
+      <Field name="is_hero" component={Checkbox} label="Is hero?" inputProps={{disabled:!isEditing}} />
       {/*last_updated_at: '2016-09-06 05:28:50.365576',*/}
       {/*created_at: '2016-09-06 05:28:50.356717',*/}
       {/*updated_at: '2016-09-06 05:28:50.366554',*/}

@@ -23,15 +23,15 @@ let UpdateDatasetForm = props => {
 
   return (
     <form onSubmit={(e) => e.preventDefault()}>
-      <Field name="name" type="text" component={Input} label="Name" disabled={!isEditing} />
+      <Field name="name" type="text" component={Input} label="Name" inputProps={{disabled:!isEditing}} />
       <Field name="units" options={[
         { value: 'n', label: 'Percentage' },
         { value: '$', label: 'Currency' },
         { value: 'n', label: 'Number' },
         { value: 'f', label: 'Float' },
         { value: 's', label: 'Seconds' }
-      ]} component={Select} label="Units" disabled={!isEditing} />
-      <Field name="notes" component={Textarea} label="Notes" disabled={!isEditing} />
+      ]} component={Select} label="Units" inputProps={{disabled:!isEditing}} />
+      <Field name="notes" component={Textarea} label="Notes" inputProps={{disabled:!isEditing, rows:5}} />
       <div>
         <button type="submit" className='btn--primary' disabled={pristine || submitting || !valid} onClick={handleSubmit(submit.bind(this))}>Save</button>
         <button type="cancel" className='btn--link--primary' disabled={!isEditing || submitting} onClick={cancel.bind({}, props)}>Cancel</button>
@@ -78,16 +78,6 @@ const validate = (values, props) => {
 
   if (!values.name) {
     errors.name = 'Required';
-  }
-
-  if (!values.notes) {
-    errors.notes = 'Required';
-  }
-
-  if (!values.url) {
-    errors.url = 'Required';
-  } else if (isURL(values.url) === false) {
-    errors.url = 'Must be a valid URL';
   }
 
   return errors;

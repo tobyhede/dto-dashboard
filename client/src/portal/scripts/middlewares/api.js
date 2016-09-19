@@ -1,5 +1,6 @@
 import fetch from 'whatwg-fetch'; // todo - fetch or axios
 import { bindActionCreators } from 'redux';
+import uuid from 'uuid';
 
 import * as types from './../actions/_types';
 import {
@@ -53,6 +54,9 @@ const apiMiddleware = ({dispatch}) => next => action => {
   if (USE_FIXTURES) {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
+        if (!data.id) {
+          data.id = uuid.v1();
+        }
         apiEnd();
         resolve(dispatch({ type: success, payload: data }));  // success interface
         // reject(dispatch({ type: error, error:{}, meta: { data } }));  // failure interface
