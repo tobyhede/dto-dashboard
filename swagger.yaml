@@ -14,7 +14,7 @@ securityDefinitions:
       API Key should be passed as an authorization Header.
       The value for the Authorization header is expected to have the prefix "Token" or "Bearer".
 paths:
-  /datasets/{datasetId}/datapoint/:
+  /datasets/{datasetId}/datapoints/:
     post:
       summary: |
         Creates a new `Datapoint` in the identified dataset
@@ -22,11 +22,11 @@ paths:
 
         Sample curl requests
         ```
-        curl --header "Authorization: Token token=09e9e1cff7e4434d8fd3bb6eb442a5fd86aa1c8f30a546c3aa719929323fdcf8" --data 'datapoint={ "ts": "2016-01-01T01:01:01.111Z", "value": "42"}' http://dashboard.gov.au/api/v1/datasets/1/datapoints
+        curl --header "Authorization: Token token=09e9e1cff7e4" --data 'datapoint={ "ts": "2016-01-01T01:01:01.111Z", "value": "42"}' http://dashboard.gov.au/api/v1/datasets/1/datapoints
         ```
 
         ```
-        curl --header "Authorization: Bearer 09e9e1cff7e4434d8fd3bb6eb442a5fd86aa1c8f30a546c3aa719929323fdcf8" --data 'datapoint={ "ts": "2016-01-01T01:01:01.111Z", "value": "42"}' http://dashboard.gov.au/api/v1/datasets/1/datapoints
+        curl --header "Authorization: Bearer 09e9e1cff7e4" --data 'datapoint={ "ts": "2016-01-01T01:01:01.111Z", "value": "42"}' http://dashboard.gov.au/api/v1/datasets/1/datapoints
         ```
       security:
        - api_key: []
@@ -58,6 +58,39 @@ paths:
             $ref: "#/definitions/Datapoint"
         "400":
           description: Invalid data
+    get:
+      summary: |
+        Returns an array of last 999 Datapoints belonging to identified Dataset
+      description: |
+
+        Sample curl requests
+        ```
+        curl --header "Authorization: Token token=09e9e1cff7e4" http://dashboard.gov.au/api/v1/datasets/1/datapoints/
+        ```
+
+        ```
+        curl --header "Authorization: Bearer 09e9e1cff7e4" http://dashboard.gov.au/api/v1/datasets/1/datapoints/
+        ```
+      security:
+       - api_key: []
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: datasetId
+          description: ID of Dataset
+          required: true
+          type: integer
+          format: int64
+      responses:
+        "404":
+          description: Dataset not found
+        "200":
+          description: Success
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/Datapoint"
   /datasets/{datasetId}/datapoint/{id}:
     get:
       summary: |
@@ -66,11 +99,11 @@ paths:
 
         Sample curl requests
         ```
-        curl --header "Authorization: Token token=09e9e1cff7e4434d8fd3bb6eb442a5fd86aa1c8f30a546c3aa719929323fdcf8" http://dashboard.gov.au/api/v1/datasets/1/datapoints/1
+        curl --header "Authorization: Token token=09e9e1cff7e4" http://dashboard.gov.au/api/v1/datasets/1/datapoints/1
         ```
 
         ```
-        curl --header "Authorization: Bearer 09e9e1cff7e4434d8fd3bb6eb442a5fd86aa1c8f30a546c3aa719929323fdcf8" http://dashboard.gov.au/api/v1/datasets/1/datapoints/1
+        curl --header "Authorization: Bearer 09e9e1cff7e4" http://dashboard.gov.au/api/v1/datasets/1/datapoints/1
         ```
       security:
        - api_key: []

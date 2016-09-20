@@ -7,7 +7,12 @@ class Api::V1::DatapointsController < ActionController::API
   before_action :authenticate
 
   def index
-    render :json => []
+    begin
+      dataset = current_user.datasets.find(params[:dataset_id])
+      render :json => dataset.datapoints.by_time.limit(999)
+    rescue ActiveRecord::RecordNotFound
+      head :not_found
+    end
   end
 
   def show
@@ -25,6 +30,8 @@ class Api::V1::DatapointsController < ActionController::API
       dataset = current_user.datasets.find(params[:dataset_id])
       datapoint = dataset.datapoints.create!(datapoint_data)
       render :json => datapoint, :status => :created
+    rescue ActiveRecord::RecordInvalid => e
+      render :json => { :code => 'RecordInvalid', :message => e.message}, :status => :bad_request
     rescue ActiveRecord::RecordNotFound
       head :not_found
     rescue ActiveSupport::JSON.parse_error
