@@ -42,7 +42,7 @@ ActiveAdmin.register Token do
     f.actions
   end
 
-  action_item :only => [:show, :edit], :if => -> { resource.active? }  do
+  action_item :expire_token, :only => [:show, :edit], :if => -> { resource.active? }  do
     link_to('Expire Token', expire_admin_token_path(resource), :method => 'put')
   end
 
