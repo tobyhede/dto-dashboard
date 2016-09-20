@@ -156,10 +156,11 @@ gulp.task('scripts_watch', () => watch_scripts(jsSource.dev));
 
 
 
+
 /**
  * Workflows
  */
 
-gulp.task('build', gulp.series('clean', gulp.parallel('scripts')));
+gulp.task('build', gulp.parallel('scripts'));
 
 gulp.task('watch', gulp.series('build', gulp.parallel('scripts_watch')));
