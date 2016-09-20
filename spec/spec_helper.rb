@@ -23,6 +23,9 @@ CodeClimate::TestReporter.start
 require 'factory_girl'
 require 'rspec/collection_matchers'
 
+SimpleCov.start do
+  add_filter 'app/admin/'
+end
 
 RSpec.configure do |config|
 

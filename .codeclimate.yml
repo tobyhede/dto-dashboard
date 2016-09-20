@@ -34,7 +34,6 @@ ratings:
   - "**.php"
   - "**.py"
 exclude_paths:
-- app/admin/
 - client/
 - config/
 - coverage/
