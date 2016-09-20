@@ -90,11 +90,11 @@ ActiveRecord::Schema.define(version: 20160919025831) do
 
   create_table "tokens", force: :cascade do |t|
     t.integer  "user_id"
-    t.text     "token",                     null: false
-    t.boolean  "session",    default: true, null: false
+    t.text     "token",                      null: false
+    t.boolean  "session",    default: false, null: false
     t.datetime "expired_at"
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
     t.index ["token"], name: "index_tokens_on_token", unique: true, using: :btree
     t.index ["user_id"], name: "index_tokens_on_user_id", using: :btree
   end
