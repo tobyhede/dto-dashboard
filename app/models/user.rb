@@ -7,7 +7,9 @@ class User < ApplicationRecord
 
   has_many :datasets, :through => :dashboards
 
-  scope :by_email, -> { order(:email => 'ASC') }
+  def self.by_email
+    order(:email => 'ASC') 
+  end
 
   def self.authenticate!(token)
     Token.authenticate!(token).user
