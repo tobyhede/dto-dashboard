@@ -11,7 +11,7 @@ import {
 
 const handleError = (error, data) => {
   return {
-    type: types.CALL_API_ERROR,
+    type: types.API_ERROR,
     payload: error,
     error: true,
     meta: {
@@ -22,13 +22,13 @@ const handleError = (error, data) => {
 
 const apiStart = () => {
   return {
-    type: types.CALL_API_START
+    type: types.API_START
   }
 };
 
 const apiEnd = () => {
   return {
-    type: types.CALL_API_DONE
+    type: types.API_DONE
   }
 };
 
@@ -42,7 +42,7 @@ const apiEnd = () => {
 const apiMiddleware = ({dispatch, getState}) => next => action => {
 
   // if not an API call, do not decorate with middleware
-  if (action.type !== types.CALL_API) {
+  if (action.type !== types.API) {
     return next(action);
   }
 

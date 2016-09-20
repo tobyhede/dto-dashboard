@@ -3,10 +3,9 @@ import initialState from './../store/initialState';
 import { combineReducers } from 'redux';
 
 
-let pageDashboard = (state = initialState.ui.pageDashboard, action) => {
-  let { payload } = action;
+let pageDashboard = (state = initialState.ui.pageDashboard, {type, payload}) => {
 
-  switch (action.type) {
+  switch (type) {
     case types.UI_PAGE_DASHBOARD_FORM_EDIT:
       return {
         ...state,
@@ -20,10 +19,9 @@ let pageDashboard = (state = initialState.ui.pageDashboard, action) => {
 };
 
 
-let pageDashboardWidget = (state = initialState.ui.pageDashboardWidget, action) => {
-  let { payload } = action;
+let pageDashboardWidget = (state = initialState.ui.pageDashboardWidget, {type, payload}) => {
 
-  switch (action.type) {
+  switch (type) {
     case types.UI_PAGE_DASHBOARDWIDGET_FORM_EDIT:
       return {
         ...state,
@@ -37,10 +35,9 @@ let pageDashboardWidget = (state = initialState.ui.pageDashboardWidget, action) 
 };
 
 
-let pageDataset = (state = initialState.ui.pageDataset, action) => {
-  let { payload } = action;
+let pageDataset = (state = initialState.ui.pageDataset, {type, payload}) => {
 
-  switch (action.type) {
+  switch (type) {
     case types.UI_PAGE_DATASET_FORM_EDIT:
       return {
         ...state,
@@ -54,10 +51,9 @@ let pageDataset = (state = initialState.ui.pageDataset, action) => {
 };
 
 
-let pageDatasetDatapoint = (state = initialState.ui.pageDatasetDatapoint, action) => {
-  let { payload } = action;
+let pageDatasetDatapoint = (state = initialState.ui.pageDatasetDatapoint, {type, payload}) => {
 
-  switch (action.type) {
+  switch (type) {
     case types.UI_PAGE_DATASETDATAPOINT_FORM_EDIT:
       return {
         ...state,
@@ -71,8 +67,8 @@ let pageDatasetDatapoint = (state = initialState.ui.pageDatasetDatapoint, action
 };
 
 
-let pageDatasetDatapointCreate = (state = initialState.ui.pageDatasetDatapointCreate, action) => {
-  switch (action.type) {
+let pageDatasetDatapointCreate = (state = initialState.ui.pageDatasetDatapointCreate, {type}) => {
+  switch (type) {
     default:
       return state;
   }

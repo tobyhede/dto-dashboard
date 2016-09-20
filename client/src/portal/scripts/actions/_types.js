@@ -1,8 +1,12 @@
-export const CALL_API = 'api';
+// REQUEST
+// SUCCESS
+// FAILURE
 
-export const CALL_API_ERROR = 'api/error';
-export const CALL_API_START = 'api/start';
-export const CALL_API_DONE = 'api/done';
+export const API = 'api';
+
+export const API_ERROR = 'api/error';
+export const API_START = 'api/start';
+export const API_DONE = 'api/done';
 
 export const SET_DASHBOARDS = 'dashboards/set';
 export const UPDATE_DASHBOARDS_FAIL = 'dashboards/update_fail';

@@ -2,13 +2,13 @@ import * as types from './../actions/_types';
 import initialState from './../store/initialState';
 
 
-const widgetsReducer = (state = initialState.widgets, action) => {
-  switch (action.type) {
+const widgetsReducer = (state = initialState.widgets, {type, payload}) => {
 
+  switch (type) {
     case types.SET_WIDGETS:
       return state.map((d) => {
-        if (d.id === action.payload.id) {
-          return {...d, ...action.payload}
+        if (d.id === payload.id) {
+          return {...d, ...payload}
         }
         return d;
       });
