@@ -1,7 +1,7 @@
 ActiveAdmin.register Token do
   decorate_with TokenDecorator
 
-  actions :all, except: [:destroy]
+  actions :all, except: [:edit, :update, :destroy]
 
   permit_params :user_id, :session
 
@@ -15,7 +15,7 @@ ActiveAdmin.register Token do
 
   index do
     selectable_column
-    column :token
+    column :display_name
     column :user
     column :active? do | token|
       status_tag token.active?
@@ -34,9 +34,11 @@ ActiveAdmin.register Token do
         f.input :expired_at
       else
         f.input :user, :as => :string, :input_html => {:value => resource.user.email, :class => '', :disabled => true}
-        f.input :expired_at, :as => :string, :input_html => {:value => resource.expired_at, :class => '', :disabled => true}
       end
 
+      if resource.expired?
+        f.input :expired_at, :as => :string, :input_html => {:value => resource.expired_at, :class => '', :disabled => true}
+      end
     end
 
     f.actions

@@ -160,8 +160,9 @@ RSpec.describe Api::V1::DatapointsController, :type => :controller do
 
       before { post :create, :params => params }
 
-      it 'creates a datapoint', :focus => true do
+      it 'creates a datapoint' do
         expect(response).to_not be_success
+        expect(response).to have_http_status(400)
         expect(response.body).to include('RecordInvalid')
         expect(response.body).to include('Validation failed')
         expect(response.body).to include('Ts can\'t be blank')
