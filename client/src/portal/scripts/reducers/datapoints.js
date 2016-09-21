@@ -2,20 +2,20 @@ import * as types from './../actions/_types';
 import initialState from './../store/initialState';
 
 
-const datapointsReducer = (state = initialState.datapoints, action) => {
-  switch (action.type) {
+const datapointsReducer = (state = initialState.datapoints, {type, payload}) => {
 
+  switch (type) {
     case types.PUSH_DATAPOINT:
       return [
         ...state,
-        action.payload
+        payload
       ];
       break;
 
     case types.SET_DATAPOINTS:
       return state.map((d) => {
-        if (d.id === action.payload.id) {
-          return {...d, ...action.payload}
+        if (d.id === payload.id) {
+          return {...d, ...payload}
         }
         return d;
       });

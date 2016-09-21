@@ -2,13 +2,13 @@ import * as types from './../actions/_types';
 import initialState from './../store/initialState';
 
 
-const datasetsReducer = (state = initialState.datasets, action) => {
-  switch (action.type) {
+const datasetsReducer = (state = initialState.datasets, {type, payload}) => {
 
+  switch (type) {
     case types.SET_DATASETS:
       return state.map((d) => {
-        if (d.id === action.payload.id) {
-          return {...d, ...action.payload}
+        if (d.id === payload.id) {
+          return {...d, ...payload}
         }
         return d;
       });

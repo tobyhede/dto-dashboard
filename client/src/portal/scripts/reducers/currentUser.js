@@ -1,8 +1,8 @@
 import initialState from './../store/initialState';
 
 
-const currentUserReducer = (state = initialState.currentUser, action) => {
-  switch (action.type) {
+const currentUserReducer = (state = initialState.currentUser, {type}) => {
+  switch (type) {
     default:
       return state;
   }

@@ -70,7 +70,7 @@ class DashboardIndex extends Component {
               <tbody>
               {widgets.map((w, idx) => (
                 <tr key={idx}>
-                  <td>{w.id}</td><td>{w.name}</td><td><Link to={`/dashboards/${dashboard.id}/widgets/${w.id}`}>Edit</Link></td>
+                  <td>{w.id}</td><td>{w.name}</td><td><Link to={`/dashboards/${dashboard.id}/widgets/${w.id}`} className="a--ui-kit">Edit</Link></td>
                 </tr>
               ))}
               </tbody>
