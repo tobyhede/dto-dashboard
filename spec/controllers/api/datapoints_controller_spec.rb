@@ -1,5 +1,5 @@
 require "rails_helper"
-require "json-schema"
+
 
 RSpec.describe Api::V1::DatapointsController, :type => :controller do
 
@@ -53,8 +53,7 @@ RSpec.describe Api::V1::DatapointsController, :type => :controller do
         end
 
         it 'returns a valid array of datapoints' do
-          valid = JSON::Validator.validate!(datapoints_schema, response.body)
-          expect(valid).to eq true
+          expect(response.body).to validate_as_schema(datapoints_schema)
         end
       end
     end
@@ -100,8 +99,7 @@ RSpec.describe Api::V1::DatapointsController, :type => :controller do
       end
 
       it 'returns a valid datapoint' do
-        valid = JSON::Validator.validate!(datapoint_schema, response.body)
-        expect(valid).to eq true
+        expect(response.body).to validate_as_schema(datapoint_schema)
       end
     end
 
