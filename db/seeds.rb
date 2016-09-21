@@ -8,5 +8,9 @@
 
 User.delete_all
 user = User.new(:email => 'dev@localhost', :password => 'password', :password_confirmation => 'password')
+user.dashboards << Dashboard.first
 user.skip_confirmation!
 user.save!
+
+Token.delete_all
+Token.create!(:user => user)
