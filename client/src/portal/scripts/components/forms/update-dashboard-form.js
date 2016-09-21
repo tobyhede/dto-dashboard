@@ -24,13 +24,13 @@ let UpdateDashboardForm = props => {
   return (
     <form onSubmit={(e) => e.preventDefault()}>
       <Field name="name" type="text" component={Input} label="Name" inputProps={{disabled:!isEditing}} />
-      <Field name="notes" component={Textarea} rows="5" label="Notes" inputProps={{disabled:!isEditing}} />
+      <Field name="notes" component={Textarea} label="Notes" inputProps={{disabled:!isEditing, rows:5}} />
       <Field name="url" type="url" component={Input} label="Url" inputProps={{disabled:!isEditing}} />
       <Field name="display_hero" component={Checkbox} label="Display hero" inputProps={{disabled:!isEditing}} />
       <Field name="display_kpis" component={Checkbox} label="Display kpi" inputProps={{disabled:!isEditing}} />
       <div>
-        <button type="submit" className='btn--primary' disabled={pristine || submitting || !valid} onClick={handleSubmit(submit.bind(this))}>Save</button>
-        <button type="cancel" className='btn--link--primary' disabled={!isEditing || submitting} onClick={cancel.bind({}, props)}>Cancel</button>
+        <button type="submit" className='btn primary' disabled={pristine || submitting || !valid} onClick={handleSubmit(submit.bind(this))}>Save</button>
+        <button type="cancel" className='btn link primary' disabled={!isEditing || submitting} onClick={cancel.bind({}, props)}>Cancel</button>
       </div>
       {error && <strong style={{color:'red'}}>{error}</strong>}
     </form>
