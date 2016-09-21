@@ -79,7 +79,7 @@ RSpec.describe Api::V1::DatapointsController, :type => :controller do
       end
     end
 
-    context 'with valid token and dataset' do
+    context 'with valid token, dataset and datapoint' do
       include_context 'api_authorisation'
 
       let(:dataset)     { dashboard.datasets.first }
@@ -104,6 +104,21 @@ RSpec.describe Api::V1::DatapointsController, :type => :controller do
       before { get :index, :params => { :dataset_id => dataset.id } }
 
       it 'should not be found' do
+        expect(response).to have_http_status(404)
+      end
+    end
+
+    context 'with valid token, dataset and invalid datapoint' do
+      include_context 'api_authorisation'
+
+      let(:dataset)     { dashboard.datasets.first }
+      let(:datapoint)   { FactoryGirl.create(:datapoint) }
+
+      before do
+        get :show, :params => { :dataset_id => dataset.id, :id => datapoint.id }
+      end
+
+      it 'returns the datapoint' do
         expect(response).to have_http_status(404)
       end
     end
