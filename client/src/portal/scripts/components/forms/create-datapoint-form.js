@@ -56,7 +56,7 @@ let CreateDatapointForm = props => {
   return (
     <form onSubmit={handleSubmit(submit.bind(this))}>
       <Field name="label" type="text" component={Input} label="Label" inputProps={{readOnly:true}} />
-      <Field name="value" type="text" component={Input} label="Value" inputProps={{min:0,max:100}} />
+      <Field name="value" type="text" component={Input} label="Value" inputProps={{min:0,max:100,autoFocus:true}} />
       <div>
         <button type="submit" className='btn primary' disabled={pristine || submitting || !valid}>Create</button>
       </div>
