@@ -51,6 +51,7 @@ group :test do
   gem 'factory_girl_rails', '~> 4.0'
   gem 'faker'
   gem 'guard-rspec', require: false
+  gem 'json-schema'
   gem 'poltergeist'
   gem 'rspec-rails'
   gem 'rspec-collection_matchers'

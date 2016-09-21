@@ -309,11 +309,17 @@ definitions:
     type: object
     required:
       - name
+      - description
+      - users
     properties:
       id:
         type: number
         format: int64
       name:
+        type: string
+      description:
+        type: string
+      users:
         type: string
       notes:
         type: string
@@ -337,17 +343,19 @@ definitions:
     type: object
     required:
       - name
+      - description
+      - users
     properties:
       name:
+        type: string
+      description:
+        type: string
+      users:
         type: string
       notes:
         type: string
       url:
         type: string
-      display_hero:
-        type: boolean
-      display_kpis:
-        type: boolean
       published_at:
         type: string
         format: date-time
@@ -406,6 +414,7 @@ definitions:
     type: object
     required:
       - name
+      - description
       - units
       - last_updated_at
     properties:
@@ -413,8 +422,6 @@ definitions:
         type: string
       description:
         type: string
-      options:
-        type: object
       units:
         type: string
       last_updated_at:
@@ -450,9 +457,12 @@ definitions:
     type: object
     required:
       - name
+      - label
       - units
     properties:
       name:
+        type: string
+      label:
         type: string
       units:
         type: string
@@ -464,7 +474,10 @@ definitions:
       Datapoint Entity as recorded in the database
     type: object
     required:
+      - id
       - ts
+      - created_at
+      - updated_at
     properties:
       id:
         type: number
@@ -473,7 +486,10 @@ definitions:
         type: string
         format: date-time
       value:
-        type: string
+        type: number
+        format: double
+        description: |
+          Values are numeric, and encoded as strings to avoid precision errors.
       created_at:
         type: string
         format: date-time
@@ -484,12 +500,16 @@ definitions:
     type: object
     required:
       - ts
+      - value
     properties:
       ts:
         type: string
         format: date-time
       value:
         type: string
+        format: double
+        description: |
+          Values are numeric, and encoded as strings to avoid precision errors.
   Error:
     type: object
     required:

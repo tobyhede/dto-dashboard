@@ -1,4 +1,5 @@
 require "rails_helper"
+require "json-schema"
 
 RSpec.describe Api::V1::DatapointsController, :type => :controller do
 
@@ -40,17 +41,20 @@ RSpec.describe Api::V1::DatapointsController, :type => :controller do
       end
 
       context 'with valid token and dataset' do
+        include_context 'api_schema'
 
         let(:dataset) { dashboard.datasets.first }
 
         before { get :index, :params => { :dataset_id => dataset.id } }
 
-        it 'returns datapoints' do
+        it 'is ok' do
           expect(response).to be_success
           expect(response).to have_http_status(200)
-          dataset.datapoints.each do |datapoint|
-            expect(response.body).to include datapoint_json(datapoint)
-          end
+        end
+
+        it 'returns a valid array of datapoints' do
+          valid = JSON::Validator.validate!(datapoints_schema, response.body)
+          expect(valid).to eq true
         end
       end
     end
@@ -81,6 +85,7 @@ RSpec.describe Api::V1::DatapointsController, :type => :controller do
 
     context 'with valid token, dataset and datapoint' do
       include_context 'api_authorisation'
+      include_context 'api_schema'
 
       let(:dataset)     { dashboard.datasets.first }
       let(:datapoint)   { dataset.datapoints.first }
@@ -89,10 +94,14 @@ RSpec.describe Api::V1::DatapointsController, :type => :controller do
         get :show, :params => { :dataset_id => dataset.id, :id => datapoint.id }
       end
 
-      it 'returns the datapoint' do
+      it 'is ok' do
         expect(response).to be_success
         expect(response).to have_http_status(200)
-        expect(response.body).to include datapoint_json(datapoint)
+      end
+
+      it 'returns a valid datapoint' do
+        valid = JSON::Validator.validate!(datapoint_schema, response.body)
+        expect(valid).to eq true
       end
     end
 
