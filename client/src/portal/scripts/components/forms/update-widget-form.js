@@ -8,7 +8,7 @@ import { isURL } from 'validator';
 import { ISO_LONG_DATE } from './../../../../_ui-kit/lib/constants/date-time';
 import {
   Input,
-  Date,
+  DayMonthYearDate,
   Textarea,
   Select
 } from './../../../../_react-ui-kit/components/redux-form-fields';
@@ -23,7 +23,7 @@ let UpdateWidgetForm = props => {
 
       <Field component={Input} name="name" type="text" label="Name"
              fieldProps={{disabled:!isEditing}}
-             optionProps={} />
+             optionProps={{}} />
 
       <Field component={Select} name="type" label="Type"
              fieldProps={{disabled:!isEditing}}
@@ -37,10 +37,9 @@ let UpdateWidgetForm = props => {
              fieldProps={{disabled:!isEditing}}
              optionProps={{isOptional:true}} />
 
-      // todo - defaults to today -  should be DD MM YYYY inputs
-      <Field component={Date} name='published_at' label='Published at'
-             fieldProps={}
-             optionProps={{format:ISO_LONG_DATE}} />
+      <Field component={DayMonthYearDate} name='published_at' label='Published at'
+             fieldProps={{disabled:isEditing}}
+             optionProps={{}} />
 
       <div>
         <button type="submit"
