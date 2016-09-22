@@ -28,19 +28,24 @@ let UpdateDashboardForm = props => {
     <form onSubmit={(e) => e.preventDefault()}>
       <Field component={Input} name='name' type='text' label='Name'
              fieldProps={{disabled:!isEditing}}
-             optionProps={{}} />
+             optionProps={} />
+
       <Field component={Textarea} name='description' label='Description'
              fieldProps={{disabled:!isEditing, rows:5}}
-             optionProps={{}} />
+             optionProps={} />
+
       <Field component={Textarea} name='users' label='Users'
              fieldProps={{disabled:!isEditing, rows:5}}
-             optionProps={{}} />
+             optionProps={} />
+
       <Field component={Input} type='url' name='url' label='Url'
              fieldProps={{disabled:!isEditing}}
              optionProps={{isOptional:true}} />
+
       <Field component={Textarea} name='notes' label='Notes'
              fieldProps={{disabled:!isEditing, rows:5}}
              optionProps={{isOptional:true}} />
+
       <Field component={Date} name='published_at' label='Published at'
              fieldProps={{readOnly:true}}
              optionProps={{format:ISO_LONG_DATE}} />
