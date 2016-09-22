@@ -38,7 +38,7 @@ let UpdateWidgetForm = props => {
              optionProps={{isOptional:true}} />
 
       <Field component={DayMonthYearDate} name='published_at' label='Published at'
-             fieldProps={{disabled:isEditing}}
+             fieldProps={{disabled:!isEditing}}
              optionProps={{}} />
 
       <div>
