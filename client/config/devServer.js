@@ -67,7 +67,7 @@ devServer.listen(CONFIG.PORT, CONFIG.HOST, function (err) {
 	  console.log(err);
   }
   clearConsole();
-  console.log(`Listening at ${devServerPublicPath}...`);
+  console.log(`Listening at ${devServerPublicPath}... . Develop at http://localhost:3000.`);
   console.log();
   // openBrowser();
 });
