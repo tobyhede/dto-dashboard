@@ -8,7 +8,7 @@ import { updateDashboard } from './../../actions/dashboard';
 import { ISO_LONG_DATE } from './../../../../_ui-kit/lib/constants/date-time';
 import {
   Input,
-  Date,
+  InputDate,
   Textarea
 } from './../../../../_react-ui-kit/components/redux-form-fields';
 
@@ -46,9 +46,10 @@ let UpdateDashboardForm = props => {
              fieldProps={{disabled:!isEditing, rows:5}}
              optionProps={{isOptional:true}} />
 
-      <Field component={Date} name='published_at' label='Published at'
+      <Field component={InputDate} name='published_at' label='Published at'
              fieldProps={{readOnly:true}}
              optionProps={{format:ISO_LONG_DATE}} />
+
       <div>
         <button type="submit"
                 className='btn primary'

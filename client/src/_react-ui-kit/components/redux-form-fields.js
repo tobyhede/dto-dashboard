@@ -292,6 +292,7 @@ export const Select = (props) => {
                 onBlur={() => {input.onBlur(input.value)}}
                 id={name}
                 className={touched && error ? `invalid` : ``}>
+          <option value="">Select...</option>
           {options.map((o, idx) => (
             <option key={idx} value={o.value}>{o.label}</option>
           ))}
