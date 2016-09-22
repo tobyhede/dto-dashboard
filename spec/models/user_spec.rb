@@ -5,6 +5,46 @@ RSpec.describe User, type: :model do
   it { is_expected.to have_many :tokens }
   it { is_expected.to have_and_belong_to_many :dashboards }
 
+  describe '#generate_session_token!' do
+    subject(:user) { FactoryGirl.create(:user) }
+
+    context do
+      let!(:token) { user.generate_session_token! }
+      it { is_expected.to have(1).tokens }
+      its(:session_token) {is_expected.to eq token }
+
+      it { expect(token).to be_session }
+    end
+
+    context 'with existing session token' do
+      let!(:expired_token) { user.generate_session_token! }
+      let!(:token) {  user.generate_session_token! }
+
+      it { is_expected.to have(2).tokens }
+      it { expect(expired_token.reload).to be_expired }
+      it { expect(token.reload).to be_active }
+
+      its(:session_token) {is_expected.to eq token }
+    end
+
+    context 'with an api token' do
+      let!(:api_token) { Token.create! }
+      let!(:expired_token) { user.generate_session_token! }
+      let!(:token) {  user.generate_session_token! }
+
+      subject(:user) { FactoryGirl.create(:user, :tokens => [api_token]) }
+
+      it { is_expected.to have(3).tokens }
+
+      it { expect(expired_token.reload).to be_expired }
+      it { expect(token.reload).to be_active }
+      it { expect(api_token.reload).to be_active }
+
+      its(:session_token) {is_expected.to eq token }
+    end
+  end
+
+
   describe 'tokens' do
     let(:active)   { Token.create! }
     let(:expired)  { FactoryGirl.create(:token_expired) }

@@ -26,10 +26,6 @@ class Token < ApplicationRecord
     where('expired_at <= ?', Time.zone.now)
   end
 
-  def to_s
-    token
-  end
-
   def expire!
     update!(:expired_at => Time.zone.now)
   end
@@ -42,6 +38,13 @@ class Token < ApplicationRecord
     !expired?
   end
 
+  def to_s
+    token
+  end
+
+  def session?
+    session == true
+  end
 
   private
 

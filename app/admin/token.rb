@@ -6,17 +6,20 @@ ActiveAdmin.register Token do
   permit_params :user_id, :session
 
   filter :user
+  filter :session
+  filter :api
 
   controller do
-    def scoped_collection
-      super.api.includes(:user)
-    end
+    # def scoped_collection
+    #   super.api.includes(:user)
+    # end
   end
 
   index do
     selectable_column
     column :display_name
     column :user
+    column :session
     column :active? do | token|
       status_tag token.active?
     end

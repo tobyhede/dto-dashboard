@@ -17,12 +17,14 @@
 //      {id: 2}
 //    ],
 //  };
+
   window.__INITIAL_STATE__ = {
     currentUser: {
       id: 1,
       firstName: '',
       lastName: '',
-      canEditDashboard: [1, 2]
+      canEditDashboard: [1, 2],
+      token: '<%= session_token %>'
     },
     app: {},
     dashboards: [
