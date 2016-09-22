@@ -24,7 +24,29 @@
       lastName: '',
       canEditDashboard: [1, 2]
     },
-    app: {},
+    app: {
+      SELECT_WIDGET_TYPE: [
+        { value: 'full', label: 'Full' },
+        { value: 'kpi-sparkline', label: 'Kpi Sparkline' },
+        { value: 'bar', label: 'Bar' },
+        { value: 'fact', label: 'Fact' },
+        { value: 'pie', label: 'Pie' }
+      ],
+      SELECT_WIDGET_SIZE: [
+        { value: 'extra-small', label: 'Extra Small' },
+        { value: 'small', label: 'Small' },
+        { value: 'medium', label: 'Medium' },
+        { value: 'large', label: 'Large' },
+        { value: 'extra-large', label: 'Extra Large' }
+      ],
+      SELECT_WIDGET_UNITS: [
+        { value: '%', label: 'Percentage' },
+        { value: '$', label: 'Currency' },
+        { value: 'n', label: 'Number' },
+        { value: 'f', label: 'Float' },
+        { value: 's', label: 'Seconds' }
+      ]
+    },
     dashboards: [
       {
         id: 1,
