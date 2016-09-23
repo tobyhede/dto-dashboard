@@ -36,6 +36,12 @@ class DatasetDatapointPage extends Component {
     this.props.push(`/datasets/${this.props.dataset.id}`);
   }
 
+  componentWillUnmount() {
+    if (this.props.ui.isEditing) {
+      this.exitForm();
+    }
+  }
+
   render() {
     let { datapoint, ui } = this.props;
     return (
@@ -53,7 +59,7 @@ class DatasetDatapointPage extends Component {
         </div>
 
         <div className="row">
-          <div className="col-xs-8">
+          <div className="col-xs-12 col-lg-8">
             <UpdateDatapointForm
               formModel={datapoint}
               isEditing={ui.isEditing}

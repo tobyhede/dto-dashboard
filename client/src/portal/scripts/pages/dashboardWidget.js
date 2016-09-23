@@ -9,13 +9,16 @@ import { getDatasetsByIds } from './../reducers/datasets';
 import UpdateWidgetForm from './../components/forms/update-widget-form';
 
 
-const mapStateToProps = ({datasets, ui}, ownProps) => {
+const mapStateToProps = ({datasets, ui, app}, ownProps) => {
   let widget = getWidgetById(ownProps.widgets, ownProps.params.widget_id);
   return {
     ui: ui.pageDashboardWidget,
     dashboard: ownProps.dashboard,
     widget,
-    datasets: getDatasetsByIds(datasets, widget.datasets)
+    datasets: getDatasetsByIds(datasets, widget.datasets),
+    SELECT_WIDGET_TYPE: app.SELECT_WIDGET_TYPE,
+    SELECT_WIDGET_SIZE: app.SELECT_WIDGET_SIZE,
+    SELECT_WIDGET_UNITS: app.SELECT_WIDGET_UNITS
   }
 };
 const mapDispatchToProps = dispatch => ({
@@ -37,8 +40,18 @@ class Widget extends Component {
     this.exitForm();
   }
 
+  componentWillUnmount() {
+    if (this.props.ui.isEditing) {
+      this.exitForm();
+    }
+  }
+
   render() {
-    let { widget, dashboard, datasets, ui } = this.props;
+    let { widget, dashboard, datasets, ui,
+      SELECT_WIDGET_TYPE,
+      SELECT_WIDGET_SIZE,
+      SELECT_WIDGET_UNITS
+    } = this.props;
     return (
       <div>
 
@@ -54,12 +67,16 @@ class Widget extends Component {
         </div>
 
         <div className="row">
-          <div className="col-xs-8">
+          <div className="col-xs-12 col-lg-8">
             <UpdateWidgetForm
               formModel={widget}
               isEditing={ui.isEditing}
               onSubmitSuccess={this.onSubmitSuccess.bind(this)}
-              onCancelSuccess={this.exitForm.bind(this)} />
+              onCancelSuccess={this.exitForm.bind(this)}
+              SELECT_WIDGET_TYPE={SELECT_WIDGET_TYPE}
+              SELECT_WIDGET_SIZE={SELECT_WIDGET_SIZE}
+              SELECT_WIDGET_UNITS={SELECT_WIDGET_UNITS}
+            />
           </div>
         </div>
 

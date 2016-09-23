@@ -8,12 +8,13 @@ import { getDatapointsById } from './../reducers/datapoints';
 import UpdateDatasetForm from './../components/forms/update-dataset-form';
 
 
-const mapStateToProps = ({datapoints, ui}, ownProps) => {
+const mapStateToProps = ({datapoints, ui, app}, ownProps) => {
   let dataset = ownProps.dataset;
   return {
     dataset,
     datapoints: getDatapointsById(datapoints, dataset.datapoints),
-    ui: ui.pageDataset
+    ui: ui.pageDataset,
+    SELECT_DATASET_LABEL: app.SELECT_DATASET_LABEL
   }
 };
 const mapDispatchToProps = dispatch => ({
@@ -35,8 +36,17 @@ class DatasetIndex extends Component {
     this.exitForm();
   }
 
+  componentWillUnmount() {
+    if (this.props.ui.isEditing) {
+      this.exitForm();
+    }
+  }
+
   render() {
-    let { dataset, datapoints, ui } = this.props;
+    let {
+      dataset, datapoints, ui,
+      SELECT_DATASET_LABEL
+    } = this.props;
     return (
       <div>
 
@@ -52,12 +62,13 @@ class DatasetIndex extends Component {
         </div>
 
         <div className="row">
-          <div className="col-xs-8">
+          <div className="col-xs-12 col-lg-8">
             <UpdateDatasetForm
               formModel={dataset}
               isEditing={ui.isEditing}
               onSubmitSuccess={this.onSubmitSuccess.bind(this)}
-              onCancelSuccess={this.exitForm.bind(this)} />
+              onCancelSuccess={this.exitForm.bind(this)}
+              SELECT_DATASET_LABEL={SELECT_DATASET_LABEL} />
           </div>
         </div>
 
