@@ -1,15 +1,150 @@
 .dashboards-intro {
+  @include span-columns(8)
   clear: both;
-  border-bottom: 3px solid $black;
   margin-bottom: 40px;
   margin-top: $spacing-unit;
 
-  @include media(768px) {
-    @include span-columns(12);
+  @media(max-width: $screen-md) {
+    margin-bottom: 15px;
   }
 
-  @include media(1200px) {
-    @include span-columns(6);
+  @media(max-width: 768px) {
+   @include span-columns(12)
+   margin: 0;
+ }
+}
+
+.metrics {
+  .aus-width-one-third {
+    @media(max-width: $screen-md) {
+      @include span-columns(12);
+    }
+  }
+}
+
+.dashboards-intro-sec {
+  @include span-columns(4)
+  margin-top: 30px;
+  color: $gov-au-brand-colour;
+  display: flex;
+  justify-content: flex-end;
+
+  @media (max-width: $screen-md) {
+    padding-left: 10px;
+  }
+
+  @media(max-width: 768px) {
+    @include span-columns(12);
+    padding-left:0;
+    margin-bottom: 30px;
+
+    &.hide-on-mobile {
+      display: none;
+    }
+  }
+
+  .number-of-dashboards {
+    font-size: 80px;
+    line-height: 68px;
+    font-weight: bold;
+    justify-content: flex-end;
+    padding-right:10px;
+
+    @media(max-width: 768px) {
+      float: left;
+    }
+  }
+
+  span:not(.number-of-dashboards) {
+    font-size: 30px;
+    line-height: 36px;
+    float: right;
+    justify-content: flex-end;
+    text-align: left;
+
+    @media(max-width: 768px) {
+      float: none;
+    }
+  }
+}
+
+.metric-link {
+  clear:both;
+  margin-bottom:17px;
+  text-align: center;
+
+  a {
+    color: $brand-primary-colour;
+    margin: 10px 0 8px 0;
+    font-weight: 700;
+    border-bottom: 0;
+    text-decoration: underline;
+  }
+}
+
+.metric-definitions {
+  margin-right: 0 !important;
+  @include span-columns(8);
+  border-bottom: 1px solid $axis-stroke-colour;
+  margin-bottom: 37px;
+
+  @media(max-width: 768px) {
+    @include span-columns(12 of 12);
+    margin-top: 30px;
+    margin-bottom: 0;
+  }
+
+  @media(max-width: $screen-md) {
+    @include span-columns(12 of 12);
+    margin-top: 15px;
+    margin-bottom: 0;
+  }
+
+  &:last-child {
+    margin-right: 0;
+  }
+}
+
+.updated-at {
+  @media(max-width: 768px) {
+    p {
+      font-size: 13px;
+    }
+  }
+}
+
+.dashboards-heading {
+  margin-top: 0;
+  font-size: 2.25rem;
+  font-weight: 400;
+}
+
+.metric-definitions__metric {
+  @include span-columns(2 of 8);
+  p {
+    padding-top:9px;
+  }
+
+  @media(max-width: 768px) {
+    @include span-columns(12 of 12);
+    margin-bottom: 15px;
+
+    .widget__title {
+      h4 {
+        height:25px;
+      }
+    }
+    p {
+      padding-top:4px;
+      font-size: 13px;
+    }
+  }
+
+  h4 {
+    margin-top: 0;
+    margin-bottom:0;
+    height:35px;
+    font-weight:600;
   }
 }
 
@@ -33,18 +168,6 @@
   background-color: $light-grey;
   padding: 0;
   margin: 0;
-}
-
-.back-link {
-  color: $back-link-colour;
-  text-decoration: underline;
-  margin-bottom: $gutter;
-  max-width: 160px;
-
-  &:hover {
-    opacity: 0.8;
-    color: $secondary-text-colour;
-  }
 }
 
 .dashboard__kpis {
@@ -78,6 +201,7 @@
 
     .widget__title {
       text-align: center;
+      height: 35px;
 
       h4 {
         display: inline;
@@ -156,5 +280,23 @@
 
   .badge__holder {
     align-self: flex-end;
+  }
+}
+
+@media (max-width: 768px){
+  .dashboard__kpis{
+    .widget {
+
+      .widget__title {
+        @include span-columns(8);
+        @include omega(2n);
+
+      }
+      .widget__inner {
+        @include span-columns(4);
+        @include omega(2n);
+        margin-top: 4px;
+      }
+    }
   }
 }

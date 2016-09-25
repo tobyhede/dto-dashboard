@@ -1,6 +1,6 @@
 <div data-id="<%= widget.id %>" class="<%= widget.size_to_style %>">
   <div class="widget <%= widget.name_slug %> has-data-<%= widget.has_data? %> <%= widget.style %>">
-    <div id="<%= widget.name_slug %>" class="widget__title">
+    <div id="<%= widget.name_slug %>" class="widget__title <%= widget.name_slug %>">
       <h4><%= widget.name %></h4>
     </div>
     <div class="widget__inner <%= widget.name_slug %>" data-data="<%= widget.to_chart %>" aria-hidden="true">

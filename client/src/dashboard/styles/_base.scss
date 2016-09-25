@@ -61,7 +61,7 @@ h3 {
 h4 {
   font-size: 1 * $fallback;
   font-size: 1rem;
-  font-weight: 600;
+  font-weight: 400;
 }
 
 .patterns {
@@ -76,5 +76,34 @@ h4 {
 .fa-arrow-unchanged {
   &::before {
     content: '\f068';
+  }
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+.hide-on-desktop {
+  @media (min-width: 769px) {
+    display: none;
+  }
+}
+
+.hide-on-mobile {
+  @media (max-width: 768px) {
+    display: none;
+  }
+}
+
+.hide-on-desktop-tablet {
+  @media (min-width: 769px) {
+    display: none !important;
   }
 }

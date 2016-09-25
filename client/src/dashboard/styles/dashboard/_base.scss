@@ -32,7 +32,7 @@
 }
 
 .aus-width-one-third {
-  @include span-columns(12);
+  @include span-columns(4);
 
   @include media($screen-sm) {
     @include span-columns(6);
@@ -90,10 +90,6 @@
 
 .aus-width-three-fourths {
   @include span-columns(9);
-}
-
-.aus-width-one-sixth {
-  @include span-columns(2);
 }
 
 .aus-width-five-sixths {

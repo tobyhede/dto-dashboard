@@ -34,7 +34,7 @@ class DashboardDecorator < Draper::Decorator
   end
 
   def last_updated_at
-    object.last_updated_at.to_formatted_s(:month_year)
+    object.last_updated_at.to_formatted_s(:day_month_year)
   end
 
   def markdown

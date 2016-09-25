@@ -371,15 +371,13 @@
 }
 
 @each $metric, $color in $metrics {
-  .widget {
-    &.#{$metric} {
-      .widget__title {
-        border-bottom: 5px solid $color;
-      }
+  &.#{$metric} {
+    .widget__title {
+      border-bottom: 2px solid $color;
+    }
 
-      .fa-circle {
-        color: $color;
-      }
+    .fa-circle {
+      color: $color;
     }
   }
 
