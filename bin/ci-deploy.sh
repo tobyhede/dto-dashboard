@@ -6,4 +6,4 @@ set -e
 # Output the commands we run
 set -x
 
-cf push dashboard-dev
+cf push dashboard-dev -f staging-manifest.yml
