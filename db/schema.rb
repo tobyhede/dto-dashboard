@@ -32,6 +32,8 @@ ActiveRecord::Schema.define(version: 20160919025831) do
   create_table "dashboards", force: :cascade do |t|
     t.integer  "organisation_id",                null: false
     t.text     "name",                           null: false
+    t.text     "description",                    null: false
+    t.text     "target_users",                   null: false
     t.text     "notes"
     t.text     "url"
     t.boolean  "display_hero",    default: true, null: false

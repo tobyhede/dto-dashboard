@@ -6,7 +6,7 @@ Rails.application.routes.draw do
       :path => '',
       path_names: { sign_in: 'login', sign_out: 'logout' }
 
-    ActiveAdmin.routes(self)  
+    ActiveAdmin.routes(self)
   end
 
   get root :to => 'dashboards#index'
@@ -19,6 +19,7 @@ Rails.application.routes.draw do
 
   namespace :api, defaults: {format: 'json'} do
     namespace :v1 do
+      resources :dashboards
       resources :datasets do
         resources :datapoints
       end

@@ -3,6 +3,9 @@ FactoryGirl.define do
     organisation
     sequence(:name) { |n| "dashboard-#{n}" }
 
+    description   { Faker::Lorem.sentence }
+    target_users  { Faker::Lorem.sentence }
+
     trait :published do
       published_at { 7.days.ago }
     end

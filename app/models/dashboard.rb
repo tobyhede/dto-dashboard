@@ -9,6 +9,8 @@ class Dashboard < ApplicationRecord
 
   has_and_belongs_to_many :users
 
+  validates :name, :description, :target_users, :presence => true
+
   def self.published
     where('published_at <= NOW()')
   end

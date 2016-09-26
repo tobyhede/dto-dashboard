@@ -51,6 +51,8 @@ namespace :import do
       dashboard = Dashboard.create!(
         :id => id,
         :name => definition['name'],
+        :description => '',
+        :target_users => '',
         :notes => definition['notes'],
         :url => definition['url'],
         :display_hero => display_hero,

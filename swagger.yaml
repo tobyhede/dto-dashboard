@@ -310,7 +310,7 @@ definitions:
     required:
       - name
       - description
-      - users
+      - target_users
     properties:
       id:
         type: number
@@ -319,7 +319,7 @@ definitions:
         type: string
       description:
         type: string
-      users:
+      target_users:
         type: string
       notes:
         type: string
@@ -344,13 +344,13 @@ definitions:
     required:
       - name
       - description
-      - users
+      - target_users
     properties:
       name:
         type: string
       description:
         type: string
-      users:
+      target_users:
         type: string
       notes:
         type: string
