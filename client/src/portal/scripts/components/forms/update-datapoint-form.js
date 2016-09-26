@@ -5,9 +5,7 @@ import { Field, reduxForm, SubmissionError } from 'redux-form';
 import * as types from './../../actions/_types';
 import { updateDatapoint } from './../../actions/datapoint';
 import { isNumeric } from 'validator';
-import {
-  Input
-} from './../../../../_react-ui-kit/components/redux-form-fields';
+import Input from './../fields/input';
 
 
 /**
