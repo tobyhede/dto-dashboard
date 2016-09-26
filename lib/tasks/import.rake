@@ -48,11 +48,11 @@ namespace :import do
         dashboard.delete
       end
 
-      dashboard = Dashboard.create!(
+      dashboard = Dashboard.new(
         :id => id,
         :name => definition['name'],
-        :description => '',
-        :target_users => '',
+        :description => definition['description'] || '',
+        :target_users => definition['target_users'] || '',
         :notes => definition['notes'],
         :url => definition['url'],
         :display_hero => display_hero,
@@ -60,7 +60,7 @@ namespace :import do
         :organisation => organisation
       )
       dashboard.published_at = Time.now
-      dashboard.save!
+      dashboard.save!(:validate => false)
 
       datasets = {}
 
