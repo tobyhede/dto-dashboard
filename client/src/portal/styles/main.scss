@@ -13,12 +13,21 @@
 @import '../../_ui-kit/overrides/forms';
 
 @import './../../_common/styles/_vendor/bootstrap/bootstrap-grid';
+@import '~bootstrap/scss/mixins/border-radius';
+@import './../../_common/styles/_vendor/bootstrap/breadcrumb';
+
 
 /**
  *
  * Portal
  *
  */
+
+@import "variables";
+
+// vendor
+@import 'vendor/animate';
+@import 'vendor/ceaser-easings';
 
 // components
 @import '../../_common/styles/components/flex-grid';
@@ -30,6 +39,7 @@
 
 
 // layout
+@import 'layouts/app-layout';
 @import 'layouts/main';
 
 // themes
