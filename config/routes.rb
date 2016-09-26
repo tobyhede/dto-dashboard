@@ -7,6 +7,17 @@ Rails.application.routes.draw do
       path_names: { sign_in: 'login', sign_out: 'logout' }
 
     ActiveAdmin.routes(self)
+
+    namespace :api, defaults: {format: 'json'} do
+      namespace :v1 do
+        resources :dashboards
+        resources :datasets do
+          resources :datapoints
+        end
+      end
+    end
+
+    get '/portal', :to => 'portal#index'
   end
 
   get root :to => 'dashboards#index'
@@ -17,21 +28,10 @@ Rails.application.routes.draw do
     end
   end
 
-  namespace :api, defaults: {format: 'json'} do
-    namespace :v1 do
-      resources :dashboards
-      resources :datasets do
-        resources :datapoints
-      end
-    end
-  end
-
   get 'feedback', :to => 'feedback#index'
 
   get '/index.html', :to => redirect('/')
 
   get '/copyright', :to => 'about#index'
-
-  get '/portal', :to => 'portal#index' unless Rails.env.production?
 
 end
