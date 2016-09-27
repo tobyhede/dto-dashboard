@@ -8,6 +8,7 @@ import { ISO_LONG_DATE } from './../../../../_ui-kit/lib/constants/date-time';
 import Input from './../fields/input';
 import InputDate from './../fields/inputDate';
 import Textarea from './../fields/textarea';
+import SubmitButton from './../submitButton';
 
 
 /**
@@ -19,7 +20,7 @@ let UpdateDashboardForm = props => {
 
   const {
     error, handleSubmit, pristine, submitting, valid,
-    isEditing
+    isEditing, isSubmitting
   } = props;
 
   return (
@@ -50,10 +51,13 @@ let UpdateDashboardForm = props => {
              optionProps={{format:ISO_LONG_DATE}} />
 
       <div>
-        <button type="submit"
-                className='btn primary'
-                disabled={pristine || submitting || !valid}
-                onClick={handleSubmit(submit.bind(this))}>Save</button>
+        <SubmitButton type="submit"
+                      btnText="Save"
+                      submittingBtnText="Saving.."
+                      isSubmitting={isSubmitting}
+                      className='btn primary'
+                      disabled={pristine || submitting || !valid}
+                      onClick={handleSubmit(submit.bind(this))} />
         <button type="cancel"
                 className='btn primary-link'
                 disabled={!isEditing || submitting}

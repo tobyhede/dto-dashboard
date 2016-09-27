@@ -5,10 +5,10 @@ import { push } from 'react-router-redux';
 
 import { createDatapoint } from './../../actions/datapoint';
 import { updateDataset } from './../../actions/dataset';
-import * as types from './../../actions/_types';
 import { isNumeric } from 'validator';
 import Input from './../fields/input';
 import MonthYearDate from './../fields/monthYearDate';
+import SubmitButton from './../submitButton';
 
 
 /**
@@ -20,7 +20,7 @@ let CreateDatapointForm = props => {
 
   const {
     error, handleSubmit, pristine, submitting, valid,
-    exclusionDates
+    exclusionDates, isSubmitting
   } = props;
 
   return (
@@ -34,10 +34,13 @@ let CreateDatapointForm = props => {
              optionProps={{}} />
 
       <div>
-        <button type="submit"
+        <SubmitButton type="submit"
+                btnText="Create"
+                submittingBtnText="Creating.."
+                isSubmitting={isSubmitting}
                 className='btn primary'
                 disabled={pristine || submitting || !valid}
-                onClick={handleSubmit(submit.bind(this))}>Create</button>
+                onClick={handleSubmit(submit.bind(this))} />
 
         <button type="cancel"
                 className='btn primary-link'
@@ -64,7 +67,7 @@ const submit = (values, dispatch, props) => { // todo
       (data) => {
         if (data) { // todo - extract this
           let newDatasetState = {...props.dataset};
-          newDatasetState.datapoints.push(data.payload.id);
+          newDatasetState.datapoints.push(data.id);
           dispatch(updateDataset(newDatasetState)); // todo - handle this fail
           return resolve();
         }
