@@ -13,6 +13,12 @@ RSpec.describe Api::V1::DashboardsController, :type => :controller do
     context 'when authorised' do
       include_context 'api_authorisation'
 
+      context 'with unowned dashboard' do
+        let(:other) { FactoryGirl.create(:dashboard_with_widgets) }
+        before { put :update, :params => { :id => other.id } }
+        it { expect(response).to have_http_status(404) }
+      end
+
       context 'with valid dashboard' do
 
         let(:schema)  { dashboards_schema }
@@ -32,6 +38,19 @@ RSpec.describe Api::V1::DashboardsController, :type => :controller do
     context 'when unauthorised' do
       before { get :index, :params => { :id => 42 } }
       include_examples 'api_unauthorized_examples'
+    end
+
+    context 'when authorised' do
+      include_context 'api_authorisation'
+
+      context 'with valid dashboard' do
+
+        let(:schema)  { dashboards_schema }
+
+        before { get :index, :params => { :id => dashboard.id } }
+
+        include_examples 'api_authorized_ok'
+      end
     end
   end
 

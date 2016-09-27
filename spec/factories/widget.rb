@@ -2,6 +2,7 @@ FactoryGirl.define do
   factory :widget do
     dashboard
     sequence(:name) { |n| "widget-#{n}" }
+    description       Faker::Lorem.sentence
     size              'medium'
     type              'bar'
     units             'n'

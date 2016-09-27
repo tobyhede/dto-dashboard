@@ -10,7 +10,9 @@ Rails.application.routes.draw do
 
     namespace :api, defaults: {format: 'json'} do
       namespace :v1 do
-        resources :dashboards
+        resources :dashboards do
+          resources :widgets
+        end
         resources :datasets do
           resources :datapoints
         end

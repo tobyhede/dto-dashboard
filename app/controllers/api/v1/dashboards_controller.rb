@@ -1,12 +1,8 @@
 class Api::V1::DashboardsController < Api::V1::ApiController
 
   def index
-    begin
-      dashboards = current_user.dashboards.by_name.all
-      render :json => dashboards
-    rescue ActiveRecord::RecordNotFound
-      head :not_found
-    end
+    dashboards = current_user.dashboards.by_name.all
+    render :json => dashboards    
   end
 
   def show
