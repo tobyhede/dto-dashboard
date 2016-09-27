@@ -1,6 +1,8 @@
 {
   "name":     "myGov",
   "agency":   "DHS",
+  "description":  "Description",
+  "target_users": "Users",
   "displayHero": false,
   "displayKPIs": false,
   "widgets":  [

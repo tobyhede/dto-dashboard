@@ -1,6 +1,8 @@
 {
-  "name":     "Australian Citizenship Appointment Booking Service",
-  "agency":   "DIBP",
+  "name":         "Australian Citizenship Appointment Booking Service",
+  "agency":       "DIBP",
+  "description":  "Description",
+  "target_users": "Users",
   "widgets":  [
     {
       "id":   "user-satisfaction",
