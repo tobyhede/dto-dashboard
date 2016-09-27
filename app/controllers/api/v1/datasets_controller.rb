@@ -1,22 +1,19 @@
 class Api::V1::DatasetsController < Api::V1::ApiController
 
+  before_action :find_dataset, :only => [:show, :update]
+  attr_reader :dataset
+
   def index
     datasets = current_user.datasets.by_name.all
     render :json => datasets.to_json
   end
 
   def show
-    begin
-      dataset = current_user.datasets.find(params[:id])
-      render :json => dataset.to_json
-    rescue ActiveRecord::RecordNotFound
-      head :not_found
-    end
+    render :json => dataset.to_json
   end
 
   def update
     begin
-      dataset = current_user.datasets.find(params[:id])
       dataset.update_attributes!(dataset_data)
       render :json => dataset.to_json, :status => :ok
     rescue ActiveRecord::RecordInvalid => e
@@ -29,6 +26,14 @@ class Api::V1::DatasetsController < Api::V1::ApiController
   end
 
   private
+
+  def find_dataset
+    begin
+      @dataset = current_user.datasets.find(params[:id])
+    rescue ActiveRecord::RecordNotFound
+      head :not_found
+    end
+  end
 
   def dataset_data
     data = ActiveSupport::JSON.decode(params[:dataset])
