@@ -68,6 +68,7 @@ namespace :import do
         units = dataset["units"] || 'n'
         dataset_model = Dataset.create!(
           :name => dataset['name'],
+          :label => dataset['name'],
           :notes => dataset['note'],
           :organisation => organisation,
           :units => units)

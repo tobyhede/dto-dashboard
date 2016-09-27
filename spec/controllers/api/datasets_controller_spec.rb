@@ -1,0 +1,94 @@
+require 'rails_helper'
+
+RSpec.describe Api::V1::DatasetsController, :type => :controller do
+  include_context 'api_schema'
+
+  describe '#index' do
+
+    context 'when unauthorised' do
+      before { get :index }
+      include_examples 'api_unauthorized_examples'
+    end
+
+    context 'when authorised' do
+      include_context 'api_authorisation'
+
+      let(:schema)  { datasets_schema }
+
+      before { get :index }
+
+      include_examples 'api_authorized_ok'
+    end
+  end
+
+
+  describe '#show' do
+
+    context 'when unauthorised' do
+      before { get :index, :params => { :id => 999} }
+      include_examples 'api_unauthorized_examples'
+    end
+
+    context 'when authorised' do
+      include_context 'api_authorisation'
+
+      context 'with unowned dataset' do
+        before { get :show, :params => { :id => 999 } }
+        it { expect(response).to have_http_status(404) }
+      end
+
+      context 'with dataset' do
+
+        let(:dataset)  { dashboard.datasets.first }
+
+        let(:schema)  { dataset_schema }
+
+        before { get :show, :params => { :id => dataset.id } }
+
+        include_examples 'api_authorized_ok'
+      end
+    end
+  end
+
+  describe '#update' do
+
+    context 'when unauthorised' do
+      before { put :update, :params => { :id => 42, :dataset => {} } }
+      include_examples 'api_unauthorized_examples'
+    end
+
+    context 'when authorised' do
+      include_context 'api_authorisation'
+
+      context 'with unowned dataset' do
+        before { put :update, :params => { :id => 999, :dataset => {} } }
+        it { expect(response).to have_http_status(404) }
+      end
+
+      context 'with bad input' do
+        let(:dataset)  { dashboard.datasets.first }
+
+        before { put :update, :params => { :id => dataset.id, :dataset => '{id: 99, VTHA: 18}' } }
+
+        it { expect(response).to have_http_status(400) }
+      end
+
+      context 'with dashboard and widget' do
+
+        let(:dataset)  { dashboard.datasets.first }
+
+        let(:schema)      { dataset_schema }
+
+        let(:attributes)  { {:name => 'Vtha' } }
+
+        before { put :update, :params => { :id => dataset.id, :dataset => ActiveSupport::JSON.encode(attributes) } }
+
+        it { expect(dataset.reload.name).to eq 'Vtha' }
+
+        include_examples 'api_authorized_ok'
+      end
+    end
+
+  end
+
+end

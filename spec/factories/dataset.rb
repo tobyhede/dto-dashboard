@@ -1,7 +1,8 @@
 FactoryGirl.define do
   factory :dataset do
     organisation
-    sequence(:name) { |n| "dataset-#{n}" }
+    sequence(:name)   { |n| "dataset-#{n}" }
+    sequence(:label)  { |n| "d-#{n}" }
     units '$'
 
     factory :dataset_with_datapoints do

@@ -91,6 +91,39 @@ shared_context 'api_schema' do
 
   } }
 
+  let(:datasets_schema) { {
+    :type => 'array',
+    :items => [dataset_schema]
+  } }
+  
+  let(:dataset_schema)   { {
+    :type => 'object',
+    :required => ['id', 'name', 'label', 'units', 'created_at', 'updated_at'],
+    :properties => {
+      :id => {
+        :type => 'integer',
+        :format => 'int64'
+      },
+      :name => {
+        :type => 'string'
+      },
+      :label => {
+        :type => 'string'
+      },
+      :units => {
+        :type => 'string'
+      },
+      :created_at => {
+        :type => 'string',
+        :format => 'date-time'
+      },
+      :updated_at => {
+        :type => 'string',
+        :format => 'date-time'
+      }
+    }
+  } }
+
   let(:datapoints_schema) { {
     :type => 'array',
     :items => [datapoint_schema]

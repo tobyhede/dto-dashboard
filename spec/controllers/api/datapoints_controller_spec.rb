@@ -169,7 +169,7 @@ RSpec.describe Api::V1::DatapointsController, :type => :controller do
 
     context 'with invalid datapoint' do
       include_context 'api_authorisation'
-      
+
       let(:status)      { 400 }
       let(:schema)      { error_schema }
       let(:attributes)  { { :value => nil } }
@@ -208,8 +208,6 @@ RSpec.describe Api::V1::DatapointsController, :type => :controller do
         expect(response).to have_http_status(404)
       end
     end
-
-
 
     context 'with bad input' do
       include_context 'api_authorisation'

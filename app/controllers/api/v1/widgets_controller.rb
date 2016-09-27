@@ -1,17 +1,15 @@
 class Api::V1::WidgetsController < Api::V1::ApiController
 
+  before_action :find_dashboard
+
+  attr_reader :dashboard
+
   def index
-    begin
-      dashboard = current_user.dashboards.find(params[:dashboard_id])
-      render :json => dashboard.widgets.by_name.to_json
-    rescue ActiveRecord::RecordNotFound
-      head :not_found
-    end
+    render :json => dashboard.widgets.by_name.to_json
   end
 
   def show
     begin
-      dashboard = current_user.dashboards.find(params[:dashboard_id])
       widget = dashboard.widgets.find(params[:id])
       render :json => widget.to_json
     rescue ActiveRecord::RecordNotFound
@@ -21,7 +19,6 @@ class Api::V1::WidgetsController < Api::V1::ApiController
 
   def update
     begin
-      dashboard = current_user.dashboards.find(params[:dashboard_id])
       widget = dashboard.widgets.find(params[:id])
       widget.update_attributes!(widget_data)
       render :json => widget.to_json, :status => :ok
@@ -36,9 +33,17 @@ class Api::V1::WidgetsController < Api::V1::ApiController
 
   private
 
+  def find_dashboard
+    begin
+      @dashboard = current_user.dashboards.find(params[:dashboard_id])
+    rescue ActiveRecord::RecordNotFound
+      head :not_found
+    end
+  end
+
   def widget_data
     data = ActiveSupport::JSON.decode(params[:widget])
     data.slice(*%w{name description units last_updated_at})
   end
-  
+
 end
