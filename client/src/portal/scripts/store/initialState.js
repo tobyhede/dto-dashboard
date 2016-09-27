@@ -1,7 +1,9 @@
 export default {
   routing: {},
   app: {},
+  requests: {},
   ui: {
+    toast: {},
     pageDashboard: {},
     pageDashboardWidget: {},
     pageDataset: {},
@@ -13,5 +15,4 @@ export default {
   widgets: [],
   datasets: [],
   datapoints: [],
-  organisations: []
 };

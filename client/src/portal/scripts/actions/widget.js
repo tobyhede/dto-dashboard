@@ -1,5 +1,10 @@
 import * as types from "./_types";
+import { setToast } from './toast';
 
+
+const getRequestKey = (id, type) => {
+  return `widget/${type}/${id}`;
+};
 
 export const updateWidget = formData => ({
   type: types.API,
@@ -7,8 +12,14 @@ export const updateWidget = formData => ({
     url: 'widgets',
     method: 'POST',
     data: formData,
-    // pending: types.UPDATE_WIDGETS_PENDING,
-    success: types.SET_WIDGETS,
-    error: types.UPDATE_WIDGETS_FAIL
+    key: getRequestKey(formData.id, 'update'),
+    successActions: [
+      types.SET_WIDGETS,
+      () => setToast(`Widget: ${formData.name} updated`)
+    ],
+    errorActions: [
+      // types.UPDATE_WIDGETS_FAIL
+      () => setToast(`Couldn't update widget: ${formData.name}`, 'error')
+    ]
   }
 });

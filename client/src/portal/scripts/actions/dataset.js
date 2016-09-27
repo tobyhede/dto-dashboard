@@ -1,5 +1,10 @@
 import * as types from "./_types";
+import { setToast } from './toast';
 
+
+const getRequestKey = (id, type) => {
+  return `dataset/${type}/${id}`;
+};
 
 export const updateDataset = formData => ({
   type: types.API,
@@ -7,8 +12,14 @@ export const updateDataset = formData => ({
     url: 'datasets',
     method: 'POST',
     data: formData,
-    // pending: types.UPDATE_DATASETS_PENDING,
-    success: types.SET_DATASETS,
-    error: types.UPDATE_DATASETS_FAIL
+    key: getRequestKey(formData.id, 'update'),
+    successActions: [
+      types.SET_DATASETS,
+      () => setToast(`Dataset: ${formData.name} updated`)
+    ],
+    errorActions: [
+      // types.UPDATE_DATASETS_FAIL,
+      () => setToast(`Couldn't update dataset: ${formData.name}`, 'error')
+    ]
   }
 });

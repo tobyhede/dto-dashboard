@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 import { Field, reduxForm, SubmissionError } from 'redux-form';
 import { isURL } from 'validator';
 
-import * as types from './../../actions/_types';
 import { updateDashboard } from './../../actions/dashboard';
 import { ISO_LONG_DATE } from './../../../../_ui-kit/lib/constants/date-time';
 import Input from './../fields/input';
@@ -25,6 +24,7 @@ let UpdateDashboardForm = props => {
 
   return (
     <form onSubmit={(e) => e.preventDefault()}>
+
       <Field component={Input} name='name' type='text' label='Name'
              fieldProps={{disabled:!isEditing}}
              optionProps={{}} />
@@ -59,7 +59,9 @@ let UpdateDashboardForm = props => {
                 disabled={!isEditing || submitting}
                 onClick={cancel.bind({}, props)}>Cancel</button>
       </div>
-      {error && <strong style={{color:'red'}}>{error}</strong>}
+      <div className="form__help-block">
+        {error && <strong>{error}</strong>}
+      </div>
     </form>
   )
 };
@@ -74,14 +76,14 @@ let UpdateDashboardForm = props => {
 const submit = (values, dispatch) => {
   return new Promise((resolve, reject) => {
     dispatch(updateDashboard(values)).then(
-      (d) => {
-        if (d.type === types.UPDATE_DASHBOARDS_FAIL) {  // todo // if (d.status === 202) {}
-          reject(d);
+      (data) => {
+        if (data) {
+          return resolve();
         }
-        resolve(d.payload);
+        return reject({message: 'an error message from server'});
       },
       (error) => {
-        reject(error);
+        return reject({message: `an error message: ${error}`});
       },
     ).catch((error) => {
       // todo - check error and fail accordingly

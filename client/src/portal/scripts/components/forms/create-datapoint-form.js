@@ -44,7 +44,9 @@ let CreateDatapointForm = props => {
                 disabled={submitting}
                 onClick={cancel.bind({}, props)}>Cancel</button>
       </div>
-      {error && <strong style={{color:'red'}}>{error}</strong>}
+      <div className="form__help-block">
+        {error && <strong>{error}</strong>}
+      </div>
     </form>
   )
 };
@@ -56,23 +58,20 @@ let CreateDatapointForm = props => {
  * @returns {Promise} - this function *must* return Promise, until
  * resolve is called, its' submitting prop will be true
  */
-const submit = (values, dispatch, props) => {
+const submit = (values, dispatch, props) => { // todo
   return new Promise((resolve, reject) => {
     dispatch(createDatapoint(values)).then(
-      (d) => {
-        if (d.type === types.CREATE_DATAPOINT_FAIL) {  // todo // if (d.status === 202) {}
-          reject(d.payload);
+      (data) => {
+        if (data) { // todo - extract this
+          let newDatasetState = {...props.dataset};
+          newDatasetState.datapoints.push(data.payload.id);
+          dispatch(updateDataset(newDatasetState)); // todo - handle this fail
+          return resolve();
         }
-
-        // todo - extract
-        let newDatasetState = {...props.dataset};
-        newDatasetState.datapoints.push(d.payload.id);
-        dispatch(updateDataset(newDatasetState));
-
-        resolve(d);
+        return reject({message: 'an error message from server'});
       },
       (error) => {
-        reject(error);
+        return reject({message: `an error message: ${error}`});
       },
     ).catch((error) => {
       // todo - check error and fail accordingly

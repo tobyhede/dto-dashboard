@@ -41,7 +41,9 @@ let UpdateDatapointForm = props => {
                 disabled={!isEditing || submitting}
                 onClick={cancel.bind({}, props)}>Cancel</button>
       </div>
-      {error && <strong style={{color:'red'}}>{error}</strong>}
+      <div className="form__help-block">
+        {error && <strong>{error}</strong>}
+      </div>
     </form>
   )
 };
@@ -51,19 +53,19 @@ let UpdateDatapointForm = props => {
  * @param values
  * @param dispatch
  * @returns {Promise} - this function *must* return Promise, until
- * resolve is called, its' submitting prop will be true
+ *    resolve is called, its' submitting prop will be true
  */
 const submit = (values, dispatch) => {
   return new Promise((resolve, reject) => {
     dispatch(updateDatapoint(values)).then(
-      (d) => {
-        if (d.type === types.UPDATE_DATAPOINTS_FAIL) {  // todo // if (d.status === 202) {}
-          reject(d);
+      (data) => {
+        if (data) {
+          return resolve();
         }
-        resolve(d.payload);
+        return reject({message: 'an error message from server'});
       },
       (error) => {
-        reject(error);
+        return reject({message: `an error message: ${error}`});
       },
     ).catch((error) => {
       // todo - check error and fail accordingly

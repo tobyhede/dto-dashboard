@@ -11,9 +11,18 @@ import Textarea from './../fields/textarea';
 import Select from './../fields/select';
 
 
+
+/**
+ * Update Widget Form
+ * @param props
+ * @constructor
+ */
 let UpdateWidgetForm = props => {
 
-  const { error, handleSubmit, pristine, submitting, valid, isEditing } = props;
+  const {
+    error, handleSubmit, pristine, submitting, valid,
+    isEditing
+  } = props;
 
   return (
     <form onSubmit={(e) => e.preventDefault()}>
@@ -48,7 +57,9 @@ let UpdateWidgetForm = props => {
                 disabled={!isEditing || submitting}
                 onClick={cancel.bind({}, props)}>Cancel</button>
       </div>
-      {error && <strong style={{color:'red'}}>{error}</strong>}
+      <div className="form__help-block">
+        {error && <strong>{error}</strong>}
+      </div>
     </form>
   )
 };
@@ -63,14 +74,14 @@ let UpdateWidgetForm = props => {
 const submit = (values, dispatch) => {
   return new Promise((resolve, reject) => {
     dispatch(updateWidget(values)).then(
-      (d) => {
-        if (d.type === types.UPDATE_WIDGETS_FAIL) {  // todo // if (d.status === 202) {}
-          reject(d);
+      (data) => {
+        if (data) {
+          return resolve();
         }
-        resolve(d.payload);
+        return reject({message: 'an error message from server'});
       },
       (error) => {
-        reject(error);
+        return reject({message: `an error message: ${error}`});
       },
     ).catch((error) => {
       // todo - check error and fail accordingly
