@@ -31,7 +31,7 @@ paths:
         - application/json
       parameters:
         - in: body
-          name: dashboard
+          name: body
           description: |
             Dashboard object fields to be updated.
           required: true
@@ -71,7 +71,7 @@ paths:
         - application/json
       parameters:
         - in: body
-          name: widget
+          name: body
           description: |
             Widget object fields to be updated.
           required: true
@@ -117,7 +117,7 @@ paths:
         - application/json
       parameters:
         - in: body
-          name: dataset
+          name: body
           description: |
             Dataset object fields to be updated.
           required: true
@@ -159,7 +159,7 @@ paths:
         - application/json
       parameters:
         - in: body
-          name: datapoint
+          name: body
           description: |
             Datapoint object to be created
             Only ts field is required for creation
@@ -271,7 +271,7 @@ paths:
         - application/json
       parameters:
         - in: body
-          name: datapoint
+          name: body
           description: |
             Datapoint object fields to be updated.
             In general, do not update Datapoints.
