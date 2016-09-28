@@ -108,7 +108,6 @@ RSpec.describe Api::V1::DatapointsController, :type => :controller do
     end
   end
 
-
   describe "#create" do
     let(:attributes)  { FactoryGirl.attributes_for(:datapoint) }
 
@@ -209,21 +208,47 @@ RSpec.describe Api::V1::DatapointsController, :type => :controller do
       end
     end
 
-    context 'with bad input' do
+  end
+
+  describe '#update' do
+
+    context 'when unauthorised' do
+      before { put :update, :params => { :dataset_id => 999, :id => 42, :datapoint => {} } }
+      include_examples 'api_unauthorized_examples'
+    end
+
+    context 'when authorised' do
       include_context 'api_authorisation'
 
-      let(:dataset) { dashboard.datasets.first }
+      context 'with unowned dataset' do
+        before { put :update, :params => { :dataset_id => 999, :id => 42, :datapoint => {} } }
+        it { expect(response).to have_http_status(404) }
+      end
 
-      let(:params)  { { :dataset_id => dataset.id, :datapoint => 'blah' } }
+      context 'with unowned dataset' do
+        let(:dataset)   { dashboard.datasets.first }
 
-      before { post :create, :params => params }
+        before { put :update, :params => { :dataset_id => dataset.id, :id => 42, :datapoint => {} } }
+        it { expect(response).to have_http_status(404) }
+      end
 
-      it 'should be a bad_request' do
-        expect(response).to have_http_status(400)
+      context 'with dataset and widget' do
+
+        let(:schema)      { datapoint_schema }
+
+        let(:attributes)  { {:value => 42 } }
+
+        let(:dataset)   { dashboard.datasets.first }
+        let(:datapoint) { dataset.datapoints.first }
+
+        before { put :update, :params => { :dataset_id => dataset.id, :id => datapoint.id, :datapoint => ActiveSupport::JSON.encode(attributes) } }
+
+        it { expect(datapoint.reload.value).to eq 42 }
+
+        include_examples 'api_authorized_ok'
       end
     end
 
   end
-
 
 end

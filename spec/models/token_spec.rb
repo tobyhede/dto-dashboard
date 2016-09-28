@@ -35,7 +35,7 @@ RSpec.describe Token, type: :model do
   describe 'tokens cannot be reused' do
     let(:active)      { Token.create! }
 
-    it { expect{ Token.create!(:token => token.to_s) }.to raise_error }
+    it { expect{ Token.create!(:token => token.to_s) }.to raise_error ActiveRecord::RecordNotUnique }
   end
 
   describe 'authenticate!' do

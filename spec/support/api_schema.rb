@@ -95,7 +95,7 @@ shared_context 'api_schema' do
     :type => 'array',
     :items => [dataset_schema]
   } }
-  
+
   let(:dataset_schema)   { {
     :type => 'object',
     :required => ['id', 'name', 'label', 'units', 'created_at', 'updated_at'],
@@ -133,6 +133,10 @@ shared_context 'api_schema' do
     :type => 'object',
     :required => ['id', 'ts', 'value', 'created_at', 'updated_at'],
     :properties => {
+      :id => {
+        :type => 'integer',
+        :format => 'int64'
+      },
       :ts => {
         :type => 'string',
         :format => 'date-time'
