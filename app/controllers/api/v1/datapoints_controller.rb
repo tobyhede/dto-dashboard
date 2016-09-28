@@ -14,20 +14,16 @@ class Api::V1::DatapointsController < Api::V1::ApiController
   end
 
   def create
-    begin
-      datapoint = dataset.datapoints.create!(datapoint_data)
-      render :json => datapoint, :status => :created
-    rescue ActiveRecord::RecordInvalid => e
-      render :json => { :code => 'RecordInvalid', :message => e.message}, :status => :bad_request
+    with_invalid_record_handler do
+      datapoint = dataset.datapoints.create!(data)
+      render :json => datapoint.to_json, :status => :created
     end
   end
 
   def update
-    begin
-      datapoint.update_attributes!(datapoint_data)
-      render :json => datapoint, :status => :ok
-    rescue ActiveRecord::RecordInvalid => e
-      render :json => { :code => 'RecordInvalid', :message => e.message}, :status => :bad_request
+    with_invalid_record_handler do
+      datapoint.update_attributes!(data)
+      render :json => datapoint.to_json, :status => :ok    
     end
   end
 
@@ -49,9 +45,8 @@ class Api::V1::DatapointsController < Api::V1::ApiController
     end
   end
 
-  def datapoint_data
-    data = ActiveSupport::JSON.decode(params[:datapoint])
-    data.slice('ts', 'value')
+  def data
+    params.permit(:ts, :value)
   end
 
 end

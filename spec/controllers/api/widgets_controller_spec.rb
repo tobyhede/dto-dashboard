@@ -67,6 +67,8 @@ RSpec.describe Api::V1::WidgetsController, :type => :controller do
 
   describe '#update' do
 
+    let(:widget)  { dashboard.widgets.first }
+
     context 'when unauthorised' do
       before { put :update, :params => { :dashboard_id => 999, :id => 42, :widget => {} } }
       include_examples 'api_unauthorized_examples'
@@ -85,22 +87,21 @@ RSpec.describe Api::V1::WidgetsController, :type => :controller do
         it { expect(response).to have_http_status(404) }
       end
 
-      context 'with bad input' do
-        let(:widget)  { dashboard.widgets.first }
+      context 'with invalid data' do
+        let(:status)  { 400 }
+        let(:schema)  { error_schema }
 
-        before { put :update, :params => { :dashboard_id => dashboard.id, :id => widget.id, :widget => '{id: 99, VTHA: 18}' } }
+        before { put :update, :params => { :dashboard_id => dashboard.id, :id => widget.id, :name => '', :type => 'BLAH CHART' } }
 
-        it { expect(response).to have_http_status(400) }
+        include_examples 'api_authorized_status_and_schema'
       end
 
-      context 'with dashboard and widget' do
 
-        let(:widget)  { dashboard.widgets.first }
+      context 'with valid data' do
 
         let(:schema)      { widget_schema }
-        let(:attributes)  { {:name => 'Vtha', :type => 'BLAH CHART'} }
 
-        before { put :update, :params => { :dashboard_id => dashboard.id, :id => widget.id, :widget => ActiveSupport::JSON.encode(attributes) } }
+        before { put :update, :params => { :dashboard_id => dashboard.id, :id => widget.id, :name => 'Vtha', :type => 'BLAH CHART' } }
 
         it { expect(widget.reload.name).to eq 'Vtha' }
         it { expect(widget.reload.type).to eq 'bar' }

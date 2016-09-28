@@ -1,33 +1,22 @@
 class Api::V1::WidgetsController < Api::V1::ApiController
 
   before_action :find_dashboard
+  before_action :find_widget, :only => [:show, :update]
 
-  attr_reader :dashboard
+  attr_reader :dashboard, :widget
 
   def index
     render :json => dashboard.widgets.by_name.to_json
   end
 
   def show
-    begin
-      widget = dashboard.widgets.find(params[:id])
-      render :json => widget.to_json
-    rescue ActiveRecord::RecordNotFound
-      head :not_found
-    end
+    render :json => widget.to_json
   end
 
   def update
-    begin
-      widget = dashboard.widgets.find(params[:id])
-      widget.update_attributes!(widget_data)
+    with_invalid_record_handler do
+      widget.update_attributes!(data)
       render :json => widget.to_json, :status => :ok
-    rescue ActiveRecord::RecordInvalid => e
-      render :json => { :code => 'RecordInvalid', :message => e.message}, :status => :bad_request
-    rescue ActiveRecord::RecordNotFound
-      head :not_found
-    rescue ActiveSupport::JSON.parse_error
-      head :bad_request
     end
   end
 
@@ -41,9 +30,16 @@ class Api::V1::WidgetsController < Api::V1::ApiController
     end
   end
 
-  def widget_data
-    data = ActiveSupport::JSON.decode(params[:widget])
-    data.slice(*%w{name description units last_updated_at})
+  def find_widget
+    begin
+      @widget = dashboard.widgets.find(params[:id])
+    rescue ActiveRecord::RecordNotFound
+      head :not_found
+    end
+  end
+
+  def data
+    params.permit(:name, :description, :units, :last_updated_at)
   end
 
 end

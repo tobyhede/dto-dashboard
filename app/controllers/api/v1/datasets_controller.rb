@@ -13,15 +13,9 @@ class Api::V1::DatasetsController < Api::V1::ApiController
   end
 
   def update
-    begin
-      dataset.update_attributes!(dataset_data)
+    with_invalid_record_handler do
+      dataset.update_attributes!(data)
       render :json => dataset.to_json, :status => :ok
-    rescue ActiveRecord::RecordInvalid => e
-      render :json => { :code => 'RecordInvalid', :message => e.message}, :status => :bad_request
-    rescue ActiveRecord::RecordNotFound
-      head :not_found
-    rescue ActiveSupport::JSON.parse_error
-      head :bad_request
     end
   end
 
@@ -35,9 +29,8 @@ class Api::V1::DatasetsController < Api::V1::ApiController
     end
   end
 
-  def dataset_data
-    data = ActiveSupport::JSON.decode(params[:dataset])
-    data.slice(*%w{name label units})
+  def data
+    params.permit(:name, :label, :units)
   end
 
 end

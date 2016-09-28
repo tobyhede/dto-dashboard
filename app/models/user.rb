@@ -29,7 +29,7 @@ class User < ApplicationRecord
   end
 
   def after_database_authentication
-    generate_session_token!
+    generate_session_token! if confirmed? 
   end
 
   def token

@@ -38,182 +38,45 @@ RSpec.describe Api::V1::DatapointsController, :type => :controller do
 
   describe "#show" do
 
-    context 'without auth token' do
+    context 'when unauthorised' do
       before { get :show, :params => { :dataset_id => 999, :id => 999 } }
-
-      it 'unauthorized' do
-        expect(response).to have_http_status(401)
-      end
+      include_examples 'api_unauthorized_examples'
     end
 
-    context 'with invalid auth token' do
-      let(:authorization)   { ActionController::HttpAuthentication::Token.encode_credentials('blahvtha') }
-
-      before do
-        request.env["HTTP_AUTHORIZATION"] = authorization
-        get :show, :params => { :dataset_id => 999, :id => 999 }
-      end
-
-      it 'unauthorized' do
-        expect(response).to have_http_status(401)
-      end
-    end
-
-    context 'with valid token, dataset and datapoint' do
+    context 'when authorised' do
       include_context 'api_authorisation'
-      include_context 'api_schema'
 
       let(:dataset)     { dashboard.datasets.first }
       let(:datapoint)   { dataset.datapoints.first }
 
-      before do
-        get :show, :params => { :dataset_id => dataset.id, :id => datapoint.id }
+      let(:schema)      { datapoint_schema }
+
+      context 'with unowned dataset' do
+        before { get :show, :params => { :dataset_id => 999, :id => 999 } }
+        it { expect(response).to have_http_status(404) }
       end
 
-      it 'is ok' do
-        expect(response).to be_success
-        expect(response).to have_http_status(200)
+      context 'with unowned datapoint' do
+        before { get :show, :params => { :dataset_id => dataset.id, :id => 999 } }
+        it { expect(response).to have_http_status(404) }
       end
 
-      it 'returns a valid datapoint' do
-        expect(response.body).to validate_as_schema(datapoint_schema)
-      end
-    end
+      context 'with datapoint and widget' do
+        before { get :show, :params => { :dataset_id   => dataset.id, :id => datapoint.id } }
 
-    context 'with valid token and invalid dataset' do
-      include_context 'api_authorisation'
-
-      let(:dataset) { FactoryGirl.create(:dataset) }
-
-      before { get :index, :params => { :dataset_id => dataset.id } }
-
-      it 'should not be found' do
-        expect(response).to have_http_status(404)
-      end
-    end
-
-    context 'with valid token, dataset and invalid datapoint' do
-      include_context 'api_authorisation'
-
-      let(:dataset)     { dashboard.datasets.first }
-      let(:datapoint)   { FactoryGirl.create(:datapoint) }
-
-      before do
-        get :show, :params => { :dataset_id => dataset.id, :id => datapoint.id }
+        include_examples 'api_authorized_ok'
       end
 
-      it 'returns the datapoint' do
-        expect(response).to have_http_status(404)
-      end
     end
   end
 
-  describe "#create" do
-    let(:attributes)  { FactoryGirl.attributes_for(:datapoint) }
-
-    context 'without auth token' do
-      let(:params)      { { :dataset_id => 999, :datapoint => ActiveSupport::JSON.encode(attributes) } }
-
-      before { post :create, :params => params }
-
-      it 'unauthorized' do
-        expect(response).to have_http_status(401)
-      end
-    end
-
-    context 'with invalid auth token' do
-      let(:params)          { { :dataset_id => 999, :datapoint => ActiveSupport::JSON.encode(attributes) } }
-      let(:authorization)   { ActionController::HttpAuthentication::Token.encode_credentials('blahvtha') }
-
-      before do
-        request.env["HTTP_AUTHORIZATION"] = authorization
-        post :create, :params => params
-      end
-
-      it 'unauthorized' do
-        expect(response).to have_http_status(401)
-      end
-    end
-
-    context 'with valid token and dataset' do
-      include_context 'api_authorisation'
-
-      let(:dataset)   { dashboard.datasets.first }
-      let(:params)    { { :dataset_id => dataset.id, :datapoint => ActiveSupport::JSON.encode(attributes) } }
-
-      before { post :create, :params => params }
-
-      it 'creates a datapoint' do
-        expect(response).to be_success
-        expect(response).to have_http_status(201)
-      end
-    end
-
-    context 'with valid token and missing timestamp' do
-      include_context 'api_authorisation'
-
-      let(:attributes)  { { :value => nil } }
-      let(:dataset)     { dashboard.datasets.first }
-      let(:params)      { { :dataset_id => dataset.id, :datapoint => ActiveSupport::JSON.encode(attributes) } }
-
-      before { post :create, :params => params }
-
-      it 'creates a datapoint' do
-        expect(response).to_not be_success
-        expect(response.body).to include('RecordInvalid')
-        expect(response.body).to include('Validation failed')
-        expect(response.body).to include('Ts can\'t be blank')
-      end
-    end
-
-    context 'with invalid datapoint' do
-      include_context 'api_authorisation'
-
-      let(:status)      { 400 }
-      let(:schema)      { error_schema }
-      let(:attributes)  { { :value => nil } }
-
-      let(:params)      { { :dataset_id => dashboard.datasets.first.id, :datapoint => ActiveSupport::JSON.encode(attributes) } }
-
-      before { post :create, :params => params }
-
-      include_examples 'api_authorized_status_and_schema'
-    end
-
-    context 'with valid datapoint' do
-      include_context 'api_authorisation'
-
-      let(:status)  { 201 }
-      let(:schema)  { datapoint_schema }
-
-      let(:params)    { { :dataset_id => dashboard.datasets.first.id, :datapoint => ActiveSupport::JSON.encode(attributes) } }
-
-      before { post :create, :params => params }
-
-      include_examples 'api_authorized_status_and_schema'
-    end
-
-
-    context 'with valid token and invalid dataset' do
-      include_context 'api_authorisation'
-
-      let(:dataset) { FactoryGirl.create(:dataset) }
-
-      let(:params)  { { :dataset_id => dataset.id, :datapoint => ActiveSupport::JSON.encode(attributes) } }
-
-      before { post :create, :params => params }
-
-      it 'should not be found' do
-        expect(response).to have_http_status(404)
-      end
-    end
-
-  end
-
-  describe '#update' do
+  describe '#create' do
+    let(:schema)    { datapoint_schema }
+    let(:dataset)   { dashboard.datasets.first }
+    let(:datapoint) { dataset.datapoints.first }
 
     context 'when unauthorised' do
-      before { put :update, :params => { :dataset_id => 999, :id => 42, :datapoint => {} } }
+      before { post :create, :params => { :dataset_id => 999, :id => 42 } }
       include_examples 'api_unauthorized_examples'
     end
 
@@ -221,34 +84,71 @@ RSpec.describe Api::V1::DatapointsController, :type => :controller do
       include_context 'api_authorisation'
 
       context 'with unowned dataset' do
-        before { put :update, :params => { :dataset_id => 999, :id => 42, :datapoint => {} } }
+        before { post :create, :params => { :dataset_id => 999, :id => 42 } }
+        it { expect(response).to have_http_status(404) }
+      end
+
+      context 'with dataset and datapoint' do
+        let(:status) { 201 }
+
+        before { post :create, :params => { :dataset_id => dataset.id, :id => datapoint.id, :ts => Time.zone.now, :value => 42 } }
+
+        include_examples 'api_authorized_status_and_schema'
+      end
+
+      context 'with dataset and invalid datapoint' do
+        let(:status) { 400 }
+        let(:schema) { error_schema }
+
+        before { post :create, :params => { :dataset_id => dataset.id, :id => datapoint.id, :value => 42 } }
+
+        include_examples 'api_authorized_status_and_schema'
+      end
+    end
+  end
+
+  describe '#update' do
+    let(:schema)      { datapoint_schema }
+
+    let(:dataset)   { dashboard.datasets.first }
+    let(:datapoint) { dataset.datapoints.first }
+
+    context 'when unauthorised' do
+      before { put :update, :params => { :dataset_id => 999, :id => 42 } }
+      include_examples 'api_unauthorized_examples'
+    end
+
+    context 'when authorised' do
+      include_context 'api_authorisation'
+
+      context 'with unowned dataset' do
+        before { put :update, :params => { :dataset_id => 999, :id => 42 } }
         it { expect(response).to have_http_status(404) }
       end
 
       context 'with unowned dataset' do
-        let(:dataset)   { dashboard.datasets.first }
-
-        before { put :update, :params => { :dataset_id => dataset.id, :id => 42, :datapoint => {} } }
+        before { put :update, :params => { :dataset_id => dataset.id, :id => 42 } }
         it { expect(response).to have_http_status(404) }
       end
 
-      context 'with dataset and widget' do
+      context 'with dataset and datapoint' do
 
-        let(:schema)      { datapoint_schema }
-
-        let(:attributes)  { {:value => 42 } }
-
-        let(:dataset)   { dashboard.datasets.first }
-        let(:datapoint) { dataset.datapoints.first }
-
-        before { put :update, :params => { :dataset_id => dataset.id, :id => datapoint.id, :datapoint => ActiveSupport::JSON.encode(attributes) } }
+        before { put :update, :params => { :dataset_id => dataset.id, :id => datapoint.id, :value => 42 } }
 
         it { expect(datapoint.reload.value).to eq 42 }
 
         include_examples 'api_authorized_ok'
       end
-    end
 
+      context 'with dataset and invalid data' do
+        let(:status) { 400 }
+        let(:schema) { error_schema }
+
+        before { post :create, :params => { :dataset_id => dataset.id, :id => datapoint.id, :ts => 42 } }
+
+        include_examples 'api_authorized_status_and_schema'
+      end
+    end
   end
 
 end

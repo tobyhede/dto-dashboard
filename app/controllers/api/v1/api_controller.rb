@@ -6,6 +6,16 @@ class Api::V1::ApiController < ActionController::API
 
   before_action :authenticate
 
+  protected
+
+  def with_invalid_record_handler(&block)
+    begin
+      block.call
+    rescue ActiveRecord::RecordInvalid => e
+      render :json => { :code => 'RecordInvalid', :message => e.message}, :status => :bad_request
+    end
+  end
+
   private
 
   def authenticate

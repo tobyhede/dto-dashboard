@@ -1,38 +1,35 @@
 class Api::V1::DashboardsController < Api::V1::ApiController
 
+  before_action :find_dashboard, :only => [:show, :update]
+  attr_reader :dashboard
+
   def index
     dashboards = current_user.dashboards.by_name.all
-    render :json => dashboards    
+    render :json => dashboards.to_json
   end
 
   def show
-    begin
-      dashboard = current_user.dashboards.find(params[:id])
-      render :json => dashboard
-    rescue ActiveRecord::RecordNotFound
-      head :not_found
-    end
+    render :json => dashboard.to_json
   end
 
   def update
-    begin
-      dashboard = current_user.dashboards.find(params[:id])
-      dashboard.update_attributes!(dashboard_data)
-      render :json => dashboard, :status => :ok
-    rescue ActiveRecord::RecordInvalid => e
-      render :json => { :code => 'RecordInvalid', :message => e.message}, :status => :bad_request
-    rescue ActiveRecord::RecordNotFound
-      head :not_found
-    rescue ActiveSupport::JSON.parse_error
-      head :bad_request
+    with_invalid_record_handler do
+      dashboard.update_attributes!(data)
+      render :json => dashboard.to_json, :status => :ok
     end
   end
 
   private
 
-  def dashboard_data
-    data = ActiveSupport::JSON.decode(params[:dashboard])
-    data.slice(*%w{name description target_users notes url published_at})
+  def find_dashboard
+    begin
+      @dashboard = current_user.dashboards.find(params[:id])
+    rescue ActiveRecord::RecordNotFound
+      head :not_found
+    end
   end
 
+  def data
+    params.permit(:name, :description, :target_users, :notes, :url, :published_at)
+  end
 end
