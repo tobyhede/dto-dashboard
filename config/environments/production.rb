@@ -67,7 +67,7 @@ Rails.application.configure do
     enable_starttls_auto: true  }
 
   # Uncomment the following line and setup the mailer url
-  config.action_mailer.default_url_options = { host: 'dashboard.gov.au' }
+  config.action_mailer.default_url_options = { host: ENV['MAIL_DEFAULT_URL'] || 'dashboard.gov.au' }
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
