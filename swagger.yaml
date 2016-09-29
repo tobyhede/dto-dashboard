@@ -213,7 +213,7 @@ paths:
             type: array
             items:
               $ref: "#/definitions/Datapoint"
-  /datasets/{datasetId}/datapoint/{id}:
+  /datasets/{datasetId}/datapoints/{id}:
     get:
       summary: |
         Finds a datapoint by ID
