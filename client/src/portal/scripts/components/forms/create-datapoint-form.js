@@ -4,10 +4,9 @@ import { Field, reduxForm, SubmissionError } from 'redux-form';
 import { push } from 'react-router-redux';
 
 import { createDatapoint } from './../../actions/datapoint';
-import { updateDataset } from './../../actions/dataset';
 import { isNumeric } from 'validator';
 import Input from './../fields/input';
-import MonthYearDate from './../fields/monthYearDate';
+import YyyyMmDate from './../fields/yyyyMmDate';
 import SubmitButton from './../submitButton';
 
 
@@ -23,9 +22,11 @@ let CreateDatapointForm = props => {
     exclusionDates, isSubmitting
   } = props;
 
+
   return (
     <form onSubmit={(e) => e.preventDefault()}>
-      <Field component={MonthYearDate} name="timestamp" type="text" label="Label"
+
+      <Field component={YyyyMmDate} type="text" name="ts" label="Label"
              fieldProps={{}}
              optionProps={{exclusionDates:exclusionDates}} />
 
@@ -62,13 +63,17 @@ let CreateDatapointForm = props => {
  * resolve is called, its' submitting prop will be true
  */
 const submit = (values, dispatch, props) => { // todo
+
+  values.dataset_id = props.dataset.id;
+
   return new Promise((resolve, reject) => {
     dispatch(createDatapoint(values)).then(
       (data) => {
+        // debugger
         if (data) { // todo - extract this
           let newDatasetState = {...props.dataset};
           newDatasetState.datapoints.push(data.id);
-          dispatch(updateDataset(newDatasetState)); // todo - handle this fail
+          // dispatch(updateDataset(newDatasetState)); // todo - handle this fail  // TDODO
           return resolve();
         }
         return reject({message: 'an error message from server'});
@@ -87,6 +92,17 @@ const submit = (values, dispatch, props) => { // todo
 
 const validate = (values, props) => {   // todo - validate
   const errors = {};
+
+  if (!values.ts) {
+    errors.ts = 'Required';
+  }
+
+  if (!values.value) {
+    errors.value = 'Required';
+  } else if (!isNumeric(String(values.value))) {
+    errors.value = 'Must be a number.';
+  }
+
   return errors;
 };
 
@@ -103,4 +119,5 @@ CreateDatapointForm = reduxForm({
 })(CreateDatapointForm);
 
 
-export default CreateDatapointForm
+export default CreateDatapointForm;
+

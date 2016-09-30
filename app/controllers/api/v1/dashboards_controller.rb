@@ -32,4 +32,5 @@ class Api::V1::DashboardsController < Api::V1::ApiController
   def data
     params.permit(:name, :description, :target_users, :notes, :url, :published_at)
   end
+
 end

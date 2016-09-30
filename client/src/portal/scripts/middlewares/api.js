@@ -1,4 +1,3 @@
-import fetch from 'whatwg-fetch';
 import { v1 as makeUuid } from 'uuid';
 
 import * as types from './../actions/_types';
@@ -7,11 +6,6 @@ import {
   markRequestSuccess,
   markRequestFailed,
 } from './../actions/requests';
-import {
-  USE_FIXTURES,
-  API_BASE_URL
-} from './../config';
-
 
 
 /**
@@ -21,6 +15,10 @@ import {
  * middleware chain
  */
 const apiMiddleware = ({dispatch, getState}) => next => action => {
+
+  const state = getState();
+  let { config, currentUser: {SESSION_TOKEN}} = state;
+
 
   // if not an API call, do not decorate with middleware
   if (action.type !== types.API) {
@@ -32,7 +30,7 @@ const apiMiddleware = ({dispatch, getState}) => next => action => {
 
   dispatch(markRequestStart(key));
 
-  if (USE_FIXTURES) {
+  if (config.USE_FIXTURES) {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         if (!data.id) {
@@ -79,38 +77,63 @@ const apiMiddleware = ({dispatch, getState}) => next => action => {
         });
         dispatch(markRequestFailed(key, e));
       });
-  }
 
-  // todo
-  // return fetch(`${API_BASE_URL}${url}`, {
-  //   method,
-  //   // body, credentials,
-  //   // headers: {
-  //   //   'Accept': 'application/json',
-  //   //   'Content-Type': 'application/json',
-  //   //   'Authorization': `Token ${data.token}`
-  //   // }
-  // })
-  //   .then(response => {
-  //     if (response.status >= 300) {
-  //       throw new Error(response.status);
-  //     } else {
-  //       response.json()
-  //     }
-  //   })
-  //   .then(apiEnd)
-  //   .then(d => next({
-  //     type: successAction,
-  //     payload: d
-  //   }))
-  //   .catch(e => next({
-  //     type: errorAction,
-  //     payload: e,
-  //     error: true,
-  //     meta: {
-  //       data
-  //     }
-  //   }));
+  } else {
+
+    return fetch(`${config.API_BASE_URL}${url}`, {
+      method,
+      body: JSON.stringify(data),
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': `Token ${SESSION_TOKEN}`
+      }
+    })
+      .then(resp => {
+        if (status >= 200 && status < 300) {
+          throw new Error(resp.status);
+        }
+        return resp.json()
+      })
+      .then(
+        data => {
+          successActions.forEach((action) => {
+            if (typeof action === "function") {
+              // debugger
+              return dispatch(action());
+            }
+            // debugger
+            return next({
+              type: action,
+              payload: data
+            });
+          });
+          dispatch(markRequestSuccess(key));
+          return data;
+        },
+        error => {
+          // debugger;
+          throw new Error(error);
+        }
+      ).catch(e => {
+        // debugger;
+
+        errorActions.forEach((action) => {
+          if (typeof action === "function") {
+            return dispatch(action());
+          }
+          return next({
+            type: action,
+            payload: e,
+            error: true,
+            meta: {
+              error: data
+            }
+          });
+        });
+        dispatch(markRequestFailed(key, e));
+      })
+  }
 };
 
 export default apiMiddleware;

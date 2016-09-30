@@ -6,13 +6,13 @@ import { push } from 'react-router-redux';
 
 import Breadcrumbs from './../components/breadcrumbs';
 import * as uiActions from './../actions/ui';
-import { getDatapointsById } from './../reducers/datapoints';
+import { getDatapointsById, computeLabel } from './../reducers/datapoints';
 import UpdateDatasetForm from './../components/forms/update-dataset-form';
 import { getRequestKey } from './../actions/dataset';
 import { isPendingRequest } from './../reducers/requests';
 
 
-const mapStateToProps = ({datapoints, ui, app, requests}, ownProps) => {
+const mapStateToProps = ({datapoints, ui, config, requests}, ownProps) => {
   let dataset = ownProps.dataset;
   let requestKey = getRequestKey(dataset.id, 'update');
   return {
@@ -20,7 +20,7 @@ const mapStateToProps = ({datapoints, ui, app, requests}, ownProps) => {
     datapoints: getDatapointsById(datapoints, dataset.datapoints),
     ui: ui.pageDataset,
     isPendingRequest: isPendingRequest(requests, requestKey),
-    SELECT_DATASET_LABEL: app.SELECT_DATASET_LABEL
+    config
   }
 };
 const mapDispatchToProps = dispatch => ({
@@ -56,8 +56,11 @@ class DatasetIndex extends Component {
 
   render() {
     let {
-      dataset, datapoints, ui, isPendingRequest,
-      SELECT_DATASET_LABEL
+      dataset,
+      datapoints,
+      ui,
+      isPendingRequest,
+      config: { OPTIONS_DATASET_LABEL }
     } = this.props;
     return (
       <div>
@@ -89,7 +92,7 @@ class DatasetIndex extends Component {
               isSubmitting={isPendingRequest}
               onSubmitSuccess={this.onSubmitSuccess.bind(this)}
               onCancelSuccess={this.exitForm.bind(this)}
-              SELECT_DATASET_LABEL={SELECT_DATASET_LABEL} />
+              OPTIONS_DATASET_LABEL={OPTIONS_DATASET_LABEL} />
           </div>
         </div>
 
@@ -108,7 +111,7 @@ class DatasetIndex extends Component {
               <tbody>
               {datapoints.map((d, idx) => (
                 <tr key={idx}>
-                  <td>{d.id}</td><td>{d.label}</td><td>{d.value}</td><td><Link to={`/datasets/${dataset.id}/datapoints/${d.id}`} className="a--ui-kit">Edit</Link></td>
+                  <td>{d.id}</td><td>{computeLabel(d.ts)}</td><td>{d.value}</td><td><Link to={`/datasets/${dataset.id}/datapoints/${d.id}`} className="a--ui-kit">Edit</Link></td>
                 </tr>
               ))}
               </tbody>

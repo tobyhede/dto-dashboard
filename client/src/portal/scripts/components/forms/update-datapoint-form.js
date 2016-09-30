@@ -3,9 +3,10 @@ import { connect } from 'react-redux'
 import { Field, reduxForm, SubmissionError } from 'redux-form';
 
 import { updateDatapoint } from './../../actions/datapoint';
-import { isNumeric } from 'validator';
+import { isNumeric, isFloat } from 'validator';
 import Input from './../fields/input';
 import SubmitButton from './../submitButton';
+import YyyyMmDate from './../fields/yyyyMmDate';
 
 
 /**
@@ -17,17 +18,18 @@ let UpdateDatapointForm = props => {
 
   const {
     error, handleSubmit, pristine, submitting, valid,
-    isEditing, isSubmitting
+    isSubmitting
   } = props;
 
   return (
     <form onSubmit={(e) => e.preventDefault()}>
-      <Field component={Input} type="text" name="label" label="Label"
-             fieldProps={{readOnly:true}}
+
+      <Field component={YyyyMmDate} type="text" name="ts" label="Label"
+             fieldProps={{readOnly:true, disabled:true}}
              optionProps={{}} />
 
       <Field component={Input} type="number" name="value" label="Value"
-             fieldProps={{disabled:!isEditing}}
+             fieldProps={{}}
              optionProps={{}} />
 
       <div>
@@ -41,7 +43,7 @@ let UpdateDatapointForm = props => {
 
         <button type="cancel"
                 className='btn primary-link'
-                disabled={!isEditing || submitting}
+                disabled={submitting}
                 onClick={cancel.bind({}, props)}>Cancel</button>
       </div>
       <div className="form__help-block">
@@ -58,7 +60,10 @@ let UpdateDatapointForm = props => {
  * @returns {Promise} - this function *must* return Promise, until
  *    resolve is called, its' submitting prop will be true
  */
-const submit = (values, dispatch) => {
+const submit = (values, dispatch, props) => {
+
+  values.dataset_id = props.dataset.id;
+
   return new Promise((resolve, reject) => {
     dispatch(updateDatapoint(values)).then(
       (data) => {
@@ -81,12 +86,11 @@ const submit = (values, dispatch) => {
 const validate = (values, props) => {
   const errors = {};
 
-  if (values.number) {
-    if (!isNumeric(values.number)) {
-      errors.number = 'Must be a number.';
-    }
+  if (!values.value) {
+    errors.value = 'Required';
+  } else if (!isFloat(String(values.value))) {
+    errors.value = 'Must be a number.';
   }
-
   return errors;
 };
 
