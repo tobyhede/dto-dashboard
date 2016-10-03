@@ -1,0 +1,21 @@
+environments:
+  local: http://localhost:3000
+  development: https://dashboard-dev.apps.staging.digital.gov.au
+  test: https://dashboard-testing.apps.staging.digital.gov.au
+  staging: https://dashboard.apps.staging.digital.gov.au
+  production: https://dashboard.gov.au
+pages:
+  homepage: /
+platforms:
+  - os:
+      name: Windows
+      version: 7
+    browser:
+      name: ie
+      version: 10.0
+  - os:
+      name: Windows
+      version: 10
+    browser:
+      name: ie
+      version: 11.0
