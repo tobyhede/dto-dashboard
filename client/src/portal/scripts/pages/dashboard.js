@@ -45,7 +45,17 @@ class DashboardIndex extends Component {
   }
 
   render() {
-    let { dashboard, widgets, ui, isPendingRequest } = this.props;
+    let {
+      dashboard,
+      widgets,
+      ui,
+      isPendingRequest
+    } = this.props;
+
+    let sortedWidgets = widgets.sort((a,b) => {
+      return new Date(b.ts).getTime() - new Date(a.ts).getTime();
+    });
+
     return (
       <div>
 
@@ -90,7 +100,7 @@ class DashboardIndex extends Component {
               </tr>
               </thead>
               <tbody>
-              {widgets.map((w, idx) => (
+              {sortedWidgets.map((w, idx) => (
                 <tr key={idx}>
                   <td>{w.id}</td><td>{w.name}</td><td><Link to={`/dashboards/${dashboard.id}/widgets/${w.id}`} className="a--ui-kit">Edit</Link></td>
                 </tr>

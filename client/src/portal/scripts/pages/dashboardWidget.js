@@ -59,6 +59,10 @@ class Widget extends Component {
       config: { OPTIONS_WIDGET_TYPE, OPTIONS_WIDGET_SIZE, OPTIONS_WIDGET_UNITS}
     } = this.props;
 
+    let sortedDatasets = datasets.sort((a,b) => {
+      return new Date(b.ts).getTime() - new Date(a.ts).getTime();
+    });
+
     return (
       <div>
 
@@ -108,7 +112,7 @@ class Widget extends Component {
               </tr>
               </thead>
               <tbody>
-              {datasets.map((d, idx) => (
+              {sortedDatasets.map((d, idx) => (
                 <tr key={idx}>
                   <td>{d.id}</td><td>{d.name}</td><td><Link to={`/datasets/${d.id}`} className="a--ui-kit">Edit</Link></td>
                 </tr>

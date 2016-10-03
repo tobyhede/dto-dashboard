@@ -12,6 +12,11 @@ class DashboardsIndex extends Component {
 
   render() {
     let { dashboards } = this.props;
+
+    let sortedDashboards = dashboards.sort((a,b) => {
+      return new Date(b.ts).getTime() - new Date(a.ts).getTime();
+    });
+
     return (
       <div>
 
@@ -30,7 +35,7 @@ class DashboardsIndex extends Component {
               </tr>
               </thead>
               <tbody>
-              {dashboards.map((d, idx) => (
+              {sortedDashboards.map((d, idx) => (
                 <tr key={idx}>
                   <td>{d.id}</td><td>{d.name}</td><td><Link to={`/dashboards/${d.id}`} className="a--ui-kit">Edit</Link></td>
                 </tr>

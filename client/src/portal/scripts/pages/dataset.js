@@ -61,6 +61,11 @@ class DatasetIndex extends Component {
       isPendingRequest,
       config: { OPTIONS_DATASET_LABEL }
     } = this.props;
+
+    let sortedDatapoints = datapoints.sort((a,b) => {
+      return new Date(b.ts).getTime() - new Date(a.ts).getTime();
+    });
+
     return (
       <div>
 
@@ -100,7 +105,7 @@ class DatasetIndex extends Component {
               </tr>
               </thead>
               <tbody>
-              {datapoints.map((d, idx) => (
+              {sortedDatapoints.map((d, idx) => (
                 <tr key={idx}>
                   <td>{d.id}</td><td>{computeLabel(d.ts)}</td><td>{d.value}</td><td><Link to={`/datasets/${dataset.id}/datapoints/${d.id}`} className="a--ui-kit">Edit</Link></td>
                 </tr>
