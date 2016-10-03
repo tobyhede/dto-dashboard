@@ -9,10 +9,22 @@ RSpec.describe Dashboard, type: :model do
   it { is_expected.to have_and_belong_to_many :users }
 
   it { is_expected.to validate_presence_of :name }
-
+    
   subject!(:dashboard)    { FactoryGirl.create(:dashboard) }
 
   its(:to_param) { is_expected.to include(dashboard.name.parameterize) }
+
+  describe 'url' do
+    it { should_not allow_value('<blah').for(:url) }
+    it { should allow_value('blah.com').for(:url) }
+
+    subject(:dashboard) { FactoryGirl.build(:dashboard, :url => '<BLAH>') }
+
+    it 'validation' do
+      expect(dashboard).to be_invalid
+      expect(dashboard.errors[:url]).to be_present
+    end
+  end
 
   context 'unpublished' do
     subject { Dashboard.published.all }

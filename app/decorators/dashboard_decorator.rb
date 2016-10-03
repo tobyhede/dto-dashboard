@@ -22,7 +22,7 @@ class DashboardDecorator < Draper::Decorator
   end
 
   def notes_to_html
-    markdown.render(notes).html_safe
+    h.sanitize(markdown.render(notes))
   end
 
   def name
@@ -39,23 +39,11 @@ class DashboardDecorator < Draper::Decorator
 
   def markdown
     render_options = {
-      # will remove from the output HTML tags inputted by user
-      filter_html: true,
-      # will insert <br /> tags in paragraphs where are newlines
-      # (ignored by default)
+      # filter_html: true,
       hard_wrap: true,
-      # hash for extra link options, for example 'nofollow'
-      link_attributes: {rel: 'nofollow'}
-      # more
-      # will remove <img> tags from output
-      # no_images: true
-      # will remove <a> tags from output
-      # no_links: true
-      # will remove <style> tags from output
-      # no_styles: true
-      # generate links for only safe protocols
-      # safe_links_only: true
-      # and more ... (prettify, with_toc_data, xhtml)
+      images: true,
+      no_styles: true,
+      safe_links_only: true
     }
     renderer = Redcarpet::Render::HTML.new(render_options)
 

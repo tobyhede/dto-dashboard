@@ -3,7 +3,6 @@ ActiveAdmin.register Dashboard do
 
   index do
     selectable_column
-    id_column
     column :name
     column :organisation
     actions
@@ -16,6 +15,8 @@ ActiveAdmin.register Dashboard do
     f.inputs "Dashboard" do
       f.input :name, :as => :string
       f.input :url, :as => :string
+      f.input :description, :label => 'What is the service?'
+      f.input :target_users, :label => 'Who is the user group?'
       f.input :notes
       f.input :display_hero
       f.input :display_kpis

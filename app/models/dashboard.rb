@@ -11,6 +11,8 @@ class Dashboard < ApplicationRecord
 
   validates :name, :description, :target_users, :presence => true
 
+  validates :url, :url => true, :allow_nil => true
+
   def self.published
     where('published_at <= NOW()')
   end
