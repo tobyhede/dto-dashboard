@@ -120,4 +120,3 @@ CreateDatapointForm = reduxForm({
 
 
 export default CreateDatapointForm;
-

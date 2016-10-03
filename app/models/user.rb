@@ -10,6 +10,9 @@ class User < ApplicationRecord
   has_and_belongs_to_many :dashboards
 
   has_many :datasets, :through => :dashboards
+  has_many :datapoints, :through => :datasets
+  has_many :widgets, :through => :dashboards
+  has_many :organisations, :through => :dashboards
 
   def self.by_email
     order(:email => 'ASC')
