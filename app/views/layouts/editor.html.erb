@@ -10,10 +10,10 @@
     # Production mode or not required for webpack-dev-server mode
     #
     if !(Rails.env.development? && ENV['DEV_SERVER'] == 'true') %>
-      <link rel="stylesheet" href="/stylesheets/portal.css"/>
+      <link rel="stylesheet" href="/stylesheets/editor.css"/>
   <% end %>
 </head>
-<body class="portal <%= body_class(yield(:body_class_names)) %>">
+<body class="editor <%= body_class(yield(:body_class_names)) %>">
 
   <div class="l-top-bar">
     <div class="phase-banner">
@@ -31,7 +31,7 @@
       <div class="container">
         <div class="row">
           <div class="col-xs-12">
-            <a href="/portal" title="Go to the GOV.AU Portal's homepage" class="logo">
+            <a href="/editor" title="Go to the GOV.AU Portal's homepage" class="logo">
               <img src="<%= image_path('gov-performance.svg') %>" alt="Logo of GOV.AU Performance Dashboard" height="30px" />
             </a>
           </div>
@@ -41,7 +41,7 @@
   </div>
 
   <div class="l-app">
-    <div class="portal__main">
+    <div class="editor__main">
       <div class="container">
         <%= yield %>
       </div>
@@ -53,9 +53,9 @@
     # Production mode or webpack-dev-server mode
     #
     if !(Rails.env.development? && ENV['DEV_SERVER'] == 'true') %>
-    <script src="/javascripts/portal.js"></script>
+    <script src="/javascripts/editor.js"></script>
   <% else %>
-      <script src="http://localhost:8080/javascripts/portal.js"></script>
+      <script src="http://localhost:8080/javascripts/editor.js"></script>
   <% end %>
 </body>
 </html>
