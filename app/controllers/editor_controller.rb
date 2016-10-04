@@ -1,4 +1,4 @@
-class PortalController < ApplicationController
+class EditorController < ApplicationController
   before_action :authenticate_user!
   helper_method :session_token
 

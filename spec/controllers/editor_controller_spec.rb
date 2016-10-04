@@ -1,7 +1,7 @@
 require 'rails_helper'
 require 'devise'
 
-RSpec.describe PortalController, :type => :controller do
+RSpec.describe EditorController, :type => :controller do
 
   describe 'log into the controller' do
     login_user

@@ -19,7 +19,7 @@ Rails.application.routes.draw do
       end
     end
 
-    get '/portal', :to => 'portal#index'
+    get '/editor', :to => 'editor#index'
   end
 
   get root :to => 'dashboards#index'
