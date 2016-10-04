@@ -26,7 +26,7 @@ let webpackConfig = {
   context: CONFIG.DIR_SRC,
   entry: {
     ['dashboard']: [`./dashboard`],
-    ['portal']: [`./portal`],
+    ['editor']: [`./editor`],
   },
   output: {
     filename: 'javascripts/[name].js',
