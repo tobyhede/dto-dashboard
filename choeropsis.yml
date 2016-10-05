@@ -15,10 +15,6 @@ platforms:
     os_version: 10
     browser: ie
     browser_version: 11.0
-  - os: Windows
-    os_version: XP
-    browser: firefox
-    browser_version: 45.0
   - os: OS X
     os_version: Snow Leopard
     browser: safari
