@@ -23,7 +23,7 @@ class Api::V1::DatapointsController < Api::V1::ApiController
   def update
     with_invalid_record_handler do
       datapoint.update_attributes!(data)
-      render :json => datapoint.to_json, :status => :ok    
+      render :json => datapoint.to_json, :status => :ok
     end
   end
 
@@ -46,7 +46,16 @@ class Api::V1::DatapointsController < Api::V1::ApiController
   end
 
   def data
-    params.permit(:ts, :value)
+    if datapoints?
+      data = params.permit(:datapoints => [:ts, :value])
+      data[:datapoints]
+    else
+      params.permit(:ts, :value)
+    end
+  end
+
+  def datapoints?
+    params[:datapoints].present?
   end
 
 end

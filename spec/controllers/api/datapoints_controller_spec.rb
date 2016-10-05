@@ -76,7 +76,7 @@ RSpec.describe Api::V1::DatapointsController, :type => :controller do
     let(:datapoint) { dataset.datapoints.first }
 
     context 'when unauthorised' do
-      before { post :create, :params => { :dataset_id => 999, :id => 42 } }
+      before { post :create, :params => { :dataset_id => 999 } }
       include_examples 'api_unauthorized_examples'
     end
 
@@ -84,23 +84,37 @@ RSpec.describe Api::V1::DatapointsController, :type => :controller do
       include_context 'api_authorisation'
 
       context 'with unowned dataset' do
-        before { post :create, :params => { :dataset_id => 999, :id => 42 } }
+        before { post :create, :params => { :dataset_id => 999 } }
         it { expect(response).to have_http_status(404) }
       end
 
       context 'with dataset and datapoint' do
         let(:status) { 201 }
 
-        before { post :create, :params => { :dataset_id => dataset.id, :id => datapoint.id, :ts => Time.zone.now, :value => 42 } }
+        before { post :create, :params => { :dataset_id => dataset.id, :ts => Time.zone.now, :value => 42 } }
 
         include_examples 'api_authorized_status_and_schema'
       end
+
+      context 'with dataset and an array of datapoints' do
+        let(:status) { 201 }
+        let(:schema) { datapoints_schema }
+
+        # let!(:dataset) { FactoryGirl.create(:dataset, :user => user) }
+
+        before { post :create, :params => { :dataset_id => dataset.id, :datapoints => [{:ts => Time.zone.now, :value => 42},{:ts => Time.zone.now, :value => 11}] } }
+
+        include_examples 'api_authorized_status_and_schema'
+
+        it { expect(dataset.datapoints.count).to eq 12  }
+      end
+
 
       context 'with dataset and invalid datapoint' do
         let(:status) { 400 }
         let(:schema) { error_schema }
 
-        before { post :create, :params => { :dataset_id => dataset.id, :id => datapoint.id, :value => 42 } }
+        before { post :create, :params => { :dataset_id => dataset.id, :value => 42 } }
 
         include_examples 'api_authorized_status_and_schema'
       end
