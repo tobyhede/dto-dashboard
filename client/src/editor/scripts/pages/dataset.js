@@ -82,7 +82,7 @@ class DatasetIndex extends Component {
     };
 
     return (
-      <div>
+      <div className="container">
 
         <div className="row">
           <div className="col-xs-12">
@@ -95,7 +95,7 @@ class DatasetIndex extends Component {
         </div>
 
         <div className="row">
-          <div className="col-xs-12">
+          <div className="col-xs-12 col-lg-8">
             <h1>Dataset: {dataset.name}</h1>
 
             <button
@@ -115,7 +115,7 @@ class DatasetIndex extends Component {
 
 
         <div className="row">
-          <div className="col-xs-12 col-lg-8">
+          <div className="col-xs-12">
 
             <h2 className="h4">Datapoints</h2>
 

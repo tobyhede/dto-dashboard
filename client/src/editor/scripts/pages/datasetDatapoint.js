@@ -34,14 +34,23 @@ class DatasetDatapointPage extends Component {
     this.props.actions.editFormAtDatasetDatapointPage(true);
   }
 
+  handleCancel() {
+    this.exitForm();
+    this.handleExitPage();
+  }
+
+  // todo - goBack instead or push to datasets
+  handleExitPage() {
+    this.props.push(`/datasets/${this.props.dataset.id}`);
+  }
+
   exitForm() {
     this.props.actions.editFormAtDatasetDatapointPage(false);
-    this.props.push(`/datasets/${this.props.dataset.id}`);
   }
 
   onSubmitSuccess() {
     this.exitForm();
-    this.props.push(`/datasets/${this.props.dataset.id}`);
+    this.handleExitPage();
   }
 
   componentWillUnmount() {
@@ -53,7 +62,7 @@ class DatasetDatapointPage extends Component {
   render() {
     let { datapoint, dataset, isPendingRequest } = this.props;
     return (
-      <div>
+      <div className="container">
 
         <div className="row">
           <div className="col-xs-12">
@@ -79,7 +88,7 @@ class DatasetDatapointPage extends Component {
               dataset={dataset}
               isSubmitting={isPendingRequest}
               onSubmitSuccess={this.onSubmitSuccess.bind(this)}
-              onCancelSuccess={this.exitForm.bind(this)} />
+              onCancelSuccess={this.handleCancel.bind(this)} />
           </div>
         </div>
 
