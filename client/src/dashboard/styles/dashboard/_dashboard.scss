@@ -340,21 +340,3 @@
   font-size: 1.875rem;
   font-weight: 700;
 }
-
-.gradient-accordion {
-  height:210px;
-  overflow:hidden;
-  text-overflow: ellipsis;
-  content: "";
-  background: -webkit-linear-gradient($black, $white);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  border-bottom: 1px solid $axis-stroke-colour;
-
-  &.is-expanded {
-    height: auto;
-    background: $white;
-    -webkit-background-clip: border-box;
-    -webkit-text-fill-color: $black;
-  }
-}
