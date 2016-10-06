@@ -169,9 +169,6 @@
     }
 
     @media screen and(max-width: $screen-sm) {
-      .widget__last-updated {
-        display: none;
-      }
 
       a:first-of-type {
         padding-left: 0;
