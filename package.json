@@ -118,10 +118,12 @@
     "build": "NODE_ENV=production npm run clean && npm run webpack:build:production",
     "dev": "echo 'No dev tast, use 'npm run webpack:dev'",
     "clean": "del public/images/**/* && del public/javascripts/**/* && del public/stylesheets/**/*",
-    "start": "echo 'No start tast, use 'npm run' to see options, you probably want 'npm run build'",
+
+    "start": "echo 'No start task, use 'npm run' to see options, you probably want 'npm run build'",
     "test": "npm run test-browser && npm run test-browser:legacy && npm run test:react",
     "test:react": "jest",
     "test:react:watch": "npm run test:react -- --watch",
+
     "pretest-browser": "",
     "test-browser": "NODE_ENV=test ava 'client/test/**/*.test.js' --require=babel-register",
     "test-browser:tap": "NODE_ENV=test npm run test-browser -- --tap | tap-spec",
