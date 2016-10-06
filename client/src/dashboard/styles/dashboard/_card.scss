@@ -40,6 +40,7 @@
 
   .updated-at {
     color: $secondary-text-colour;
+    clear: both;
   }
 
   .main-kpi {
@@ -59,6 +60,7 @@
       padding-bottom: 15px;
     }
   }
+  
   @media screen and (max-width: $screen-sm) {
     padding-bottom: 20px;
     border-bottom: 1px $axis-stroke-colour solid;
