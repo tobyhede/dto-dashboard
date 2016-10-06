@@ -1,5 +1,9 @@
 class User < ApplicationRecord
-  devise :database_authenticatable, :confirmable, :lockable, :recoverable, :rememberable, :timeoutable, :trackable, :validatable
+  devise :invitable, :two_factor_authenticatable, :database_authenticatable,
+    :confirmable, :lockable, :recoverable, :rememberable, :timeoutable,
+    :trackable, :validatable
+
+  has_one_time_password(encrypted: true)
 
   has_many :tokens do
     def expire
@@ -58,5 +62,9 @@ class User < ApplicationRecord
 
   def to_s
     email
+  end
+
+  def send_two_factor_authentication_code(code)
+    # Send code via SMS, etc.
   end
 end
