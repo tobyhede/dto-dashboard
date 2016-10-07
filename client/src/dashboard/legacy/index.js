@@ -278,7 +278,6 @@ window.addEventListener('scroll', function() {
 $( document ).ready(function() {
   if( $modeButton.length ){
     function toggleHighContrastMode(value) {
-      console.log(value);
       if (value === "on") {
         isHighContrastMode = true;
       } else if (value === "off") {
