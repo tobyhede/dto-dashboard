@@ -281,9 +281,15 @@
   }
 }
 
-.title-links {
-  margin-right: -15px;
+.dashboard-name {
   margin-left: -15px;
+}
+
+.title-links {
+
+  .aus-width-one-whole {
+    margin-left: -15px;
+  }
 
   a {
     display:block;
