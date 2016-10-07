@@ -73,17 +73,18 @@
       <h3 class="hero-heading">Performance history</h3>
     <% end %>
   </div>
-  <div class="hero-region">
-    <div class="container">
-      <div class="row dashboard__top">
-        <% if dashboard.show_hero? %>
+  <% if dashboard.show_hero? %>
+    <div class="hero-region">
+      <div class="container">
+        <div class="row dashboard__top">
           <div class="clearfix">
-            <div class="hero-widget hero" data-data="<%= dashboard.hero.decorate.datasets_to_chart %>"></div>
+            <div class="hero-widget hero" data-data="<%= dashboard.hero.decorate.datasets_to_chart %>">
+            </div>
           </div>
-        <% end %>
+        </div>
       </div>
     </div>
-  </div>
+  <% end %>
 
   <div class="container-fluid metric-breakdown-view">
     <div class="container dashboard__secondary dashboard__below-the-line">
