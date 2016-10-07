@@ -7,11 +7,11 @@
   }
 
   .link--external-alt {
-    color: #2e343b;
+    color: $charcoal-grey;
 
     &:hover,
     &:focus {
-      color: #f0f3f5;
+      color: $light-grey;
     }
   }
 
@@ -19,7 +19,7 @@
     text-align: right;
     margin: 1.33rem 0;
 
-    @media(max-width: 774px) {
+    @media(max-width: $screen-sm) {
       text-align: left;
       margin: 0 0 1.33rem 0;
     }
