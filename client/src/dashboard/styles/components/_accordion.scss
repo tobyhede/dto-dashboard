@@ -10,7 +10,7 @@
     height: auto;
 
     &::before {
-      display:none;
+      display: none;
     }
   }
 
@@ -26,10 +26,10 @@
 }
 
 .kpi-definition {
-  border-top: solid 1px #979797;
-  margin-top: 15px;
+  border-top: solid 1px $border-top-colour;
+  margin-top: $spacing-unit / 2;
 
-  @media screen and (max-width: 768px){
+  @media screen and (max-width: $screen-sm){
     border-top: 0;
   }
 
@@ -37,13 +37,13 @@
     margin-top: 25px;
   }
 
-  @media screen and (max-width: 768px){
+  @media screen and (max-width: $screen-sm){
     display: block;
     clear: both;
   }
 
   div {
-    @media screen and (max-width: 992px) {
+    @media screen and (max-width: $screen-md) {
       margin-bottom: $gutter * 2;
     }
   }
@@ -51,7 +51,7 @@
   p {
     padding-top: 22px;
 
-    @media screen and (max-width: 992px) {
+    @media screen and (max-width: $screen-md) {
       padding-top: $gutter;
     }
   }
@@ -76,14 +76,14 @@
 .flex-row {
   display: flex;
 
-  @media screen and (max-width: 768px){
+  @media screen and (max-width: $screen-sm){
     display:block;
   }
 
   .aus-width-one-fourth{
     display: flex;
 
-    @media screen and (max-width: 768px){
+    @media screen and (max-width: $screen-sm){
       display:block;
     }
   }
@@ -93,14 +93,14 @@
   text-align: center;
   margin-top: 8px;
 
-  @media screen and (max-width: 768px){
-    margin-top: 15px;
-    margin-bottom: 15px;
+  @media screen and (max-width: $screen-sm){
+    margin-top: $spacing-unit / 2;
+    margin-bottom: $spacing-unit / 2;
   }
 
   .show-more__button {
     font-weight: bold;
-    color: #0579C7;
+    color: $cerulean;
     text-decoration: underline;
     font-size: 1rem;
     background: transparent;
