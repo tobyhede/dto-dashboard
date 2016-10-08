@@ -3,14 +3,15 @@ import React, { Component, PropTypes } from 'react';
 
 class YyyyMmDate extends Component {
 
+  static defaultProps = {
+    fieldProps: {},
+    optionProps: {}
+  };
+
   static propTypes = {
-    props: PropTypes.shape({
-      input: React.PropTypes.object.isRequired,
-      name: React.PropTypes.string.isRequired,
-      label: React.PropTypes.string.isRequired,
-      fieldProps: React.PropTypes.object.isRequired,
-      optionProps: React.PropTypes.object.isRequired,
-    })
+    input: PropTypes.object.isRequired,
+    name: PropTypes.string.isRequired,
+    label: PropTypes.string.isRequired,
   };
 
   constructor(props, context) {

@@ -27,16 +27,13 @@ let UpdateDashboardForm = props => {
     <form onSubmit={(e) => e.preventDefault()}>
 
       <Field component={Input} name='name' type='text' label='Name'
-             fieldProps={{disabled:!isEditing}}
-             optionProps={{}} />
+             fieldProps={{disabled:!isEditing}} />
 
       <Field component={Textarea} name='description' label='Description'
-             fieldProps={{disabled:!isEditing}}
-             optionProps={{}} />
+             fieldProps={{disabled:!isEditing}} />
 
       <Field component={Textarea} name='target_users' label='Users Text'
-             fieldProps={{disabled:!isEditing}}
-             optionProps={{}} />
+             fieldProps={{disabled:!isEditing}} />
 
       <Field component={Input} type='url' name='url' label='Url'
              fieldProps={{disabled:!isEditing}}

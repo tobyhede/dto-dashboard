@@ -25,11 +25,9 @@ let UpdateDatapointForm = props => {
     <form onSubmit={(e) => e.preventDefault()}>
 
       <Field component={YyyyMmDate} type="text" name="ts" label="Label"
-             fieldProps={{readOnly:true, disabled:true}}
-             optionProps={{}} />
+             fieldProps={{readOnly:true, disabled:true}} />
 
       <Field component={Input} type="number" name="value" label="Value"
-             fieldProps={{}}
              optionProps={{infoText: `To save as "No data" leave blank`}} />
 
       <div>

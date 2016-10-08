@@ -2,16 +2,11 @@ import React, { PropTypes } from 'react';
 import moment from 'moment';
 
 
-const InputDate = (props) => {
+const InputDate = ({input, name, label, meta, fieldProps, optionProps}) => {
 
-  let {
-    input, name, label,
-    fieldProps,
-    optionProps: { isOptional, format },
-    meta: { touched, error }
-  } = props;
+  const { isOptional, format } = optionProps;
+  const { touched, error } = meta;
 
-  fieldProps = {autoComplete:'off', ...fieldProps};
   let computedValue = moment(input.value).format(format);
 
   return (
@@ -31,14 +26,17 @@ const InputDate = (props) => {
   )
 };
 
+InputDate.defaultProps = {
+  fieldProps: {
+    autoComplete: 'off'
+  },
+  optionProps: {}
+};
+
 InputDate.propTypes = {
-  props: PropTypes.shape({
-    input: PropTypes.object.isRequired,
-    name: PropTypes.string.isRequired,
-    label: PropTypes.string.isRequired,
-    fieldProps: PropTypes.object.isRequired,
-    optionProps: PropTypes.object.isRequired,
-  })
+  input: PropTypes.object.isRequired,
+  name: PropTypes.string.isRequired,
+  label: PropTypes.string.isRequired
 };
 
 export default InputDate;

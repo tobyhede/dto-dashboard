@@ -27,11 +27,9 @@ let CreateDatapointForm = props => {
     <form onSubmit={(e) => e.preventDefault()}>
 
       <Field component={YyyyMmDate} type="text" name="ts" label="Label"
-             fieldProps={{}}
              optionProps={{exclusionDates:exclusionDates}} />
 
       <Field component={Input} name="value" type="number" label="Value"
-             fieldProps={{}}
              optionProps={{infoText: `To save as "No data" leave blank`}} />
 
       <div>

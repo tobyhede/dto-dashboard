@@ -27,12 +27,10 @@ let UpdateDatasetForm = props => {
     <form onSubmit={(e) => e.preventDefault()}>
 
       <Field component={Input} name="name" type="text" label="Name"
-             fieldProps={{disabled:!isEditing}}
-             optionProps={{}} />
+             fieldProps={{disabled:!isEditing}} />
 
       <Field component={Input} name="label" type="text" label="Label"
-             fieldProps={{disabled:!isEditing}}
-             optionProps={{}} />
+             fieldProps={{disabled:!isEditing}} />
 
       <Field component={Select} name="units" label="Units"
              fieldProps={{disabled:!isEditing}}

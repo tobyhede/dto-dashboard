@@ -29,8 +29,7 @@ let UpdateWidgetForm = props => {
     <form onSubmit={(e) => e.preventDefault()}>
 
       <Field component={Input} name="name" type="text" label="Name"
-             fieldProps={{disabled:!isEditing}}
-             optionProps={{}} />
+             fieldProps={{disabled:!isEditing}} />
 
       <Field component={Select} name="type" label="Type"
              fieldProps={{disabled:!isEditing}}
@@ -41,12 +40,10 @@ let UpdateWidgetForm = props => {
              optionProps={{options:OPTIONS_WIDGET_UNITS}} />
 
       <Field component={Textarea} name="description" label="Description"
-             fieldProps={{disabled:!isEditing}}
-             optionProps={{}} />
+             fieldProps={{disabled:!isEditing}} />
 
       <Field component={YyyyMmDdDate} name='last_updated_at' label='Last updated'
-             fieldProps={{disabled:!isEditing}}
-             optionProps={{}} />
+             fieldProps={{disabled:!isEditing}} />
 
       <div>
         <SubmitButton type="submit"

@@ -1,19 +1,15 @@
 import React, { PropTypes } from 'react';
 
 
-const Checkbox = (props) => {
+const Checkbox = ({input, name, label, fieldProps, optionProps, meta }) => {
   let checked = false;
-  if (props.input.value) {
-    checked = props.input.value;
-    delete props.input.value;
+  if (input.value) {
+    checked = input.value;
+    delete input.value;
   }
 
-  const {
-    input, name, label,
-    fieldProps,
-    optionProps: { isOptional },
-    meta: { touched, error }
-  } = props;
+  const { isOptional } = optionProps;
+  const { touched, error } = meta;
 
   return (
     <div className="form-group">
@@ -31,14 +27,15 @@ const Checkbox = (props) => {
   )
 };
 
+Checkbox.defaultProps = {
+  fieldProps: {},
+  optionProps: {}
+};
+
 Checkbox.propTypes = {
-  props: PropTypes.shape({
-    input: PropTypes.object.isRequired,
-    name: PropTypes.string.isRequired,
-    label: PropTypes.string.isRequired,
-    fieldProps: PropTypes.object.isRequired,
-    optionProps: PropTypes.object.isRequired,
-  })
+  input: PropTypes.object.isRequired,
+  name: PropTypes.string.isRequired,
+  label: PropTypes.string.isRequired
 };
 
 export default Checkbox;
