@@ -4,7 +4,7 @@ UI-Kit version: 1.8.0
 
 */
 
-@import 'variables';
+@import '../../../_ui-kit/lib/variables';
 @import '~gov-au-ui-kit/assets/sass/utils/colours';
 @import '~gov-au-ui-kit/assets/sass/utils/functions';
 @import '~gov-au-ui-kit/assets/sass/utils/mixins';
@@ -15,20 +15,20 @@ UI-Kit version: 1.8.0
 @import '~gov-au-ui-kit/assets/sass/vendor/normalize';
 @import '~gov-au-ui-kit/assets/sass/vendor/bourbon/bourbon';
 @import '~gov-au-ui-kit/assets/sass/vendor/neat/neat-helpers';
-@import 'utils/grid-settings';
+@import '../../../_ui-kit/lib/utils/grid-settings';
 @import '~gov-au-ui-kit/assets/sass/vendor/neat/neat';
 @import '~gov-au-ui-kit/assets/sass/components/accordions';
 @import '~gov-au-ui-kit/assets/sass/components/buttons';
-@import 'components/buttons';
-@import 'components/forms';
+@import '../../../_ui-kit/lib/components/buttons';
+@import '../../../_ui-kit/lib/components/forms';
 //@import '~gov-au-ui-kit/assets/sass/components/grid-layout';
 @import '~gov-au-ui-kit/assets/sass/components/images';
-@import 'components/links';
+@import '../../../_ui-kit/lib/components/links';
 @import '~gov-au-ui-kit/assets/sass/components/lists';
-@import '~gov-au-ui-kit/assets/sass/components/navigation';
+@import '../../../_ui-kit/lib/components/navigation';
 @import '~gov-au-ui-kit/assets/sass/components/page-footer';
 @import '~gov-au-ui-kit/assets/sass/components/page-header';
 @import '~gov-au-ui-kit/assets/sass/components/tables';
 @import '~gov-au-ui-kit/assets/sass/components/accordions';
-@import 'components/typography';
+@import '../../../_ui-kit/lib/components/typography';
 @import '~gov-au-ui-kit/assets/sass/components/video';
