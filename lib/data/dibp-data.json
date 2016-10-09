@@ -57,7 +57,7 @@
 
         {
             "id": "device-type-01",
-            "name": "Mobile",
+            "name": "Devise Usage - Mobile",
             "recorded_at": "2016-06-30T01:01:01.111Z",
             "units": "i",
             "note": "note for this dataset",
@@ -70,7 +70,7 @@
             ]
         }, {
             "id": "device-type-02",
-            "name": "Tablet",
+            "name": "Devise Usage - Tablet",
             "recorded_at": "2016-06-30T01:01:01.111Z",
             "units": "i",
             "note": "note for this dataset",
@@ -85,7 +85,7 @@
 
         {
             "id": "device-type-03",
-            "name": "Desktop",
+            "name": "Devise Usage - Desktop",
             "recorded_at": "2016-06-30T01:01:01.111Z",
             "units": "i",
             "note": "note for this dataset",
@@ -100,7 +100,7 @@
 
         {
             "id": "browser-usage-chrome",
-            "name": "Chrome",
+            "name": "Browser Usage - Chrome",
             "recorded_at": "2016-06-30T01:01:01.111Z",
             "units": "i",
             "note": "note for this dataset",
@@ -115,7 +115,7 @@
 
         {
             "id": "browser-usage-safari",
-            "name": "Safari",
+            "name": "Browser Usage - Safari",
             "recorded_at": "2016-06-30T01:01:01.111Z",
             "units": "i",
             "note": "note for this dataset",
@@ -130,7 +130,7 @@
 
         {
             "id": "browser-usage-mozilla",
-            "name": "Firefox",
+            "name": "Browser Usage - Firefox",
             "recorded_at": "2016-06-30T01:01:01.111Z",
             "units": "i",
             "note": "note for this dataset",
@@ -145,7 +145,7 @@
 
         {
             "id": "browser-usage-IE",
-            "name": "Internet Explorer",
+            "name": "Browser Usage - Internet Explorer",
             "recorded_at": "2016-06-30T01:01:01.111Z",
             "units": "i",
             "note": "note for this dataset",
@@ -160,7 +160,7 @@
 
         {
             "id": "browser-usage-other",
-            "name": "Other",
+            "name": "Browser Usage - Other",
             "recorded_at": "2016-06-30T01:01:01.111Z",
             "units": "i",
             "note": "note for this dataset",
