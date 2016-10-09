@@ -13,45 +13,47 @@ import SubmitButton from './../submitButton';
 /**
  * Update Dataset Form
  * @param props
- * @constructor
+ * @component
  */
-let UpdateDatasetForm = props => {
+let UpdateDatasetForm = ({
+  isEditing, isSubmitting, onCancelSuccess, OPTIONS_DATASET_LABEL,
+  ...rfProps
+}) => {
 
-  const {
-    error, handleSubmit, pristine, submitting, valid,
-    isEditing, isSubmitting,
-    OPTIONS_DATASET_LABEL
-  } = props;
+  const { error, handleSubmit, pristine, submitting, valid } = rfProps;
 
   return (
     <form onSubmit={(e) => e.preventDefault()}>
 
-      <Field component={Input} name="name" type="text" label="Name"
+      <Field component={Input}
+             name="name" type="text" label="Name"
              fieldProps={{disabled:!isEditing}} />
 
-      <Field component={Input} name="label" type="text" label="Label"
+      <Field component={Input}
+             name="label" type="text" label="Label"
              fieldProps={{disabled:!isEditing}} />
 
-      <Field component={Select} name="units" label="Units"
+      <Field component={Select}
+             name="units" label="Units"
              fieldProps={{disabled:!isEditing}}
              optionProps={{options:OPTIONS_DATASET_LABEL}} />
 
-      <Field component={Textarea} name="notes" label="Notes"
+      <Field component={Textarea}
+             name="notes" label="Notes"
              fieldProps={{disabled:!isEditing}}
              optionProps={{isOptional:true}} />
 
       <div>
         <SubmitButton type="submit"
-                      btnText="Save"
-                      submittingBtnText="Saving.."
-                      isSubmitting={isSubmitting}
+                      btnText={isSubmitting ? 'Saving...' : 'Save'}
                       className='btn primary'
-                      disabled={pristine || submitting || !valid}
+                      disabled={isSubmitting || pristine || !valid}
                       onClick={handleSubmit(submit.bind(this))} />
+
         <button type="cancel"
                 className='btn primary-link'
                 disabled={!isEditing || submitting}
-                onClick={cancel.bind({}, props)}>Cancel</button>
+                onClick={cancel.bind({}, rfProps, onCancelSuccess)}>Cancel</button>
       </div>
       <div className="form__help-block">
         {error && <strong>{error}</strong>}
@@ -60,6 +62,19 @@ let UpdateDatasetForm = props => {
   )
 };
 
+UpdateDatasetForm.defaultProps = {
+  isSubmitting: false
+};
+
+UpdateDatasetForm.propTypes = {
+  formModel: PropTypes.object.isRequired,
+  onSubmitSuccess: PropTypes.func.isRequired,
+  onCancelSuccess: PropTypes.func.isRequired,
+  isEditing: PropTypes.bool,
+  isSubmitting: PropTypes.bool,
+  exclusionDates: PropTypes.array,
+  OPTIONS_DATASET_LABEL: PropTypes.array.isRequired
+};
 
 /**
  * @param values
@@ -105,9 +120,9 @@ const validate = (values, props) => {
   return errors;
 };
 
-const cancel = (props) => {
-  props.reset(props.form);
-  props.onCancelSuccess();
+const cancel = (rfProps, cb = ()=>{}) => {
+  rfProps.reset(rfProps.form);
+  cb();
 };
 
 

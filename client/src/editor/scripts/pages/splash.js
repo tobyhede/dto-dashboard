@@ -39,7 +39,7 @@ class DashboardsIndex extends Component {
             <p><strong>What would you like to do today?</strong></p>
           </div>
 
-          <div className="col-xs-12 col-sm-4">
+          <div className="col-xs-12 col-sm-6 col-lg-4">
             <p>Create or update data:</p>
             <ul>
               <li><Link to="/datasets" className="a--ui-kit">Create or update data</Link></li>
@@ -47,7 +47,7 @@ class DashboardsIndex extends Component {
             <br />
           </div>
 
-          <div className="col-xs-12 col-sm-4">
+          <div className="col-xs-12 col-sm-6 col-lg-4">
             <p>Edit Dashboard content:</p>
 
             {sortedDashboards.length ?

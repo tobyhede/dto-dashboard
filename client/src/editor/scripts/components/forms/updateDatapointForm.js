@@ -1,9 +1,9 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux'
 import { Field, reduxForm, SubmissionError } from 'redux-form';
+import { isFloat } from 'validator';
 
 import { updateDatapoint } from './../../actions/datapoint';
-import { isFloat } from 'validator';
 import Input from './../fields/input';
 import SubmitButton from './../submitButton';
 import YyyyMmDate from './../fields/yyyyMmDate';
@@ -12,43 +12,55 @@ import YyyyMmDate from './../fields/yyyyMmDate';
 /**
  * Update Datapoint Form
  * @param props
- * @constructor
+ * @component
  */
-let UpdateDatapointForm = props => {
+let UpdateDatapointForm = ({
+  isSubmitting, onCancelSuccess,
+  ...rfProps
+}) => {
 
-  const {
-    error, handleSubmit, submitting, valid,
-    isSubmitting
-  } = props;
+  const { error, handleSubmit, submitting, valid } = rfProps;
 
   return (
     <form onSubmit={(e) => e.preventDefault()}>
 
-      <Field component={YyyyMmDate} type="text" name="ts" label="Label"
+      <Field component={YyyyMmDate}
+             type="text" name="ts" label="Label"
              fieldProps={{readOnly:true, disabled:true}} />
 
-      <Field component={Input} type="number" name="value" label="Value"
-             optionProps={{infoText: `To save as "No data" leave blank`}} />
+      <Field component={Input}
+             type="number" name="value" label="Value"
+             optionProps={{infoText: `Leave blank to save as "No data"`}} />
 
       <div>
         <SubmitButton type="submit"
-                      btnText="Save"
-                      submittingBtnText="Saving.."
-                      isSubmitting={isSubmitting}
-                      className='btn primary'
-                      disabled={submitting || !valid}
-                      onClick={handleSubmit(submit.bind(this))} />
+                btnText={isSubmitting ? 'Saving...' : 'Save'}
+                className='btn primary'
+                disabled={isSubmitting || !valid}
+                onClick={handleSubmit(submit.bind(this))} />
 
         <button type="cancel"
                 className='btn primary-link'
-                disabled={submitting}
-                onClick={cancel.bind({}, props)}>Cancel</button>
+                disabled={isSubmitting}
+                onClick={cancel.bind({}, rfProps, onCancelSuccess)}>Cancel</button>
       </div>
       <div className="form__help-block">
         {error && <strong>{error}</strong>}
       </div>
     </form>
   )
+};
+
+UpdateDatapointForm.defaultProps = {
+  isSubmitting: false
+};
+
+UpdateDatapointForm.propTypes = {
+  formModel: PropTypes.object.isRequired,
+  dataset: PropTypes.object.isRequired,
+  onSubmitSuccess: PropTypes.func.isRequired,
+  onCancelSuccess: PropTypes.func.isRequired,
+  isSubmitting: PropTypes.bool
 };
 
 
@@ -91,9 +103,9 @@ const validate = (values, props) => {
 };
 
 
-const cancel = (props) => {
-  props.reset(props.form);
-  props.onCancelSuccess();
+const cancel = (rfProps, cb = ()=>{}) => {
+  rfProps.reset(rfProps.form);
+  cb();
 };
 
 

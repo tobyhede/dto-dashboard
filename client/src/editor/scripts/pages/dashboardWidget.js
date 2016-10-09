@@ -98,17 +98,19 @@ class Widget extends Component {
         <div className="row">
           <div className="col-xs-12">
             <h1>Dashboard: {dashboard.name}, Widget: {widget.name}</h1>
-
             <h2 className="h4">Datasets</h2>
+          </div>
+        </div>
 
+        <div className="row">
+          <div className="col-xs-12">
             {sortedDatasets.length ?
               editDatasetsList(sortedDatasets) :
               <p><em>No datasets</em></p>
             }
           </div>
+          <br />
         </div>
-
-        <br />
 
         <div className="row">
           <div className="col-xs-12 col-lg-8">
@@ -129,7 +131,6 @@ class Widget extends Component {
             />
           </div>
         </div>
-
 
       </div>
     )

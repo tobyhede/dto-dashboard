@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
 import moment from 'moment';
+import { ISO_LONG_DATE } from './../../../../_ui-kit/lib/constants/date-time';
 
 
 const InputDate = ({input, name, label, meta, fieldProps, optionProps}) => {
@@ -7,7 +8,7 @@ const InputDate = ({input, name, label, meta, fieldProps, optionProps}) => {
   const { isOptional, format } = optionProps;
   const { touched, error } = meta;
 
-  let computedValue = moment(input.value).format(format);
+  let computedValue = moment(input.value).format(format || ISO_LONG_DATE);
 
   return (
     <div className="form-group">

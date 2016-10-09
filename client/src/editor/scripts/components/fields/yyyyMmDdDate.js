@@ -21,9 +21,9 @@ class YyyyMmDdDate extends Component {
     this.state = this.deserializeDate(this.props.input.value);
   }
 
-  componentDidMount() {
-    this.updateField();
-  }
+  // componentDidMount() {
+  //   this.updateField();
+  // }
 
   serializeDate() {
     return new Date(
