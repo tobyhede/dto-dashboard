@@ -17,8 +17,8 @@ RSpec.describe Api::V1::DatapointsController, :type => :controller do
       include_context 'api_authorisation'
 
       context 'with unknown dataset' do
-        let(:dataset) { FactoryGirl.create(:dataset) }
-        before { get :index, :params => { :dataset_id => dataset.id } }
+      
+        before { get :index, :params => { :dataset_id => 999 } }
 
         include_examples 'api_authorized_not_found'
       end
