@@ -78,6 +78,7 @@
   <script>
     $('.show-more__button').bind('click', function(e){
       jQuery( "div.gradient-accordion" ).toggleClass('is-expanded');
+      e.preventDefault();
 
       $(this).text(function(i, text){
           return text === "show less" ? "show more" : "show less";
@@ -90,7 +91,6 @@
       else {
           jQuery(this).attr('aria-expanded', 'false');
       }
-      e.preventDefault();
     })
   </script>
 </body>
