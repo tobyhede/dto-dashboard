@@ -49,7 +49,8 @@
         "id": "click-through-ablis",
         "recorded_at": "2016-08-30T01:01:01.111Z",
         "units": "%",
-        "name": "ABLIS",
+        "label": "ABLIS",
+        "name": "Click Through - ABLIS",
         "note": "",
         "data": [
           { "label": "2016-06", "value": 8.0},
@@ -59,7 +60,8 @@
         "id": "click-through-ato",
         "recorded_at": "2016-08-30T01:01:01.111Z",
         "units": "%",
-        "name": "ATO",
+        "label": "ATO",
+        "name": "Click Through - ATO",
         "note": "",
         "data": [
           { "label": "2016-06", "value": 46.0},
@@ -69,7 +71,8 @@
         "id": "click-through-bus.gov",
         "recorded_at": "2016-08-30T01:01:01.111Z",
         "units": "%",
-        "name": "business.gov.au",
+        "label": "business.gov.au",
+        "name": "Click Through - business.gov.au",
         "note": "",
         "data": [
           { "label": "2016-06", "value": 28.0},
@@ -79,7 +82,8 @@
         "id": "click-through-ip",
         "recorded_at": "2016-08-30T01:01:01.111Z",
         "units": "%",
-        "name": "IP Australia",
+        "label": "IP Australia",
+        "name": "Click Through - IP Australia",
         "note": "",
         "data": [
           { "label": "2016-06", "value": 6.0},
@@ -90,7 +94,8 @@
         "id":           "click-through-other",
         "recorded_at":  "2016-08-30T01:01:01.111Z",
         "units":        "%",
-        "name":         "Other",
+        "label":        "Other",
+        "name":         "Click Through - Other",
         "note":         "",
         "data": [
           { "label": "2016-06", "value": 11.0},
@@ -101,7 +106,8 @@
         "id": "external-referrals-ext",
         "recorded_at": "2016-08-30T01:01:01.111Z",
         "units": "%",
-        "name": "External sites",
+        "label": "External sites",
+        "name": "Click Through - External sites",
         "note": "",
         "data": [
           { "label": "2016-06", "value": 66.0},
@@ -111,7 +117,8 @@
         "id": "external-referrals-direct",
         "recorded_at": "2016-08-30T01:01:01.111Z",
         "units": "%",
-        "name": "Direct",
+        "label": "Direct",
+        "name": "Click Through - Direct",
         "note": "",
         "data": [
           { "label": "2016-06", "value": 34.0},
@@ -121,7 +128,8 @@
         "id": "help-sought-none",
         "recorded_at": "2016-08-30T01:01:01.111Z",
         "units": "%",
-        "name": "No help required",
+        "label": "No help required",
+        "name": "Help sought - No help required",
         "note": "",
         "data": [
           { "label": "2016-06", "value": 98},
@@ -131,7 +139,8 @@
         "id": "help-sought-contact",
         "recorded_at": "2016-08-30T01:01:01.111Z",
         "units": "%",
-        "name": "Help required",
+        "label": "No help required",
+        "name": "Help sought - Help required",
         "note": "",
         "data": [
           { "label": "2016-06", "value": 2},
@@ -141,7 +150,8 @@
         "id": "device-usage-desktop",
         "recorded_at": "2016-08-30T01:01:01.111Z",
         "units": "%",
-        "name": "Desktop",
+        "label": "Desktop",
+        "name": "Device usage - Desktop",
         "note": "",
         "data": [
           { "label": "2016-06", "value": 66},
@@ -151,7 +161,8 @@
         "id": "device-usage-mobile",
         "recorded_at": "2016-08-30T01:01:01.111Z",
         "units": "%",
-        "name": "Mobile",
+        "label": "Mobile",
+        "name": "Device usage - Mobile",
         "note": "",
         "data": [
           { "label": "2016-06", "value": 27},
@@ -161,7 +172,8 @@
         "id": "device-usage-tablet",
         "recorded_at": "2016-08-30T01:01:01.111Z",
         "units": "%",
-        "name": "Tablet",
+        "label": "Tablet",
+        "name": "Device usage - Tablet",
         "note": "",
         "data": [
           { "label": "2016-06", "value": 7},
@@ -171,7 +183,8 @@
         "id": "browser-usage-chrome",
         "recorded_at": "2016-08-30T01:01:01.111Z",
         "units": "%",
-        "name": "Chrome",
+        "label": "Chrome",
+        "name": "Device usage - Chrome",
         "note": "",
         "data": [
           { "label": "2016-06", "value": 43},
@@ -181,7 +194,8 @@
         "id": "browser-usage-safari",
         "recorded_at": "2016-08-30T01:01:01.111Z",
         "units": "%",
-        "name": "Safari",
+        "label": "Safari",
+        "name": "Broswer usage - Safari",
         "note": "",
         "data": [
           { "label": "2016-06", "value": 24},
@@ -191,7 +205,8 @@
         "id": "browser-usage-ie",
         "recorded_at": "2016-08-30T01:01:01.111Z",
         "units": "%",
-        "name": "IE",
+        "label": "IE",
+        "name": "Broswer usage - IE",
         "note": "",
         "data": [
           { "label": "2016-06", "value": 15},
@@ -201,7 +216,8 @@
         "id": "browser-usage-firefox",
         "recorded_at": "2016-08-30T01:01:01.111Z",
         "units": "%",
-        "name": "Firefox",
+        "label": "Firefox",
+        "name": "Broswer usage - Firefox",
         "note": "",
         "data": [
           { "label": "2016-06", "value": 13},
@@ -211,7 +227,8 @@
         "id": "browser-usage-other",
         "recorded_at": "2016-08-30T01:01:01.111Z",
         "units": "%",
-        "name": "Other",
+        "label": "Other",
+        "name": "Broswer usage - Other",
         "note": "",
         "data": [
           { "label": "2016-06", "value": 6},
