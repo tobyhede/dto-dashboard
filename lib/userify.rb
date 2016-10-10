@@ -17,7 +17,8 @@ class Userify
       :password => opts.password,
       :password_confirmation => opts.password,
       :organisation => organisation,
-      :dashboards => [dashboard])
+      :dashboards => [dashboard],
+      :datasets => dashboard.datasets.all)
 
     user.skip_confirmation!
     user.save!
