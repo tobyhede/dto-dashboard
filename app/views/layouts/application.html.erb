@@ -77,19 +77,19 @@
   <% end %>
   <script>
     $('.show-more__button').bind('click', function(e){
-      jQuery( "div.gradient-accordion" ).toggleClass('is-expanded');
       e.preventDefault();
+      $( "div.gradient-accordion" ).toggleClass('is-expanded');
 
       $(this).text(function(i, text){
           return text === "show less" ? "show more" : "show less";
       })
 
-      if (jQuery(this).parent().prev().attr('aria-expanded') == 'false') {
-          jQuery(this).parent().prev().attr('aria-expanded', 'true');
-          jQuery(this).parent().prev().find('gradient-accordion').focus();
+      if ($(this).parent().prev().attr('aria-expanded') == 'false') {
+          $(this).parent().prev().attr('aria-expanded', 'true');
+          $(this).parent().prev().find('gradient-accordion').focus();
       }
       else {
-          jQuery(this).attr('aria-expanded', 'false');
+          $(this).attr('aria-expanded', 'false');
       }
     })
   </script>
