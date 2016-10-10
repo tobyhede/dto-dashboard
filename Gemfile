@@ -19,6 +19,8 @@ gem 'sass-rails',               '~> 5.0'
 gem 'turbolinks',               '~> 5'
 gem 'uglifier',                 '>= 1.3.0'
 gem 'jbuilder',                 '~> 2.6.0'
+gem 'devise-two-factor'
+gem 'rqrcode'
 
 group :production do
   gem 'rails_12factor'

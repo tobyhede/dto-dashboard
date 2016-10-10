@@ -1,5 +1,8 @@
 class User < ApplicationRecord
-  devise :database_authenticatable, :confirmable, :lockable, :recoverable, :rememberable, :timeoutable, :trackable, :validatable
+  devise :confirmable, :lockable, :recoverable,
+    :rememberable, :timeoutable, :trackable, :validatable
+
+  devise :two_factor_authenticatable, otp_secret_encryption_key: ENV['OTP_SECRET']
 
   has_many :tokens do
     def expire

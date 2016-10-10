@@ -30,6 +30,11 @@
         <%= f.password_field :password, autocomplete: "off" %>
       </p>
 
+      <p>
+        <%= f.label 'One-time password (from Google Authenticator)' %>
+        <%= f.text_field :otp_attempt, autocomplete: 'off' %>
+      </p>
+
       <div class="form-footer-actions">
         <div class="form-options">
           <% if devise_mapping.rememberable? -%>
@@ -56,4 +61,3 @@
   </section>
 
 </div>
-

@@ -1,0 +1,6 @@
+<p class="large">Two-factor authentication has been enabled for the user.<br />
+  Show this QR code to them to add to their auths in Google Authenticator.</p>
+<p><img src="<%= @qr_image_path %>" /></p>
+<div class="links">
+  <%= link_to 'Back to user', admin_user_path(resource) %>
+</div>
