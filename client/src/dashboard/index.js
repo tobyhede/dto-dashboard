@@ -30,4 +30,19 @@ if (module.hot) {
   require('./scripts/main');
 }
 
+$('.show-more__button').bind('click', function(e){
+  e.preventDefault();
+  $( "div.gradient-accordion" ).toggleClass('is-expanded');
 
+  $(this).text(function(i, text){
+      return text === "show less" ? "show more" : "show less";
+  })
+
+  if ($(this).parent().prev().attr('aria-expanded') == 'false') {
+      $(this).parent().prev().attr('aria-expanded', 'true');
+      $(this).parent().prev().find('gradient-accordion').focus();
+  }
+  else {
+      $(this).attr('aria-expanded', 'false');
+  }
+})
