@@ -30,21 +30,6 @@ RSpec.describe DashboardDecorator, type: :decorator do
     it { is_expected.to_not be_show_kpis }
   end
 
-
-  describe 'convert notes to html' do
-    let(:opts) { {:notes => '# Heading'} }
-
-    subject { decorator.notes_to_html }
-
-    it { is_expected.to eq "<h1>Heading</h1>\n" }
-
-    context 'with bad html' do
-      let(:opts) { {:notes => '<script>alert();</script><h1 onload="alert()">Heading</h1>'} }
-      it { is_expected.to_not include '<script>' }
-      it { is_expected.to_not include 'onload' }
-    end
-  end
-
   describe 'convert description to html' do
     let(:opts) { {:description => '# Heading'} }
 
