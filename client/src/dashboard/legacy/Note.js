@@ -31,7 +31,7 @@ class Note {
     let isOpen = false;
     let widget = this.note.node().parentNode.parentNode;
 
-    x0 = titleNode.offsetLeft;
+    // x0 = titleNode.offsetLeft;
     //y0  = titleNode.offsetRight;
     w0 = 70;
 
