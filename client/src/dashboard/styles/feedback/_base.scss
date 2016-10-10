@@ -4,15 +4,15 @@
     margin-right: auto;
     margin-left: auto;
 
-    @include media(768px) {
+    @include media($screen-sm) {
       width: 750px;
     }
 
-    @include media(992px) {
+    @include media($screen-md) {
       width: 970px;
     }
 
-    @include media(1200px) {
+    @include media($screen-lg) {
       width: 1170px;
     }
   }

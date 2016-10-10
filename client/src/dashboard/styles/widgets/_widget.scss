@@ -550,7 +550,7 @@
 
 .reasons-unable-to-enrol {
   .widget__inner {
-    @media screen and (min-width: 992px) {
+    @media screen and (min-width: $screen-md) {
       .chart {
         width: calc(100% - 240px);
       }

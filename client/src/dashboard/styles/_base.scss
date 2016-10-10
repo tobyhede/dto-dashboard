@@ -99,19 +99,19 @@ h4 {
 }
 
 .hide-on-desktop {
-  @media (min-width: 769px) {
+  @media (min-width: $screen-sm + 1) {
     display: none;
   }
 }
 
 .hide-on-mobile {
-  @media (max-width: 768px) {
+  @media (max-width: $screen-sm) {
     display: none;
   }
 }
 
 .hide-on-desktop-tablet {
-  @media (min-width: 769px) {
+  @media (min-width: $screen-sm + 1) {
     display: none !important;
   }
 }
