@@ -78,23 +78,21 @@ const submit = (values, dispatch, props) => { // todo
 
   return new Promise((resolve, reject) => {
     dispatch(createDatapoint(values)).then(
-      (data) => {
-        // debugger
+      (data) => { // promise success
         if (data) { // todo - extract this
           let newDatasetState = {...props.dataset};
           newDatasetState.datapoints.push(data.id);
-          // dispatch(updateDataset(newDatasetState)); // todo - handle this fail  // TDODO
+          // dispatch(updateDataset(newDatasetState)); // todo - handle this fail  // TODO
           return resolve();
         }
-        return reject({message: 'an error message from server'});
+        // server error
+        return reject({message: data.message});
       },
-      (error) => {
-        return reject({message: `an error message: ${error}`});
+      (error) => { // promise failed
+        return reject(error);
       },
     ).catch((error) => {
-      // todo - check error and fail accordingly
-      console.error(error);
-      throw new SubmissionError({name: 'Name does not exist', _error: 'Submit failed!'});
+      throw new SubmissionError({_error: error.message || 'Submit failed!'});
     });
   });
 };

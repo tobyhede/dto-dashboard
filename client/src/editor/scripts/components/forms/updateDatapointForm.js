@@ -76,19 +76,18 @@ const submit = (values, dispatch, props) => {
 
   return new Promise((resolve, reject) => {
     dispatch(updateDatapoint(values)).then(
-      (data) => {
+      (data) => { // promise success
         if (data) {
           return resolve();
         }
-        return reject({message: 'an error message from server'});
+        // server error
+        return reject({message: data.message});
       },
-      (error) => {
-        return reject({message: `an error message: ${error}`});
+      (error) => { // promise failed
+        return reject(error);
       },
     ).catch((error) => {
-      // todo - check error and fail accordingly
-      console.error(error);
-      throw new SubmissionError({name: 'Name does not exist', _error: 'Submit failed!'});
+      throw new SubmissionError({_error: error.message || 'Submit failed!'});
     });
   });
 };
