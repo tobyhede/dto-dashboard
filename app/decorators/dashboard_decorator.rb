@@ -9,10 +9,6 @@ class DashboardDecorator < Draper::Decorator
     display_kpis && widgets.kpis.any?
   end
 
-  def show_notes?
-    notes.present?
-  end
-
   def show_url?
     url.present?
   end
