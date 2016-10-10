@@ -114,7 +114,7 @@ svg:not(:root) {
 
     span {
       display: inline-block;
-      padding-left: 10px;
+      padding-left: $gutter;
       font-weight: 600;
       text-transform: uppercase;
     }

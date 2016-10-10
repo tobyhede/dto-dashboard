@@ -33,7 +33,7 @@
     background: $charcoal-grey;
     color: $white;
     border-radius: 1px;
-    padding: 5px 10px;
+    padding: 5px $gutter;
     font-size: 12px;
   }
 
@@ -195,7 +195,7 @@
 
   .widget__inner {
     padding: $spacing-unit / 2;
-    padding-top: 10px;
+    padding-top: $gutter;
 
     p {
       margin: 0;
@@ -367,7 +367,7 @@
         .widget__title::before {
           content: '\f111';
           font-family: 'fontawesome';
-          padding-right: 10px;
+          padding-right: $gutter;
           color: $color;
 
           @include media($screen-sm) {
@@ -433,7 +433,7 @@
 
 .dashboard__secondary {
   .widget__inner {
-    margin-top: 10px;
+    margin-top: $gutter;
 
     .legend {
       padding: 0 $spacing-unit / 2;

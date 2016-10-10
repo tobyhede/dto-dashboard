@@ -60,11 +60,11 @@
       padding-bottom: 15px;
     }
   }
-  
+
   @media screen and (max-width: $screen-sm) {
     padding-bottom: 20px;
     border-bottom: 1px $axis-stroke-colour solid;
-    margin-bottom: 10px;
+    margin-bottom: $gutter;
   }
 
   @media only screen and (min-width: $screen-sm ) and (max-width: $screen-md) {
@@ -112,7 +112,7 @@
     .widget__inner {
       .sparkline__inner {
         .chart {
-          margin: 5px 10px;
+          margin: 5px $gutter;
         }
       }
     }
@@ -161,7 +161,7 @@
     .widget__inner {
       .sparkline__inner {
         .chart {
-          margin: 5px 10px;
+          margin: 5px $gutter;
         }
       }
     }
