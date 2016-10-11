@@ -8,13 +8,12 @@
  *
  */
 
-@import '../../_ui-kit/lib/ui-kit';
-@import '../../_ui-kit/overrides/buttons';
-@import '../../_ui-kit/overrides/forms';
+@import 'vendor/ui-kit';
+@import '../../_ui-kit/extensions/buttons';
+@import '../../_ui-kit/extensions/forms';
+@import '../../_ui-kit/extensions/forms';
 
 @import './../../_common/styles/_vendor/bootstrap/bootstrap-grid';
-@import '~bootstrap/scss/mixins/border-radius';
-@import './../../_common/styles/_vendor/bootstrap/breadcrumb';
 
 
 /**

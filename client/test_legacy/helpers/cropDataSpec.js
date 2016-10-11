@@ -1,4 +1,5 @@
-import cropData from 'Helpers/cropData.js';
+import cropData from './../../src/dashboard/legacy/Helpers/cropData.js';
+
 
 module.exports = function() {
   describe('Crop array', () => {

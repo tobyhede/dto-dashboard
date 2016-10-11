@@ -27,7 +27,7 @@ test.beforeEach(t => {
   window.patterns = PATTERNS;
   window.patternsDark = PATTERNSDARK;
 
-  let convertDataForLine = require('./../../../lib/assets/src/scripts/Helpers/convertData');
+  let convertDataForLine = require('./../../src/dashboard/legacy/Helpers/convertData');
 
   let data = convertDataForLine(inputData.datasets);
   let datum = data[0][0];

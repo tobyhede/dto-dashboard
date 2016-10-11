@@ -1,6 +1,6 @@
 ---
 applications:
   - buildpack: https://github.com/cloudfoundry/ruby-buildpack.git
-    memory: 1G
+    memory: 512M
     instances: 2
     command: bin/cf-start.sh

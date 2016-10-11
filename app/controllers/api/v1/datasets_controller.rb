@@ -12,6 +12,13 @@ class Api::V1::DatasetsController < Api::V1::ApiController
     render :json => dataset.to_json
   end
 
+  def create
+    with_invalid_record_handler do
+      dataset = current_user.datasets.create!(data)
+      render :json => dataset.to_json, :status => :created
+    end
+  end
+
   def update
     with_invalid_record_handler do
       dataset.update_attributes!(data)

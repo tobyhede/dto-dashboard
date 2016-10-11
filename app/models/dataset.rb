@@ -2,13 +2,18 @@ class Dataset < ApplicationRecord
   include Measurable
   include Nameable
 
-  belongs_to :organisation
+  has_and_belongs_to_many :users
 
   has_many :datapoints, :dependent => :destroy
 
   has_many :widgets, :through => :dataset_widgets
 
   has_many :dataset_widgets
+
+  before_validation :set_units
+  before_validation :set_label
+
+  validates :name, :label, :units, :presence => true
 
   def latest
     datapoints.by_time.last
@@ -43,4 +48,11 @@ class Dataset < ApplicationRecord
     datapoints.any?
   end
 
+  def set_units
+    self.units = 'n' if self.units.blank?
+  end
+
+  def set_label
+    self.label = 'n' if self.label.blank?
+  end
 end

@@ -24,7 +24,8 @@ ActiveAdmin.register Token do
       status_tag token.active?
     end
     actions defaults: true do |token|
-      link_to('Expire', expire_admin_token_path(token), :method => 'patch')
+      [link_to('Expire', expire_admin_token_path(token), :method => 'patch'),
+      link_to('Display', display_admin_token_path(token))].join(" ").html_safe
     end
   end
 
@@ -47,11 +48,33 @@ ActiveAdmin.register Token do
     f.actions
   end
 
-  action_item :expire_token, :only => [:show, :edit], :if => -> { resource.active? }  do
-    link_to('Expire Token', expire_admin_token_path(resource), :method => 'put')
+  show do
+    panel 'Token' do
+      attributes_table_for token do
+        row :id
+        row :user
+        row(:active ) { |t| status_tag t.active? }
+        row(:session) { |t| status_tag t.session? }
+        row :expired_at
+        row :created_at
+        row :updated_at
+      end
+    end
   end
 
-  member_action :expire, :method => :put do
+  action_item :expire_token, :only => [:show, :edit], :if => -> { resource.active? }  do
+    link_to('Expire Token', expire_admin_token_path(resource), :method => 'patch')
+  end
+
+  action_item :display_token, :only => [:show, :edit] do
+    link_to('Display Token', display_admin_token_path(resource))
+  end
+
+  member_action :display, :method => :get do
+    redirect_to resource_path(resource), notice: resource.to_s
+  end
+
+  member_action :expire, :method => :patch do
     resource.expire! if resource.active?
     redirect_to resource_path, notice: 'Token Expired'
   end

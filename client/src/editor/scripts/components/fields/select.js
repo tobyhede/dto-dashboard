@@ -1,14 +1,10 @@
 import React, { PropTypes } from 'react';
 
 
-export const Select = (props) => {
+export const Select = ({input, name, label, meta, fieldProps, optionProps }) => {
 
-  const {
-    input, name, label,
-    fieldProps,
-    optionProps: { isOptional, options },
-    meta: { touched, error }
-  } = props;
+  const { isOptional, options } = optionProps;
+  const { touched, error } = meta;
 
   return (
     <div className="form-group">
@@ -31,14 +27,15 @@ export const Select = (props) => {
   )
 };
 
+Select.defaultProps = {
+  fieldProps: {},
+  optionProps: {}
+};
+
 Select.propTypes = {
-  props: PropTypes.shape({
-    input: PropTypes.object.isRequired,
-    name: PropTypes.string.isRequired,
-    label: PropTypes.string.isRequired,
-    fieldProps: PropTypes.object.isRequired,
-    optionProps: PropTypes.object.isRequired,
-  })
+  input: PropTypes.object.isRequired,
+  name: PropTypes.string.isRequired,
+  label: PropTypes.string.isRequired
 };
 
 export default Select;

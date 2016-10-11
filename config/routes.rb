@@ -2,9 +2,11 @@ Rails.application.routes.draw do
 
   unless Rails.env.production?
     devise_for :users,
-      controllers: { sessions: "users/sessions" },
+      controllers: {
+        sessions: "users/sessions"
+      },
       :path => '',
-      path_names: { sign_in: 'login', sign_out: 'logout' }
+      path_names: { sign_in: 'sign-in', sign_out: 'sign-out' }
 
     ActiveAdmin.routes(self)
 

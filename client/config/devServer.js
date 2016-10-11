@@ -17,7 +17,7 @@ function openBrowser() {
 }
 
 
-let devServerPublicPath = `http://${CONFIG.HOST}:${CONFIG.PORT}/`;
+let devServerPublicPath = `http://${CONFIG.WEBPACK_HOST}:${CONFIG.WEBPACK_PORT}/`;
 webpackConfig.output.publicPath = devServerPublicPath;
 
 // same as --inline
@@ -62,7 +62,7 @@ let devServer = new WebpackDevServer(devCompiler, {
 });
 
 // bind the server to location and callback
-devServer.listen(CONFIG.PORT, CONFIG.HOST, function (err) {
+devServer.listen(CONFIG.WEBPACK_PORT, CONFIG.WEBPACK_HOST, function (err) {
   if (err) {
 	  console.log(err);
   }

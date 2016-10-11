@@ -39,6 +39,7 @@
   }
 
   @media (max-width: $screen-md) {
+    @include span-columns(12);
     &:nth-child(even) {
       margin-right: 0;
     }

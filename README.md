@@ -250,6 +250,7 @@ https://swaggerhub.com/api/dto/dto-dashboard/v1
 
  - Create the PR early and label as `WIP`
 
+
 ### Rebasing
 
 Rebasing before merging a PR ensures a clean commit history, please see [Merging vs Rebasing](https://www.atlassian.com/git/tutorials/merging-vs-rebasing/) for more details.
@@ -272,6 +273,45 @@ Merge conflicts need to be carefully resolved as part of the rebase process. A t
 
  - Close any related issues​ in Jira
 
+
 ### Coding Standard/s
 
 [Ruby Style Guide](https://github.com/bbatsov/ruby-style-guide)
+
+
+## Environments
+- [Development](http://dashboard-dev.apps.staging.digital.gov.au/)
+- [Testing](https://dashboard-testing.apps.staging.digital.gov.au/)
+- [Staging](https://dashboard.apps.staging.digital.gov.au/)
+- [Production](https://dashboard.gov.au/)
+- [Cool](https://dashboard.cool/)
+
+
+## Deployment
+
+Circle CI will deploy automatically once tests have passed
+
+  - Development tracks the `master` branch
+  - Staging tracks the `staging` branch
+  - Production tracks tags in the form `rel-{timestamp}`
+
+Any branch can be deployed to the Testing environment for review and testing.
+
+### Staging
+
+To rebase and deploy the staging branch
+
+```
+git checkout staging
+git rebase master
+git push -f
+```
+
+### Production
+
+To tag a release for deployment to production:
+
+```
+git tag `date "+release-%Y%m%d%H%M%S"` && git push --tags
+```
+

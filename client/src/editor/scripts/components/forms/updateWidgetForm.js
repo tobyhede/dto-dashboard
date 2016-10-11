@@ -1,9 +1,9 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux'
 import { Field, reduxForm, SubmissionError } from 'redux-form';
+import { isURL } from 'validator';
 
 import { updateWidget } from './../../actions/widget';
-import { isURL } from 'validator';
 import Input from './../fields/input';
 import YyyyMmDdDate from './../fields/yyyyMmDdDate';
 import Textarea from './../fields/textarea';
@@ -16,21 +16,19 @@ import SubmitButton from './../submitButton';
  * @param props
  * @constructor
  */
-let UpdateWidgetForm = props => {
+let UpdateWidgetForm = ({
+  isEditing, isSubmitting, onCancelSuccess,
+  OPTIONS_WIDGET_TYPE, OPTIONS_WIDGET_UNITS,
+  ...rfProps
+}) => {
 
-  const {
-    error, handleSubmit, pristine, submitting, valid,
-    isEditing, isSubmitting,
-    OPTIONS_WIDGET_TYPE,
-    OPTIONS_WIDGET_UNITS
-  } = props;
+  const { error, handleSubmit, pristine, submitting, valid } = rfProps;
 
   return (
     <form onSubmit={(e) => e.preventDefault()}>
 
       <Field component={Input} name="name" type="text" label="Name"
-             fieldProps={{disabled:!isEditing}}
-             optionProps={{}} />
+             fieldProps={{disabled:!isEditing}} />
 
       <Field component={Select} name="type" label="Type"
              fieldProps={{disabled:!isEditing}}
@@ -41,31 +39,44 @@ let UpdateWidgetForm = props => {
              optionProps={{options:OPTIONS_WIDGET_UNITS}} />
 
       <Field component={Textarea} name="description" label="Description"
-             fieldProps={{disabled:!isEditing}}
-             optionProps={{}} />
+             fieldProps={{disabled:!isEditing}} />
 
       <Field component={YyyyMmDdDate} name='last_updated_at' label='Last updated'
-             fieldProps={{disabled:!isEditing}}
-             optionProps={{}} />
+             fieldProps={{disabled:!isEditing}} />
 
       <div>
         <SubmitButton type="submit"
-                      btnText="Save"
-                      submittingBtnText="Saving.."
-                      isSubmitting={isSubmitting}
+                      btnText={isSubmitting ? 'Saving...' : 'Save'}
                       className='btn primary'
-                      disabled={pristine || submitting || !valid}
+                      disabled={isSubmitting || pristine || !valid}
                       onClick={handleSubmit(submit.bind(this))} />
+
         <button type="cancel"
                 className='btn primary-link'
                 disabled={!isEditing || submitting}
-                onClick={cancel.bind({}, props)}>Cancel</button>
+                onClick={cancel.bind({}, rfProps, onCancelSuccess)}>Cancel</button>
       </div>
       <div className="form__help-block">
         {error && <strong>{error}</strong>}
       </div>
     </form>
   )
+};
+
+UpdateWidgetForm.defaultProps = {
+  isEditing: true,
+  isSubmitting: false
+};
+
+UpdateWidgetForm.propTypes = {
+  formModel: PropTypes.object.isRequired,
+  onSubmitSuccess: PropTypes.func.isRequired,
+  onCancelSuccess: PropTypes.func.isRequired,
+  isSubmitting: PropTypes.bool,
+  isEditing: PropTypes.bool,
+  OPTIONS_WIDGET_TYPE: PropTypes.array.isRequired,
+  OPTIONS_WIDGET_SIZE: PropTypes.array.isRequired,
+  OPTIONS_WIDGET_UNITS: PropTypes.array.isRequired
 };
 
 
@@ -119,9 +130,9 @@ const validate = (values, props) => {
   return errors;
 };
 
-const cancel = (props) => {
-  props.reset(props.form);
-  props.onCancelSuccess();
+const cancel = (rfProps, cb = ()=>{}) => {
+  rfProps.reset(rfProps.form);
+  cb();
 };
 
 

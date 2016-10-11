@@ -1,15 +1,9 @@
 import React, { PropTypes } from 'react';
 
 
-const Input = (props) => {
-  let {
-    input, name, type, label,
-    fieldProps,
-    optionProps: { isOptional, infoText },
-    meta: { touched, error }
-  } = props;
-
-  fieldProps = {autoComplete:'off', ...fieldProps};
+const Input = ({input, name, type, label, meta, fieldProps, optionProps}) => {
+  const { isOptional, infoText } = optionProps;
+  const { touched, error } = meta;
 
   if (type === 'checkbox') {
     throw new Error('Use "checkbox" input instead.');
@@ -32,19 +26,18 @@ const Input = (props) => {
 };
 
 Input.defaultProps = {
+  fieldProps: {
+    autoComplete: 'off'
+  },
   optionProps: {
     infoText: null
   }
 };
 
 Input.propTypes = {
-  props: PropTypes.shape({
-    input: PropTypes.object.isRequired,
-    name: PropTypes.string.isRequired,
-    label: PropTypes.string.isRequired,
-    fieldProps: PropTypes.object.isRequired,
-    optionProps: PropTypes.object.isRequired,
-  })
+  input: PropTypes.object.isRequired,
+  name: PropTypes.string.isRequired,
+  label: PropTypes.string.isRequired
 };
 
 export default Input;

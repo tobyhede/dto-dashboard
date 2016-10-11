@@ -8,6 +8,7 @@ import UpdateDashboardForm from './../components/forms/updateDashboardForm';
 import Breadcrumbs from './../components/breadcrumbs';
 import { getRequestKey } from './../actions/dashboard';
 import { isPendingRequest } from './../reducers/requests';
+import { humanisedLongDate } from './../utils/humanisedDates';
 
 
 const mapStateToProps = ({ui, requests}, ownProps) => {
@@ -61,13 +62,16 @@ class DashboardIndex extends Component {
         <table className="content-table">
           <thead>
           <tr>
-            <td>ID</td><td>Name</td>
+            <td>ID</td><td>Name</td><td>Last updated</td><td></td>
           </tr>
           </thead>
           <tbody>
           {sortedWidgets.map((w, idx) => (
             <tr key={idx}>
-              <td>{w.id}</td><td>{w.name}</td><td><Link to={`/dashboards/${dashboard.id}/widgets/${w.id}`} className="a--ui-kit">Edit</Link></td>
+              <td>{w.id}</td>
+              <td>{w.name}</td>
+              <td>{humanisedLongDate(w.last_updated_at)}</td>
+              <td><Link to={`/dashboards/${dashboard.id}/widgets/${w.id}`} className="a--ui-kit">Edit</Link></td>
             </tr>
           ))}
           </tbody>
@@ -90,17 +94,9 @@ class DashboardIndex extends Component {
         <div className="row">
           <div className="col-xs-12">
             <h1>Dashboard: {dashboard.name}</h1>
-
             <h2 className="h4">Widgets</h2>
-
-            {sortedWidgets.length ?
-              editWidgetsList(sortedWidgets) :
-              <p><em>No widgets</em></p>
-            }
           </div>
         </div>
-
-        <br />
 
         <div className="row">
           <div className="col-xs-12 col-lg-8">
@@ -115,6 +111,16 @@ class DashboardIndex extends Component {
               isSubmitting={isPendingRequest}
               onSubmitSuccess={this.onSubmitSuccess.bind(this)}
               onCancelSuccess={this.exitForm.bind(this)} />
+          </div>
+          <br />
+        </div>
+
+        <div className="row">
+          <div className="col-xs-12">
+            {sortedWidgets.length ?
+              editWidgetsList(sortedWidgets) :
+              <p><em>No widgets</em></p>
+            }
           </div>
         </div>
 

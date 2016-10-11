@@ -4,6 +4,7 @@ RSpec.describe User, type: :model do
 
   it { is_expected.to have_many :tokens }
   it { is_expected.to have_and_belong_to_many :dashboards }
+  it { is_expected.to have_and_belong_to_many :datasets }
 
   describe '#generate_session_token!' do
     subject(:user) { FactoryGirl.create(:user) }

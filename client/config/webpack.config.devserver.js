@@ -16,6 +16,7 @@ let webpackConfig = {
     entry: {
       ['dashboard']: [`./dashboard`],
       ['editor']: [`./editor`],
+      ['login']: [`./login`],
     },
 	output: {
 	  path: CONFIG.DIR_DIST,
@@ -27,7 +28,7 @@ let webpackConfig = {
 	  filename: 'javascripts/[name].js',       // relative     - determines output file
       // In development, we always serve from the root. This makes config easier.
       publicPath:  `/`,     // Web root. publicPath + filename must equal resource path in dev server
-      // publicPath:  `http://${CONFIG.HOST}:${CONFIG.PORT}/` could be this
+      // publicPath:  `http://${CONFIG.WEBPACK_HOST}:${CONFIG.WEBPACK_PORT}/` could be this
       sourceMapFilename: "javascripts/[name].js.map"
 	},
   externals: {

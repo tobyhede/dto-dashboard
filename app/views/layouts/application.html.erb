@@ -66,14 +66,12 @@
 
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.js"></script>
-  <script src="<%= javascript_path('index.js') %>"></script>
-
   <%
       #
       # Production mode or webpack-dev-server mode
       #
       if !(Rails.env.development? && ENV['DEV_SERVER'] == 'true') %>
-
+    <script src="/javascripts/dashboard.js"></script>
   <% else %>
     <script src="http://localhost:8080/javascripts/dashboard.js"></script>
   <% end %>

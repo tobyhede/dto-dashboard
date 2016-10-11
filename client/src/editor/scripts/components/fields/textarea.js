@@ -1,16 +1,10 @@
 import React, { PropTypes } from 'react';
 
 
-const Textarea = (props) => {
+const Textarea = ({input, name, label, meta, fieldProps, optionProps}) => {
 
-  let {
-    input, name, label,
-    fieldProps,
-    optionProps: { isOptional },
-    meta: { touched, error }
-  } = props;
-
-  fieldProps = {autoComplete:'off',rows:5, ...fieldProps};
+  const { isOptional } = optionProps;
+  const { touched, error } = meta;
 
   return (
     <div className="form-group">
@@ -27,14 +21,18 @@ const Textarea = (props) => {
   )
 };
 
+Textarea.defaultProps = {
+  fieldProps: {
+    autoComplete: 'off',
+    rows: 5
+  },
+  optionProps: {}
+};
+
 Textarea.propTypes = {
-  props: PropTypes.shape({
-    input: PropTypes.object.isRequired,
-    name: PropTypes.string.isRequired,
-    label: PropTypes.string.isRequired,
-    fieldProps: PropTypes.object.isRequired,
-    optionProps: PropTypes.object.isRequired,
-  })
+  input: PropTypes.object.isRequired,
+  name: PropTypes.string.isRequired,
+  label: PropTypes.string.isRequired
 };
 
 export default Textarea;

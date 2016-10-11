@@ -3,14 +3,17 @@ import React, { Component, PropTypes } from 'react';
 
 class YyyyMmDdDate extends Component {
 
+  static defaultProps = {
+    fieldProps: {},
+    optionProps: {}
+  };
+
   static propTypes = {
-    props: PropTypes.shape({
-      input: React.PropTypes.object.isRequired,
-      name: React.PropTypes.string.isRequired,
-      label: React.PropTypes.string.isRequired,
-      fieldProps: React.PropTypes.object.isRequired,
-      optionProps: React.PropTypes.object.isRequired,
-    })
+    input: React.PropTypes.object.isRequired,
+    name: React.PropTypes.string.isRequired,
+    label: React.PropTypes.string.isRequired,
+    fieldProps: React.PropTypes.object.isRequired,
+    optionProps: React.PropTypes.object.isRequired,
   };
 
   constructor(props, context) {
@@ -18,9 +21,9 @@ class YyyyMmDdDate extends Component {
     this.state = this.deserializeDate(this.props.input.value);
   }
 
-  componentDidMount() {
-    this.updateField();
-  }
+  // componentDidMount() {
+  //   this.updateField();
+  // }
 
   serializeDate() {
     return new Date(

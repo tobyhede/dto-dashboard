@@ -70,7 +70,6 @@ namespace :import do
           :name => dataset['name'],
           :label => dataset['name'],
           :notes => dataset['note'],
-          :organisation => organisation,
           :units => units)
 
         datasets[dataset['id']] = dataset_model
