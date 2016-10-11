@@ -1,3 +1,4 @@
+import 'isomorphic-fetch';
 import { v1 as makeUuid } from 'uuid';
 
 import * as types from './../actions/_types';
@@ -117,21 +118,21 @@ const apiMiddleware = ({dispatch, getState}) => next => action => {
       ).catch(e => {
         // debugger;
 
-        errorActions.forEach((action) => {
-          if (typeof action === "function") {
-            return dispatch(action());
+      errorActions.forEach((action) => {
+        if (typeof action === "function") {
+          return dispatch(action());
+        }
+        return next({
+          type: action,
+          payload: e,
+          error: true,
+          meta: {
+            error: data
           }
-          return next({
-            type: action,
-            payload: e,
-            error: true,
-            meta: {
-              error: data
-            }
-          });
         });
-        dispatch(markRequestFailed(key, e));
-      })
+      });
+      dispatch(markRequestFailed(key, e));
+    })
   }
 };
 

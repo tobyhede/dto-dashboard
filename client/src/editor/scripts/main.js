@@ -1,3 +1,4 @@
+/*global fetch*/
 require('es6-promise').polyfill();
 
 import React from 'react';
