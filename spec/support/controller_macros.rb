@@ -4,8 +4,7 @@ module ControllerMacros
   def login_user
     before(:each) do
       @request.env["devise.mapping"] = Devise.mappings[:user]
-      user = FactoryGirl.create(:user_confirmed)
-
+      user ||= FactoryGirl.create(:user_confirmed)
       sign_in user
     end
   end
@@ -13,8 +12,7 @@ module ControllerMacros
   def logout_user
     before(:each) do
       @request.env["devise.mapping"] = Devise.mappings[:user]
-      user = FactoryGirl.create(:user_confirmed)
-
+      user ||= FactoryGirl.create(:user_confirmed)
       sign_out user
     end
   end
