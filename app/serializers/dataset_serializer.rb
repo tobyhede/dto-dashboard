@@ -8,6 +8,10 @@ class DatasetSerializer < ActiveModel::Serializer
     object.name.parameterize
   end
 
+  def name
+    object.label || object.name
+  end
+
   def data
     object.datapoints.collect do |datapoint|
       DatapointSerializer.new(datapoint)
