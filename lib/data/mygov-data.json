@@ -54,7 +54,8 @@
     },
     {
       "id":           "browser-usage-safari",
-      "name": "Safari",
+      "label": "Safari",
+      "name": "Browser Usage - Safari",
       "recorded_at":  "2016-09-06T01:01:01.111Z",
       "units":        "%",
       "note": "note for this dataset",
@@ -71,7 +72,8 @@
     },
     {
       "id":           "browser-usage-mozilla",
-      "name": "Mozilla",
+      "label": "Mozilla",
+      "name": "Browser Usage - Mozilla",
       "recorded_at":  "2016-09-06T01:01:01.111Z",
       "units":        "%",
       "note": "note for this dataset",
@@ -88,7 +90,8 @@
     },
     {
       "id":           "browser-usage-IE",
-      "name": "IE",
+      "label": "IE",
+      "name": "Browser Usage - IE",
       "recorded_at":  "2016-09-06T01:01:01.111Z",
       "units":        "%",
       "note": "note for this dataset",
@@ -105,7 +108,8 @@
     },
     {
       "id":           "browser-usage-other",
-      "name": "Other",
+      "label": "Other",
+      "name": "Browser Usage - Other",
       "recorded_at":  "2016-09-06T01:01:01.111Z",
       "units":        "%",
       "note": "note for this dataset",
@@ -121,8 +125,9 @@
       ]
     },
     {
-      "id":           "web-traffic-source-01",
-      "name":         "humanservices.gov.au",
+      "id":      "web-traffic-source-01",
+      "label": "humanservices.gov.au",
+      "name": "Web Traffic Source - humanservices.gov.au",
       "recorded_at":  "2016-09-06T01:01:01.111Z",
       "units":        "%",
       "note": "note for this dataset",
@@ -158,7 +163,8 @@
     },
     {
       "id":           "web-traffic-source-02",
-      "name":         "Direct",
+      "label": "Direct",
+      "name": "Web Traffic Source - Direct",
       "recorded_at":  "2016-09-06T01:01:01.111Z",
       "units":        "%",
       "note": "note for this dataset",
@@ -195,7 +201,8 @@
     },
     {
       "id":           "web-traffic-source-03",
-      "name":         "ato.gov.au",
+      "label": "ato.gov.au",
+      "name": "Web Traffic Source - ato.gov.au",
       "recorded_at":  "2016-09-06T01:01:01.111Z",
       "units":        "%",
       "note": "note for this dataset",
@@ -232,7 +239,8 @@
     },
     {
       "id":           "web-traffic-source-04",
-      "name":         "Google",
+      "label": "Google",
+      "name": "Web Traffic Source - Google",
       "recorded_at":  "2016-09-06T01:01:01.111Z",
       "units":        "%",
       "note": "note for this dataset",
@@ -269,7 +277,8 @@
     },
     {
       "id":           "web-traffic-source-05",
-      "name":         "Other",
+      "label": "Other",
+      "name": "Web Traffic Source - Other",
       "recorded_at":  "2016-09-06T01:01:01.111Z",
       "units":        "%",
       "note": "note for this dataset",
@@ -306,7 +315,8 @@
     },
     {
       "id":           "linked-accounts-01",
-      "name":         "1 service",
+      "label":        "1 service",
+      "name":         "Linked Accounts - 1 service",
       "recorded_at":  "2016-09-06T01:01:01.111Z",
       "units":        "%",
       "note": "note for this dataset",
@@ -332,7 +342,8 @@
     },
     {
       "id":           "linked-accounts-02",
-      "name":         "2 services",
+      "label":        "2 services",
+      "name":         "Linked Accounts - 2 services",
       "recorded_at":  "2016-09-06T01:01:01.111Z",
       "units":        "%",
       "note": "note for this dataset",
@@ -358,7 +369,8 @@
     },
     {
       "id":           "linked-accounts-03",
-      "name":         "3 services",
+      "label":        "3 services",
+      "name":         "Linked Accounts - 3 services",
       "recorded_at":  "2016-09-06T01:01:01.111Z",
       "units":        "%",
       "note": "note for this dataset",
@@ -385,7 +397,8 @@
     },
     {
         "id":           "linked-accounts-04",
-        "name":         "4 services",
+        "label":        "4 services",
+        "name":         "Linked Accounts - 4 services",
         "recorded_at":  "2016-09-06T01:01:01.111Z",
         "units":        "%",
         "note": "note for this dataset",
@@ -414,7 +427,8 @@
     },
     {
         "id":           "linked-accounts-05",
-        "name":         "5+ services",
+        "label":        "5+ services",
+        "name":         "Linked Accounts - 5+ services",
         "recorded_at":  "2016-09-06T01:01:01.111Z",
         "units":        "%",
         "note": "note for this dataset",
@@ -441,6 +455,7 @@
     },
     {
         "id":           "new-accounts",
+        "label" : "New accounts",
         "name" : "New accounts",
         "recorded_at":  "2016-05-31T01:01:01.111Z",
         "units":        "i",
@@ -468,6 +483,7 @@
     },
     {
         "id":           "sign-ins-per-account",
+        "label": "Sign in per account",
         "name": "Sign in per account",
         "recorded_at":  "2016-09-06T01:01:01.111Z",
         "units":        "n",
@@ -495,6 +511,7 @@
     {
         "id":           "navigations-per-signin",
         "recorded_at":  "2016-09-06T01:01:01.111Z",
+        "label":         "Visits to member services",
         "name":         "Visits to member services",
         "note":         "The average number of member services a user visits during sign-in",
         "units":        "n",
@@ -524,6 +541,7 @@
         "id":           "total-accounts",
         "recorded_at":  "2016-09-06T01:01:01.111Z",
         "units":        "i",
+        "label":        "Total accounts",
         "name":         "Total accounts",
         "note":         "The total number of myGov accounts held be all users",
         "data": [
@@ -572,7 +590,8 @@
     },
     {
         "id":           "links-by-member-service-01",
-        "name":         "Medicare",
+        "label":        "Medicare",
+        "name":         "Links by member service - Medicare",
         "recorded_at":  "2016-09-06T01:01:01.111Z",
         "units":        "%",
         "note": "note for this dataset",
@@ -600,7 +619,8 @@
     },
     {
         "id":           "links-by-member-service-02",
-        "name":         "Centrelink",
+        "label":        "Centrelink",
+        "name":         "Links by member service - Centrelink",
         "recorded_at":  "2016-09-06T01:01:01.111Z",
         "units":        "%",
         "note": "note for this dataset",
@@ -628,7 +648,8 @@
     },
     {
         "id":           "links-by-member-service-03",
-        "name":         "CSA",
+        "label":        "CSA",
+        "name":         "Links by member service - CSA",
         "recorded_at":  "2016-09-06T01:01:01.111Z",
         "units":        "%",
         "note": "note for this dataset",
@@ -656,7 +677,8 @@
     },
     {
         "id":           "links-by-member-service-05",
-        "name":         "MyHealth",
+        "label":        "MyHealth",
+        "name":         "Links by member service - MyHealth",
         "recorded_at":  "2016-09-06T01:01:01.111Z",
         "units":        "%",
         "note": "note for this dataset",
@@ -684,7 +706,8 @@
     },
     {
         "id":           "links-by-member-service-07",
-        "name":         "ATO",
+        "label":        "ATO",
+        "name":         "Links by member service - ATO",
         "recorded_at":  "2016-09-06T01:01:01.111Z",
         "units":        "%",
         "note": "note for this dataset",
@@ -712,7 +735,8 @@
     },
     {
         "id":           "links-by-member-service-09",
-        "name":         "Other",
+        "label":        "Other",
+        "name":         "Links by member service - Other",
         "recorded_at":  "2016-09-06T01:01:01.111Z",
         "units":        "%",
         "note":         "Includes DVA, NDIS, JobSearch & MyAgedCare",
@@ -740,6 +764,7 @@
     },
     {
         "id":           "total-new-links",
+        "label":        "Total New Links",
         "name":         "Total New Links",
         "recorded_at":  "2016-09-06T01:01:01.111Z",
         "units":        "n",
@@ -767,7 +792,8 @@
     },
     {
         "id":           "device-types-01",
-        "name":         "Desktop",
+        "label":        "Desktop",
+        "name":         "Device Types - Desktop",
         "recorded_at":  "2016-09-06T01:01:01.111Z",
         "units":        "%",
         "note": "note for this dataset",
@@ -796,7 +822,8 @@
 
     {
         "id":           "device-types-03",
-        "name":         "Mobile",
+        "label":        "Mobile",
+        "name":         "Device Types - Mobile",
         "recorded_at":  "2016-09-06T01:01:01.111Z",
         "units":        "%",
         "note": "note for this dataset",
@@ -824,7 +851,8 @@
     },
     {
         "id":           "device-types-04",
-        "name":         "Other",
+        "label":        "Other",
+        "name":         "Device Types - Other",
         "recorded_at":  "2016-09-06T01:01:01.111Z",
         "units":        "%",
         "note": "note for this dataset",
@@ -852,7 +880,8 @@
     },
     {
         "id":           "navigations-by-service-01",
-        "name":         "Medicare",
+        "label":        "Medicare",
+        "name":         "Navigaations by service - Medicare",
         "recorded_at":  "2016-09-06T01:01:01.111Z",
         "units":        "%",
         "note": "note for this dataset",
@@ -879,7 +908,8 @@
     },
     {
         "id":           "navigations-by-service-03",
-        "name":         "Centrelink",
+        "label":        "Centrelink",
+        "name":         "Navigaations by service - Centrelink",
         "recorded_at":  "2016-09-06T01:01:01.111Z",
         "units":        "%",
         "note": "note for this dataset",
@@ -907,7 +937,8 @@
     },
     {
         "id":           "navigations-by-service-04",
-        "name":         "Child Support",
+        "label":        "Child Support",
+        "name":         "Navigaations by service - Child Support",
         "recorded_at":  "2016-09-06T01:01:01.111Z",
         "units":        "%",
         "note": "note for this dataset",
@@ -935,7 +966,8 @@
     },
     {
         "id":           "navigations-by-service-05",
-        "name":         "ATO",
+        "label":        "ATO",
+        "name":         "Navigaations by service - ATO",
         "recorded_at":  "2016-09-06T01:01:01.111Z",
         "units":        "%",
         "note": "note for this dataset",
@@ -963,7 +995,8 @@
     },
     {
         "id":           "navigations-by-service-06",
-        "name":         "Other",
+        "label":        "Other",
+        "name":         "Navigaations by service - Other",
         "recorded_at":  "2016-09-06T01:01:01.111Z",
         "units":        "%",
         "note":         "Includes Disability Care, DVA, DSS, PCHER, MyHealth",
@@ -992,6 +1025,7 @@
     {
         "id":           "service-adoption",
         "recorded_at":  "2016-09-06T01:01:01.111Z",
+        "label":         "Member service adoption",
         "name":         "Member service adoption",
         "units":        "%",
         "note":         "The percentage of accounts with links to two or more member services",
@@ -1039,6 +1073,7 @@
     },
     {
         "id":           "visits-to-member-services",
+        "label":         "Visits To Member Services",
         "name":         "Visits To Member Services",
         "recorded_at":  "2016-09-06T01:01:01.111Z",
         "units":        "%",
