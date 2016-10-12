@@ -58,7 +58,7 @@
         {
             "id": "device-type-01",
             "label": "Mobile",
-            "name": "Devise Usage - Mobile",
+            "name": "Device Usage - Mobile",
             "recorded_at": "2016-06-30T01:01:01.111Z",
             "units": "i",
             "note": "note for this dataset",
@@ -72,7 +72,7 @@
         }, {
             "id": "device-type-02",
             "label": "Tablet",
-            "name": "Devise Usage - Tablet",
+            "name": "Device Usage - Tablet",
             "recorded_at": "2016-06-30T01:01:01.111Z",
             "units": "i",
             "note": "note for this dataset",
@@ -88,7 +88,7 @@
         {
             "id": "device-type-03",
             "label": "Desktop",
-            "name": "Devise Usage - Desktop",
+            "name": "Device Usage - Desktop",
             "recorded_at": "2016-06-30T01:01:01.111Z",
             "units": "i",
             "note": "note for this dataset",
