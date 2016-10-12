@@ -57,6 +57,7 @@
 
         {
             "id": "device-type-01",
+            "label": "Mobile",
             "name": "Devise Usage - Mobile",
             "recorded_at": "2016-06-30T01:01:01.111Z",
             "units": "i",
@@ -70,6 +71,7 @@
             ]
         }, {
             "id": "device-type-02",
+            "label": "Tablet",
             "name": "Devise Usage - Tablet",
             "recorded_at": "2016-06-30T01:01:01.111Z",
             "units": "i",
@@ -85,6 +87,7 @@
 
         {
             "id": "device-type-03",
+            "label": "Desktop",
             "name": "Devise Usage - Desktop",
             "recorded_at": "2016-06-30T01:01:01.111Z",
             "units": "i",
@@ -100,6 +103,7 @@
 
         {
             "id": "browser-usage-chrome",
+            "label": "Chrome",
             "name": "Browser Usage - Chrome",
             "recorded_at": "2016-06-30T01:01:01.111Z",
             "units": "i",
@@ -115,6 +119,7 @@
 
         {
             "id": "browser-usage-safari",
+            "label": "Safari",
             "name": "Browser Usage - Safari",
             "recorded_at": "2016-06-30T01:01:01.111Z",
             "units": "i",
@@ -130,6 +135,7 @@
 
         {
             "id": "browser-usage-mozilla",
+            "label": "Firefox",
             "name": "Browser Usage - Firefox",
             "recorded_at": "2016-06-30T01:01:01.111Z",
             "units": "i",
@@ -145,6 +151,7 @@
 
         {
             "id": "browser-usage-IE",
+            "label": "Internet Explorer",
             "name": "Browser Usage - Internet Explorer",
             "recorded_at": "2016-06-30T01:01:01.111Z",
             "units": "i",
@@ -160,6 +167,7 @@
 
         {
             "id": "browser-usage-other",
+            "label": "Other",
             "name": "Browser Usage - Other",
             "recorded_at": "2016-06-30T01:01:01.111Z",
             "units": "i",
