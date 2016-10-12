@@ -4,7 +4,7 @@ class CreateDashboards < ActiveRecord::Migration[5.0]
       t.references  :organisation, :null => false
       t.text        :name, :null => false
       t.text        :description, :null => false
-      t.text        :target_users, :null => false      
+      t.text        :target_users, :null => false
       t.text        :notes, :null => true
       t.text        :url, :null => true
       t.boolean     :display_hero, :default => true, :null => false
@@ -12,5 +12,8 @@ class CreateDashboards < ActiveRecord::Migration[5.0]
       t.datetime    :published_at, :null => true
       t.timestamps
     end
+
+    add_index :dashboards, :name, :unique => true
+    add_index :dashboards, :published_at
   end
 end

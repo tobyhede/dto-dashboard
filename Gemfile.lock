@@ -93,6 +93,7 @@ GEM
       thor (~> 0.19)
     builder (3.2.2)
     byebug (9.0.5)
+    cancancan (1.15.0)
     capybara (2.8.1)
       addressable
       mime-types (>= 1.16)
@@ -370,6 +371,7 @@ DEPENDENCIES
   better_errors
   binding_of_caller
   byebug
+  cancancan (~> 1.10)
   capybara (~> 2.8.1)
   codeclimate-test-reporter
   coffee-rails

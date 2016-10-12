@@ -11,7 +11,8 @@ namespace :bootstrap do
         :org_name => 'Digital Transformation Office',
         :org_url  => 'dto.gov.au',
         :email    => ENV['ADMIN_EMAIL'],
-        :password => ENV['ADMIN_PASSWORD']
+        :password => ENV['ADMIN_PASSWORD'],
+        :admin    => true
       ).create!
 
     end

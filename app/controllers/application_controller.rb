@@ -12,8 +12,12 @@ class ApplicationController < ActionController::Base
     store_location_for(:user, request.url)
   end
 
-  def after_sign_in_path_for(_resource)    
+  def after_sign_in_path_for(_resource)
     session[:user_return_to] || '/portal'
+  end
+
+  def access_denied(exception)
+    redirect_to root_path, :alert => exception.message
   end
 
 end

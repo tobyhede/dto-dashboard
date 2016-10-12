@@ -57,6 +57,7 @@ ActiveAdmin.register User do
         end
       end
     end
+
     panel 'Datasets' do
       attributes_table_for user do
         user.datasets.each do |dataset|
@@ -66,6 +67,7 @@ ActiveAdmin.register User do
         end
       end
     end
+
     panel 'Details' do
       attributes_table_for user do
         row :sign_in_count

@@ -41,7 +41,9 @@ ActiveRecord::Schema.define(version: 20161006233318) do
     t.datetime "published_at"
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false
+    t.index ["name"], name: "index_dashboards_on_name", unique: true, using: :btree
     t.index ["organisation_id"], name: "index_dashboards_on_organisation_id", using: :btree
+    t.index ["published_at"], name: "index_dashboards_on_published_at", using: :btree
   end
 
   create_table "dashboards_users", force: :cascade do |t|
@@ -107,18 +109,19 @@ ActiveRecord::Schema.define(version: 20161006233318) do
     t.datetime "expired_at"
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
+    t.index ["expired_at"], name: "index_tokens_on_expired_at", using: :btree
     t.index ["token"], name: "index_tokens_on_token", unique: true, using: :btree
     t.index ["user_id"], name: "index_tokens_on_user_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
-    t.integer  "organisation_id",                     null: false
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
+    t.integer  "organisation_id",                        null: false
+    t.string   "email",                  default: "",    null: false
+    t.string   "encrypted_password",     default: "",    null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer  "sign_in_count",          default: 0,     null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.inet     "current_sign_in_ip"
@@ -127,11 +130,12 @@ ActiveRecord::Schema.define(version: 20161006233318) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
-    t.integer  "failed_attempts",        default: 0,  null: false
+    t.integer  "failed_attempts",        default: 0,     null: false
     t.string   "unlock_token"
     t.datetime "locked_at"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.boolean  "admin",                  default: false, null: false
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["organisation_id"], name: "index_users_on_organisation_id", using: :btree

@@ -21,6 +21,8 @@ FactoryGirl.define do
         dashboard.widgets << create(:widget_hero)
         dashboard.widgets << Widget::KPIS.collect{ |n| create(:widget_with_datasets, :name => n) }
         dashboard.widgets << create_list(:widget_with_datasets, evaluator.widgets_count)
+
+        dashboard.datasets.each {|d| d.update_attributes!(:organisation_id => dashboard.organisation.id) }
         dashboard.save!
       end
 

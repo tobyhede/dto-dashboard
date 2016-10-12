@@ -9,6 +9,7 @@ class CreateTokens < ActiveRecord::Migration[5.0]
     end
 
     add_index :tokens, :token, unique: true
+    add_index :tokens, :expired_at
 
   end
 end
