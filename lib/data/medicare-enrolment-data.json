@@ -26,7 +26,8 @@
      },
      {
         "id":"number-of-newborns-enrolled",
-        "name":"Enrolled",
+        "label":"Enrolled",
+        "name":"Number of Newborns Enrolled",
         "units": "n",
         "recorded_at":"2016-08-01T01:01:01.111Z",
         "data":[
@@ -54,6 +55,7 @@
      },
      {
         "id":"total-number-of-newborns-enrolled",
+        "label":"Total Enrolments",
         "name":"Total Enrolments",
         "units": "n",
         "recorded_at":"2016-08-01T01:01:01.111Z",
@@ -66,7 +68,8 @@
      },
      {
         "id":"total-number-of-newborns-by-month",
-        "name":"Total",
+        "label":"Total",
+        "name":"Total number of newborns by month",
         "recorded_at":"2016-08-01T01:01:01.111Z",
         "data":[
            {
@@ -93,7 +96,8 @@
      },
      {
         "id":"number-of-participating-mothers",
-        "name":"Participants",
+        "label":"Participants",
+        "name":"Number of participating mothers",
         "units": "n",
         "recorded_at":"2016-08-01T01:01:01.111Z",
         "data":[
@@ -187,7 +191,8 @@
              "value": 69.6
            }
         ],
-        "name":"Already enrolled",
+        "label":"Already enrolled",
+        "name":"Reason unable to enrol - Already enrolled",
         "note":"note for this dataset",
         "units":"%",
         "recorded_at":"2016-08-01T01:01:01.111Z"
@@ -216,7 +221,8 @@
              "value": 26.1
            }
         ],
-        "name":"Conditional migrant",
+        "label":"Already enrolled",
+        "name":"Reason unable to enrol - Conditional migrant",
         "note":"note for this dataset",
         "units": "%",
         "recorded_at":"2016-08-01T01:01:01.111Z"
@@ -245,7 +251,8 @@
              "value": 4.3
            }
         ],
-        "name":"Unable to contact",
+        "label":"Already enrolled",
+        "name":"Reason unable to enrol - Unable to contact",
         "recorded_at":"2016-08-01T01:01:01.111Z"
      },
      {
@@ -272,7 +279,8 @@
              "value": 0
            }
         ],
-        "name":"Duplicate enrolment",
+        "label":"Already enrolled",
+        "name":"Reason unable to enrol - Duplicate enrolment",
         "recorded_at":"2016-08-01T01:01:01.111Z"
      },
      {
@@ -299,7 +307,8 @@
              "value": 0
            }
         ],
-        "name":"Other",
+        "label":"Already enrolled",
+        "name":"Reason unable to enrol - Other",
         "recorded_at":"2016-08-01T01:01:01.111Z"
      }
   ]
