@@ -221,7 +221,7 @@
              "value": 26.1
            }
         ],
-        "label":"Already enrolled",
+        "label":"Conditional migrant",
         "name":"Reason unable to enrol - Conditional migrant",
         "note":"note for this dataset",
         "units": "%",
@@ -251,7 +251,7 @@
              "value": 4.3
            }
         ],
-        "label":"Already enrolled",
+        "label":"Unable to contact",
         "name":"Reason unable to enrol - Unable to contact",
         "recorded_at":"2016-08-01T01:01:01.111Z"
      },
@@ -279,7 +279,7 @@
              "value": 0
            }
         ],
-        "label":"Already enrolled",
+        "label":"Duplicate enrolment",
         "name":"Reason unable to enrol - Duplicate enrolment",
         "recorded_at":"2016-08-01T01:01:01.111Z"
      },
@@ -307,7 +307,7 @@
              "value": 0
            }
         ],
-        "label":"Already enrolled",
+        "label":"Other",
         "name":"Reason unable to enrol - Other",
         "recorded_at":"2016-08-01T01:01:01.111Z"
      }
