@@ -36,6 +36,7 @@ Rails.application.routes.draw do
 
   get '/index.html', :to => redirect('/')
 
-  get '/copyright', :to => 'about#index'
+  get '/copyright', :to => 'about#copyright'
+  get '/api', :to => 'about#api'
 
 end

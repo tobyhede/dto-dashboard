@@ -1,7 +1,10 @@
 class AboutController < ApplicationController
 
-  def index
+  def copyright
     render :copyright
   end
 
+  def api
+    render :api
+  end
 end
