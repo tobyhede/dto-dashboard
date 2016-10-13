@@ -6,13 +6,19 @@
   padding: $gutter 0;
 
   .container {
-    display: flex;
-    align-items: flex-end;
+    display: block;
+    line-height: 1;
+  }
+
+  .l-site-title,
+  .l-toggle-switch {
+    display: inline-block;
   }
 
   .site-title {
-    display: inline-block;
-    flex: 1;
+    display: block;
+    outline: none !important;
+    border: none !important;
   }
 
   .l-toggle-switch {
@@ -22,9 +28,10 @@
   img {
     height: 30px;
     width: auto;
-    display: block;
     max-width: 90%;
-    height: auto;
+    display: block;
+    outline: none !important;
+    border: none !important;
   }
 
   @include media($screen-sm) {
@@ -32,6 +39,8 @@
 
     img {
       height: 40px;
+      max-width: 100%;
+      width: 464px;
     }
   }
 }

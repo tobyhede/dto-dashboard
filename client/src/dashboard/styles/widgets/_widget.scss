@@ -84,6 +84,13 @@
   clear: both;
 }
 
+.fact {
+  @media (max-width:$screen-sm - 1) {
+    height: auto;
+    min-height: 150px;
+  }
+}
+
 .widget {
   position: relative;
   overflow: hidden;
@@ -92,13 +99,14 @@
   width: 100%;
   margin: $spacing-unit / 2 0;
   height: auto;
-  min-height: $widget-height;
   background: $white;
   box-shadow: $widget-box-shadow;
   border: $widget-border;
+  min-height: 150px;
 
   @include media($screen-sm) {
     height: $widget-height-tablet;
+    min-height: $widget-height;
   }
 
   @media (min-width: $screen-md) {
@@ -127,14 +135,14 @@
     padding: 0 $spacing-unit / 2;
 
     @media screen and(min-width: $screen-md) {
-      height: 50px;
+      //height: 50px;
       position: relative;
       z-index: 100;
     }
 
-    @media screen and(max-width: $screen-md) {
-      height: 77px;
-    }
+    //@media screen and(max-width: $screen-md) {
+    //  height: 77px;
+    //}
 
     h4 {
       font-size: 1.25 * $fallback;
@@ -187,8 +195,9 @@
 
 .fact {
   .widget__title {
-    height: 1.25rem;
+    margin-bottom: 0;
 
+    .meta-group,
     .widget__last-updated,
     .widget__definition,
     .widget__data-source {
@@ -198,7 +207,9 @@
 
   .widget__inner {
     padding: $spacing-unit / 2;
-    padding-top: 10px;
+    padding-top: 0;
+    margin-top: 0 !important;
+    height:100%;
 
     p {
       margin: 0;
