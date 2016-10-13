@@ -27,4 +27,10 @@ RSpec.describe DatasetSerializer, type: :serializer do
     it { should include('value') }
   end
 
+  describe 'name defaults to label' do
+    subject { data['name'] }
+    let(:dataset) { FactoryGirl.create(:dataset_with_datapoints, :label => 'blah*vtha') }
+    it{ is_expected.to eq 'blah*vtha'}
+  end
+
 end
