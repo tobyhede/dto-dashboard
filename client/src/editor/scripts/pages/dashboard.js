@@ -94,7 +94,6 @@ class DashboardIndex extends Component {
         <div className="row">
           <div className="col-xs-12">
             <h1>Dashboard: {dashboard.name}</h1>
-            <h2 className="h4">Widgets</h2>
           </div>
         </div>
 
@@ -117,6 +116,8 @@ class DashboardIndex extends Component {
 
         <div className="row">
           <div className="col-xs-12">
+            <h2 className="h4">Widgets</h2>
+
             {sortedWidgets.length ?
               editWidgetsList(sortedWidgets) :
               <p><em>No widgets</em></p>
