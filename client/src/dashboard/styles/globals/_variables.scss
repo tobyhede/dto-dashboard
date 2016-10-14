@@ -52,8 +52,6 @@ $spacing-unit:                      30px;
 $gutter:                            10px;
 
 // Typography:
-@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700,300,600');
-$font-family-sans-serif:            'Open Sans', sans-serif !default;
 $fallback:                          16px;
 $biggie:                            4.7rem;
 $biggie-fallback:                   4.7 * $fallback;
