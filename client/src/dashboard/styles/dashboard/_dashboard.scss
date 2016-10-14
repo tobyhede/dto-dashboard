@@ -26,6 +26,8 @@
   @include span-columns(4);
   color: $gov-au-brand-colour;
 
+
+
   @media(max-width: 768px) {
     @include span-columns(12);
     padding-left:0;
@@ -35,6 +37,8 @@
     &.hide-on-mobile {
       display: none;
     }
+  }
+  @media(min-width: 768px) {
     .media {
       float:right;
     }
