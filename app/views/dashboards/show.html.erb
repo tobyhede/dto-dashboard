@@ -19,7 +19,7 @@
 </div>
 <div id="dashboard-<%= dashboard.id %>" class="<%= dashboard.name_slug %>">
   <div class="hero-region">
-    <div class="container">
+    <div class="container-ish">
       <div class="row dashboard__top">
         <a href="/" aria-hidden="true" class="back-link">Back to overview</a>
         <div class="dashboard__header">
@@ -37,10 +37,10 @@
     </div>
   </div>
 
-  <div class="container-fluid metric-breakdown-view">
+  <div class="container-fluid-ish metric-breakdown-view">
     <% if dashboard.show_kpis? %>
         <div class="clearfix dashboard__kpis">
-          <div class="container">
+          <div class="container-ish">
             <div class="row">
               <% dashboard.first_row.each do |widget| %>
                 <%= render :partial => 'widget', :locals => {:widget => widget.decorate} %>
@@ -50,7 +50,7 @@
         </div>
     <% end %>
 
-    <div class="container dashboard__secondary dashboard__below-the-line">
+    <div class="container-ish dashboard__secondary dashboard__below-the-line">
       <% dashboard.remaining_rows.each do |widgets| %>
         <div class="row">
           <% widgets.each do |widget| %>
@@ -61,7 +61,7 @@
     </div>
 
     <div class="row">
-      <div class="container">
+      <div class="container-ish">
         <div class="widget widget-text clearfix">
           <div class="widget-text__inner aus-width-seven-twelfths">
             <div class="widget__title">

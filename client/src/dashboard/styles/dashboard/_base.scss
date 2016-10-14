@@ -1,6 +1,6 @@
 // todo - scope dashboard pages with parent scopes
 
-.container {
+.container-ish {
   margin-right: auto;
   margin-left: auto;
   @include add-gutter;
@@ -105,7 +105,7 @@
   @include omega;
 }
 
-.row {
+.row-ish {
   @include row;
 }
 
@@ -119,7 +119,7 @@
 }
 
 .prototype-warning-text {
-  @extend .container;
+  @extend .container-ish;    // todo
   position: relative;
   min-height: 1px;
   padding-left: 15px;
