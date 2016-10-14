@@ -35,6 +35,12 @@
     &.hide-on-mobile {
       display: none;
     }
+    .media {
+      float:right;
+    }
+    .media-body {
+      width: auto;
+    }
   }
 
   .number-of-dashboards {
