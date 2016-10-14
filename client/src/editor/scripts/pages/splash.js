@@ -35,7 +35,7 @@ class DashboardsIndex extends Component {
 
         <div className="row">
           <div className="col-xs-12">
-            <h1>Welcome to the dashboard.gov.au Editor</h1>
+            <h1>Welcome to the Performance Dashboard Editor</h1>
             <p><strong>What would you like to do today?</strong></p>
           </div>
 
