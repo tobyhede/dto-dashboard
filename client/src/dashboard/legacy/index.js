@@ -28,7 +28,7 @@ let modeButton = d3.select('#switch-mode');
 let $modeButton = $('#switch-mode');
 
 if( $('#switch-mode').length ){
-  if(localStorage.getItem('high_contrast_mode' == 'on')){
+  if(localStorage.getItem('high_contrast_mode') === 'on'){
     isHighContrastMode = true;
   }
 }

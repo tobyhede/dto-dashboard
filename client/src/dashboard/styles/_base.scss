@@ -17,6 +17,7 @@ html {
 }
 
 body {
+  position: relative; // !important - is required to place .patterns
   margin: 0;
   font-size: $base-font-size;
   line-height: $base-line-height;
@@ -63,10 +64,9 @@ h4 {
   font-weight: 400;
 }
 
-.patterns { // svg patterns
+.patterns { // svg patterns - must be "visible" in the DOM to render
   position: absolute;
   left: -1000px;
-  display: none;
 }
 
 .container {
