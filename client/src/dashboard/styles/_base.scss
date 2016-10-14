@@ -71,10 +71,6 @@ h4 {
   z-index:-1;
 }
 
-.container {
-  @extend .clearfix;
-}
-
 .fa-arrow-unchanged {
   &::before {
     content: '\f068';
