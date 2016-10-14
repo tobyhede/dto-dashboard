@@ -12,7 +12,7 @@
     # Production mode or not required for webpack-dev-server mode
     #
     if !(Rails.env.development? && ENV['DEV_SERVER'] == 'true') %>
-      <%= stylesheet_link_tag 'editor.css?v=161014-1530' %>
+      <%= stylesheet_link_tag 'editor.css' %>
   <% end %>
 </head>
 <body class="editor <%= body_class(yield(:body_class_names)) %>">
@@ -48,7 +48,7 @@
     # Production mode or webpack-dev-server mode
     #
     if !(Rails.env.development? && ENV['DEV_SERVER'] == 'true') %>
-    <%= javascript_include_tag 'editor.js?v=161014-1530' %>
+    <%= javascript_include_tag 'editor.js' %>
   <% else %>
       <script src="http://localhost:8080/javascripts/editor.js"></script>
   <% end %>
