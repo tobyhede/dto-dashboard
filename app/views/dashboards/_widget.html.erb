@@ -30,10 +30,10 @@
               <th scope="col">Value</th>
             </tr>
             <% if dataset.datapoints.any? %>
-              <% dataset.datapoints.each do |datapoint| %>
+              <% dataset.datapoints.decorate.each do |datapoint| %>
               <tr>
                 <td scope="row"><%= datapoint.label %></td>
-                <td scope="row"><%= humanised_value(datapoint.value, widget.prefix, widget.suffix) %></td>
+                <td scope="row"><%= datapoint.value(widget.prefix, widget.suffix) %></td>
               </tr>
               <% end %>
             <%end %>

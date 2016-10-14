@@ -19,4 +19,5 @@ module ApplicationHelper
   def display_high_contrast_mode?
     controller_name == 'dashboards' && action_name == 'show'
   end
+
 end
