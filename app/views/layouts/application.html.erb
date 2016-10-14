@@ -52,13 +52,15 @@
     <%= yield %>
   </main>
 
-  <footer>
-    <section>
+  <footer class="footer">
+    <div class="container">
       <div class="l-footer-logo">
-        <img src="<%= image_path('coatofarms.svg') %>" height="76" alt="Logo of Commonwealth Coat of Arms"/>
+        <div class="footer__logo-container">
+          <img src="<%= image_path('coatofarms.svg') %>" height="76" alt="Logo of Commonwealth Coat of Arms" />
+        </div>
       </div>
       <div class="l-footer-links">
-        <ul>
+        <ul class="footer__links-list">
           <li><a href="https://www.dto.gov.au/standard/" rel="external" class="link--external-alt" target="_blank">Digital Service Standard</a></li>
           <li><a href="https://www.dto.gov.au/standard/11-measure-performance/" rel="external" class="link--external-alt" target="_blank">About Performance Measurement</a></li>
           <li><a href="/copyright">Copyright</a></li>
@@ -67,7 +69,7 @@
           <li><a href="/feedback">Please give feedback</a></li>
         </ul>
       </div>
-    </section>
+    </div>
   </footer>
 
 

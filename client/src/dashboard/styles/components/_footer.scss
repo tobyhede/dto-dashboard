@@ -1,0 +1,56 @@
+/**
+ * layout
+ */
+
+.l-footer-logo,
+.l-footer-links {
+  @media (min-width:$screen-sm-minor) {
+    display: inline-block;
+  }
+}
+
+.l-footer-logo {
+  padding-bottom: 2.4em;
+
+  @media (min-width:$screen-sm-minor) {
+    padding-bottom: 0;
+    padding-right: 1em;
+  }
+}
+
+.l-footer-links {
+  @media (min-width:$screen-sm-minor) {
+    float: right;
+    padding-left: 1em;
+  }
+}
+
+/**
+ * presentation
+ */
+
+.footer {
+  font-size: 14px;
+  background: $primary-text-colour;
+
+  padding-top: 1.4em;
+  padding-bottom: 2.4em;
+
+  @media (min-width:$screen-sm-minor) {
+    padding-top: 2.4em;
+  }
+
+  &__logo-container {
+    text-align: center;
+  }
+
+  &__links-list {
+    @include list-unstyled;
+    margin: 0;
+    a {
+      text-decoration: none !important;
+      color: $white;
+    }
+  }
+}
+
