@@ -12,7 +12,7 @@
     # Production mode or not required for webpack-dev-server mode
     #
     if !(Rails.env.development? && ENV['DEV_SERVER'] == 'true') %>
-      <link rel="stylesheet" href="/stylesheets/login.css?v=161014-1513" />
+    <%= stylesheet_link_tag 'login.css?v=161014-1530' %>
   <% end %>
 </head>
 <body class="login <%= body_class(yield(:body_class_names)) %>">
@@ -58,7 +58,7 @@
     # Production mode or webpack-dev-server mode
     #
     if !(Rails.env.development? && ENV['DEV_SERVER'] == 'true') %>
-    <% # <script src="/javascripts/login.js?v=161014-1513"></script> %>
+    <%= javascript_include_tag 'login.js?v=161014-1530' %>
   <% else %>
     <script src="http://localhost:8080/javascripts/login.js"></script>
   <% end %>

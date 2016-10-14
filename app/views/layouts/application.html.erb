@@ -18,7 +18,7 @@
     # Production mode or not required for webpack-dev-server mode
     #
     if !(Rails.env.development? && ENV['DEV_SERVER'] == 'true') %>
-      <link rel="stylesheet" href="/stylesheets/dashboard.css?v=161014-1513"/>
+    <%= stylesheet_link_tag 'dashboard.css?v=161014-1530' %>
   <% end %>
 
   <%= render 'layouts/analytics' %>
@@ -81,7 +81,7 @@
       # Production mode or webpack-dev-server mode
       #
       if !(Rails.env.development? && ENV['DEV_SERVER'] == 'true') %>
-    <script src="/javascripts/dashboard.js?v=161014-1513"></script>
+    <%= javascript_include_tag 'dashboard.js?v=161014-1530' %>
   <% else %>
     <script src="http://localhost:8080/javascripts/dashboard.js"></script>
   <% end %>
