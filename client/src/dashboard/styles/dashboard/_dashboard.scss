@@ -2,10 +2,10 @@
   @include span-columns(8);
   clear: both;
   margin-bottom: 40px;
-  margin-top: $spacing-unit;
 
   @media(max-width: $screen-md) {
     margin-bottom: 15px;
+    padding-top: 8px;
   }
 
   @media(max-width: 768px) {
@@ -24,19 +24,13 @@
 
 .dashboards-intro-sec {
   @include span-columns(4);
-  margin-top: 30px;
   color: $gov-au-brand-colour;
-  display: flex;
-  justify-content: flex-end;
-
-  @media (max-width: $screen-md) {
-    padding-left: 10px;
-  }
 
   @media(max-width: 768px) {
     @include span-columns(12);
     padding-left:0;
     margin-bottom: 30px;
+    margin-top: 30px;
 
     &.hide-on-mobile {
       display: none;
@@ -45,10 +39,8 @@
 
   .number-of-dashboards {
     font-size: 80px;
-    line-height: 68px;
+    line-height:1;
     font-weight: bold;
-    justify-content: flex-end;
-    padding-right:10px;
 
     @media(max-width: 768px) {
       float: left;
@@ -58,9 +50,7 @@
   span:not(.number-of-dashboards) {
     font-size: 30px;
     line-height: 36px;
-    float: right;
     justify-content: flex-end;
-    text-align: left;
 
     @media(max-width: 768px) {
       float: none;

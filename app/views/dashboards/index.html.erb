@@ -4,15 +4,25 @@
 %>
 <div class="container">
   <section>
+
     <h1>Performance Dashboard Overview</h1>
+
     <div class="dashboards-intro">
       <p>The Performance Dashboard makes data open and accessible by measuring the performance of Australian government services against the Digital Service Standard.</p>
       <p>This promotes government transparency and helps drive the ongoing improvement of government services – for all Australians.</p>
     </div>
+
     <div class="dashboards-intro-sec hide-on-mobile">
-      <span class="number-of-dashboards"><%= dashboards.size %></span>
-      <span>Service</br>Dashboards</span>
+      <div class="media">
+        <div class="media-left">
+          <span class="number-of-dashboards"><%= dashboards.size %></span>
+        </div>
+        <div class="media-body media-middle">
+          <span>Service</br>Dashboards</span>
+        </div>
+      </div>
     </div>
+
   </section>
   <section class="metrics">
     <div class="aus-width-one-third">
@@ -50,8 +60,14 @@
       </div>
     </div>
     <div class="dashboards-intro-sec hide-on-desktop-tablet">
-      <span class="number-of-dashboards"><%= dashboards.size %></span>
-      <span>Service</br>Dashboards</span>
+      <div class="media">
+        <div class="media-left">
+          <span class="number-of-dashboards"><%= dashboards.size %></span>
+        </div>
+        <div class="media-body media-middle">
+          <span>Service</br>Dashboards</span>
+        </div>
+      </div>
     </div>
   </section>
   <h2 class="dashboards-heading hide-on-mobile">Service Dashboards</h2>

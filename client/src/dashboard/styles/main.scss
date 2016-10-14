@@ -13,6 +13,12 @@
 @import 'base';
 @import 'layout';
 
+$enable-flex: false !default;
+$spacer: 1rem !default;
+$media-margin-top:            15px !default;
+$media-heading-margin-bottom:  5px !default;
+$media-alignment-padding-x:   10px !default;
+@import '~bootstrap/scss/media';
 @import 'components/toggle-switch';
 
 @import 'components/footer';
