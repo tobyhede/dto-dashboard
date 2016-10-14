@@ -2,10 +2,10 @@ $assets-image-url: '/images';
 
 // Media queries breakpoints
 $screen-min:                        320px;
-$screen-sm-minor:                   500px;
-$screen-sm:                         768px;
-$screen-md:                         992px;
-$screen-lg:                         1200px;
+$screen-sm-minor:                   map-get($grid-breakpoints, 'sm'); //544
+$screen-sm:                         map-get($grid-breakpoints, 'md'); //768
+$screen-md:                         map-get($grid-breakpoints, 'lg'); //992
+$screen-lg:                         map-get($grid-breakpoints, 'xl'); //1200
 
 // colours
 $brand-colour:                      #0074c4;
@@ -49,7 +49,7 @@ $widget-height-tablet:              425px;
 $note-width:                        150px;
 $default-padding:                   40px;
 $spacing-unit:                      30px;
-$gutter:                            10px;
+$gutter:                            10px; // probably $grid-gutter-width
 
 // Typography:
 $fallback:                          16px;
