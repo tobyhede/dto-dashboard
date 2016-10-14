@@ -48,9 +48,9 @@
     # Production mode or webpack-dev-server mode
     #
     if !(Rails.env.development? && ENV['DEV_SERVER'] == 'true') %>
-    <script src="/javascripts/editor.js"></script>
+    <script src="/javascripts/editor.js?v=161014-1513"></script>
   <% else %>
-      <script src="http://localhost:8080/javascripts/editor.js?v=161014-1513"></script>
+      <script src="http://localhost:8080/javascripts/editor.js"></script>
   <% end %>
 </body>
 </html>
