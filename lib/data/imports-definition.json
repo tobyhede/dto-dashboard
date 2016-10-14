@@ -8,7 +8,7 @@
   "widgets":  [
     {
       "id":   "kpis",
-      "updated_at": "2016-09-07T01:01:01.111Z",
+      "updated_at": "2016-10-14T01:01:01.111Z",
       "name": "Kpis",
       "type": "full",
       "size": "extra-large",
@@ -37,7 +37,7 @@
     },
     {
       "id":   "digital-take-up",
-      "updated_at": "2016-09-07T01:01:01.111Z",
+      "updated_at": "2016-10-14T01:01:01.111Z",
       "name": "Digital Take-up",
       "type": "kpi-sparkline",
       "size": "extra-small",
@@ -56,7 +56,7 @@
     },
     {
       "id":   "clearing-time",
-      "updated_at": "2016-09-07T01:01:01.111Z",
+      "updated_at": "2016-10-14T01:01:01.111Z",
       "name": "Time taken to clear permits",
       "type": "bar",
       "size": "medium",
