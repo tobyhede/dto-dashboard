@@ -1,3 +1,10 @@
+app/assets/javascripts/dashboard.js
+app/assets/javascripts/editor.js
+app/assets/javascripts/login.js
+app/assets/stylesheets/dashboard.css
+app/assets/stylesheets/editor.css
+app/assets/stylesheets/login.css
+
 _trash
 coverage
 .nyc_output
