@@ -66,7 +66,9 @@ h4 {
 
 .patterns { // svg patterns - must be "visible" in the DOM to render
   position: absolute;
-  left: -1000px;
+  left: 0;
+  top: 0;
+  z-index:-1;
 }
 
 .container {
