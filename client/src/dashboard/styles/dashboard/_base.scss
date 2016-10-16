@@ -1,10 +1,10 @@
 // todo - scope dashboard pages with parent scopes
 
 .container-ish {
-  @extend .clearfix;
   margin-right: auto;
   margin-left: auto;
   @include add-gutter;
+  @extend .clearfix;
 
   @include media(768px) {
     width: 750px;
