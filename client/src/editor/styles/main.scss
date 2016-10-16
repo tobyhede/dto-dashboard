@@ -8,10 +8,10 @@
  *
  */
 
-@import 'vendor/ui-kit';
-@import '../../_ui-kit/extensions/buttons';
-@import '../../_ui-kit/extensions/forms';
-@import '../../_ui-kit/extensions/forms';
+@import 'vendor/gov-au-ui-kit/ui-kit';
+@import '../../_common/styles/_vendor/gov-au-ui-kit/extensions/buttons';
+@import '../../_common/styles/_vendor/gov-au-ui-kit/extensions/forms';
+@import '../../_common/styles/_vendor/gov-au-ui-kit/extensions/forms';
 
 @import './../../_common/styles/_vendor/bootstrap/bootstrap-grid';
 

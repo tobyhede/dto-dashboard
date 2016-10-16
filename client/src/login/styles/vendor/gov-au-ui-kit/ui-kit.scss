@@ -4,7 +4,7 @@ UI-Kit version: 1.8.0
 
 */
 
-@import './../../../../_ui-kit/lib/variables';
+@import './../../../../_common/styles/_vendor/gov-au-ui-kit/lib/variables';
 @import '~gov-au-ui-kit/assets/sass/utils';
 @import '~gov-au-ui-kit/assets/sass/vendor';
 
@@ -22,5 +22,5 @@ UI-Kit version: 1.8.0
 @import '~gov-au-ui-kit/assets/sass/components/page-header';
 @import '~gov-au-ui-kit/assets/sass/components/tables';
 @import '~gov-au-ui-kit/assets/sass/components/accordions';
-@import './../../../../_ui-kit/lib/components/typography';
+@import './../../../../_common/styles/_vendor/gov-au-ui-kit/lib/components/typography';
 @import '~gov-au-ui-kit/assets/sass/components/video';
