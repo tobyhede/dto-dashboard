@@ -165,9 +165,12 @@
 }
 
 .metric-breakdown-view {
+  background-color: white;
+
+}
+
+.below-the-line-background {
   background-color: $light-grey;
-  padding: 0;
-  margin: 0;
 }
 
 .dashboard__kpis {

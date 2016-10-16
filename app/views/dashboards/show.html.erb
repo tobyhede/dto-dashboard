@@ -17,10 +17,13 @@
     </defs>
   </svg>
 </div>
+
 <div id="dashboard-<%= dashboard.id %>" class="<%= dashboard.name_slug %>">
+
   <div class="hero-region">
+
     <div class="container-ish">
-      <div class="row dashboard__top">
+      <div class="row-ish dashboard__top">
         <a href="/" aria-hidden="true" class="back-link">Back to overview</a>
         <div class="dashboard__header">
           <h1><%= dashboard.name %> </h1>
@@ -35,31 +38,30 @@
         <% end %>
       </div>
     </div>
+
   </div>
 
-  <div class="container-fluid-ish metric-breakdown-view">
-    <% if dashboard.show_kpis? %>
-        <div class="clearfix dashboard__kpis">
-          <div class="container-ish">
-            <div class="row">
-              <% dashboard.first_row.each do |widget| %>
-                <%= render :partial => 'widget', :locals => {:widget => widget.decorate} %>
-              <% end %>
-            </div>
-          </div>
-        </div>
-    <% end %>
 
-    <div class="container-ish dashboard__secondary dashboard__below-the-line">
-      <% dashboard.remaining_rows.each do |widgets| %>
-        <div class="row">
-          <% widgets.each do |widget| %>
-            <%= render :partial => 'widget', :locals => {:widget => widget.decorate} %>
+  <div class="container metric-breakdown-view">
+    <% if dashboard.show_kpis? %>
+      <div class="row dashboard__kpis">
+          <% dashboard.first_row.each do |widget| %>
+            <%= render :partial => 'kpi-widget', :locals => {:widget => widget.decorate} %>
           <% end %>
-        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="below-the-line-background">
+    <div class="container dashboard__secondary dashboard__below-the-line">
+      <% dashboard.remaining_rows.each do |widgets| %>
+          <div class="row">
+            <% widgets.each do |widget| %>
+                <%= render :partial => 'widget', :locals => {:widget => widget.decorate} %>
+            <% end %>
+          </div>
       <% end %>
     </div>
-
 
     <div class="container">
       <div class="row">
@@ -71,9 +73,9 @@
             </div>
             <div id="dashboard-notes" class="widget__body">
               <% if dashboard.show_notes? %>
-                <%= raw dashboard.notes %>
+                  <%= raw dashboard.notes %>
               <% else %>
-                <p>No information available.</p>
+                  <p>No information available.</p>
               <% end %>
             </div>
           </div>
@@ -92,6 +94,8 @@
         </div>
       </div>
     </div>
-
   </div>
+
+
+
 </div>
