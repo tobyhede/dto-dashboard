@@ -53,49 +53,60 @@
   </div>
 
   <div class="below-the-line-background">
-    <div class="container dashboard__secondary dashboard__below-the-line">
-      <% dashboard.remaining_rows.each do |widgets| %>
-          <div class="row">
+
+    <div class="container">
+      <div class="dashboard__secondary dashboard__below-the-line">
+        <div class="row">
+
+          <% dashboard.remaining_rows.each do |widgets| %>
             <% widgets.each do |widget| %>
                 <%= render :partial => 'widget', :locals => {:widget => widget.decorate} %>
             <% end %>
-          </div>
-      <% end %>
-    </div>
+          <% end %>
 
-    <div class="container">
-      <div class="row">
-        <div class="widget widget-text">
 
-          <div class="widget-text__inner col-xs-12 col-lg-7">
-            <div class="widget__title">
-              <h4>Dashboard Information</h4>
+          <div class="col-xs-12">
+            <div class="row widget">
+              <div class="col-xs-12 col-lg-7">
+
+                <div class="widget-text">
+                  <div class="widget-text__inner">
+                    <div class="widget__title">
+                      <h4>Dashboard Information</h4>
+                    </div>
+                    <div id="dashboard-notes" class="widget__body">
+                      <% if dashboard.show_notes? %>
+                          <%= raw dashboard.notes %>
+                      <% else %>
+                          <p>No information available.</p>
+                      <% end %>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+              <div class="col-xs-12 col-lg-5">
+
+                <div class="widget-text__footer">
+                  <% if dashboard.show_url? %>
+                      <p>Visit <a href="<%= dashboard.url %>" target="_blank"><%= dashboard.url %><i class="fa fa-external-link"></i></a></p>
+                  <% end %>
+                  <p>
+                    <%= link_to export_dashboard_path(dashboard, :format => 'csv') do %>
+                        Download dashboard data as CSV<i class="fa fa-external-link"></i>
+                    <% end %>
+                  </p>
+                </div>
+
+              </div>
             </div>
-            <div id="dashboard-notes" class="widget__body">
-              <% if dashboard.show_notes? %>
-                  <%= raw dashboard.notes %>
-              <% else %>
-                  <p>No information available.</p>
-              <% end %>
-            </div>
-          </div>
-
-          <div class="widget-text__footer col-xs-12 col-lg-5">
-            <% if dashboard.show_url? %>
-                <p>Visit <a href="<%= dashboard.url %>" target="_blank"><%= dashboard.url %><i class="fa fa-external-link"></i></a></p>
-            <% end %>
-            <p>
-              <%= link_to export_dashboard_path(dashboard, :format => 'csv') do %>
-                  Download dashboard data as CSV<i class="fa fa-external-link"></i>
-              <% end %>
-            </p>
           </div>
 
         </div>
       </div>
     </div>
+
   </div>
-
-
 
 </div>

@@ -68,7 +68,7 @@ class WidgetDecorator < Draper::Decorator
     'extra-small' => 'col-xs-12 col-lg-3',
     'small' => 'col-xs-12 col-lg-4',
     'medium' => 'col-xs-12 col-lg-6',
-    'large' => 'col-xs-12 col-lg-9',
+    'large' => 'col-xs-12 col-lg-8',
     'extra-large' => 'col-xs-12'
   }
 
