@@ -22,14 +22,14 @@
  *
  */
 
-@import "variables";
+@import 'variables';
 
 // vendor
 @import 'vendor/animate';
 @import 'vendor/ceaser-easings';
 
 // components
-@import "../../_common/styles/components/type";
+@import '../../_common/styles/components/type';
 @import '../../_common/styles/components/flex-grid';
 @import '../../_common/styles/components/forms';
 @import '../../_common/styles/ui-patterns/phase-banner';
