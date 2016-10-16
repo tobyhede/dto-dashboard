@@ -29,4 +29,16 @@ RSpec.describe ApplicationHelper, type: :helper do
     it{ expect(helper).to be_display_high_contrast_mode}
   end
 
+  describe 'development_server?' do
+    it{ expect(helper).to_not be_development_server }
+
+    context 'development' do
+      before do
+        ENV['DEV_SERVER'] == 'true'
+        Rails.env.stub(:development? => true)
+      end
+      it{ expect(helper).to_not be_development_server }
+    end
+
+  end
 end

@@ -13,11 +13,8 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css"/>
 
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
-  <%
-    #
-    # Production mode or not required for webpack-dev-server mode
-    #
-    if !(Rails.env.development? && ENV['DEV_SERVER'] == 'true') %>
+
+  <% if !development_server? %>
     <%= stylesheet_link_tag 'dashboard.css' %>
   <% end %>
 
@@ -76,14 +73,11 @@
   </footer>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.js"></script>
-  <%
-      #
-      # Production mode or webpack-dev-server mode
-      #
-      if !(Rails.env.development? && ENV['DEV_SERVER'] == 'true') %>
-    <%= javascript_include_tag 'dashboard.js' %>
+
+  <% if development_server? %>
+      <script src="http://localhost:8080/javascripts/dashboard.js"></script>
   <% else %>
-    <script src="http://localhost:8080/javascripts/dashboard.js"></script>
+    <%= javascript_include_tag 'dashboard.js' %>
   <% end %>
 
 </body>
