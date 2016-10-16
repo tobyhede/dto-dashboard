@@ -114,11 +114,6 @@ npm install
 npm run build
 ```
 
-Build gulp (legacy js)
-```
-npm run gulp:build
-```
-
 Build webpack
 ```
 npm run webpack:dev
@@ -314,4 +309,3 @@ To tag a release for deployment to production:
 ```
 git tag `date "+release-%Y%m%d%H%M%S"` && git push --tags
 ```
-
