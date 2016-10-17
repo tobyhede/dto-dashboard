@@ -17,8 +17,7 @@
         { "label": "2016-06", "value": null },
         { "label": "2016-07", "value": null },
         { "label": "2016-08", "value": 75 },
-        { "label": "2016-09", "value": 60 },
-        { "label": "2016-10", "value": 60 }
+        { "label": "2016-09", "value": 60 }
       ]
      },
      {
@@ -32,8 +31,7 @@
          { "label": "2016-06", "value": null },
          { "label": "2016-07", "value": null },
          { "label": "2016-08", "value": null },
-         { "label": "2016-09", "value": null },
-         { "label": "2016-10", "value": null }
+         { "label": "2016-09", "value": null }
        ]
      },
     {
@@ -42,12 +40,11 @@
       "units":        "%",
       "recorded_at":  "2016-11-08T01:01:01.111Z",
       "data":          [
-        { "label": "2016-05", "value": 4 },
-        { "label": "2016-06", "value": 4 },
-        { "label": "2016-07", "value": 6 },
+        { "label": "2016-05", "value": 1 },
+        { "label": "2016-06", "value": 3 },
+        { "label": "2016-07", "value": 4 },
         { "label": "2016-08", "value": 6 },
-        { "label": "2016-09", "value": 6 },
-        { "label": "2016-10", "value": 7 }
+        { "label": "2016-09", "value": 6 }
       ]
     },
     {
@@ -60,8 +57,7 @@
         { "label": "2016-06", "value": null },
         { "label": "2016-07", "value": 73.39 },
         { "label": "2016-08", "value": 90.27 },
-        { "label": "2016-09", "value": 84.28 },
-        { "label": "2016-10", "value": 55.86 }
+        { "label": "2016-09", "value": 84.28 }
       ]
     }
   ]
