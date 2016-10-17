@@ -8,60 +8,61 @@
   "notes":        "",
   "datasets":     [
     {
-       "id":            "user-satisfaction",
-        "recorded_at":  "2016-11-08T01:01:01.111Z",
-        "name":         "User Satisfaction",
-        "data":          [
-          { "label": "2016-05", "value": null },
-          { "label": "2016-06", "value": null },
-          { "label": "2016-07", "value": null },
-          { "label": "2016-08", "value": 0.75 },
-          { "label": "2016-09", "value": 0.6 },
-          { "label": "2016-10", "value": 0.6 }
-        ]
+     "id":            "user-satisfaction",
+      "recorded_at":  "2016-11-08T01:01:01.111Z",
+      "name":         "User Satisfaction",
+      "units":        "%",
+      "data":          [
+        { "label": "2016-05", "value": null },
+        { "label": "2016-06", "value": null },
+        { "label": "2016-07", "value": null },
+        { "label": "2016-08", "value": 75 },
+        { "label": "2016-09", "value": 60 },
+        { "label": "2016-10", "value": 60 }
+      ]
      },
      {
-         "id":           "cost-per-transaction",
-         "recorded_at":  "2016-11-08T01:01:01.111Z",
-         "units":        "$",
-         "name":         "Cost per transaction",
-         "note":         "",
-         "data":         [
-           { "label": "2016-05", "value": null },
-           { "label": "2016-06", "value": null },
-           { "label": "2016-07", "value": null },
-           { "label": "2016-08", "value": null },
-           { "label": "2016-09", "value": null },
-           { "label": "2016-10", "value": null }
-         ]
+       "id":           "cost-per-transaction",
+       "recorded_at":  "2016-11-08T01:01:01.111Z",
+       "units":        "$",
+       "name":         "Cost per transaction",
+       "note":         "",
+       "data":         [
+         { "label": "2016-05", "value": null },
+         { "label": "2016-06", "value": null },
+         { "label": "2016-07", "value": null },
+         { "label": "2016-08", "value": null },
+         { "label": "2016-09", "value": null },
+         { "label": "2016-10", "value": null }
+       ]
      },
     {
-        "id":           "digital-take-up",
-        "name":         "Digital take-up",
-        "units":        "%",
-        "recorded_at":  "2016-11-08T01:01:01.111Z",
-        "data":          [
-          { "label": "2016-05", "value": 0.04 },
-          { "label": "2016-06", "value": 0.04 },
-          { "label": "2016-07", "value": 0.06 },
-          { "label": "2016-08", "value": 0.06 },
-          { "label": "2016-09", "value": 0.06 },
-          { "label": "2016-10", "value": 0.06 }
-        ]
-      },
-      {
-        "id":           "completion-rate",
-        "recorded_at":  "2016-11-08T01:01:01.111Z",
-        "units":        "%",
-        "name":         "Completion rate",
-        "data": [
-          { "label": "2016-05", "value": null },
-          { "label": "2016-06", "value": null },
-          { "label": "2016-07", "value": 73.39 },
-          { "label": "2016-08", "value": 90.27 },
-          { "label": "2016-09", "value": 84.28 },
-          { "label": "2016-10", "value": 55.86 }
-        ]
-      }
+      "id":           "digital-take-up",
+      "name":         "Digital take-up",
+      "units":        "%",
+      "recorded_at":  "2016-11-08T01:01:01.111Z",
+      "data":          [
+        { "label": "2016-05", "value": 4 },
+        { "label": "2016-06", "value": 4 },
+        { "label": "2016-07", "value": 6 },
+        { "label": "2016-08", "value": 6 },
+        { "label": "2016-09", "value": 6 },
+        { "label": "2016-10", "value": 6 }
+      ]
+    },
+    {
+      "id":           "completion-rate",
+      "recorded_at":  "2016-11-08T01:01:01.111Z",
+      "units":        "%",
+      "name":         "Completion rate",
+      "data": [
+        { "label": "2016-05", "value": null },
+        { "label": "2016-06", "value": null },
+        { "label": "2016-07", "value": 73.39 },
+        { "label": "2016-08", "value": 90.27 },
+        { "label": "2016-09", "value": 84.28 },
+        { "label": "2016-10", "value": 55.86 }
+      ]
+    }
   ]
 }

@@ -19,9 +19,10 @@
                     <tr>
                       <td scope="row"><%= datapoint.label() %></td>
                       <td scope="row"><%=
-                        @value = datapoint.value.present? ? datapoint.value : 'no data'
-
-                        datapoint.value.round.to_s + " %"  %></td>
+                        @value = datapoint.value.present? ?
+                          datapoint.value.round.to_s + " %" :
+                          'no data'
+                      %></td>
                     </tr>
                 <% end %>
             <%end %>
