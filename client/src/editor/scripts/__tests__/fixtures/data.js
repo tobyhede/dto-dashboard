@@ -1,4 +1,4 @@
-export const state = {
+const fixtureState = {
   "currentUser": {
     "id": 1,
     "email": "dev@localhost",
@@ -256,10 +256,11 @@ export const state = {
     "datasets": [10, 11, 12, 13, 14]
   }],
   "datasets": [],
-  "datapoints": []
+  "datapoints": [],
+  config: {
+    USE_FIXTURES: true,
+    API_BASE_URL: '/api/v1/'
+  }
 };
 
-export const config = {
-  USE_FIXTURES: true,
-  API_BASE_URL: '/api/v1/'
-};
+export default fixtureState;

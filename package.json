@@ -30,6 +30,7 @@
     "gov-au-ui-kit": "git@github.com:AusDTO/gov-au-ui-kit.git#1.8.0",
     "gulp-autoprefixer": "^3.1.1",
     "imports-loader": "^0.6.5",
+    "isomorphic-fetch": "^2.2.1",
     "json-loader": "^0.5.4",
     "lodash": "^4.11.0",
     "moment": "^2.15.1",
@@ -45,8 +46,7 @@
     "redux-thunk": "^2.1.0",
     "textures": "^1.0.3",
     "uuid": "^2.0.3",
-    "validator": "^5.7.0",
-    "whatwg-fetch": "^1.0.0"
+    "validator": "^5.7.0"
   },
   "devDependencies": {
     "autoprefixer": "^6.4.1",
@@ -77,6 +77,7 @@
     "exorcist": "^0.4.0",
     "expect": "^1.20.2",
     "extract-text-webpack-plugin": "^1.0.1",
+    "fetch-mock": "^5.5.0",
     "file-loader": "^0.9.0",
     "is-utf8": "^0.2.1",
     "jasmine": "^2.4.1",
@@ -98,6 +99,7 @@
     "postcss-loader": "^0.10.1",
     "react-addons-test-utils": "^15.3.2",
     "react-test-renderer": "^15.3.2",
+    "redux-actions-assertions": "^1.2.1",
     "redux-mock-store": "^1.2.1",
     "resolve-url": "^0.2.1",
     "resolve-url-loader": "^1.6.0",
@@ -120,7 +122,7 @@
     "clean": "del public/images/**/* && del public/javascripts/**/* && del public/stylesheets/**/*",
     "start": "echo 'No start tast, use 'npm run' to see options, you probably want 'npm run build'",
     "test": "npm run test-browser && npm run test-browser:legacy && npm run test:react",
-    "test:react": "jest",
+    "test:react": "jest --verbose",
     "test:react:watch": "npm run test:react -- --watch",
     "pretest-browser": "",
     "test-browser": "NODE_ENV=test ava 'client/test/**/*.test.js' --require=babel-register",
@@ -149,6 +151,9 @@
     ],
     "testPathIgnorePatterns": [
       "client/src/editor/scripts/__tests__/fixtures"
-    ]
+    ],
+    "globals": {
+      "__DEV__": true
+    }
   }
 }
