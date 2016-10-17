@@ -11,7 +11,11 @@
        "id":            "user-satisfaction",
         "recorded_at":  "2016-11-08T01:01:01.111Z",
         "name":         "User Satisfaction",
-        "data":          null
+        "data":          [
+          { "label": "2016-08", "value": 1 },
+          { "label": "2016-09", "value": 1 },
+          { "label": "2016-10", "value": 1 }
+        ]
      },
      {
          "id":           "cost-per-transaction",
@@ -26,14 +30,22 @@
         "name":         "Digital take-up",
         "units":        "%",
         "recorded_at":  "2016-11-08T01:01:01.111Z",
-        "data":          null
+        "data":          [
+          { "label": "2016-08", "value": 5 },
+          { "label": "2016-09", "value": 5 },
+          { "label": "2016-10", "value": 6 }
+        ]
       },
       {
         "id":           "completion-rate",
         "recorded_at":  "2016-11-08T01:01:01.111Z",
         "units":        "%",
         "name":         "Completion rate",
-        "data":          null
+        "data": [
+          { "label": "2016-08", "value": null },
+          { "label": "2016-09", "value": 95 },
+          { "label": "2016-10", "value": 99 }
+        ]
       }
   ]
 }
