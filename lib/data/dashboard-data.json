@@ -12,9 +12,12 @@
         "recorded_at":  "2016-11-08T01:01:01.111Z",
         "name":         "User Satisfaction",
         "data":          [
-          { "label": "2016-08", "value": 1 },
-          { "label": "2016-09", "value": 1 },
-          { "label": "2016-10", "value": 1 }
+          { "label": "2016-05", "value": null },
+          { "label": "2016-06", "value": null },
+          { "label": "2016-07", "value": null },
+          { "label": "2016-08", "value": 0.75 },
+          { "label": "2016-09", "value": 0.6 },
+          { "label": "2016-10", "value": 0.6 }
         ]
      },
      {
@@ -23,7 +26,14 @@
          "units":        "$",
          "name":         "Cost per transaction",
          "note":         "",
-         "data":         null
+         "data":         [
+           { "label": "2016-05", "value": null },
+           { "label": "2016-06", "value": null },
+           { "label": "2016-07", "value": null },
+           { "label": "2016-08", "value": null },
+           { "label": "2016-09", "value": null },
+           { "label": "2016-10", "value": null }
+         ]
      },
     {
         "id":           "digital-take-up",
@@ -31,9 +41,12 @@
         "units":        "%",
         "recorded_at":  "2016-11-08T01:01:01.111Z",
         "data":          [
-          { "label": "2016-08", "value": 5 },
-          { "label": "2016-09", "value": 5 },
-          { "label": "2016-10", "value": 6 }
+          { "label": "2016-05", "value": 0.04 },
+          { "label": "2016-06", "value": 0.04 },
+          { "label": "2016-07", "value": 0.06 },
+          { "label": "2016-08", "value": 0.06 },
+          { "label": "2016-09", "value": 0.06 },
+          { "label": "2016-10", "value": 0.06 }
         ]
       },
       {
@@ -42,9 +55,12 @@
         "units":        "%",
         "name":         "Completion rate",
         "data": [
-          { "label": "2016-08", "value": null },
-          { "label": "2016-09", "value": 95 },
-          { "label": "2016-10", "value": 99 }
+          { "label": "2016-05", "value": null },
+          { "label": "2016-06", "value": null },
+          { "label": "2016-07", "value": 73.39 },
+          { "label": "2016-08", "value": 90.27 },
+          { "label": "2016-09", "value": 84.28 },
+          { "label": "2016-10", "value": 55.86 }
         ]
       }
   ]
