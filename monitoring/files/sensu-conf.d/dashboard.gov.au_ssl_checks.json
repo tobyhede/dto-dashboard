@@ -1,12 +1,5 @@
 {
   "checks": {
-    "sslcheck-www.dashboard.gov.au": {
-      "handlers": ["default", "slack"],
-      "command": "/opt/sensu/embedded/bin/check-https-cert.rb --url https://www.dashboard.gov.au --critical 15 --warning 30",
-      "interval": 600,
-      "occurrences": 2,
-      "standalone": true
-    },
     "sslcheck-dashboard.gov.au": {
       "handlers": ["default", "slack"],
       "command": "/opt/sensu/embedded/bin/check-https-cert.rb --url https://dashboard.gov.au --critical 15 --warning 30",
@@ -14,6 +7,5 @@
       "occurrences": 2,
       "standalone": true
     }
-
   }
 }
