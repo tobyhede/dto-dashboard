@@ -63,7 +63,7 @@ class HeroWidget {
 
     if (this.chart) {
       this.chart.init();
-      this.nullData = new NullDataLayer({chart: this.chart, above: false });
+      // this.nullData = new NullDataLayer({chart: this.chart, above: false });
       this.overlay = new OverlayLayer({
         chart: this.chart,
         legend: null,

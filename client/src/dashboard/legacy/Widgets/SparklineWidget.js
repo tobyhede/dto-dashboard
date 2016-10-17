@@ -49,7 +49,7 @@ class SparklineWidget {
         isHighContrastMode: this.isHighContrastMode
       });
       this.sparkline.init();
-      new NullDataLayer({chart: this.sparkline, above: false });
+      // new NullDataLayer({chart: this.sparkline, above: false });
       let meta = this.container.append('div').attr('class', 'metric-meta');
       this.summary = meta.append('span');
     }
