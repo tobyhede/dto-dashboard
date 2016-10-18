@@ -219,8 +219,10 @@
       text-align: center;
       height: 35px;
 
-      h4 {
+
+      h2 {
         display: inline;
+        font-size: 1.25rem;
       }
     }
   }
@@ -316,7 +318,6 @@
     }
   }
 }
-
 
 .dashboard__below-the-line {
   .has-data-true {
