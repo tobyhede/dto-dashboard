@@ -75,7 +75,6 @@
   }
 
   .widget__title {
-    //height: 40px;
     padding: 0;
   }
 
@@ -99,6 +98,14 @@
     }
   }
 
+  @media (min-width: $screen-md) {
+    .widget {
+      .widget__title {
+        margin-bottom: 30px;
+      }
+    }
+  }
+
   @media (max-width: $screen-sm - 1) {
     .widget {
       margin: 0;
@@ -112,7 +119,7 @@
       }
 
       .widget__inner {
-        padding: 0 $spacing-unit / 2;
+        padding: 0;
       }
 
       .widget__title,
@@ -128,13 +135,6 @@
 
       .metric-data {
         font-weight: 700;
-        padding-right: 5px;
-        letter-spacing: 0.5px;
-      }
-
-      .metric-data {
-        font-weight: 700;
-        padding-right: 5px;
         letter-spacing: 0.5px;
       }
     }
