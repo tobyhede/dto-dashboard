@@ -34,7 +34,14 @@ class SparklineWidget {
 
   addChart(){
     let sparkLineContainer = this.container.append('div').attr('class', 'sparkline');
-    let decorator = this.metricData.append('div').attr('class', 'decorator');
+    let decorator;
+    if (this.units === '$') {
+      // prepend if currency
+      decorator = this.metricData.insert('div', ":first-child").attr('class', 'decorator');
+    } else {
+      decorator = this.metricData.append('div').attr('class', 'decorator');
+    }
+
     this.metricDataTrend = decorator.append('div');
     this.metricDataUnit = decorator.append('div').attr('class', 'metric-unit').text(this.units);
 
