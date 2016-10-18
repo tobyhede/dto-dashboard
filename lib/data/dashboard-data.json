@@ -27,11 +27,11 @@
        "name":         "Cost per transaction",
        "note":         "",
        "data":         [
-         { "label": "2016-05", "value": 190 },
-         { "label": "2016-06", "value": 180 },
-         { "label": "2016-07", "value": 300 },
-         { "label": "2016-08", "value": 250 },
-         { "label": "2016-09", "value": 220 }
+         { "label": "2016-05", "value": null },
+         { "label": "2016-06", "value": null },
+         { "label": "2016-07", "value": 375.66 },
+         { "label": "2016-08", "value": 53.67 },
+         { "label": "2016-09", "value": 53.45 }
        ]
      },
     {
@@ -40,11 +40,11 @@
       "units":        "%",
       "recorded_at":  "2016-11-08T01:01:01.111Z",
       "data":          [
-        { "label": "2016-05", "value": 1 },
-        { "label": "2016-06", "value": 3 },
-        { "label": "2016-07", "value": 4 },
-        { "label": "2016-08", "value": 6 },
-        { "label": "2016-09", "value": 6 }
+        { "label": "2016-05", "value": 0 },
+        { "label": "2016-06", "value": 0 },
+        { "label": "2016-07", "value": 67 },
+        { "label": "2016-08", "value": 100 },
+        { "label": "2016-09", "value": 100 }
       ]
     },
     {
