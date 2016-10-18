@@ -9,7 +9,7 @@
       <div class="meta-group">
         <% if widget.show_description? %>
           <div class="widget__definition">
-            <button class="widget__definition--title" aria-describedby="tooltip--<%= widget.name_slug %>">What is this?</button>
+            <a class="widget__definition--title" aria-describedby="tooltip--<%= widget.name_slug %>">What is this?</a>
             <div class="widget__definition--content" role="tooltip" id="tooltip--<%= widget.name_slug %>">
               <div class="widget__definition--content__inner">
                 <%= widget.description %>
