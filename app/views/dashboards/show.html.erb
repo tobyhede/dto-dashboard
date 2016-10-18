@@ -74,11 +74,12 @@
               <% end %>
             </div>
           </div>
-          <div class="widget-text__footer aus-width-five-twelfths">
-            <% if dashboard.show_url? %>
+          <% if dashboard.show_url? %>
+            <div class="widget-text__footer aus-width-five-twelfths">
               <p>Visit <a href="<%= dashboard.url %>" target="_blank"><%= dashboard.url %><i class="fa fa-external-link"></i></a></p>
-            <% end %>
-          </div>
+            </div>
+          <% end %>
+
           <div class="widget-text__footer aus-width-five-twelfths">
             <p>
               <%= link_to export_dashboard_path(dashboard, :format => 'csv') do %>
