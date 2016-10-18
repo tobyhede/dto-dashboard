@@ -21,13 +21,11 @@ class Layout extends Component {
       <div className="app-scene">
         <Toast />
         <TransitionGroup
-          transitionAppear={true}
+          transitionAppear={false}
           transitionName={{
             enter:'fadeIn',
-            leave:'fadeOut',
-            appear:'fadeIn'
+            leave:'fadeOut'
           }}
-          transitionAppearTimeout={200}  // total time
           transitionEnterTimeout={400}  // total time
           transitionLeaveTimeout={200}  // total time
           component="div"
