@@ -3,26 +3,25 @@
 .toggle-switch {
   color: $white;
   position: relative;
-  top: 4px;
+  top: 7px;
 
   @media screen and (max-width: $screen-sm) {
-    top: -2px;
+    top: 2px;
  }
-
-  p {
-    display: inline-block;
-    padding-right: 10px;
-    position: relative;
-    top: 3px;
-
-    @media screen and (max-width: $screen-sm) {
-      display: none;
-    }
-  }
 
   .switch-material {
     &.switch-light {
       float: right;
+
+      strong {
+        float:left;
+        padding-right: $gutter;
+        padding-top: 6px;
+
+        @media screen and (max-width: $screen-sm) {
+          display: none;
+        }
+      }
 
       a {
         top: 0;
@@ -32,6 +31,7 @@
 
       > span {
         background: $secondary-text-colour;
+        float: right;
       }
 
       input:checked ~ span {

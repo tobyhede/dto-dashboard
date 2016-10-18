@@ -17,9 +17,14 @@
   padding: $gutter $gutter $gutter 25px;
   color: $black;
 
-  h2 {
+  h3 {
     line-height: 1.2;
     margin: $gutter 0;
+
+    @media screen and (min-width: 768px) {
+      font-size: 30px;
+      font-size: 1.875rem;
+    }
   }
 
   @media screen and (max-width: $screen-sm -1) {

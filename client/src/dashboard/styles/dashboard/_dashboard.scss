@@ -20,13 +20,18 @@
       @include span-columns(12);
     }
   }
+
+  h2 {
+    margin-top: 0;
+    margin-bottom: 0;
+    height: 35px;
+    font-size: 1rem;
+  }
 }
 
 .dashboards-intro-sec {
   @include span-columns(4);
   color: $gov-au-brand-colour;
-
-
 
   @media(max-width: 768px) {
     @include span-columns(12);
@@ -37,11 +42,18 @@
     &.hide-on-mobile {
       display: none;
     }
+
+    .media {
+      height: auto;
+      float: left;
+    }
   }
-  @media(min-width: 768px) {
+
+  @media(min-width: 769px) {
     .media {
       float:right;
     }
+
     .media-body {
       width: auto;
     }
