@@ -38,15 +38,15 @@
 
   <div class="container-fluid metric-breakdown-view">
     <% if dashboard.show_kpis? %>
-        <div class="clearfix dashboard__kpis">
-          <div class="container">
-            <div class="row">
-              <% dashboard.first_row.each do |widget| %>
-                <%= render :partial => 'kpis', :locals => {:widget => widget.decorate} %>
-              <% end %>
-            </div>
+      <div class="clearfix dashboard__kpis">
+        <div class="container">
+          <div class="row">
+            <% dashboard.first_row.each do |widget| %>
+              <%= render :partial => 'kpis', :locals => {:widget => widget.decorate} %>
+            <% end %>
           </div>
         </div>
+      </div>
     <% end %>
 
     <div class="container dashboard__secondary dashboard__below-the-line">
