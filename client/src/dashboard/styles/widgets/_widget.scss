@@ -144,12 +144,13 @@
     //  height: 77px;
     //}
 
-    h4 {
+    h3 {
       font-size: 1.25 * $fallback;
       color: $primary-text-colour;
       font-size: 1.25rem;
       margin-top: 0;
       margin-bottom: $gutter / 2;
+      font-weight: 400;
     }
 
     .widget__last-updated,
