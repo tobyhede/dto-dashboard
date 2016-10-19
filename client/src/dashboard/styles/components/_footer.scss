@@ -13,6 +13,10 @@
   padding-bottom: 2.4em;
   float: left;
 
+  @media (max-width:$screen-sm){
+    float: none;
+  }
+
   @media (min-width:$screen-sm-minor) {
     padding-bottom: 0;
     padding-right: 1em;
